@@ -4,7 +4,7 @@
 
 
 # include <stdbool.h>
-# include "MLX42.h"
+// # include "MLX42.h"
 # include "libft.h"
 
 # include <math.h>
@@ -40,6 +40,38 @@
 # define WINDOW_WIDTH 1280
 # define WINDOW_HEIGHT 720
 # define GRAPHICS_LENGTH 6
+
+
+
+typedef struct s_img
+{
+	int				type; // player , walll etc 
+	mlx_image_t		*img;
+}					t_img;
+
+typedef struct s_cub3d
+{
+	mlx_t		*mlx;
+	int			fd;
+	mlx_image_t	*img;
+	t_graphics	*graphics;
+	int			window_width;
+	int			window_height;
+	int			minimap_img_width;
+	int			minimap_img_height;
+} 	t_cub3d;
+
+
+
+typedef struct s_graphics
+{
+	t_img			north;
+	t_img			west;
+	t_img			east;
+	t_img			south;
+	int				*floor_colour;
+	int				*ceiling_colour;
+}					t_graphics;
 
 #endif
 
