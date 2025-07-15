@@ -23,7 +23,7 @@
 # define MINIMAP_WIDTH 260
 # define MINIMAP_HEIGHT 150
 # define MINIMAP_VIEW_SIZE 3
-# define CUBE_SIZE 32 // eine kachel 32 lange 32 breite 
+# define CUBE_SIZE 32 // eine kachel 32 lange 32 breite
 
 //PLAYER
 # define PLAYER_SIZE 10
@@ -45,8 +45,10 @@
 
 typedef struct s_img
 {
-	int				type; // player , walll etc 
+	int				type; // player , walll etc
 	mlx_image_t		*img;
+	char			*path;
+	
 }					t_img;
 
 typedef struct s_cub3d
@@ -90,5 +92,5 @@ void		game_loop(void *param);
 
 // To do
 // minimap anfangen erstllen
-// 
-// raycasting 
+//
+// raycasting
