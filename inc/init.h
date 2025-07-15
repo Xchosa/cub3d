@@ -4,7 +4,7 @@
 
 
 # include <stdbool.h>
-// # include "MLX42.h"
+# include "MLX42.h"
 # include "libft.h"
 
 # include <math.h>
@@ -21,9 +21,9 @@
 
 //MAP
 # define MINIMAP_WIDTH 260
-# define MINIMAP_HEIGHT 152
+# define MINIMAP_HEIGHT 150
 # define MINIMAP_VIEW_SIZE 3
-# define TILE_SIZE 32 // eine kachel 32 lange 32 breite 
+# define CUBE_SIZE 32 // eine kachel 32 lange 32 breite 
 
 //PLAYER
 # define PLAYER_SIZE 10
@@ -59,7 +59,8 @@ typedef struct s_cub3d
 	int			window_height;
 	int			minimap_img_width;
 	int			minimap_img_height;
-} 	t_cub3d;
+
+}	t_cub3d;
 
 
 
@@ -73,7 +74,21 @@ typedef struct s_graphics
 	int				*ceiling_colour;
 }					t_graphics;
 
+
+bool		init_cub3d(t_cub3d *cub3d, char **argv);
+void		set_up_cub3d_defaults(t_cub3d *cub3d);
+
+bool		create_mlx(t_cub3d *cub3d);
+
+t_graphics	*get_map(t_graphics *graphics, char **argv);
+
+
+// hook function for escape and player movement
+void		game_loop(void *param);
+
 #endif
 
+// To do
 // minimap anfangen erstllen
+// 
 // raycasting 
