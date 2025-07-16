@@ -6,7 +6,7 @@
 /*   By: mimalek <mimalek@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 14:14:43 by mimalek           #+#    #+#             */
-/*   Updated: 2025/07/16 15:44:28 by mimalek          ###   ########.fr       */
+/*   Updated: 2025/07/16 17:26:50 by mimalek          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,13 @@ static int	argument_check(int argc, char **argv);
 int	main(int argc, char **argv)
 {
 	int	fd;
+	t_cub3d	*data;
 
+	data = malloc(sizeof(t_cub3d));
+	if (!data)
+		return(ft_error(MALLOC_FAIL), MALLOC_FAIL);
 	fd = argument_check(argc, argv);
-	
+	ft_validate_parse_file(data, fd);
 	return (close(fd), 0);
 }
 
