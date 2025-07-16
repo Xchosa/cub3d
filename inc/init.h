@@ -2,15 +2,8 @@
 #ifndef INIT_H
 # define INIT_H
 
-
-# include <stdbool.h>
 # include "MLX42.h"
-# include "libft.h"
 
-# include <math.h>
-
-# include <stdio.h>
-# include <stdlib.h>
 //minimap
 //COLORS
 # define WHITE_COLOR 0xFFFFFFFF
@@ -41,15 +34,23 @@
 # define WINDOW_HEIGHT 720
 # define GRAPHICS_LENGTH 6
 
-
-
 typedef struct s_img
 {
 	int				type; // player , walll etc
 	mlx_image_t		*img;
 	char			*path;
-	
+
 }					t_img;
+
+typedef struct s_graphics
+{
+	t_img			north;
+	t_img			west;
+	t_img			east;
+	t_img			south;
+	int				*floor_colour;
+	int				*ceiling_colour;
+}					t_graphics;
 
 typedef struct s_cub3d
 {
@@ -63,18 +64,6 @@ typedef struct s_cub3d
 	int			minimap_img_height;
 
 }	t_cub3d;
-
-
-
-typedef struct s_graphics
-{
-	t_img			north;
-	t_img			west;
-	t_img			east;
-	t_img			south;
-	int				*floor_colour;
-	int				*ceiling_colour;
-}					t_graphics;
 
 
 bool		init_cub3d(t_cub3d *cub3d, char **argv);
