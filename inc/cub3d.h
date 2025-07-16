@@ -6,7 +6,7 @@
 /*   By: mimalek <mimalek@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 14:11:24 by mimalek           #+#    #+#             */
-/*   Updated: 2025/07/16 14:57:43 by mimalek          ###   ########.fr       */
+/*   Updated: 2025/07/16 15:37:28 by mimalek          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,13 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include <fcntl.h>
 
 # include "libft.h"
 
 #include "init.h"
 #include "error.h"
+
+void	ft_exit( int error_code );
 
 #endif
