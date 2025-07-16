@@ -28,7 +28,8 @@ MY_SOURCES = \
         test_main.c \
         main.c \
         init.c \
-		error.c
+		error.c \
+		exit.c
 
 
 HEADERS = \
@@ -40,7 +41,7 @@ HEADERS = \
 OBJ 	= $(addprefix $(OBJ_DIR)/, $(MY_SOURCES:.c=.o))
 
 
-all: $(LIBMLX) $(NAME)
+all: $(LIBFT) $(LIBMLX) $(NAME)
 $(LIBMLX):
 	git clone https://github.com/codam-coding-college/MLX42.git $(LIBMLX_DIR)
 	cd $(LIBMLX_DIR) && git checkout ce254c3a19af8176787601a2ac3490100a5c4c61
