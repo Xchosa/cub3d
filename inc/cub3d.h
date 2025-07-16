@@ -6,7 +6,7 @@
 /*   By: mimalek <mimalek@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 14:11:24 by mimalek           #+#    #+#             */
-/*   Updated: 2025/07/16 15:37:28 by mimalek          ###   ########.fr       */
+/*   Updated: 2025/07/16 17:24:45 by mimalek          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 
 #include "init.h"
 #include "error.h"
+#include "parse.h"
 
 void	ft_exit( int error_code );
 
