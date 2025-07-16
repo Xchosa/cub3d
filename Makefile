@@ -29,7 +29,8 @@ MY_SOURCES = \
         main.c \
         init.c \
 		error.c \
-		exit.c
+		exit.c \
+		parse.c
 
 
 HEADERS = \
