@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: poverbec <poverbec@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: mimalek <mimalek@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 12:11:16 by poverbec          #+#    #+#             */
-/*   Updated: 2025/03/13 13:19:13 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/07/16 17:38:00 by mimalek          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 # include <stdarg.h>
 # include <fcntl.h>
 
-char	*get_next_line(int fd);
+char	*get_next_line(int fd, char **tmp_buffer);
 size_t	ft_strlen_gnl(const char *s);
 char	*ft_strchr_gnl(const char *s, int c);
 char	*ft_strjoin_gnl(char const *s1, char const *s2);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: poverbec <poverbec@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: mimalek <mimalek@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 09:15:48 by poverbec          #+#    #+#             */
-/*   Updated: 2025/03/13 14:39:17 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/07/16 17:37:55 by mimalek          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,10 @@ static void	move_buffer_forward(char *buffer);
 static int	handle_buffer_zero(char **buffer, int bytes_read,
 				char **tmp_buffer, char **line);
 
-char	*get_next_line(int fd)
+char	*get_next_line(int fd, char **tmp_buffer)
 {
 	static char	buffer[BUFFER_SIZE + 1];
 	char		*line;
-	char		*tmp_buffer;
 	int			flag;
 
 	flag = 0;
@@ -38,12 +37,12 @@ char	*get_next_line(int fd)
 		return (line);
 	if (flag == 2)
 		return (NULL);
-	tmp_buffer = ft_createline(line);
-	if (!tmp_buffer)
+	*tmp_buffer = ft_createline(line);
+	if (!*tmp_buffer)
 		return (NULL);
 	free(line);
 	move_buffer_forward(buffer);
-	return (tmp_buffer);
+	return (*tmp_buffer);
 }
 
 static int	read_store(char *buffer, char **line, int fd, int *flag)
