@@ -26,6 +26,7 @@ MY_SOURCES = ft_atoi.c	\
 			ft_strrchr.c \
 			ft_strncmp.c \
 			ft_strnstr.c \
+			ft_strstr.c \
 			ft_strdup.c \
 			ft_substr.c \
 			ft_calloc.c \
@@ -39,7 +40,7 @@ MY_SOURCES = ft_atoi.c	\
 			ft_strmapi.c \
 			ft_putendl_fd.c \
 			ft_putnbr_fd.c \
-			ft_split.c 
+			ft_split.c
 
 MY_SOURCES_B = ft_lstnew.c \
 			ft_lstsize.c \
@@ -73,12 +74,12 @@ $(NAME): $(MY_OBJECTS) $(MY_OBJECTS_B) $(MY_OBJECTS_PF) $(MY_OBJECTS_GNL)
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
-clean: 
+clean:
 	rm -f $(MY_OBJECTS) $(MY_OBJECTS_B) $(MY_OBJECTS_PF) $(MY_OBJECTS_GNL)
 
-fclean: clean 
+fclean: clean
 	rm -f $(NAME)
 
-re: fclean all 
+re: fclean all
 
 .PHONY: re clean fclean all

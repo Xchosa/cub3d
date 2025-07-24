@@ -1,25 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.h                                            :+:      :+:    :+:   */
+/*   ft_strstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mimalek <mimalek@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/16 14:16:33 by mimalek           #+#    #+#             */
-/*   Updated: 2025/07/24 10:57:10 by mimalek          ###   ########.fr       */
+/*   Created: 2025/07/24 10:58:33 by mimalek           #+#    #+#             */
+/*   Updated: 2025/07/24 10:59:43 by mimalek          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-typedef	enum	e_error
-{
-	ARGUMENT_AMOUNT = 1,
-	WRONG_FILE_TYPE = 2,
-	OPEN_FAILED		= 3,
-	MALLOC_FAIL		= 4,
-	CONFIGUARTION_LINE = 5,
-	CONFIG_DUPLICATE = 6,
-	IMAGE_OPEN_FAILED = 7,
-}				t_error;
+#include "libft.h"
 
-void	ft_error( int error_code );
-void	ft_error_msg( int error_code, char *msg );
+char	*ft_strstr(const char *haystack, const char *needle)
+{
+	size_t	i;
+	size_t	needle_len;
+
+	needle_len = ft_strlen(needle);
+	i = 0;
+	if (needle_len == '\0')
+		return ((char *)haystack);
+	while ((haystack[i] != '\0'))
+	{
+		if ((ft_strncmp(haystack + i, needle, needle_len) == 0))
+			return ((char *)&haystack[i]);
+		i++;
+	}
+	return (NULL);
+}

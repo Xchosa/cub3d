@@ -6,7 +6,7 @@
 /*   By: mimalek <mimalek@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 14:14:43 by mimalek           #+#    #+#             */
-/*   Updated: 2025/07/16 17:26:50 by mimalek          ###   ########.fr       */
+/*   Updated: 2025/07/24 11:47:17 by mimalek          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,21 @@ int	main(int argc, char **argv)
 	data = malloc(sizeof(t_cub3d));
 	if (!data)
 		return(ft_error(MALLOC_FAIL), MALLOC_FAIL);
+	data->graphics = malloc(sizeof(t_graphics));
+	if (!data->graphics)
+		return (ft_error(MALLOC_FAIL), free(data), MALLOC_FAIL);
+	data->graphics->north = malloc(sizeof(t_img));
+	data->graphics->south = malloc(sizeof(t_img));
+	data->graphics->west = malloc(sizeof(t_img));
+	data->graphics->east = malloc(sizeof(t_img));
+	if (!data->graphics->north || !data->graphics->south || !data->graphics->west || !data->graphics->east)
+		return (ft_error(MALLOC_FAIL), free(data->graphics), free(data), MALLOC_FAIL);
 	fd = argument_check(argc, argv);
 	ft_validate_parse_file(data, fd);
+	ft_printf("North: %s\n", data->graphics->north->path);
+	ft_printf("South: %s\n", data->graphics->south->path);
+	ft_printf("West: %s\n", data->graphics->west->path);
+	ft_printf("East: %s\n", data->graphics->east->path);
 	return (close(fd), 0);
 }
 

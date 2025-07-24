@@ -44,10 +44,10 @@ typedef struct s_img
 
 typedef struct s_graphics
 {
-	t_img			north;
-	t_img			west;
-	t_img			east;
-	t_img			south;
+	t_img			*north;
+	t_img			*west;
+	t_img			*east;
+	t_img			*south;
 	int				*floor_colour;
 	int				*ceiling_colour;
 }					t_graphics;

@@ -6,7 +6,7 @@
 /*   By: mimalek <mimalek@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 14:35:40 by mimalek           #+#    #+#             */
-/*   Updated: 2025/07/16 17:09:50 by mimalek          ###   ########.fr       */
+/*   Updated: 2025/07/24 10:57:22 by mimalek          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,14 @@ void	ft_error( int error_code )
 		ft_error_msg(error_code, "Unable to Open File");
 	else if (error_code == 4)
 		ft_error_msg(error_code, "Malloc Failed");
+	else if (error_code == 5)
+		ft_error_msg(error_code, "Configuration Line Error");
+	else if (error_code == 6)
+		ft_error_msg(error_code, "Configuration Duplicate Error");
+	else if (error_code == 7)
+		ft_error_msg(error_code, "Image Open Failed");
+	else
+		ft_error_msg(error_code, "Unknown Error");
 }
 
 void	ft_error_msg( int error_code, char *msg )

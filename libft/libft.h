@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: poverbec <poverbec@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: mimalek <mimalek@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 10:27:49 by poverbec          #+#    #+#             */
-/*   Updated: 2025/04/10 14:11:29 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/07/24 11:00:35 by mimalek          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize);
 char	*ft_strchr(const char *s, int c);
 char	*ft_strrchr(const char *s, int c);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
+char	*ft_strstr(const char *haystack, const char *needle);
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
 char	*ft_strdup(const char *s1);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
@@ -85,7 +86,7 @@ void	ft_putnbr_fd(int n, int fd);
 // char *get_next_line(int fd);
 
 
-// usefull add ons 
+// usefull add ons
 bool	ft_strcmp(const char *s1, const char *s2);
 char	**ft_cpy_array_str(char **arrays);
 void 	ft_free_array(char **arrays);
