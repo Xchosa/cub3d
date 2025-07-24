@@ -6,7 +6,7 @@
 /*   By: mimalek <mimalek@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 14:16:33 by mimalek           #+#    #+#             */
-/*   Updated: 2025/07/24 10:57:10 by mimalek          ###   ########.fr       */
+/*   Updated: 2025/07/24 12:15:27 by mimalek          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ typedef	enum	e_error
 	CONFIGUARTION_LINE = 5,
 	CONFIG_DUPLICATE = 6,
 	IMAGE_OPEN_FAILED = 7,
+	WRONG_COLOR_VALUE = 8,
 }				t_error;
 
 void	ft_error( int error_code );

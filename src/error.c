@@ -6,7 +6,7 @@
 /*   By: mimalek <mimalek@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 14:35:40 by mimalek           #+#    #+#             */
-/*   Updated: 2025/07/24 10:57:22 by mimalek          ###   ########.fr       */
+/*   Updated: 2025/07/24 12:15:07 by mimalek          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ void	ft_error( int error_code )
 		ft_error_msg(error_code, "Configuration Duplicate Error");
 	else if (error_code == 7)
 		ft_error_msg(error_code, "Image Open Failed");
+	else if (error_code == 8)
+		ft_error_msg(error_code, "Wrong Colour Value");
 	else
 		ft_error_msg(error_code, "Unknown Error");
 }
