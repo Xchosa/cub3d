@@ -93,6 +93,9 @@ void	draw_minimap(t_cub3d *cub3d)
 	int		x;
 	int		y;
 
+	(void)square_size;
+	(void)x;
+	(void)y;
 	map_height = get_map_height(cub3d->map);
 	map_width = get_map_width(cub3d->map);
 

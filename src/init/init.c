@@ -3,18 +3,18 @@
 #include "init.h"
 
 
-bool	init_cub3d(t_cub3d *cub3d, char **argv)
+bool	init_cub3d(t_cub3d *cub3d, char *map_path)
 {
-	t_graphics	graphics;
+	// t_graphics	graphics;
 
 	ft_memset(cub3d, 0, sizeof(cub3d));
 	// alles auf Null setzen und malloc
 	if (!cub3d)
 		return (false);
 	set_up_cub3d_defaults(cub3d);
-	if (intit_textures(cub3d) == false)
+	if (init_textures(cub3d) == false)
 		return (false);
-	if (parse_map_file(cub3d, argv[1]) == false)
+	if (parse_map_file(cub3d, map_path) == false)
     // meguels weg nehmen. 
 		return (false);
 	// for dynamic resizing of window 
@@ -28,7 +28,7 @@ bool	init_cub3d(t_cub3d *cub3d, char **argv)
 
 bool	init_textures(t_cub3d *cub3d)
 {
-	cub3d->graphics = ft_memset(cub3d->graphics, NULL, sizeof(t_graphics));
+	cub3d->graphics = ft_memset(cub3d->graphics, 0, sizeof(t_graphics));
 	if (!cub3d->graphics)
 	{
 		ft_error(MALLOC_FAIL);
@@ -36,8 +36,8 @@ bool	init_textures(t_cub3d *cub3d)
 	}
 	ft_memset(cub3d->graphics->floor_colour, 0, sizeof(int));
 	ft_memset(cub3d->graphics->ceiling_colour, 0, sizeof(int));
-	cub3d->graphics->floor_colour = YELLOW_COLOR;
-	cub3d->graphics->ceiling_colour = GREY_COLOR;
+	*(cub3d->graphics->floor_colour) = YELLOW_COLOR;
+	*(cub3d->graphics->ceiling_colour) = GREY_COLOR;
 
 	return (true);
 

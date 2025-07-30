@@ -24,6 +24,8 @@ int	ft_validate_parse_file(t_cub3d *data, int fd)
 	int		check_config;
 	int		config_arg;
 
+	(void)check_config;
+	(void)i;
 	line = NULL;
 	i = 0;
 	check_config = -1;

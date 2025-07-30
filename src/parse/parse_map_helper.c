@@ -9,11 +9,14 @@ char	**read_map_file(char *map_path)
 	char	*line;
 	char	*content;
 	char	*tmp;
+	char	**map_array;
 
 	fd = open(map_path, O_RDONLY);
-	if (fd < 0);
+	if (fd < 0)
 		return (NULL);
 	content = ft_strdup("");
+	tmp = NULL;
+	(void)tmp;
 	line = NULL;
 	while (1)
 	{
@@ -21,10 +24,12 @@ char	**read_map_file(char *map_path)
 		if (!line)
 			break ;
 		tmp = content;
-		content = ft_strjon(content, line);
-		free(tmp);
+		content = ft_strjoin(content, line);
 		free(line);
+		free(content);
 	}
 	close(fd);
-	return (content); 
+	map_array = ft_split(content, '\n');
+	free(content);
+	return (map_array);
 }
