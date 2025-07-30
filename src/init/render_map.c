@@ -26,8 +26,8 @@ void	draw_map_background(t_cub3d *cub3d)
 	uint32_t	ceiling_color;
 	uint32_t	floor_color;
 
-	ceiling_color = cub3d->graphics->ceiling_colour;
-	floor_color = cub3d->graphics->floor_colour;
+	ceiling_color = *(cub3d->graphics->ceiling_colour);
+	floor_color = *(cub3d->graphics->floor_colour);
 	// split in two ti create 3d effect
 	// draw ceiling
 	y = 0;
@@ -101,6 +101,8 @@ void	draw_minimap(t_cub3d *cub3d)
 
 	square_size = fmin(cub3d->minimap_img_width / map_width,
 			cub3d->minimap_img_height / map_height);
+	if (square_size < 1)
+        square_size = 1;
 }
 
 

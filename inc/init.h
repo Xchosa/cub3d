@@ -59,10 +59,10 @@ typedef struct s_cub3d
 	mlx_image_t	*img;
 	t_graphics	*graphics;
 	char		**map;
-	int			window_width;
-	int			window_height;
-	int			minimap_img_width;
-	int			minimap_img_height;
+	uint32_t	window_width;
+	uint32_t	window_height;
+	uint32_t	minimap_img_width;
+	uint32_t	minimap_img_height;
 
 }	t_cub3d;
 
