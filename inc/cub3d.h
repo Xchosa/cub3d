@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
-#define CUB3D_H
+# define CUB3D_H
 
 # include <stdbool.h>
 # include <math.h>
@@ -22,10 +22,19 @@
 
 # include "libft.h"
 
-#include "init.h"
-#include "error.h"
-#include "parse.h"
+# include "libft.h"
+# include "MLX42.h"
+# include "init.h"
+# include "error.h"
+# include "parse.h"
 
-void	ft_exit( int error_code );
+
+void	ft_exit(int error_code);
+
+bool	parse_map_file(t_cub3d *cub3d, char *map_path);
+
+void	game_loop(void *param);
+void	cleanup_cub3d(t_cub3d *cub3d);
+
 
 #endif

@@ -58,6 +58,7 @@ typedef struct s_cub3d
 	int			fd;
 	mlx_image_t	*img;
 	t_graphics	*graphics;
+	char		**map;
 	int			window_width;
 	int			window_height;
 	int			minimap_img_width;
@@ -67,6 +68,8 @@ typedef struct s_cub3d
 
 
 bool		init_cub3d(t_cub3d *cub3d, char **argv);
+
+bool		init_textures(t_cub3d *cub3d);
 void		set_up_cub3d_defaults(t_cub3d *cub3d);
 
 bool		create_mlx(t_cub3d *cub3d);
@@ -76,6 +79,14 @@ t_graphics	*get_map(t_graphics *graphics, char **argv);
 
 // hook function for escape and player movement
 void		game_loop(void *param);
+void		draw_map_background(t_cub3d *cub3d);
+void		render_map(t_cub3d *cub3d);
+void		draw_map_background(t_cub3d *cub3d);
+
+// minimap
+void		draw_minimap(t_cub3d *cub3d);
+int			get_map_height(char **map);
+int			get_map_width(char **map);
 
 #endif
 

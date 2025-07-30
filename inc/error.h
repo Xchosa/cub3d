@@ -20,6 +20,10 @@ typedef	enum	e_error
 	CONFIG_DUPLICATE = 6,
 	IMAGE_OPEN_FAILED = 7,
 	WRONG_COLOR_VALUE = 8,
+	MLX_IMG_FAIL	= 9,
+	MLX_INIT_FAIL	= 10,
+	MLX_IMG_TO_WINDOW_FAIL = 11,
+
 }				t_error;
 
 void	ft_error( int error_code );

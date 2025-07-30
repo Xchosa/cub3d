@@ -11,41 +11,34 @@
 /* ************************************************************************** */
 
 #include "cub3d.h"
+#include "parse.h"
 
-static int	argument_check(int argc, char **argv);
+// int	main(int argc, char **argv)
+// {
+// 	int		fd;
+// 	t_cub3d	*data;
 
-int	main(int argc, char **argv)
-{
-	int	fd;
-	t_cub3d	*data;
+// 	ft_memset(data, 0, sizeof(t_cub3d)); // sonst is garbage im pointer 
+// 	//data = malloc(sizeof(t_cub3d));
+// 	if (!data)
+// 		return (ft_error(MALLOC_FAIL), MALLOC_FAIL);
+// 	data->graphics = malloc(sizeof(t_graphics));
+// 	if (!data->graphics)
+// 		return (ft_error(MALLOC_FAIL), free(data), MALLOC_FAIL);
+// 	fd = argument_check(argc, argv);
+// 	ft_validate_parse_file(data, fd);
+// 	ft_printf("North: %s\n", data->graphics->north.path);
+// 	ft_printf("South: %s\n", data->graphics->south.path);
+// 	ft_printf("West: %s\n", data->graphics->west.path);
+// 	ft_printf("East: %s\n", data->graphics->east.path);
+// 	ft_printf("Floor Colour: %d\n", *(data->graphics->floor_colour));
+// 	ft_printf("Ceiling Colour: %d\n", *(data->graphics->ceiling_colour));
 
-	data = malloc(sizeof(t_cub3d));
-	if (!data)
-		return(ft_error(MALLOC_FAIL), MALLOC_FAIL);
-	data->graphics = malloc(sizeof(t_graphics));
-	if (!data->graphics)
-		return (ft_error(MALLOC_FAIL), free(data), MALLOC_FAIL);
-	fd = argument_check(argc, argv);
-	ft_validate_parse_file(data, fd);
-	ft_printf("North: %s\n", data->graphics->north.path);
-	ft_printf("South: %s\n", data->graphics->south.path);
-	ft_printf("West: %s\n", data->graphics->west.path);
-	ft_printf("East: %s\n", data->graphics->east.path);
-	ft_printf("Floor Colour: %d\n", *(data->graphics->floor_colour));
-	ft_printf("Ceiling Colour: %d\n", *(data->graphics->ceiling_colour));
-	return (close(fd), 0);
-}
 
-static int	argument_check(int argc, char **argv)
-{
-	int	fd;
+// 	mlx_loop_hook(data.mlx, game_loop, &cub3d); // escape exit, player moving etc
+// 	mlx_loop(cub3d.mlx);
+// 	mlx_terminate(cub3d.mlx);
 
-	if (argc != 2)
-		return (ft_error(ARGUMENT_AMOUNT), -1);
-	if (!ft_strnstr(argv[1], ".cub", ft_strlen(argv[1])))
-		return (ft_error(WRONG_FILE_TYPE), -1);
-	fd = open(argv[1], O_RDONLY);
-	if (fd == -1)
-		return (ft_error(OPEN_FAILED), -1);
-	return (fd);
-}
+// 	return (close(fd), 0);
+// }
+
