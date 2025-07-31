@@ -26,6 +26,9 @@ bool	init_cub3d(t_cub3d *cub3d, char *map_path)
 	return (true);
 }
 
+
+
+
 bool	init_textures(t_cub3d *cub3d)
 {
 	cub3d->graphics = ft_memset(cub3d->graphics, 0, sizeof(t_graphics));

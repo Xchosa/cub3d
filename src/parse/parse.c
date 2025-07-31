@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mimalek <mimalek@student.42.fr>            +#+  +:+       +#+        */
+/*   By: poverbec <poverbec@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 17:13:21 by mimalek           #+#    #+#             */
-/*   Updated: 2025/07/24 12:36:34 by mimalek          ###   ########.fr       */
+/*   Updated: 2025/07/31 10:09:35 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ int	ft_validate_parse_file(t_cub3d *data, int fd)
 	return (0);
 }
 
+
+// try t_strnstr(lines[i], "NO ", 3) 
 static int	ft_parse_config_line(t_cub3d *data, char *line)
 {
 	int	i;
@@ -66,6 +68,7 @@ static int	ft_parse_config_line(t_cub3d *data, char *line)
 	return (0);
 }
 
+
 static void	ft_parse_texture(char *path, t_img *texture)
 {
 	//int	fd;
@@ -87,6 +90,8 @@ static void	ft_parse_texture(char *path, t_img *texture)
 		ft_error(MALLOC_FAIL);
 	texture->img = NULL;
 }
+
+
 
 static void	ft_parse_color(char *line, int **color)
 {

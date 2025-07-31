@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parse_map.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: poverbec <poverbec@student.42heilbronn.    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/07/31 10:09:04 by poverbec          #+#    #+#             */
+/*   Updated: 2025/07/31 10:11:37 by poverbec         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
 #include "parse.h"
 
 
-
+// load path 
 bool	parse_map_file(t_cub3d *cub3d, char *map_path)
 {
     char    **lines;
@@ -19,8 +31,3 @@ bool	parse_map_file(t_cub3d *cub3d, char *map_path)
 }
 
 
-// bool    parse_texture()
-// {
-//     t_strnstr(lines[i], "NO ", 3) 
-
-// }
