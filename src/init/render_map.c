@@ -106,5 +106,15 @@ void	draw_minimap(t_cub3d *cub3d)
 	
 		
 }
+void	minimap_pixel(t_cub3d *cub3d, int map_height, int map_width)
+{
+	int	j;
+
+	j = 0;
+	while(j < map_height)
+	{
+
+	}
+}
 
 
