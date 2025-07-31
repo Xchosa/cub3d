@@ -3,12 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   error.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mimalek <mimalek@student.42.fr>            +#+  +:+       +#+        */
+/*   By: poverbec <poverbec@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 14:16:33 by mimalek           #+#    #+#             */
-/*   Updated: 2025/07/24 12:15:27 by mimalek          ###   ########.fr       */
+/*   Updated: 2025/07/31 11:17:04 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#ifndef ERROR_H
+# define ERROR_H
 
 typedef	enum	e_error
 {
@@ -28,3 +31,9 @@ typedef	enum	e_error
 
 void	ft_error( int error_code );
 void	ft_error_msg( int error_code, char *msg );
+
+void	ft_exit(int error_code);
+
+void	cleanup_cub3d(t_cub3d *cub3d);
+
+#endif

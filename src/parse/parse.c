@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 17:13:21 by mimalek           #+#    #+#             */
-/*   Updated: 2025/07/31 10:09:35 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/07/31 11:20:21 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,9 @@
 
 
 static int	ft_parse_config_line(t_cub3d *data, char *line);
-static void	ft_parse_texture(char *path, t_img *texture);
 static void	ft_parse_color(char *line, int **color);
 
-int	ft_validate_parse_file(t_cub3d *data, int fd)
+int	ft_validate_parse_file(t_cub3d *cub3d, int fd)
 {
 	char	*line;
 	int		i;
@@ -32,7 +31,7 @@ int	ft_validate_parse_file(t_cub3d *data, int fd)
 	config_arg = 0;
 	while (get_next_line(fd, &line) != NULL)
 	{
-		config_arg += ft_parse_config_line(data, line);
+		config_arg += ft_parse_config_line(cub3d, line);
 	}
 	if (config_arg != 6)
 	{
@@ -40,6 +39,8 @@ int	ft_validate_parse_file(t_cub3d *data, int fd)
 		free(line);
 		return (-1);
 	}
+	if(load_texture(cub3d) == false)
+		return (1);
 	return (0);
 }
 
@@ -90,6 +91,8 @@ static void	ft_parse_texture(char *path, t_img *texture)
 		ft_error(MALLOC_FAIL);
 	texture->img = NULL;
 }
+
+
 
 
 

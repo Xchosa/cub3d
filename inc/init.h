@@ -34,6 +34,7 @@
 # define WINDOW_HEIGHT 720
 # define GRAPHICS_LENGTH 6
 
+
 typedef struct s_img
 {
 	int				type; // player , walll etc
@@ -67,6 +68,8 @@ typedef struct s_cub3d
 }	t_cub3d;
 
 
+
+
 bool		init_cub3d(t_cub3d *cub3d, char *map_path);
 
 bool		init_textures(t_cub3d *cub3d);
@@ -88,6 +91,20 @@ void		draw_map_background(t_cub3d *cub3d);
 void		draw_minimap(t_cub3d *cub3d);
 int			get_map_height(char **map);
 int			get_map_width(char **map);
+
+
+
+bool		parse_map_file(t_cub3d *cub3d, char *map_path);
+
+void		game_loop(void *param);
+
+
+int			ft_validate_parse_file(t_cub3d *data, int fd);
+int			argument_check(int argc, char **argv);
+void		ft_parse_texture(char *path, t_img *texture);
+
+char		**read_map_file(char *map_path);
+
 
 #endif
 
