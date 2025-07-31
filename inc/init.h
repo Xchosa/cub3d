@@ -38,6 +38,7 @@
 typedef struct s_img
 {
 	int				type; // player , walll etc
+	mlx_texture_t	*texture;
 	mlx_image_t		*img;
 	char			*path;
 
@@ -70,7 +71,7 @@ typedef struct s_cub3d
 
 
 
-bool		init_cub3d(t_cub3d *cub3d, char *map_path);
+bool		init_cub3d(t_cub3d *cub3d, char *map_path, int fd);
 
 bool		init_textures(t_cub3d *cub3d);
 bool		load_texture(t_cub3d *cub3d);
@@ -94,16 +95,15 @@ int			get_map_width(char **map);
 
 
 
-bool		parse_map_file(t_cub3d *cub3d, char *map_path);
+bool		parse_map_file(t_cub3d *cub3d, char *map_path, int fd);
 
 void		game_loop(void *param);
 
 
-int			ft_validate_parse_file(t_cub3d *data, int fd);
+bool		ft_validate_parse_file(t_cub3d *data, int fd);
 int			argument_check(int argc, char **argv);
 void		ft_parse_texture(char *path, t_img *texture);
-
-char		**read_map_file(char *map_path);
+char		**read_map_file(char *map_path, int fd);
 
 
 #endif

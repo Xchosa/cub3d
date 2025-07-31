@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 17:13:21 by mimalek           #+#    #+#             */
-/*   Updated: 2025/07/31 11:20:21 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/07/31 13:58:02 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@
 static int	ft_parse_config_line(t_cub3d *data, char *line);
 static void	ft_parse_color(char *line, int **color);
 
-int	ft_validate_parse_file(t_cub3d *cub3d, int fd)
+
+bool	ft_validate_parse_file(t_cub3d *cub3d, int fd)
 {
 	char	*line;
 	int		i;
@@ -37,11 +38,11 @@ int	ft_validate_parse_file(t_cub3d *cub3d, int fd)
 	{
 		ft_error(CONFIG_DUPLICATE);
 		free(line);
-		return (-1);
+		return (false);
 	}
 	if(load_texture(cub3d) == false)
-		return (1);
-	return (0);
+		return (false);
+	return (true);
 }
 
 
@@ -68,30 +69,6 @@ static int	ft_parse_config_line(t_cub3d *data, char *line)
 		return (ft_parse_color(line + i + 2, &data->graphics->ceiling_colour), 1);
 	return (0);
 }
-
-
-static void	ft_parse_texture(char *path, t_img *texture)
-{
-	//int	fd;
-
-	if (!path || !*path)
-		ft_error(CONFIGUARTION_LINE);
-	// if (texture->path[0] != '\0')
-	// {
-	// 	ft_error(CONFIG_DUPLICATE);
-	// }
-	while (path && (*path == ' ' || *path == '\t'))
-		path++;
-	// fd = open(path, O_RDONLY);
-	// if (fd < 0)
-	// 	ft_error(IMAGE_OPEN_FAILED);
-	// close(fd);
-	texture->path = ft_strdup(path);
-	if (!texture->path)
-		ft_error(MALLOC_FAIL);
-	texture->img = NULL;
-}
-
 
 
 

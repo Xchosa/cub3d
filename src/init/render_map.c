@@ -104,6 +104,7 @@ void	draw_minimap(t_cub3d *cub3d)
 	if (square_size < 1)
         square_size = 1;
 	
+		
 }
 
 

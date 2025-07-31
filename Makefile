@@ -40,6 +40,7 @@ MY_SOURCES = \
 		parse_map_helper.c \
 		render_map.c \
 		key_hooks.c \
+		load_texture.c \
 		clean_up.c
 
 

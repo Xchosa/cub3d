@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 10:52:53 by poverbec          #+#    #+#             */
-/*   Updated: 2025/07/31 10:52:57 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/07/31 13:39:18 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,15 @@
 #include "init.h"
 
 
-bool	init_cub3d(t_cub3d *cub3d, char *map_path)
+bool	init_cub3d(t_cub3d *cub3d, char *map_path, int fd)
 {
 	// t_graphics	graphics;
 
-	ft_memset(cub3d, 0, sizeof(cub3d));
 	// alles auf Null setzen und malloc
-	if (!cub3d)
-		return (false);
 	set_up_cub3d_defaults(cub3d);
 	if (init_textures(cub3d) == false)
 		return (false);
-	if (parse_map_file(cub3d, map_path) == false)
+	if (parse_map_file(cub3d, map_path, fd) == false)
     // meguels weg nehmen. 
 		return (false);
 	// for dynamic resizing of window 

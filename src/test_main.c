@@ -14,7 +14,7 @@ int	main(int argc, char **argv)
 	fd = argument_check(argc, argv);
 	if (fd <0)
 		return (1); 
-	if (init_cub3d(&cub3d, argv[1]) == false)
+	if (init_cub3d(&cub3d, argv[1], fd) == false)
 	{
 		close(fd);
 		cleanup_cub3d(&cub3d);
