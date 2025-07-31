@@ -103,6 +103,7 @@ void	draw_minimap(t_cub3d *cub3d)
 			cub3d->minimap_img_height / map_height);
 	if (square_size < 1)
         square_size = 1;
+	
 }
 
 

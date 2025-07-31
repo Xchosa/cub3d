@@ -82,6 +82,8 @@ clean-mlx:
     fi
 re-mlx: clean-mlx $(MLX_LIB)
 
+debug: ./cub3d maps/test.cub
+
 clean:
 	@rm -rf $(OBJ_DIR)
 	@if [ -d "./libft" ]; then make -C libft clean; fi
