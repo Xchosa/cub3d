@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   load_texture.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: poverbec <poverbec@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: mimalek <mimalek@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 10:09:24 by poverbec          #+#    #+#             */
-/*   Updated: 2025/07/31 13:55:17 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/07/31 15:44:58 by mimalek          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,10 @@ void	ft_parse_texture(char *path, t_img *texture)
 
 bool	load_texture(t_cub3d *cub3d)
 {
+	ft_printf("%s\n", cub3d->graphics->north.path);
+	ft_printf("%s\n", cub3d->graphics->south.path);
+	ft_printf("%s\n", cub3d->graphics->west.path);
+	ft_printf("%s\n", cub3d->graphics->east.path);
 	cub3d->graphics->north.texture = mlx_load_png(cub3d->graphics->north.path);
 	if (!cub3d->graphics->north.texture)
 		return (false);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: poverbec <poverbec@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: mimalek <mimalek@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 10:52:53 by poverbec          #+#    #+#             */
-/*   Updated: 2025/07/31 13:39:18 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/07/31 15:38:32 by mimalek          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,13 @@ bool	init_cub3d(t_cub3d *cub3d, char *map_path, int fd)
 
 	// alles auf Null setzen und malloc
 	set_up_cub3d_defaults(cub3d);
-	if (init_textures(cub3d) == false)
-		return (false);
+	// if (init_textures(cub3d) == false)
+	// 	return (false);
 	if (parse_map_file(cub3d, map_path, fd) == false)
-    // meguels weg nehmen. 
+    // meguels weg nehmen.
 		return (false);
-	// for dynamic resizing of window 
-	// extra function needed 
+	// for dynamic resizing of window
+	// extra function needed
 	if (create_mlx(cub3d) == false)
 		return (false);
 	render_map(cub3d);

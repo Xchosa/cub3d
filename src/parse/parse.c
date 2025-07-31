@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: poverbec <poverbec@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: mimalek <mimalek@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 17:13:21 by mimalek           #+#    #+#             */
-/*   Updated: 2025/07/31 13:58:02 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/07/31 15:42:21 by mimalek          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,12 @@ bool	ft_validate_parse_file(t_cub3d *cub3d, int fd)
 	i = 0;
 	check_config = -1;
 	config_arg = 0;
+	cub3d->graphics = malloc(sizeof(t_graphics));
+	if (!cub3d->graphics)
+		ft_error(MALLOC_FAIL);
 	while (get_next_line(fd, &line) != NULL)
 	{
+		ft_printf("line: %s\n", line);
 		config_arg += ft_parse_config_line(cub3d, line);
 	}
 	if (config_arg != 6)
@@ -46,7 +50,7 @@ bool	ft_validate_parse_file(t_cub3d *cub3d, int fd)
 }
 
 
-// try t_strnstr(lines[i], "NO ", 3) 
+// try t_strnstr(lines[i], "NO ", 3)
 static int	ft_parse_config_line(t_cub3d *data, char *line)
 {
 	int	i;
