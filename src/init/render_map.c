@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/01 11:10:15 by poverbec          #+#    #+#             */
-/*   Updated: 2025/08/01 11:15:33 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/08/04 14:54:22 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,13 @@ void	render_map(t_cub3d *cub3d)
 
 	i = 0;
 	// clear image
+	// printf("test");
 	while (i < cub3d->window_width* cub3d->window_height)
 	{
 		cub3d->img->pixels[i] = 0;
 		i++;
 	}
+	// printf("test");
 	draw_minimap(cub3d);
 
 }
