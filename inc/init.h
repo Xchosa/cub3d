@@ -33,6 +33,7 @@
 # define WINDOW_WIDTH 1280
 # define WINDOW_HEIGHT 720
 # define GRAPHICS_LENGTH 6
+# define MAX_MAP_SIZE 100
 
 
 typedef struct s_img

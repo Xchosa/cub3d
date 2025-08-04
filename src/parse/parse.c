@@ -6,7 +6,7 @@
 /*   By: mimalek <mimalek@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 17:13:21 by mimalek           #+#    #+#             */
-/*   Updated: 2025/07/31 15:42:21 by mimalek          ###   ########.fr       */
+/*   Updated: 2025/08/04 10:25:32 by mimalek          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,37 +15,32 @@
 
 static int	ft_parse_config_line(t_cub3d *data, char *line);
 static void	ft_parse_color(char *line, int **color);
+static void	ft_parse_map(t_cub3d *cub3d, char *line);
 
 
 bool	ft_validate_parse_file(t_cub3d *cub3d, int fd)
 {
 	char	*line;
-	int		i;
-	int		check_config;
 	int		config_arg;
 
-	(void)check_config;
-	(void)i;
 	line = NULL;
-	i = 0;
-	check_config = -1;
 	config_arg = 0;
+	cub3d->map = malloc(sizeof(char *) * (MAX_MAP_SIZE + 1));
+	if (!cub3d->map)
+		ft_error(MALLOC_FAIL);
+	ft_memset(cub3d->map, 0, sizeof(char *) * (MAX_MAP_SIZE + 1));
 	cub3d->graphics = malloc(sizeof(t_graphics));
 	if (!cub3d->graphics)
 		ft_error(MALLOC_FAIL);
 	while (get_next_line(fd, &line) != NULL)
 	{
-		ft_printf("line: %s\n", line);
-		config_arg += ft_parse_config_line(cub3d, line);
+		if (config_arg == 6)
+			ft_parse_map(cub3d, line);
+		else
+			config_arg += ft_parse_config_line(cub3d, line);
 	}
-	if (config_arg != 6)
-	{
-		ft_error(CONFIG_DUPLICATE);
-		free(line);
-		return (false);
-	}
-	if(load_texture(cub3d) == false)
-		return (false);
+	// if(load_texture(cub3d) == false)
+	// 	return (false);
 	return (true);
 }
 
@@ -98,6 +93,26 @@ static void	ft_parse_color(char *line, int **color)
 	(*color)[0] = r;
 	(*color)[1] = g;
 	(*color)[2] = b;
+}
+
+static void	ft_parse_map(t_cub3d *cub3d, char *line)
+{
+	static int i = 0;
+	char	*trimmed_line;
+
+	if (i >= MAX_MAP_SIZE)
+		ft_error(ARGUMENT_AMOUNT);
+	trimmed_line = ft_strtrim(line, "\t\n\v\f\r ");
+	if (!trimmed_line || trimmed_line[0] == '\0')
+	{
+		free(trimmed_line);
+		return;
+	}
+	cub3d->map[i] = ft_strdup(trimmed_line);
+	free(trimmed_line);
+	if (!cub3d->map[i])
+		ft_error(MALLOC_FAIL);
+	i++;
 }
 
 
