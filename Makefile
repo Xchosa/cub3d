@@ -39,6 +39,7 @@ MY_SOURCES = \
 		parse_map.c \
 		parse_map_helper.c \
 		render_map.c \
+		draw_minimap.c \
 		key_hooks.c \
 		load_texture.c \
 		clean_up.c

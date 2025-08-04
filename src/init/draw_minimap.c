@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/01 11:14:56 by poverbec          #+#    #+#             */
-/*   Updated: 2025/08/01 11:25:00 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/08/04 11:36:32 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,10 @@ void	draw_minimap(t_cub3d *cub3d)
 			cub3d->minimap_img_height / map_height);
 	if (square_size < 1)
         square_size = 1;
-	minimap_x = cub3d->window_width -cub3d->minimap_img_width - 10;
+	minimap_x = cub3d->window_width - cub3d->minimap_img_width - 10;
 	minimap_y = 10;
 	draw_minimap_background(cub3d, minimap_x ,minimap_y);
-	draw_minimap_cells()
+	draw_minimap_cells(cub3d, map_height, map_width, minimap_x, minimap_y);
 }
 
 
@@ -41,8 +41,8 @@ void	draw_minimap(t_cub3d *cub3d)
 
 void	draw_minimap_background(t_cub3d *cub3d, int start_x, int start_y)
 {
-	int	x;
-	int	y;
+	uint32_t	x;
+	uint32_t	y;
 	uint32_t	bg_color;
 
 	bg_color = BLACK_TRANS_COLOR;
@@ -62,21 +62,36 @@ void	draw_minimap_background(t_cub3d *cub3d, int start_x, int start_y)
 	}
 }
 
-void	draw_minimap_cells(t_cub3d *cub3d, int map_height, int map_width)
+void	draw_minimap_cells(t_cub3d *cub3d, int map_height, int map_width, int minimap_x, int minimap_y)
 {
 	int cell_type;
 	int x;
+	int y;
+	uint32_t cell_color;
+	(void)minimap_x;
+	(void)minimap_y;
 	
 	x = 0;
 	while(x < map_height )
 	{
-		
-		cell_type = get_cell_color(cub3d->map)
+		y = 0;
+		cell_color = get_cell_color(cub3d->map[x][y]);
 		
 	}
+	
 }
 	
-int	get_cell_color(t_cub3d *cub3d)
+int	get_cell_color(char *cell)
 {
+	ft_printf("WLL: %s\n", WALL);
+	if (ft_strchr(cell, WALL) == true)
+	{
+		//(ft_itoa(WALL))
+		return (BLACK_COLOR);
+	}
+	if (ft_strchr(cell, BACKGROUND) == true)
+	{
+		return (WHITE_COLOR);
+	}
 	
 }

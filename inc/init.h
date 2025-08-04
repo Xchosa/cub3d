@@ -35,6 +35,11 @@
 # define WINDOW_HEIGHT 720
 # define GRAPHICS_LENGTH 6
 
+// cell_type minimap
+# define WALL 1
+# define PLAYER 2
+# define BACKGROUND 3
+
 
 typedef struct s_img
 {
@@ -88,6 +93,10 @@ void		game_loop(void *param);
 void		draw_map_background(t_cub3d *cub3d);
 void		render_map(t_cub3d *cub3d);
 void		draw_map_background(t_cub3d *cub3d);
+void		draw_minimap_background(t_cub3d *cub3d, int start_x, int start_y);
+void		draw_minimap_cells(t_cub3d *cub3d, int map_height, int map_width, int minimap_x, int minimap_y);
+int			get_cell_color(char *cell);
+
 
 // minimap
 void		draw_minimap(t_cub3d *cub3d);
