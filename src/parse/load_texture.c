@@ -6,7 +6,7 @@
 /*   By: mimalek <mimalek@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 10:09:24 by poverbec          #+#    #+#             */
-/*   Updated: 2025/08/01 15:34:57 by mimalek          ###   ########.fr       */
+/*   Updated: 2025/08/04 11:36:37 by mimalek          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@ void	ft_parse_texture(char *path, t_img *texture)
 
 	if (!path || !*path)
 		ft_error(CONFIGUARTION_LINE);
-	// if (texture->path[0] != '\0')
-	// {
-	// 	ft_error(CONFIG_DUPLICATE);
-	// }
+	if (texture->used == true)
+	{
+		ft_error(CONFIG_DUPLICATE);
+	}
 	while (path && (*path == ' ' || *path == '\t'))
 		path++;
 	// fd = open(path, O_RDONLY);
@@ -34,6 +34,7 @@ void	ft_parse_texture(char *path, t_img *texture)
 	// 	ft_error(IMAGE_OPEN_FAILED);
 	// close(fd);
 	texture->path = ft_strtrim(ft_strdup(path), "\t\n\v\f\r ");
+	texture->used = true;
 	if (!texture->path)
 		ft_error(MALLOC_FAIL);
 	texture->img = NULL;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map_helper.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: poverbec <poverbec@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: mimalek <mimalek@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 10:08:58 by poverbec          #+#    #+#             */
-/*   Updated: 2025/07/31 13:47:24 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/08/04 10:48:38 by mimalek          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 
 char	**read_map_file(char *map_path, int fd)
 {
-	// int		fd;
 	char	*line;
 	char	*content;
 	char	*tmp;

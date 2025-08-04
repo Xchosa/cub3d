@@ -42,6 +42,7 @@ typedef struct s_img
 	mlx_texture_t	*texture;
 	mlx_image_t		*img;
 	char			*path;
+	bool			used;
 
 }					t_img;
 

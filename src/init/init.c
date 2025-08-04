@@ -6,7 +6,7 @@
 /*   By: mimalek <mimalek@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 10:52:53 by poverbec          #+#    #+#             */
-/*   Updated: 2025/07/31 15:38:32 by mimalek          ###   ########.fr       */
+/*   Updated: 2025/08/04 11:36:13 by mimalek          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,9 @@ bool	init_cub3d(t_cub3d *cub3d, char *map_path, int fd)
 
 	// alles auf Null setzen und malloc
 	set_up_cub3d_defaults(cub3d);
-	// if (init_textures(cub3d) == false)
-	// 	return (false);
+	if (init_textures(cub3d) == false)
+		return (false);
 	if (parse_map_file(cub3d, map_path, fd) == false)
-    // meguels weg nehmen.
 		return (false);
 	// for dynamic resizing of window
 	// extra function needed
@@ -40,16 +39,20 @@ bool	init_cub3d(t_cub3d *cub3d, char *map_path, int fd)
 
 bool	init_textures(t_cub3d *cub3d)
 {
-	cub3d->graphics = ft_memset(cub3d->graphics, 0, sizeof(t_graphics));
+	cub3d->graphics = malloc(sizeof(t_graphics));
 	if (!cub3d->graphics)
 	{
 		ft_error(MALLOC_FAIL);
 		return (false);
 	}
-	ft_memset(cub3d->graphics->floor_colour, 0, sizeof(int));
-	ft_memset(cub3d->graphics->ceiling_colour, 0, sizeof(int));
-	*(cub3d->graphics->floor_colour) = YELLOW_COLOR;
-	*(cub3d->graphics->ceiling_colour) = GREY_COLOR;
+	cub3d->graphics->north.used = false;
+	cub3d->graphics->south.used = false;
+	cub3d->graphics->east.used = false;
+	cub3d->graphics->west.used = false;
+	ft_memset(&cub3d->graphics->floor_colour, 0, sizeof(int));
+	ft_memset(&cub3d->graphics->ceiling_colour, 0, sizeof(int));
+	// *(cub3d->graphics->floor_colour) = YELLOW_COLOR;
+	// *(cub3d->graphics->ceiling_colour) = GREY_COLOR;
 
 	return (true);
 
