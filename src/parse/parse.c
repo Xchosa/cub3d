@@ -6,7 +6,7 @@
 /*   By: mimalek <mimalek@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 17:13:21 by mimalek           #+#    #+#             */
-/*   Updated: 2025/08/04 10:25:32 by mimalek          ###   ########.fr       */
+/*   Updated: 2025/08/04 11:50:32 by mimalek          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,10 @@ static int	ft_parse_config_line(t_cub3d *data, char *line)
 		return (ft_parse_color(line + i + 2, &data->graphics->floor_colour), 1);
 	else if (line[i] == 'C' && line[i + 1] == ' ')
 		return (ft_parse_color(line + i + 2, &data->graphics->ceiling_colour), 1);
+	else if (line[i] == '\0' || line[i] == '\n')
+		return (0);
+	else
+		ft_error(CONFIGUARTION_LINE);
 	return (0);
 }
 
@@ -79,6 +83,8 @@ static void	ft_parse_color(char *line, int **color)
 	int		g;
 	int		b;
 
+	if ((void *)color[0] != 0)
+		ft_error(CONFIG_DUPLICATE);
 	rgb = ft_split(line, ',');
 	if (!rgb || !rgb[0] || !rgb[1] || !rgb[2])
 		ft_error(CONFIGUARTION_LINE);
