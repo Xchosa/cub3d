@@ -6,11 +6,11 @@
 /*   By: mimalek <mimalek@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 14:14:43 by mimalek           #+#    #+#             */
-/*   Updated: 2025/07/24 12:11:33 by mimalek          ###   ########.fr       */
+/*   Updated: 2025/08/04 10:35:58 by mimalek          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+//#include "cub3d.h"
 #include "parse.h"
 
 // int	main(int argc, char **argv)
@@ -18,7 +18,7 @@
 // 	int		fd;
 // 	t_cub3d	*data;
 
-// 	ft_memset(data, 0, sizeof(t_cub3d)); // sonst is garbage im pointer 
+// 	ft_memset(data, 0, sizeof(t_cub3d)); // sonst is garbage im pointer
 // 	//data = malloc(sizeof(t_cub3d));
 // 	if (!data)
 // 		return (ft_error(MALLOC_FAIL), MALLOC_FAIL);

@@ -34,6 +34,7 @@
 # define WINDOW_WIDTH 1280
 # define WINDOW_HEIGHT 720
 # define GRAPHICS_LENGTH 6
+# define MAX_MAP_SIZE 100
 
 // cell_type minimap
 # define WALL 1
@@ -47,6 +48,7 @@ typedef struct s_img
 	mlx_texture_t	*texture;
 	mlx_image_t		*img;
 	char			*path;
+	bool			used;
 
 }					t_img;
 

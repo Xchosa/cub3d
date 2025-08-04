@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: poverbec <poverbec@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: mimalek <mimalek@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 14:16:33 by mimalek           #+#    #+#             */
-/*   Updated: 2025/07/31 11:17:04 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/08/04 14:10:26 by mimalek          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ typedef	enum	e_error
 	MLX_IMG_FAIL	= 9,
 	MLX_INIT_FAIL	= 10,
 	MLX_IMG_TO_WINDOW_FAIL = 11,
+	MULTIPLE_PLAYER = 12,
+	INVALID_MAP_CHARACTER = 13,
 
 }				t_error;
 
