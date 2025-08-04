@@ -6,11 +6,13 @@
 /*   By: mimalek <mimalek@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 14:35:40 by mimalek           #+#    #+#             */
-/*   Updated: 2025/07/24 12:15:07 by mimalek          ###   ########.fr       */
+/*   Updated: 2025/08/04 14:11:47 by mimalek          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+void	ft_error_2( int error_code );
 
 void	ft_error( int error_code )
 {
@@ -36,6 +38,16 @@ void	ft_error( int error_code )
 		ft_error_msg(error_code, "Initialising MLX failed");
 	else if (error_code == 11)
 		ft_error_msg(error_code, "Loading IMG to Window failed");
+	else
+		ft_error_2(error_code);
+}
+
+void	ft_error_2( int error_code )
+{
+	if (error_code == 12)
+		ft_error_msg(error_code, "Multiple Players in Map");
+	else if (error_code == 13)
+		ft_error_msg(error_code, "Invalid Map Character");
 	else
 		ft_error_msg(error_code, "Unknown Error");
 }
