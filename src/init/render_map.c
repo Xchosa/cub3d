@@ -1,4 +1,14 @@
-
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   render_map.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: poverbec <poverbec@student.42heilbronn.    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/08/01 11:10:15 by poverbec          #+#    #+#             */
+/*   Updated: 2025/08/01 11:15:33 by poverbec         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "cub3d.h"
 #include "init.h"
@@ -14,8 +24,7 @@ void	render_map(t_cub3d *cub3d)
 		cub3d->img->pixels[i] = 0;
 		i++;
 	}
-	draw_map_background(cub3d);
-	// draw_minimap(cub3d);
+	draw_minimap(cub3d);
 
 }
 
@@ -85,36 +94,5 @@ int	get_map_width(char **map)
 	return (max_width);
 }
 
-void	draw_minimap(t_cub3d *cub3d)
-{
-	int		map_height;
-    int		map_width;
-	int		square_size;
-	int		x;
-	int		y;
-
-	(void)square_size;
-	(void)x;
-	(void)y;
-	map_height = get_map_height(cub3d->map);
-	map_width = get_map_width(cub3d->map);
-
-	square_size = fmin(cub3d->minimap_img_width / map_width,
-			cub3d->minimap_img_height / map_height);
-	if (square_size < 1)
-        square_size = 1;
-	
-		
-}
-void	minimap_pixel(t_cub3d *cub3d, int map_height, int map_width)
-{
-	int	j;
-
-	j = 0;
-	while(j < map_height)
-	{
-
-	}
-}
 
 
