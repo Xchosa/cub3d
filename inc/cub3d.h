@@ -29,5 +29,16 @@
 # include "parse.h"
 
 
+typedef struct s_object
+{
+	char	**map;
+	int     map_height;
+    int     map_width;
+    int     square_size;
+}	t_bash;
+
+
+t_object	*get_object(void);
+bool        init_object(t_cub3d *cub3d);
 
 #endif

@@ -42,6 +42,9 @@ MY_SOURCES = \
 		draw_minimap.c \
 		key_hooks.c \
 		load_texture.c \
+		init_objects.c \
+		draw_minimap.c \
+		minimap_helper.c \
 		clean_up.c
 
 

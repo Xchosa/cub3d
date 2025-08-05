@@ -29,6 +29,8 @@ bool	init_cub3d(t_cub3d *cub3d, char *map_path, int fd)
 	// extra function needed
 	if (create_mlx(cub3d) == false)
 		return (false);
+	if (init_object(cub3d) == false)
+		return (false); // free static function
 	render_map(cub3d);
 	// cub3d->graphics = get_map(&graphics, argv[1]);
 	return (true);

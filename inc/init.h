@@ -99,6 +99,7 @@ void		draw_map_background(t_cub3d *cub3d);
 void		draw_minimap_background(t_cub3d *cub3d, int start_x, int start_y);
 void		draw_minimap_cells(t_cub3d *cub3d, int map_height, int map_width, int minimap_x, int minimap_y);
 int			get_cell_color(char cell);
+int			return_square_size(t_cub3d *cub3d, int map_width, int map_height);
 
 
 // minimap
