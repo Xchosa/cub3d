@@ -107,7 +107,7 @@ int			argument_check(int argc, char **argv);
 void		ft_parse_texture(char *path, t_img *texture);
 char		**read_map_file(char *map_path, int fd);
 
-
+void	print_array(char **array);
 #endif
 
 // To do
