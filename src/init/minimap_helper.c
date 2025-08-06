@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 16:29:57 by poverbec          #+#    #+#             */
-/*   Updated: 2025/08/06 11:18:00 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/08/06 13:25:25 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ int	get_cell_color(char cell)
 		return (WHITE_COLOR);
 	}
 	else if (ft_strchr("NSEW", cell ) != 0)
-		return (PLAYER_COLOR);
+		// return (PLAYER_COLOR);
+		return (WHITE_COLOR); // player danach drueber malen 
 	else
 		return (YELLOW_COLOR);
 }

@@ -41,7 +41,13 @@
 // # define WALL 1
 // # define BACKGROUND 3
 
-
+typedef	struct s_player
+{
+	int		px_x;
+	int		px_y;
+	double	direction; // Richtiung in die der Player schaut;
+ // square_size / player pos
+} t_player ;
 
 typedef struct s_img
 {
@@ -63,17 +69,36 @@ typedef struct s_graphics
 	int				*ceiling_colour;
 }					t_graphics;
 
+
+typedef struct s_minimap
+{
+	char	**map;
+	int     map_height;
+    int     map_width;
+    int     square_size;
+	int		player_pos_x;
+	int		player_pos_y; //inex
+	// minimap_img_width 
+	
+}	t_minimap;
+
+// img struct
+// 
+
 typedef struct s_cub3d
 {
 	mlx_t		*mlx;
 	int			fd;
 	mlx_image_t	*img;
 	t_graphics	*graphics;
-	char		**map;
+	char		**map; // raus nur in minimap;
 	uint32_t	window_width;
 	uint32_t	window_height;
 	uint32_t	minimap_img_width;
 	uint32_t	minimap_img_height;
+	t_minimap	minimap;
+	t_player	player;
+
 
 }	t_cub3d;
 

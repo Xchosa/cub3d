@@ -25,3 +25,28 @@ bool	init_object(t_cub3d *cub3d)
 
 	return (true);
 }
+
+
+// void	init_player(t_cub3d *cub3d)
+// {
+// 	int x;
+// 	int y;
+
+// 	y = 0;
+// 	while(y < cub3d->map[y])
+// 	{
+// 		while(x < cub3d ->window_height)
+// 		{
+// 			if (ft_strchr("NSEW", cell ) != 0)
+// 				cub3d->player.px_x = x * cub3d->minimap.square_size + (cub3d->minimap.square_size/2)
+// 				if ((ft_strchr("N", cell ) != 0))
+// 				{
+// 					cub3d->player.direction = // 90 grad im bogenmas
+// 				}
+// 				else if ((ft_strchr("S", cell ) != 0))
+// 					// 270
+
+// 		}
+
+// 	}
+// }
