@@ -40,7 +40,8 @@ MY_SOURCES = ft_atoi.c	\
 			ft_strmapi.c \
 			ft_putendl_fd.c \
 			ft_putnbr_fd.c \
-			ft_split.c
+			ft_split.c \
+			ft_cpy_array_str.c
 
 MY_SOURCES_B = ft_lstnew.c \
 			ft_lstsize.c \

@@ -29,9 +29,9 @@ VPATH = $(SOURCE_DIR):$(INIT_DIR):$(PARSE_DIR):$(CLEAN_DIR):$(GAME_LOOP_DIR)
 
 # ---------- Subjects ---------- #
 MY_SOURCES = \
-        test_main.c \
-        main.c \
-        init.c \
+		test_main.c \
+		main.c \
+		init.c \
 		error.c \
 		exit.c \
 		argument_check.c \
@@ -39,12 +39,11 @@ MY_SOURCES = \
 		parse_map.c \
 		parse_map_helper.c \
 		render_map.c \
-		draw_minimap.c \
 		key_hooks.c \
 		load_texture.c \
-		init_objects.c \
 		draw_minimap.c \
 		minimap_helper.c \
+		init_objects.c \
 		clean_up.c
 
 

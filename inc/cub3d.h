@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 14:11:24 by mimalek           #+#    #+#             */
-/*   Updated: 2025/07/31 11:19:16 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/08/06 10:24:41 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ typedef struct s_object
 	int     map_height;
     int     map_width;
     int     square_size;
-}	t_bash;
+}	t_object;
 
 
 t_object	*get_object(void);

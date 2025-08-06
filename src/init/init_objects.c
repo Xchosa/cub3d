@@ -13,15 +13,15 @@ bool	init_object(t_cub3d *cub3d)
 {
 	t_object	*object;
 
-	bash = get_bash();
+	object = get_object();
 
-	object->map = cpychar_arr(cub3d->map);
+	object->map = ft_cpy_array_str(cub3d->map);
 	if (!object->map)
 		return (false);
 	object->map_height = get_map_height(cub3d->map);
 	object->map_width = get_map_width(cub3d->map);
-	bash->square_size = return_square_size(cub3d,
-			s_object->map_widht, object->map_height);
+	object->square_size = return_square_size(cub3d,
+			object->map_width, object->map_height);
 
 	return (true);
 }
