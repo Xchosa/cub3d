@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 10:52:53 by poverbec          #+#    #+#             */
-/*   Updated: 2025/08/06 14:36:07 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/08/06 15:37:39 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,8 @@ void	set_up_cub3d_defaults(t_cub3d *cub3d)
 {
 	cub3d->window_width = WINDOW_WIDTH;
 	cub3d->window_height = WINDOW_HEIGHT;
-	// cub3d->minimap_img_width = MINIMAP_WIDTH / 3;
-	// cub3d->minimap_img_height = MINIMAP_HEIGHT / 3;
+	cub3d->minimap_img_width = MINIMAP_WIDTH;
+	cub3d->minimap_img_height = MINIMAP_HEIGHT;
 }
 
 bool	create_mlx(t_cub3d *cub3d)

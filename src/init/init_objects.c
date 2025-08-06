@@ -41,19 +41,20 @@ bool	init_minimap(t_cub3d *cub3d)
 
 void	init_player(t_cub3d *cub3d)
 {
-	uint32_t x;
-	uint32_t y;
+	int x;
+	int y;
 
 	y = 0;
-	while(y < cub3d->minimap_img_height)
+	while(y < cub3d->minimap.map_height)
 	{
 		x = 0;
-		while(x < cub3d->minimap_img_width)
+		while(x < cub3d->minimap.map_width)
 		{
 			if (ft_strchr("NSEW", cub3d->map[y][x] ) != 0)
 			{
 				cub3d->player.px_x = x * cub3d->minimap.square_size + (cub3d->minimap.square_size/2); // mitte vom square
 				cub3d->player.px_y = y * cub3d->minimap.square_size + (cub3d->minimap.square_size /2);
+				mlx_put_pixel(cub3d->img, cub3d->player.px_x, cub3d->player.px_y, PLAYER_COLOR);
 				draw_player_minimap(cub3d, y, x);
 				// player_view_direction(cub3d, y, x);
 			}
@@ -82,22 +83,6 @@ void	draw_player_minimap(t_cub3d *cub3d, int p_y, int p_x)
 	int y;
 
 	player_color = PLAYER_COLOR;
-
-	// y = 0;
-	// while(y < cub3d->minimap.square_size)
-	// {
-	// 	x = 0;
-	// 	while(x < cub3d->minimap.square_size)
-	// 	{
-	// 		if (p_y + y  >= 0 && start_x + x < (int)cub3d->window_width &&
-    //             start_y + y >= 0 && start_y + y < (int)cub3d->window_height)
-	// 		{
-	// 			mlx_put_pixel(cub3d->img, start_x + x, start_y + y, player_color);
-	// 		}
-	// 		x++;
-	// 	}
-	// 	y++;
-	// }
 	
 	y = 0;
 	while(y < 5)

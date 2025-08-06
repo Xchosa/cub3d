@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 16:29:57 by poverbec          #+#    #+#             */
-/*   Updated: 2025/08/06 13:25:25 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/08/06 15:38:25 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	return_square_size(t_cub3d *cub3d, int map_width, int map_height)
 	int	square_size;
 
 	square_size = fmin(cub3d->minimap_img_width / map_width,
-		cub3d->minimap_img_height / map_height) * 3;
+		cub3d->minimap_img_height / map_height);
 	if (square_size < 1)
 		square_size = 1;
 	return (square_size);
