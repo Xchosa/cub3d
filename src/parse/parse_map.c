@@ -6,7 +6,7 @@
 /*   By: mimalek <mimalek@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 10:09:04 by poverbec          #+#    #+#             */
-/*   Updated: 2025/08/04 14:12:18 by mimalek          ###   ########.fr       */
+/*   Updated: 2025/08/06 10:41:18 by mimalek          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,53 +14,78 @@
 #include "parse.h"
 
 bool	ft_validate_map(char **map);
-
-// load path
-bool	parse_map_file(t_cub3d *cub3d, char *map_path, int fd )
-{
-	if(ft_validate_parse_file(cub3d, fd) == false)
-		return (false);
-	if (ft_validate_map(cub3d->map) == false)
-		return (false);
-    // 2D array getrennt bei \n
-	// point fd schon nur noch auf die map?
-	// printf( "before: %s\n", lines[0]);
-    // lines = read_map_file(map_path , fd);
-    // if (!lines)
-    //     return (false);
-	(void)map_path;
-    return (true);
-}
+bool	ft_has_valid_characters(char **map);
+bool	ft_has_single_player(char **map);
+bool	ft_no_empty_lines(char **map);
 
 bool	ft_validate_map(char **map)
 {
-	int	i;
-	int	j;
-	bool	has_player;
-	bool	first_line;
+	char	**padded_map;
 
-	has_player = false;
-	first_line = true;
+	padded_map = pad_map(map);
+	if (!padded_map)
+		ft_error(MALLOC_FAIL);
+	if (!ft_has_valid_characters(map))
+		ft_error(INVALID_MAP_CHARACTER);
+	if (!ft_has_single_player(map))
+		ft_error(MULTIPLE_PLAYER);
+	if (!ft_is_map_enclosed(padded_map))
+		ft_error(MAP_NOT_ENCLOSED);
+	if (!ft_no_empty_lines(map))
+		ft_error(EMPTY_LINE);
+	return (true);
+}
+
+bool	ft_has_valid_characters(char **map)
+{
+	int i;
+	int j;
+
 	i = 0;
 	while (map[i])
 	{
 		j = 0;
 		while (map[i][j])
 		{
-			if (map[i][j] == 'N' || map[i][j] == 'S' ||
-				map[i][j] == 'E' || map[i][j] == 'W')
-			{
-				if (has_player)
-					ft_error(MULTIPLE_PLAYER);
-				has_player = true;
-			}
-			else if (map[i][j] != '1' && map[i][j] != '0' && map[i][j] != ' ')
-				ft_error(INVALID_MAP_CHARACTER);
+			if (!ft_strchr("01NSEW ", map[i][j]))
+				return (false);
 			j++;
 		}
 		i++;
 	}
 	return (true);
+}
+
+bool	ft_has_single_player(char **map)
+{
+	int i;
+	int j;
+	int player_count;
+
+	i = 0;
+	player_count = 0;
+	while (map[i])
+	{
+		j = 0;
+		while (map[i][j])
+		{
+			if (ft_strchr("NSEW", map[i][j]))
+			{
+				player_count++;
+				if (player_count > 1)
+					return (false);
+			}
+			j++;
+		}
+		i++;
+	}
+	return (true);
+}
+
+// Only player and floor are walkable
+bool	is_walkable(char c)
+{
+	return (c == '0' || c == 'N' || c == 'S' || c == 'E' || c == 'W');
 }
 
 

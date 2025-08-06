@@ -1,8 +1,6 @@
 
 # include "cub3d.h"
 
-void	print_array(char **array);
-
 int	main(int argc, char **argv)
 {
 	t_cub3d	cub3d;

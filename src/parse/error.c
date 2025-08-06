@@ -6,7 +6,7 @@
 /*   By: mimalek <mimalek@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 14:35:40 by mimalek           #+#    #+#             */
-/*   Updated: 2025/08/04 14:11:47 by mimalek          ###   ########.fr       */
+/*   Updated: 2025/08/05 09:32:56 by mimalek          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,10 @@ void	ft_error_2( int error_code )
 		ft_error_msg(error_code, "Multiple Players in Map");
 	else if (error_code == 13)
 		ft_error_msg(error_code, "Invalid Map Character");
+	else if (error_code == 14)
+		ft_error_msg(error_code, "Empty Line in Map");
+	else if (error_code == 15)
+		ft_error_msg(error_code, "Map Not Enclosed");
 	else
 		ft_error_msg(error_code, "Unknown Error");
 }

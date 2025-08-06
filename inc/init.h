@@ -120,8 +120,12 @@ bool		ft_validate_parse_file(t_cub3d *data, int fd);
 int			argument_check(int argc, char **argv);
 void		ft_parse_texture(char *path, t_img *texture);
 char		**read_map_file(char *map_path, int fd);
+bool		ft_is_map_enclosed(char **map);
+int			get_max_width(char **map);
+char		*pad_line(char *line, int width);
+char		**pad_map(char **map);
 
-
+void	print_array(char **array);
 #endif
 
 // To do

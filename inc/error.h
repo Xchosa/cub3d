@@ -6,7 +6,7 @@
 /*   By: mimalek <mimalek@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 14:16:33 by mimalek           #+#    #+#             */
-/*   Updated: 2025/08/04 14:10:26 by mimalek          ###   ########.fr       */
+/*   Updated: 2025/08/05 09:32:43 by mimalek          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ typedef	enum	e_error
 	MLX_IMG_TO_WINDOW_FAIL = 11,
 	MULTIPLE_PLAYER = 12,
 	INVALID_MAP_CHARACTER = 13,
+	EMPTY_LINE = 14,
+	MAP_NOT_ENCLOSED = 15
 
 }				t_error;
 
