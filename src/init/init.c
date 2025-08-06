@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mimalek <mimalek@student.42.fr>            +#+  +:+       +#+        */
+/*   By: poverbec <poverbec@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 10:52:53 by poverbec          #+#    #+#             */
-/*   Updated: 2025/08/04 11:36:13 by mimalek          ###   ########.fr       */
+/*   Updated: 2025/08/06 11:03:14 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,10 +62,10 @@ bool	init_textures(t_cub3d *cub3d)
 
 void	set_up_cub3d_defaults(t_cub3d *cub3d)
 {
-	cub3d->window_width = MIN_WINDOW_WIDTH;
-	cub3d->window_height = MIN_WINDOW_HEIGHT;
-	cub3d->minimap_img_width = MINIMAP_WIDTH / 5;
-	cub3d->minimap_img_height = MINIMAP_HEIGHT / 5;
+	cub3d->window_width = WINDOW_WIDTH;
+	cub3d->window_height = WINDOW_HEIGHT;
+	cub3d->minimap_img_width = MINIMAP_WIDTH / 3;
+	cub3d->minimap_img_height = MINIMAP_HEIGHT / 3;
 }
 
 bool	create_mlx(t_cub3d *cub3d)

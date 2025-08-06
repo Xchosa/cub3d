@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/01 11:14:56 by poverbec          #+#    #+#             */
-/*   Updated: 2025/08/06 10:27:55 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/08/06 11:07:54 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,9 @@ void	draw_minimap(t_cub3d *cub3d)
 	// map_width = get_map_width(cub3d->map);
 	// square_size = return_square_size(cub3d, map_width, map_height);
 	
-	minimap_x = cub3d->window_width - cub3d->minimap_img_width - 10;
-	minimap_y = 10;
+	// minimap_x = (cub3d->window_width * (-1)) + 100;
+	minimap_x = 10 ;
+	minimap_y = 10 ;
 	draw_minimap_background(cub3d, minimap_x, minimap_y);
 	
 	draw_minimap_cells(cub3d, minimap_x, minimap_y);
@@ -61,10 +62,6 @@ void	draw_minimap_cells(t_cub3d *cub3d, int minimap_x, int minimap_y)
 	uint32_t cell_color;
 	int pixel_x;
 	int pixel_y;
-
-	// map_height = get_map_height(cub3d->map);
-	// map_width = get_map_width(cub3d->map);
-	// square_size = return_square_size(cub3d, map_width, map_height);
 
 	(void)minimap_x;
 	(void)minimap_y;

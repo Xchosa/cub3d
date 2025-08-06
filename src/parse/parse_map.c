@@ -3,17 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mimalek <mimalek@student.42.fr>            +#+  +:+       +#+        */
+/*   By: poverbec <poverbec@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 10:09:04 by poverbec          #+#    #+#             */
-/*   Updated: 2025/08/06 10:41:18 by mimalek          ###   ########.fr       */
+/*   Updated: 2025/08/06 10:56:44 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 #include "parse.h"
 
-bool	ft_validate_map(char **map);
 bool	ft_has_valid_characters(char **map);
 bool	ft_has_single_player(char **map);
 bool	ft_no_empty_lines(char **map);

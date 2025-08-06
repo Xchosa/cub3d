@@ -124,6 +124,8 @@ bool		ft_is_map_enclosed(char **map);
 int			get_max_width(char **map);
 char		*pad_line(char *line, int width);
 char		**pad_map(char **map);
+bool		ft_validate_map(char **map);
+bool		is_walkable(char c);
 
 void	print_array(char **array);
 #endif

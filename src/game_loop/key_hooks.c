@@ -9,5 +9,9 @@ void	game_loop(void *param)
 
 	if (mlx_is_key_down(cub3d->mlx, MLX_KEY_ESCAPE))
 		mlx_close_window(cub3d->mlx);
+	if (mlx_is_key_down(cub3d->mlx, MLX_KEY_W))
+	{
+		
+	}
 	// key hook for letting minimap appear 
 }
