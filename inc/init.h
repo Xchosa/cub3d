@@ -124,16 +124,19 @@ void		draw_map_background(t_cub3d *cub3d);
 void		draw_minimap_background(t_cub3d *cub3d, int start_x, int start_y);
 void		draw_minimap_cells(t_cub3d *cub3d, int minimap_x, int minimap_y);
 int			get_cell_color(char cell);
-int			return_square_size(t_cub3d *cub3d, int map_width, int map_height);
 
 
 // minimap
+bool		init_minimap(t_cub3d *cub3d);
+int			return_square_size(t_cub3d *cub3d, int map_width, int map_height);
 void		draw_minimap(t_cub3d *cub3d);
 int			get_map_height(char **map);
 int			get_map_width(char **map);
 void		draw_square(t_cub3d *cub3d, uint32_t color, int start_x,
 				int start_y);
-
+void		init_player(t_cub3d *cub3d);
+void		player_view_direction(t_cub3d *cub3d, int y, int x);
+void		draw_player_minimap(t_cub3d *cub3d, int y, int x);
 
 
 bool		parse_map_file(t_cub3d *cub3d, char *map_path, int fd);

@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/01 11:10:15 by poverbec          #+#    #+#             */
-/*   Updated: 2025/08/04 14:54:22 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/08/06 15:14:25 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ int	get_map_height(char **map)
 	int	height;
 
 	height = 0;
+	
 	while (map[height])
 		height++;
 	return (height);

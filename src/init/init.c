@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 10:52:53 by poverbec          #+#    #+#             */
-/*   Updated: 2025/08/06 13:50:38 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/08/06 14:36:07 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,10 @@ bool	init_cub3d(t_cub3d *cub3d, char *map_path, int fd)
 	// extra function needed
 	if (create_mlx(cub3d) == false)
 		return (false);
-	if (init_object(cub3d) == false)
+
+	if (init_minimap(cub3d) == false)
 		return (false);
-	// if (init_player(cub3d) == false)
-	// 	return (false);// free static function
+	init_player(cub3d);
 	render_map(cub3d);
 	// cub3d->graphics = get_map(&graphics, argv[1]);
 	return (true);
@@ -66,8 +66,8 @@ void	set_up_cub3d_defaults(t_cub3d *cub3d)
 {
 	cub3d->window_width = WINDOW_WIDTH;
 	cub3d->window_height = WINDOW_HEIGHT;
-	cub3d->minimap_img_width = MINIMAP_WIDTH / 3;
-	cub3d->minimap_img_height = MINIMAP_HEIGHT / 3;
+	// cub3d->minimap_img_width = MINIMAP_WIDTH / 3;
+	// cub3d->minimap_img_height = MINIMAP_HEIGHT / 3;
 }
 
 bool	create_mlx(t_cub3d *cub3d)
