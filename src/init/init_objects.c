@@ -34,7 +34,7 @@ bool	init_minimap(t_cub3d *cub3d)
 		return (false);
 	cub3d->minimap.map_height = get_map_height(cub3d->map);
 	cub3d->minimap.map_width = get_map_width(cub3d->map);
-	cub3d->minimap.square_size = return_square_size(cub3d, 
+	cub3d->minimap.square_size = return_square_size(cub3d,
 		cub3d->minimap.map_width, cub3d->minimap.map_height);
 	return (true);
 }
@@ -54,8 +54,8 @@ void	init_player(t_cub3d *cub3d)
 			{
 				cub3d->player.px_x = x * cub3d->minimap.square_size + (cub3d->minimap.square_size/2); // mitte vom square
 				cub3d->player.px_y = y * cub3d->minimap.square_size + (cub3d->minimap.square_size /2);
-				mlx_put_pixel(cub3d->img, cub3d->player.px_x, cub3d->player.px_y, PLAYER_COLOR);
-				draw_player_minimap(cub3d, y, x);
+				//mlx_put_pixel(cub3d->img, cub3d->player.px_x, cub3d->player.px_y, PLAYER_COLOR);
+				draw_player_minimap(cub3d, cub3d->player.px_y, cub3d->player.px_x);
 				// player_view_direction(cub3d, y, x);
 			}
 			x++;
@@ -78,21 +78,25 @@ void	init_player(t_cub3d *cub3d)
 
 void	draw_player_minimap(t_cub3d *cub3d, int p_y, int p_x)
 {
-	int player_color;
+	int radius;
 	int	x;
-	int y;
+	int	y;
 
-	player_color = PLAYER_COLOR;
-	
-	y = 0;
-	while(y < 5)
+	radius = cub3d->minimap.square_size / 4;
+	y = radius * (-1);
+
+	while (y <= radius)
 	{
-		x = 0;
-		while( x < 5)
+		x = radius * (-1);
+		while (x <= radius)
 		{
-			mlx_put_pixel(cub3d->img, p_y + y, p_x + x, player_color);
+			if (x * x + y * y <= radius * radius)
+			{
+				mlx_put_pixel(cub3d->img, p_x + x, p_y + y, PLAYER_COLOR);
+			}
 			x++;
 		}
 		y++;
 	}
+
 }

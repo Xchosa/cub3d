@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: poverbec <poverbec@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: mimalek <mimalek@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 10:52:53 by poverbec          #+#    #+#             */
-/*   Updated: 2025/08/06 15:37:39 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/08/06 16:09:40 by mimalek          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ bool	init_cub3d(t_cub3d *cub3d, char *map_path, int fd)
 
 	if (init_minimap(cub3d) == false)
 		return (false);
-	init_player(cub3d);
 	render_map(cub3d);
+	init_player(cub3d);
 	// cub3d->graphics = get_map(&graphics, argv[1]);
 	return (true);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_minimap.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: poverbec <poverbec@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: mimalek <mimalek@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/01 11:14:56 by poverbec          #+#    #+#             */
-/*   Updated: 2025/08/06 14:05:33 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/08/06 17:14:12 by mimalek          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@ void	draw_minimap(t_cub3d *cub3d)
 
 	minimap_x = 10 ;
 	minimap_y = 10 ;
-	draw_minimap_background(cub3d, minimap_x, minimap_y);
-	
+	//draw_minimap_background(cub3d, minimap_x, minimap_y);
+
 	draw_minimap_cells(cub3d, minimap_x, minimap_y);
-	
+
 }
 
 void	draw_minimap_background(t_cub3d *cub3d, int start_x, int start_y)
@@ -41,15 +41,15 @@ void	draw_minimap_background(t_cub3d *cub3d, int start_x, int start_y)
 		{
 			if (start_x + x < cub3d->window_width &&
 				start_y + y < cub3d->window_height )
-				mlx_put_pixel(cub3d->img, start_x + x, start_y + y, 
+				mlx_put_pixel(cub3d->img, start_x + x, start_y + y,
 					bg_color);
 			x++;
 		}
 		y++;
 	}
 }
-// map_height, map_width und sqaure size in eine static function auslagern 
-// und so in der draw square callen 
+// map_height, map_width und sqaure size in eine static function auslagern
+// und so in der draw square callen
 
 void	draw_minimap_cells(t_cub3d *cub3d, int minimap_x, int minimap_y)
 {
@@ -61,7 +61,7 @@ void	draw_minimap_cells(t_cub3d *cub3d, int minimap_x, int minimap_y)
 
 	(void)minimap_x;
 	(void)minimap_y;
-	
+
 	y = 0;
 	while (y < cub3d->minimap.map_height)
 	{
