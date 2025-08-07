@@ -43,7 +43,8 @@ MY_SOURCES = \
 		load_texture.c \
 		draw_minimap.c \
 		minimap_helper.c \
-		init_objects.c \
+		init_minimap_grid.c \
+		init_player.c \
 		clean_up.c
 
 
