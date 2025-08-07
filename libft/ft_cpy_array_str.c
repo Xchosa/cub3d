@@ -9,11 +9,10 @@ takes a 2D array and returns a 2D array
 
 char** ft_cpy_array_str(char **arrays)
 {
-    char **new_array;
-    int i;
+	char	**new_array;
+	int		i;
 
 	i = 0;
-    
     if (!arrays)
         return (NULL);
     while (arrays[i] != NULL)

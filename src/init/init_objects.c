@@ -22,8 +22,8 @@ bool	init_minimap(t_cub3d *cub3d)
 			cub3d->minimap.map_width, cub3d->minimap.map_height);
 	printf("hieght %d  \n", cub3d->minimap.map_height);
 	printf("weight %d  \n", cub3d->minimap.map_width);
-	// if (malloc_minimap_grid(cub3d) == false)
-	// 	return (false);
+	if (malloc_minimap_grid(cub3d) == false)
+	 	return (false);
 	if (map_to_grid(cub3d) == false)
 		return (false);
 	// printf("print grid \n");
@@ -36,15 +36,22 @@ bool	init_minimap(t_cub3d *cub3d)
 // ueberschreibt nicht 
 bool	map_to_grid(t_cub3d *cub3d)
 {
-	int	y;
-	// int x;
-	y = 0;
+	// int	y;
+	// // int x;
+	// y = 0;
 	cub3d->minimap.map_grid = ft_cpy_array_str(cub3d->map);
+	
+
+
 	printf("before \n");
 	print_array(cub3d->minimap.map_grid);
 	
 	replace_spaces_with_2(cub3d->minimap.map_grid);
 	printf("after \n");
+
+	
+
+
 
 	// print_array(cub3d->minimap.map_grid);
 	// printf("grid %c ", cub3d->minimap.map_grid[y][x]);
@@ -75,31 +82,6 @@ bool	map_to_grid(t_cub3d *cub3d)
 }
 
 
-
-
-bool	malloc_minimap_grid(t_cub3d *cub3d)
-{
-	int	y;
-
-	y = 0;
-	
-	cub3d->minimap.map_grid = malloc((cub3d->minimap.map_height + 1) *  sizeof(char *));
-	cub3d->minimap.map_grid[cub3d->minimap.map_height] = NULL;
-	while (y < cub3d->minimap.map_height)
-	{
-		
-		cub3d->minimap.map_grid[y] = malloc(cub3d->minimap.map_width + 1 * sizeof(char));
-		if (!cub3d->minimap.map_grid[y])
-			return (false);
-		cub3d->minimap.map_grid[y][cub3d->minimap.map_width] = '\0';
-		y++;
-	}
-	// for (int y = 0; y < cub3d->minimap.map_height; y++)
-    // 	ft_memset(cub3d->minimap.map_grid[y][x], '1', cub3d->minimap.map_width);
-	// printf("print grid \n");
-	// print_array(cub3d->minimap.map_grid);
-	return (true);
-}
 
 
 
