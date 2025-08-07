@@ -140,7 +140,7 @@ void		draw_square(t_cub3d *cub3d, uint32_t color, int start_x,
 void		init_player(t_cub3d *cub3d);
 void		player_view_direction(t_cub3d *cub3d, int y, int x);
 void		draw_player_minimap(t_cub3d *cub3d, int y, int x);
-
+void		set_player_view(t_cub3d *cub3d, char player_direction);
 
 bool		parse_map_file(t_cub3d *cub3d, char *map_path, int fd);
 
