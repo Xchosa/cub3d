@@ -20,8 +20,6 @@ bool	init_minimap(t_cub3d *cub3d)
 	cub3d->minimap.map_width = get_map_width(cub3d->map);
 	cub3d->minimap.square_size = return_square_size(cub3d,
 			cub3d->minimap.map_width, cub3d->minimap.map_height);
-	printf("hieght %d  \n", cub3d->minimap.map_height);
-	printf("weight %d  \n", cub3d->minimap.map_width);
 	if (malloc_minimap_grid(cub3d) == false) // malloc minimap map mit allen max werten 
 	 	return (false);
 	if (map_to_grid(cub3d) == false)
@@ -37,11 +35,10 @@ bool	init_minimap(t_cub3d *cub3d)
 bool	map_to_grid(t_cub3d *cub3d)
 {
 	int	y;
-	int x;
+	int	x;
+	int y_height_map;
 	y = 0;
-
-	int x_width_map;
-	int y_height_map  = get_map_height
+	y_height_map  = get_map_height(cub3d->map);
 
 
  	printf("before \n");
@@ -54,16 +51,13 @@ bool	map_to_grid(t_cub3d *cub3d)
 			if(y < y_height_map && x < (int)ft_strlen(cub3d->map[y]))
 			{
 				if (ft_strchr("01NESW", cub3d->map[y][x]) != NULL)
-				{
 					cub3d->minimap.map_grid[y][x] = cub3d->map[y][x];
-					// printf("grid %c \n", cub3d->minimap.map_grid[y][x]);
-				}
-				else if (ft_strchr(" ", cub3d->map[y][x]) != NULL)
+				else if (ft_strchr(" \t", cub3d->map[y][x]) != NULL)
 					cub3d->minimap.map_grid[y][x] = '2';
 				else
 					cub3d->minimap.map_grid[y][x] = '2';
-				x++;
 			}
+			x++;
 		}
 		y++;
 	}
@@ -88,7 +82,7 @@ void	init_player(t_cub3d *cub3d)
 		while (x < cub3d->minimap.map_width)
 		{
 			
-			if (ft_strchr("NSEW", cub3d->map[y][x] ) != 0)
+			if (ft_strchr("NSEW", cub3d->minimap.map_grid[y][x] ) != 0)
 			{
 				cub3d->player.px_x = x * cub3d->minimap.square_size + (cub3d->minimap.square_size/2); // mitte vom square
 				cub3d->player.px_y = y * cub3d->minimap.square_size + (cub3d->minimap.square_size /2);

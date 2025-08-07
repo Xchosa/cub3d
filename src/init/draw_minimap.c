@@ -18,12 +18,13 @@ void	draw_minimap(t_cub3d *cub3d)
 	int		minimap_x;
 	int		minimap_y;
 
-	minimap_x = cub3d->minimap.map_width + 4 ; // quader form 
-	minimap_y = cub3d->minimap.map_height + 4  ;
-	//draw_minimap_background(cub3d, minimap_x, minimap_y);
-	
-	// grid auffullen mit 1 nach hohe und weite 
-
+	minimap_x = 0;// quader form 
+	minimap_y = 0;
+	// minimap_x = cub3d->minimap.map_width; // quader form 
+	// minimap_y = cub3d->minimap.map_height;
+	//draw_minimap_background(cub3d, minimap_x, minimap_y); 
+	// Hintergrund ist schon '2' 
+	// bekommt direkt eine blacktransparent
 	draw_minimap_cells(cub3d, minimap_x, minimap_y);
 
 }
