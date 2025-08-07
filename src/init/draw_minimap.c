@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_minimap.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mimalek <mimalek@student.42.fr>            +#+  +:+       +#+        */
+/*   By: poverbec <poverbec@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/01 11:14:56 by poverbec          #+#    #+#             */
-/*   Updated: 2025/08/06 17:14:12 by mimalek          ###   ########.fr       */
+/*   Updated: 2025/08/07 10:22:23 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,11 @@ void	draw_minimap(t_cub3d *cub3d)
 	int		minimap_x;
 	int		minimap_y;
 
-	minimap_x = cub3d->minimap.map_width + 2 ; // quader form 
-	minimap_y = cub3d->minimap.map_height + 2  ;
+	minimap_x = cub3d->minimap.map_width + 4 ; // quader form 
+	minimap_y = cub3d->minimap.map_height + 4  ;
 	//draw_minimap_background(cub3d, minimap_x, minimap_y);
+	
+	// grid auffullen mit 1 nach hohe und weite 
 
 	draw_minimap_cells(cub3d, minimap_x, minimap_y);
 
@@ -71,7 +73,7 @@ void	draw_minimap_cells(t_cub3d *cub3d, int minimap_x, int minimap_y)
 			// else
 			// {
 				
-			cell_color = get_cell_color(cub3d->map[y][x]);
+			cell_color = get_cell_color(cub3d->minimap.map_grid[y][x]);
 			draw_square(cub3d, cell_color, pixel_x, pixel_y);
 			// }
 			x++;
@@ -79,6 +81,7 @@ void	draw_minimap_cells(t_cub3d *cub3d, int minimap_x, int minimap_y)
 		y++;
 	}
 }
+// start punkt +1 damit background damit kacheln entstehen 
 
 void	draw_square(t_cub3d *cub3d, uint32_t color, int start_x,
 		int start_y)

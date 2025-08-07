@@ -6,12 +6,14 @@
 /*   By: poverbec <poverbec@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 11:08:42 by poverbec          #+#    #+#             */
-/*   Updated: 2024/10/19 22:02:42 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/08/07 10:55:11 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./libft.h"
 
+
+// takes two parameters lenght and type 
 void	*ft_calloc(size_t count, size_t size)
 {
 	unsigned char	*ptr;

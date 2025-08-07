@@ -73,7 +73,7 @@ typedef struct s_graphics
 
 typedef struct s_minimap
 {
-	char	**map;
+	char	**map_grid;
 	int     map_height;
     int     map_width;
     int     square_size;
@@ -129,6 +129,8 @@ int			get_cell_color(char cell);
 
 // minimap
 bool		init_minimap(t_cub3d *cub3d);
+bool		map_to_grid(t_cub3d *cub3d);
+bool		malloc_minimap_grid(t_cub3d *cub3d);
 int			return_square_size(t_cub3d *cub3d, int map_width, int map_height);
 void		draw_minimap(t_cub3d *cub3d);
 int			get_map_height(char **map);
