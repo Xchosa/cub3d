@@ -46,6 +46,7 @@ typedef	struct s_player
 	int		px_x;
 	int		px_y;
 	double	direction; // Richtiung in die der Player schaut;
+	char	player_view;
  // square_size / player pos
 } t_player ;
 

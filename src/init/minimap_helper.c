@@ -27,7 +27,7 @@ int	get_cell_color(char cell)
 		// return (PLAYER_COLOR);
 		return (WHITE_COLOR); // player danach drueber malen 
 	else
-		return (YELLOW_COLOR);
+		return (BLACK_TRANS_COLOR);
 }
 
 

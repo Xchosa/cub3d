@@ -41,14 +41,14 @@ bool	init_minimap(t_cub3d *cub3d)
 
 void	init_player(t_cub3d *cub3d)
 {
-	int x;
-	int y;
+	int	x;
+	int	y;
 
 	y = 0;
-	while(y < cub3d->minimap.map_height)
+	while (y < cub3d->minimap.map_height)
 	{
 		x = 0;
-		while(x < cub3d->minimap.map_width)
+		while (x < cub3d->minimap.map_width)
 		{
 			if (ft_strchr("NSEW", cub3d->map[y][x] ) != 0)
 			{
