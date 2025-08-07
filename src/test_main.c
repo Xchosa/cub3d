@@ -19,7 +19,7 @@ int	main(int argc, char **argv)
 		cleanup_cub3d(&cub3d);
 		return (1);
 	}
-	print_array(cub3d.map);
+	// print_array(cub3d.map);
 	mlx_loop_hook(cub3d.mlx, game_loop, &cub3d);
 	// escape exit, player moving etc
 	mlx_loop(cub3d.mlx);
@@ -32,7 +32,7 @@ void	print_array(char **array)
 	int i;
 
 	i = 0;
-	while (array[i] && array[i] != 0)
+	while (array[i] != 0)
 	{
 		ft_printf("%s\n", array[i]);
 		i++;

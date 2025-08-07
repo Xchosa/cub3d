@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 10:09:04 by poverbec          #+#    #+#             */
-/*   Updated: 2025/08/06 10:56:44 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/08/07 13:49:04 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ bool	ft_has_valid_characters(char **map)
 		j = 0;
 		while (map[i][j])
 		{
-			if (!ft_strchr("01NSEW ", map[i][j]))
+			if (!ft_strchr("01NSEW ", map[i][j]))// kann auch tabs etc sein
 				return (false);
 			j++;
 		}

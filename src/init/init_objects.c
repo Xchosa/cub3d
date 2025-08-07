@@ -1,95 +1,106 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   init_objects.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: poverbec <poverbec@student.42heilbronn.    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/08/07 14:08:50 by poverbec          #+#    #+#             */
+/*   Updated: 2025/08/07 14:09:41 by poverbec         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "cub3d.h"
 #include "init.h"
-
-// t_object	*get_object(void)
-// {
-// 	static t_object	object;
-
-// 	return (&object);
-// }
-
-// bool	init_object(t_cub3d *cub3d)
-// {
-// 	t_object	*object;
-
-// 	object = get_object();
-
-// 	object->map = ft_cpy_array_str(cub3d->map);
-// 	if (!object->map)
-// 		return (false);
-// 	object->map_height = get_map_height(cub3d->map);
-// 	object->map_width = get_map_width(cub3d->map);
-// 	object->square_size = return_square_size(cub3d,
-// 			object->map_width, object->map_height);
-
-// 	return (true);
-// }
 
 
 bool	init_minimap(t_cub3d *cub3d)
 {
 	cub3d->minimap.map_height = get_map_height(cub3d->map);
 	cub3d->minimap.map_width = get_map_width(cub3d->map);
-	printf("hieght %d  \n", cub3d->minimap.map_height);
-	printf("wieght %d  \n", cub3d->minimap.map_width);
 	cub3d->minimap.square_size = return_square_size(cub3d,
-	cub3d->minimap.map_width, cub3d->minimap.map_height);
-	if (malloc_minimap_grid(cub3d) == false)
-		return (false);
+			cub3d->minimap.map_width, cub3d->minimap.map_height);
+	printf("hieght %d  \n", cub3d->minimap.map_height);
+	printf("weight %d  \n", cub3d->minimap.map_width);
+	// if (malloc_minimap_grid(cub3d) == false)
+	// 	return (false);
 	if (map_to_grid(cub3d) == false)
 		return (false);
-	// cub3d->minimap.map = ft_cpy_array_str(cub3d->map);
-	// 	if (!cub3d->minimap.map)
-	// 		return (false);
-	print_array(cub3d->minimap.map_grid);
+	// printf("print grid \n");
+	// print_array(cub3d->minimap.map_grid);
 
 	return (true);
 }
+
+
+// ueberschreibt nicht 
 bool	map_to_grid(t_cub3d *cub3d)
 {
 	int	y;
-	int x;
+	// int x;
 	y = 0;
-	while(y < cub3d->minimap.map_height)
-	{
-		x = 0;
-		while(x < cub3d->minimap.map_width)
-		{
-			if (ft_strchr("01NESW", cub3d->map[y][x] ) != 0)
-			{
-				cub3d->minimap.map_grid[y][x] = cub3d->map[y][x];
-			}
-			else
-			{
-				cub3d->minimap.map_grid[y][x] = '2';
-			}
-			x++;
-		}
-		y++;
-	}
+	cub3d->minimap.map_grid = ft_cpy_array_str(cub3d->map);
+	printf("before \n");
+	print_array(cub3d->minimap.map_grid);
+	
+	replace_spaces_with_2(cub3d->minimap.map_grid);
+	printf("after \n");
+
+	// print_array(cub3d->minimap.map_grid);
+	// printf("grid %c ", cub3d->minimap.map_grid[y][x]);
+	// printf("grid %c ", cub3d->minimap.map_grid[y][x]);
+
+	// while(y < cub3d->minimap.map_height)
+	// {
+	// 	x = 0;
+	// 	while(x < cub3d->minimap.map_width)
+	// 	{
+	// 		if (ft_strchr(" ", cub3d->map[y][x]) != NULL)
+	// 			cub3d->minimap.map_grid[y][x] = '2';
+	// 		if (ft_strchr("01NESW", cub3d->map[y][x]) != NULL)
+	// 		{
+	// 			cub3d->minimap.map_grid[y][x] = cub3d->map[y][x];
+	// 			printf("grid %c \n", cub3d->minimap.map_grid[y][x]);
+	// 		}
+	// 		else
+	// 		{
+	// 			cub3d->minimap.map_grid[y][x] = '2';
+	// 		}
+	// 		x++;
+	// 	}
+	// 	y++;
+	// }
+	print_array(cub3d->minimap.map_grid);
 	return (true);
 }
+
+
+
 
 bool	malloc_minimap_grid(t_cub3d *cub3d)
 {
 	int	y;
 
 	y = 0;
-	cub3d->minimap.map_grid = ft_calloc((cub3d->minimap.map_height + 1), sizeof(char *));
-
+	
+	cub3d->minimap.map_grid = malloc((cub3d->minimap.map_height + 1) *  sizeof(char *));
+	cub3d->minimap.map_grid[cub3d->minimap.map_height] = NULL;
 	while (y < cub3d->minimap.map_height)
 	{
 		
-		//cub3d->minimap.map_grid[y] = malloc((cub3d->minimap.map_width + 1) *  sizeof(char));
-		cub3d->minimap.map_grid[y] = ft_calloc(cub3d->minimap.map_width, sizeof(char));
-		
+		cub3d->minimap.map_grid[y] = malloc(cub3d->minimap.map_width + 1 * sizeof(char));
 		if (!cub3d->minimap.map_grid[y])
 			return (false);
+		cub3d->minimap.map_grid[y][cub3d->minimap.map_width] = '\0';
 		y++;
 	}
+	// for (int y = 0; y < cub3d->minimap.map_height; y++)
+    // 	ft_memset(cub3d->minimap.map_grid[y][x], '1', cub3d->minimap.map_width);
+	// printf("print grid \n");
+	// print_array(cub3d->minimap.map_grid);
 	return (true);
 }
+
 
 
 void	init_player(t_cub3d *cub3d)
@@ -103,6 +114,7 @@ void	init_player(t_cub3d *cub3d)
 		x = 0;
 		while (x < cub3d->minimap.map_width)
 		{
+			
 			if (ft_strchr("NSEW", cub3d->map[y][x] ) != 0)
 			{
 				cub3d->player.px_x = x * cub3d->minimap.square_size + (cub3d->minimap.square_size/2); // mitte vom square
