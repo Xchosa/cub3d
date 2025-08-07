@@ -22,7 +22,7 @@ bool	init_minimap(t_cub3d *cub3d)
 			cub3d->minimap.map_width, cub3d->minimap.map_height);
 	printf("hieght %d  \n", cub3d->minimap.map_height);
 	printf("weight %d  \n", cub3d->minimap.map_width);
-	if (malloc_minimap_grid(cub3d) == false)
+	if (malloc_minimap_grid(cub3d) == false) // malloc minimap map mit allen max werten 
 	 	return (false);
 	if (map_to_grid(cub3d) == false)
 		return (false);
@@ -36,47 +36,38 @@ bool	init_minimap(t_cub3d *cub3d)
 // ueberschreibt nicht 
 bool	map_to_grid(t_cub3d *cub3d)
 {
-	// int	y;
-	// // int x;
-	// y = 0;
-	cub3d->minimap.map_grid = ft_cpy_array_str(cub3d->map);
-	
+	int	y;
+	int x;
+	y = 0;
+
+	int x_width_map;
+	int y_height_map  = get_map_height
 
 
-	printf("before \n");
+ 	printf("before \n");
 	print_array(cub3d->minimap.map_grid);
-	
-	replace_spaces_with_2(cub3d->minimap.map_grid);
+	while (y < cub3d->minimap.map_height)
+	{
+		x = 0;
+		while (x < cub3d->minimap.map_width)
+		{
+			if(y < y_height_map && x < (int)ft_strlen(cub3d->map[y]))
+			{
+				if (ft_strchr("01NESW", cub3d->map[y][x]) != NULL)
+				{
+					cub3d->minimap.map_grid[y][x] = cub3d->map[y][x];
+					// printf("grid %c \n", cub3d->minimap.map_grid[y][x]);
+				}
+				else if (ft_strchr(" ", cub3d->map[y][x]) != NULL)
+					cub3d->minimap.map_grid[y][x] = '2';
+				else
+					cub3d->minimap.map_grid[y][x] = '2';
+				x++;
+			}
+		}
+		y++;
+	}
 	printf("after \n");
-
-	
-
-
-
-	// print_array(cub3d->minimap.map_grid);
-	// printf("grid %c ", cub3d->minimap.map_grid[y][x]);
-	// printf("grid %c ", cub3d->minimap.map_grid[y][x]);
-
-	// while(y < cub3d->minimap.map_height)
-	// {
-	// 	x = 0;
-	// 	while(x < cub3d->minimap.map_width)
-	// 	{
-	// 		if (ft_strchr(" ", cub3d->map[y][x]) != NULL)
-	// 			cub3d->minimap.map_grid[y][x] = '2';
-	// 		if (ft_strchr("01NESW", cub3d->map[y][x]) != NULL)
-	// 		{
-	// 			cub3d->minimap.map_grid[y][x] = cub3d->map[y][x];
-	// 			printf("grid %c \n", cub3d->minimap.map_grid[y][x]);
-	// 		}
-	// 		else
-	// 		{
-	// 			cub3d->minimap.map_grid[y][x] = '2';
-	// 		}
-	// 		x++;
-	// 	}
-	// 	y++;
-	// }
 	print_array(cub3d->minimap.map_grid);
 	return (true);
 }

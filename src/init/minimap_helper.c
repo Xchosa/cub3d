@@ -71,15 +71,18 @@ bool	malloc_minimap_grid(t_cub3d *cub3d)
 	int	y;
 
 	y = 0;
-	
+
 	cub3d->minimap.map_grid = malloc((cub3d->minimap.map_height + 1) *  sizeof(char *));
+	if (!cub3d->minimap.map_grid)
+        return (false);
 	cub3d->minimap.map_grid[cub3d->minimap.map_height] = NULL;
 	while (y < cub3d->minimap.map_height)
 	{
-		
+
 		cub3d->minimap.map_grid[y] = malloc(cub3d->minimap.map_width + 1 * sizeof(char));
 		if (!cub3d->minimap.map_grid[y])
 			return (false);
+		ft_memset(cub3d->minimap.map_grid[y], '2', cub3d->minimap.map_width);
 		cub3d->minimap.map_grid[y][cub3d->minimap.map_width] = '\0';
 		y++;
 	}
