@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 14:11:24 by mimalek           #+#    #+#             */
-/*   Updated: 2025/08/06 13:23:29 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/08/11 16:07:34 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,19 +29,19 @@
 # include "parse.h"
 
 
-typedef struct s_object
-{
-	char	**map;
-	int     map_height;
-    int     map_width;
-    int     square_size;
-	int		player_pos_x;
-	int		player_pos_y; //inex
+// typedef struct s_object
+// {
+// 	char	**map;
+// 	int     map_height;
+//     int     map_width;
+//     int     square_size;
+// 	int		player_pos_x;
+// 	int		player_pos_y; //inex
 	
-}	t_object;
+// }	t_object;
 
 
-t_object	*get_object(void);
-bool        init_object(t_cub3d *cub3d);
+void	move_player(t_cub3d *cub3d);
+
 
 #endif

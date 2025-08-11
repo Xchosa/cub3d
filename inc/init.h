@@ -43,12 +43,13 @@
 
 typedef	struct s_player
 {
-	int		px_x;
-	int		px_y;
-	double	direction; // Richtiung in die der Player schaut;
-	char	player_view;
+	double		px_x;// use double or unit32_t
+	double		px_y;// use double 
+	double		direction; // Richtiung in die der Player schaut;
+	char		player_view;
  // square_size / player pos
 } t_player ;
+
 
 typedef struct s_img
 {
@@ -78,7 +79,7 @@ typedef struct s_minimap
     int     map_width;
     int     square_size;
 	int		player_pos_x;
-	int		player_pos_y; //inex
+	int		player_pos_y; // start position 
 	// minimap_img_width 
 	
 }	t_minimap;

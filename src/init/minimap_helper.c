@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 16:29:57 by poverbec          #+#    #+#             */
-/*   Updated: 2025/08/07 14:05:53 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/08/11 11:39:03 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,26 +44,26 @@ int	return_square_size(t_cub3d *cub3d, int map_width, int map_height)
 	return (square_size);
 }
 
-void replace_spaces_with_2(char **map)
-{
-    int i;
-    int j;
+// void replace_spaces_with_2(char **map)
+// {
+//     int i;
+//     int j;
 
-	i = 0;
-	j = 0;
-    while (map[i])
-    {
-        j = 0;
-        while (map[i][j])
-        {
-            if (map[i][j] == ' ')
-                map[i][j] = '2';
-            j++;
-        }
-        i++;
-    }
+// 	i = 0;
+// 	j = 0;
+//     while (map[i])
+//     {
+//         j = 0;
+//         while (map[i][j])
+//         {
+//             if (map[i][j] == ' ')
+//                 map[i][j] = '2';
+//             j++;
+//         }
+//         i++;
+//     }
 	
-}
+// }
 
 
 bool	malloc_minimap_grid(t_cub3d *cub3d)

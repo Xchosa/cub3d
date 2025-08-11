@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/01 11:14:56 by poverbec          #+#    #+#             */
-/*   Updated: 2025/08/07 10:22:23 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/08/11 15:40:36 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,11 @@ void	draw_minimap(t_cub3d *cub3d)
 {
 	int		minimap_x;
 	int		minimap_y;
-
 	minimap_x = 0;// quader form 
 	minimap_y = 0;
 	// minimap_x = cub3d->minimap.map_width; // quader form 
 	// minimap_y = cub3d->minimap.map_height;
-	//draw_minimap_background(cub3d, minimap_x, minimap_y); 
-	// Hintergrund ist schon '2' 
-	// bekommt direkt eine blacktransparent
+	// draw_minimap_background(cub3d, minimap_x, minimap_y); 
 	draw_minimap_cells(cub3d, minimap_x, minimap_y);
 
 }
@@ -60,23 +57,21 @@ void	draw_minimap_cells(t_cub3d *cub3d, int minimap_x, int minimap_y)
 	uint32_t	cell_color;
 	int 		pixel_x;
 	int 		pixel_y;
-
+	(void)minimap_x;
+	(void)minimap_y;
+	
 	y = 0;
 	while (y < cub3d->minimap.map_height)
 	{
 		x = 0;
 		while (x < cub3d->minimap.map_width)
 		{
-			pixel_x = minimap_x + (x * cub3d->minimap.square_size);
-			pixel_y = minimap_y + (y * cub3d->minimap.square_size);
-			// if (ft_strchr("NSEW01", cub3d->map[y][x]) != 0)
-			// 	draw_square(cub3d, BLACK_TRANS_COLOR, pixel_x, pixel_y);
-			// else
-			// {
-				
+			pixel_x = minimap_x + (x * (cub3d->minimap.square_size) + 2);
+			//pixel_x = 1 + (x * cub3d->minimap.square_size);
+			pixel_y = minimap_y + (y * (cub3d->minimap.square_size) + 2);
+			//pixel_y = 1 + (y * cub3d->minimap.square_size);
 			cell_color = get_cell_color(cub3d->minimap.map_grid[y][x]);
-			draw_square(cub3d, cell_color, pixel_x, pixel_y);
-			// }
+			draw_square(cub3d, cell_color, pixel_x, pixel_y ); // + 2?? 
 			x++;
 		}
 		y++;
@@ -101,7 +96,7 @@ void	draw_square(t_cub3d *cub3d, uint32_t color, int start_x,
 			{
 				mlx_put_pixel(cub3d->img, start_x + x, start_y + y, color);
 			}
-			x++;
+			x++; 
 		}
 		y++;
 	}

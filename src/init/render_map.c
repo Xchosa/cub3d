@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/01 11:10:15 by poverbec          #+#    #+#             */
-/*   Updated: 2025/08/07 11:17:45 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/08/11 15:27:11 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,11 @@ void	render_map(t_cub3d *cub3d)
 	uint32_t	i;
 
 	i = 0;
-	// clear image
-	// printf("test");
 	while (i < cub3d->window_width* cub3d->window_height)
 	{
 		cub3d->img->pixels[i] = 0;
 		i++;
 	}
-	// printf("test");
 	draw_minimap(cub3d);
 
 }
@@ -39,8 +36,6 @@ void	draw_map_background(t_cub3d *cub3d)
 
 	ceiling_color = *(cub3d->graphics->ceiling_colour);
 	floor_color = *(cub3d->graphics->floor_colour);
-	// split in two ti create 3d effect
-	// draw ceiling
 	y = 0;
 	while (y < cub3d ->window_height / 2)
 	{
