@@ -45,11 +45,11 @@ void	init_player(t_cub3d *cub3d)
 
 
 
-void	draw_player_minimap(t_cub3d *cub3d, int p_y, int p_x)
+void	draw_player_minimap(t_cub3d *cub3d, double p_y, double p_x)
 {
-	int radius;
-	int	x;
-	int	y;
+	uint32_t 	radius;
+	uint32_t	x;
+	uint32_t	y;
 
 	radius = cub3d->minimap.square_size / 4;
 	y = radius * (-1);
@@ -61,7 +61,9 @@ void	draw_player_minimap(t_cub3d *cub3d, int p_y, int p_x)
 		{
 			if (x * x + y * y <= radius * radius)
 			{
-				mlx_put_pixel(cub3d->img, p_x + x, p_y + y, PLAYER_COLOR);
+				if(p_x + x >= 0 && p_y + y >= 0 && (p_x + x) < cub3d->window_width
+					&& (p_y + y) < cub3d->window_height)
+					mlx_put_pixel(cub3d->img, p_x + x, p_y + y, PLAYER_COLOR);
 			}
 			x++;
 		}

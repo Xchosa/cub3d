@@ -19,6 +19,7 @@
 # define MINIMAP_HEIGHT 150
 # define MINIMAP_VIEW_SIZE 3
 # define CUBE_SIZE 32 // eine kachel 32 lange 32 breite
+# define MINIMAP_CELL_GAP 2
 
 //PLAYER
 # define PLAYER_SIZE 10
@@ -47,7 +48,9 @@ typedef	struct s_player
 	double		px_y;// use double 
 	double		direction; // Richtiung in die der Player schaut;
 	char		player_view;
- // square_size / player pos
+	double		time;
+
+
 } t_player ;
 
 
@@ -139,8 +142,8 @@ int			get_map_width(char **map);
 void		draw_square(t_cub3d *cub3d, uint32_t color, int start_x,
 				int start_y);
 void		init_player(t_cub3d *cub3d);
-void		player_view_direction(t_cub3d *cub3d, int y, int x);
-void		draw_player_minimap(t_cub3d *cub3d, int y, int x);
+void		player_view_direction(t_cub3d *cub3d, double y, double x);
+void		draw_player_minimap(t_cub3d *cub3d, double y, double x);
 void		set_player_view(t_cub3d *cub3d, char player_direction);
 
 bool		parse_map_file(t_cub3d *cub3d, char *map_path, int fd);

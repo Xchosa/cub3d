@@ -34,7 +34,7 @@ bool	init_cub3d(t_cub3d *cub3d, char *map_path, int fd)
 		return (false);
 	render_map(cub3d);
 	init_player(cub3d);
-	// cub3d->graphics = get_map(&graphics, argv[1]);
+	cub3d->player.time = mlx_get_time();
 	return (true);
 }
 

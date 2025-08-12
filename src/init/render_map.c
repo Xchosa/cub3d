@@ -24,6 +24,7 @@ void	render_map(t_cub3d *cub3d)
 		i++;
 	}
 	draw_minimap(cub3d);
+	draw_player_minimap(cub3d, cub3d->player.px_y, cub3d->player.px_x);
 
 }
 

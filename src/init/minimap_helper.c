@@ -37,6 +37,7 @@ int	return_square_size(t_cub3d *cub3d, int map_width, int map_height)
 {
 	int	square_size;
 
+	// dynamic
 	square_size = fmin(cub3d->minimap_img_width / map_width,
 		cub3d->minimap_img_height / map_height);
 	if (square_size < 1)

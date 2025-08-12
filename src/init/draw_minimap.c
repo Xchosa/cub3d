@@ -21,7 +21,7 @@ void	draw_minimap(t_cub3d *cub3d)
 	minimap_y = 0;
 	// minimap_x = cub3d->minimap.map_width; // quader form 
 	// minimap_y = cub3d->minimap.map_height;
-	// draw_minimap_background(cub3d, minimap_x, minimap_y); 
+	draw_minimap_background(cub3d, minimap_x, minimap_y); 
 	draw_minimap_cells(cub3d, minimap_x, minimap_y);
 
 }
@@ -66,9 +66,9 @@ void	draw_minimap_cells(t_cub3d *cub3d, int minimap_x, int minimap_y)
 		x = 0;
 		while (x < cub3d->minimap.map_width)
 		{
-			pixel_x = minimap_x + (x * (cub3d->minimap.square_size) + 2);
+			pixel_x = minimap_x + (x * (cub3d->minimap.square_size) + 0);
 			//pixel_x = 1 + (x * cub3d->minimap.square_size);
-			pixel_y = minimap_y + (y * (cub3d->minimap.square_size) + 2);
+			pixel_y = minimap_y + (y * (cub3d->minimap.square_size) + 0);
 			//pixel_y = 1 + (y * cub3d->minimap.square_size);
 			cell_color = get_cell_color(cub3d->minimap.map_grid[y][x]);
 			draw_square(cub3d, cell_color, pixel_x, pixel_y ); // + 2?? 
@@ -84,17 +84,21 @@ void	draw_square(t_cub3d *cub3d, uint32_t color, int start_x,
 {
 	int	x;
 	int y;
+	int inner_size;
 
+	inner_size = cub3d->minimap.square_size- MINIMAP_CELL_GAP;
+	if (inner_size < 1)
+        inner_size = 1;
 	y = 0;
-	while (y < cub3d->minimap.square_size)
+	while (y < inner_size)
 	{
 		x = 0;
-		while (x < cub3d->minimap.square_size)
+		while (x < inner_size)
 		{
-			if (start_x + x >= 0 && start_x + x < (int)cub3d->window_width &&
-					start_y + y >= 0 && start_y + y < (int)cub3d->window_height)
+			if (start_x + x + 1 >= 0 && start_x + x + 1 < (int)cub3d->window_width &&
+					start_y + y + 1 >= 0 && start_y + y + 1 < (int)cub3d->window_height)
 			{
-				mlx_put_pixel(cub3d->img, start_x + x, start_y + y, color);
+				mlx_put_pixel(cub3d->img, start_x + x +1 , start_y + y + 1, color);
 			}
 			x++; 
 		}

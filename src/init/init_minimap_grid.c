@@ -37,8 +37,6 @@ bool	map_to_grid(t_cub3d *cub3d)
 	y = 0;
 	y_height_map  = get_map_height(cub3d->map);
 
-
- 	printf("before \n");
 	print_array(cub3d->minimap.map_grid);
 	while (y < cub3d->minimap.map_height)
 	{
@@ -58,7 +56,6 @@ bool	map_to_grid(t_cub3d *cub3d)
 		}
 		y++;
 	}
-	printf("after \n");
 	print_array(cub3d->minimap.map_grid);
 	return (true);
 }
