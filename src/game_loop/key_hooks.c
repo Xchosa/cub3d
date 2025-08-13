@@ -9,8 +9,12 @@ void	game_loop(void *param)
 
 	if (mlx_is_key_down(cub3d->mlx, MLX_KEY_ESCAPE))
 		mlx_close_window(cub3d->mlx);
-	move_player(cub3d);
+
+	// move_player(cub3d);
 	render_map(cub3d);
+
+	// just for demonstration
+	// draw_player_minimap(cub3d, cub3d->player.px_y, cub3d->player.px_x);
 	// key hook for letting minimap appear 
 }
 
@@ -24,15 +28,12 @@ void	move_player(t_cub3d *cub3d)
 	double time_now;
 	double fps;
 
-	// int p_x;
-	// int p_y;
 	double px_d;
 	double py_d;
 
 	px_d = 0.0;
 	py_d = 0.0;
-	// p_x = (int)cub3d->player.px_x;
-	// p_y = (int)cub3d->player.px_y;
+
 
 	time_now = mlx_get_time();
 	fps = time_now - cub3d->player.time;
@@ -40,6 +41,18 @@ void	move_player(t_cub3d *cub3d)
 		fps = 0.1;
 	cub3d->player.time = time_now;
 
+	update_player_pos(cub3d, fps, px_d, py_d);
+
+	
+	// if(cub3d->minimap.map_grid[p_y][p_x] == '1')
+		//dann nicht updaten. 
+
+}
+
+
+
+void	update_player_pos(t_cub3d *cub3d, double fps, double px_d, double py_d)
+{
 	if (mlx_is_key_down(cub3d->mlx, MLX_KEY_W))
 	{	
 		py_d += 0.1 * fps; 
@@ -57,12 +70,13 @@ void	move_player(t_cub3d *cub3d)
 		px_d -= 0.1 * fps;
 	}
 	
-	// if(cub3d->minimap.map_grid[cub3d->player.px_y + py_d ][p_x] == '1')
+	if(cub3d->minimap.map_grid[(int)(cub3d->player.px_y + py_d) ]
+		[(int)(cub3d->player.px_x + px_d)] != '1')
+	{
+		cub3d->player.px_y += py_d;
+		cub3d->player.px_x += px_d;
+	}
 
-	printf("player x Wert %f",  cub3d->player.px_x);
-	printf("player y Wert %f",  cub3d->player.px_y);
-	
-	// if(cub3d->minimap.map_grid[p_y][p_x] == '1')
-		//dann nicht updaten. 
-
+	// keyprintf("player x Wert %f",  cub3d->player.px_x);
+	// printf("player y Wert %f",  cub3d->player.px_y);
 }

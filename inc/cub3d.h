@@ -42,6 +42,7 @@
 
 
 void	move_player(t_cub3d *cub3d);
+void	update_player_pos(t_cub3d *cub3d, double fps, double px_d, double py_d);
 
 
 #endif
