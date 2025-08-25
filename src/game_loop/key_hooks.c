@@ -1,5 +1,16 @@
-#include "cub3d.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   key_hooks.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mimalek <mimalek@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/08/25 11:32:45 by mimalek           #+#    #+#             */
+/*   Updated: 2025/08/25 11:45:21 by mimalek          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
+#include "cub3d.h"
 
 void	game_loop(void *param)
 {
@@ -10,7 +21,7 @@ void	game_loop(void *param)
 	if (mlx_is_key_down(cub3d->mlx, MLX_KEY_ESCAPE))
 		mlx_close_window(cub3d->mlx);
 
-	// move_player(cub3d);
+	move_player(cub3d);
 	render_map(cub3d);
 
 	// just for demonstration
@@ -53,30 +64,28 @@ void	move_player(t_cub3d *cub3d)
 
 void	update_player_pos(t_cub3d *cub3d, double fps, double px_d, double py_d)
 {
-	if (mlx_is_key_down(cub3d->mlx, MLX_KEY_W))
-	{	
-		py_d += 0.1 * fps; 
-	}
-	if (mlx_is_key_down(cub3d->mlx, MLX_KEY_S))
-	{	
-		py_d-= 0.1 * fps; 
-	}
-	if (mlx_is_key_down(cub3d->mlx, MLX_KEY_D))
-	{	
-		px_d += 0.1 * fps; 
-	}
-	if (mlx_is_key_down(cub3d->mlx, MLX_KEY_A))
-	{	
-		px_d -= 0.1 * fps;
-	}
-	
-	if(cub3d->minimap.map_grid[(int)(cub3d->player.px_y + py_d) ]
-		[(int)(cub3d->player.px_x + px_d)] != '1')
-	{
-		cub3d->player.px_y += py_d;
-		cub3d->player.px_x += px_d;
-	}
+	double	movement_speed;
+	int		new_grid_x;
+	int		new_grid_y;
 
-	// keyprintf("player x Wert %f",  cub3d->player.px_x);
-	// printf("player y Wert %f",  cub3d->player.px_y);
+	movement_speed = 50.0;
+	if (mlx_is_key_down(cub3d->mlx, MLX_KEY_W))
+		py_d -= movement_speed * fps; 
+	if (mlx_is_key_down(cub3d->mlx, MLX_KEY_S))
+		py_d += movement_speed * fps;
+	if (mlx_is_key_down(cub3d->mlx, MLX_KEY_D))
+		px_d += movement_speed * fps; 
+	if (mlx_is_key_down(cub3d->mlx, MLX_KEY_A))
+		px_d -= movement_speed * fps;
+	
+	new_grid_x = (int)((cub3d->player.px_x + px_d - 1) / cub3d->minimap.square_size);
+	new_grid_y = (int)((cub3d->player.px_y + py_d - 1) / cub3d->minimap.square_size);
+	
+	if (new_grid_x >= 0 && new_grid_x < cub3d->minimap.map_width &&
+		new_grid_y >= 0 && new_grid_y < cub3d->minimap.map_height &&
+		cub3d->minimap.map_grid[new_grid_y][new_grid_x] != '1')
+	{
+		cub3d->player.px_x += px_d;
+		cub3d->player.px_y += py_d;
+	}
 }
