@@ -23,7 +23,6 @@ void	draw_minimap(t_cub3d *cub3d)
 	// minimap_y = cub3d->minimap.map_height;
 	draw_minimap_background(cub3d, minimap_x, minimap_y); 
 	draw_minimap_cells(cub3d, minimap_x, minimap_y);
-
 }
 
 void	draw_minimap_background(t_cub3d *cub3d, int start_x, int start_y)

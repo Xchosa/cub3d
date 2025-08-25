@@ -17,10 +17,10 @@ void	init_player(t_cub3d *cub3d)
 			if (ft_strchr("NSEW", cub3d->minimap.map_grid[y][x] ) != 0)
 			{
 				set_player_view(cub3d, cub3d->minimap.map_grid[y][x]);
-				cub3d->player.px_x = x * cub3d->minimap.square_size + (cub3d->minimap.square_size/2); // mitte vom square
-				cub3d->player.px_y = y * cub3d->minimap.square_size + (cub3d->minimap.square_size /2);
+				cub3d->player.px_x = x * cub3d->minimap.square_size + (cub3d->minimap.square_size/2) + 1; // mitte vom square
+				cub3d->player.px_y = y * cub3d->minimap.square_size + (cub3d->minimap.square_size /2) + 1;
 				//mlx_put_pixel(cub3d->img, cub3d->player.px_x, cub3d->player.px_y, PLAYER_COLOR);
-				draw_player_minimap(cub3d, cub3d->player.px_y, cub3d->player.px_x);
+				//draw_player_minimap(cub3d, cub3d->player.px_y, cub3d->player.px_x);
 				// player_view_direction(cub3d, y, x);
 			}
 			x++;
@@ -47,9 +47,9 @@ void	init_player(t_cub3d *cub3d)
 
 void	draw_player_minimap(t_cub3d *cub3d, double p_y, double p_x)
 {
-	uint32_t 	radius;
-	uint32_t	x;
-	uint32_t	y;
+	int	radius;
+	int	x;
+	int	y;
 
 	radius = cub3d->minimap.square_size / 4;
 	y = radius * (-1);
