@@ -21,6 +21,12 @@
 # define CUBE_SIZE 32 // eine kachel 32 lange 32 breite
 # define MINIMAP_CELL_GAP 2
 
+//Rays
+# define FOV 60.0 // Field of view in degrees
+# define NUM_RAYS 60 // Number of rays to cast
+# define RAY_COLOR 0xFF00FFFF // Magenta color for rays
+# define RAY_LENGTH 200 // Maximum ray length in pixels
+
 //PLAYER
 # define PLAYER_SIZE 10
 # define PLAYER_SPEED 150.0
