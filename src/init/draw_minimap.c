@@ -30,13 +30,17 @@ void	draw_minimap_background(t_cub3d *cub3d, int start_x, int start_y)
 	uint32_t	x;
 	uint32_t	y;
 	uint32_t	bg_color;
+	uint32_t	real_minimap_width;
+	uint32_t	real_minimap_height;
 
 	bg_color = BLACK_TRANS_COLOR;
+	real_minimap_width = cub3d->minimap.map_width * cub3d->minimap.square_size;
+	real_minimap_height = cub3d->minimap.map_height * cub3d->minimap.square_size;
 	y = 0;
-	while (y < cub3d->minimap_img_height)
+	while (y < real_minimap_height)
 	{
 		x = 0;
-		while (x < cub3d->minimap_img_width)
+		while (x < real_minimap_width)
 		{
 			if (start_x + x < cub3d->window_width &&
 				start_y + y < cub3d->window_height )

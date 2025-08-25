@@ -51,7 +51,7 @@ void	draw_player_minimap(t_cub3d *cub3d, double p_y, double p_x)
 	int	x;
 	int	y;
 
-	radius = cub3d->minimap.square_size / 4;
+	radius = cub3d->minimap.square_size / 3.5;
 	y = radius * (-1);
 
 	while (y <= radius)

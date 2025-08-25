@@ -15,8 +15,8 @@
 
 
 //MAP
-# define MINIMAP_WIDTH 260
-# define MINIMAP_HEIGHT 150
+# define MINIMAP_WIDTH 350
+# define MINIMAP_HEIGHT 210
 # define MINIMAP_VIEW_SIZE 3
 # define CUBE_SIZE 32 // eine kachel 32 lange 32 breite
 # define MINIMAP_CELL_GAP 2
