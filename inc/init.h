@@ -169,6 +169,8 @@ bool		ft_validate_map(char **map);
 bool		is_walkable(char c);
 
 void	print_array(char **array);
+void    cast_rays(t_cub3d *cub3d);
+double  get_player_angle(char direction);
 #endif
 
 // To do

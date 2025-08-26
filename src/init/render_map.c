@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_map.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: poverbec <poverbec@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: mimalek <mimalek@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/01 11:10:15 by poverbec          #+#    #+#             */
-/*   Updated: 2025/08/11 15:27:11 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/08/26 09:40:28 by mimalek          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	render_map(t_cub3d *cub3d)
 		i++;
 	}
 	draw_minimap(cub3d);
+	cast_rays(cub3d);
 	draw_player_minimap(cub3d, cub3d->player.px_y, cub3d->player.px_x);
 
 }

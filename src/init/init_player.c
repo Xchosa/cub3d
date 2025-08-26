@@ -27,6 +27,7 @@ void	init_player(t_cub3d *cub3d)
 		}
 		y++;
 	}
+	cub3d->player.direction = get_player_angle(cub3d->player.player_view);
 }
 
 // void	player_view_direction(t_cub3d *cub3d, int y, int x)

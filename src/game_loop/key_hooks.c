@@ -6,11 +6,13 @@
 /*   By: mimalek <mimalek@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 11:32:45 by mimalek           #+#    #+#             */
-/*   Updated: 2025/08/25 11:46:48 by mimalek          ###   ########.fr       */
+/*   Updated: 2025/08/26 09:52:11 by mimalek          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+static void	rotate_player(t_cub3d *cub3d, double angle_change);
 
 void	game_loop(void *param)
 {
@@ -65,10 +67,12 @@ void	move_player(t_cub3d *cub3d)
 void	update_player_pos(t_cub3d *cub3d, double fps, double px_d, double py_d)
 {
 	double	movement_speed;
+	double	rotation_speed;
 	int		new_grid_x;
 	int		new_grid_y;
 
 	movement_speed = 50.0;
+	rotation_speed = 90.0;
 	if (mlx_is_key_down(cub3d->mlx, MLX_KEY_W))
 		py_d -= movement_speed * fps; 
 	if (mlx_is_key_down(cub3d->mlx, MLX_KEY_S))
@@ -77,7 +81,10 @@ void	update_player_pos(t_cub3d *cub3d, double fps, double px_d, double py_d)
 		px_d += movement_speed * fps; 
 	if (mlx_is_key_down(cub3d->mlx, MLX_KEY_A))
 		px_d -= movement_speed * fps;
-	
+	if (mlx_is_key_down(cub3d->mlx, MLX_KEY_LEFT))
+		rotate_player(cub3d, -rotation_speed * fps);
+	if (mlx_is_key_down(cub3d->mlx, MLX_KEY_RIGHT))
+		rotate_player(cub3d, rotation_speed * fps);
 	new_grid_x = (int)((cub3d->player.px_x + px_d - 1) / cub3d->minimap.square_size);
 	new_grid_y = (int)((cub3d->player.px_y + py_d - 1) / cub3d->minimap.square_size);
 	
@@ -88,4 +95,13 @@ void	update_player_pos(t_cub3d *cub3d, double fps, double px_d, double py_d)
 		cub3d->player.px_x += px_d;
 		cub3d->player.px_y += py_d;
 	}
+}
+
+static void	rotate_player(t_cub3d *cub3d, double angle_change)
+{
+	cub3d->player.direction += angle_change;
+	if (cub3d->player.direction >= 360.0)
+		cub3d->player.direction -= 360.0;
+	if (cub3d->player.direction < 0.0)
+		cub3d->player.direction += 360.0;
 }
