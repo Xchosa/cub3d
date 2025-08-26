@@ -109,6 +109,8 @@ typedef struct s_cub3d
 	uint32_t	minimap_img_height;
 	t_minimap	minimap;
 	t_player	player;
+	int			show_minimap;
+	int			show_rays;
 
 
 }	t_cub3d;

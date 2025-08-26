@@ -6,13 +6,14 @@
 /*   By: mimalek <mimalek@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 11:32:45 by mimalek           #+#    #+#             */
-/*   Updated: 2025/08/26 09:52:11 by mimalek          ###   ########.fr       */
+/*   Updated: 2025/08/26 10:14:12 by mimalek          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
 static void	rotate_player(t_cub3d *cub3d, double angle_change);
+static void	handle_toggles(t_cub3d *cub3d);
 
 void	game_loop(void *param)
 {
@@ -23,6 +24,7 @@ void	game_loop(void *param)
 	if (mlx_is_key_down(cub3d->mlx, MLX_KEY_ESCAPE))
 		mlx_close_window(cub3d->mlx);
 
+	handle_toggles(cub3d);
 	move_player(cub3d);
 	render_map(cub3d);
 
@@ -104,4 +106,31 @@ static void	rotate_player(t_cub3d *cub3d, double angle_change)
 		cub3d->player.direction -= 360.0;
 	if (cub3d->player.direction < 0.0)
 		cub3d->player.direction += 360.0;
+}
+
+static void	handle_toggles(t_cub3d *cub3d)
+{
+	static int	m_key_pressed = 0;
+	static int	r_key_pressed = 0;
+	
+	if (mlx_is_key_down(cub3d->mlx, MLX_KEY_M))
+	{
+		if (!m_key_pressed)
+		{
+			cub3d->show_minimap = !cub3d->show_minimap;
+			m_key_pressed = 1;
+		}
+	}
+	else
+		m_key_pressed = 0;
+	if (mlx_is_key_down(cub3d->mlx, MLX_KEY_R))
+	{
+		if (!r_key_pressed)
+		{
+			cub3d->show_rays = !cub3d->show_rays;
+			r_key_pressed = 1;
+		}
+	}
+	else
+		r_key_pressed = 0;
 }
