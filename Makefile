@@ -40,7 +40,9 @@ MY_SOURCES = \
 		parse_map_helper.c \
 		render_map.c \
 		key_hooks.c \
-		rays.c \
+		minimap_rays.c \
+		init_ray.c \
+		render.c \
 		load_texture.c \
 		draw_minimap.c \
 		minimap_helper.c \

@@ -6,7 +6,7 @@
 /*   By: mimalek <mimalek@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 11:32:45 by mimalek           #+#    #+#             */
-/*   Updated: 2025/08/26 10:14:12 by mimalek          ###   ########.fr       */
+/*   Updated: 2025/08/27 14:34:18 by mimalek          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,21 +72,23 @@ void	update_player_pos(t_cub3d *cub3d, double fps, double px_d, double py_d)
 	double	rotation_speed;
 	int		new_grid_x;
 	int		new_grid_y;
-
+	
 	movement_speed = 50.0;
 	rotation_speed = 90.0;
+	
 	if (mlx_is_key_down(cub3d->mlx, MLX_KEY_W))
-		py_d -= movement_speed * fps; 
+		py_d -= movement_speed * fps;
 	if (mlx_is_key_down(cub3d->mlx, MLX_KEY_S))
-		py_d += movement_speed * fps;
-	if (mlx_is_key_down(cub3d->mlx, MLX_KEY_D))
-		px_d += movement_speed * fps; 
+		py_d += movement_speed * fps;	
 	if (mlx_is_key_down(cub3d->mlx, MLX_KEY_A))
 		px_d -= movement_speed * fps;
+	if (mlx_is_key_down(cub3d->mlx, MLX_KEY_D))
+		px_d += movement_speed * fps;	
 	if (mlx_is_key_down(cub3d->mlx, MLX_KEY_LEFT))
 		rotate_player(cub3d, -rotation_speed * fps);
 	if (mlx_is_key_down(cub3d->mlx, MLX_KEY_RIGHT))
 		rotate_player(cub3d, rotation_speed * fps);
+	
 	new_grid_x = (int)((cub3d->player.px_x + px_d - 1) / cub3d->minimap.square_size);
 	new_grid_y = (int)((cub3d->player.px_y + py_d - 1) / cub3d->minimap.square_size);
 	

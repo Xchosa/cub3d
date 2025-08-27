@@ -115,6 +115,39 @@ typedef struct s_cub3d
 
 }	t_cub3d;
 
+typedef struct	s_ray
+{
+	// Ray direction and position
+	double	ray_angle;		// Current ray angle
+	double	ray_x;			// Ray start X position
+	double	ray_y;			// Ray start Y position
+	double	delta_x;		// Ray direction X component
+	double	delta_y;		// Ray direction Y component
+
+	// DDA algorithm variables
+	int		map_x;			// Current map grid X
+	int		map_y;			// Current map grid Y
+	double	side_dist_x;	// Distance to next X side
+	double	side_dist_y;	// Distance to next Y sid
+	double	delta_dist_x;	// Distance between X sides
+	double	delta_dist_y;	// Distance between Y sides
+	int		step_x;			// Step direction X (-1 or 1)
+	int		step_y;			// Step direction Y (-1 or 1)
+
+	// Hit information
+	int		hit;			// Was wall hit?
+	int		side;			// Which side was hit?
+	double	wall_dist;		// Distance to wall
+	char	wall_type;		// Type of wall hit ('1', '0')
+
+	// Projection calculation
+	int		line_height;	// Height of wall line
+	int		draw_start;		// Start Y coordinate of drawing
+	int		draw_end;		// End Y coordinate for drawing
+
+}	t_ray;
+
+
 
 
 
@@ -173,6 +206,8 @@ bool		is_walkable(char c);
 void	print_array(char **array);
 void    cast_rays(t_cub3d *cub3d);
 double  get_player_angle(char direction);
+void    render_frame(t_cub3d *cub3d);
+void    init_ray(t_cub3d *cub3d, t_ray *ray, int x);
 #endif
 
 // To do

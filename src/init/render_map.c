@@ -6,7 +6,7 @@
 /*   By: mimalek <mimalek@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/01 11:10:15 by poverbec          #+#    #+#             */
-/*   Updated: 2025/08/26 10:23:37 by mimalek          ###   ########.fr       */
+/*   Updated: 2025/08/27 13:37:48 by mimalek          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	render_map(t_cub3d *cub3d)
 		cub3d->img->pixels[i] = 0;
 		i++;
 	}
-	draw_map_background(cub3d);
+	render_frame(cub3d);
 	if (cub3d->show_minimap)
 	{
 		draw_minimap(cub3d);
