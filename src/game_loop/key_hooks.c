@@ -6,7 +6,7 @@
 /*   By: mimalek <mimalek@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 11:32:45 by mimalek           #+#    #+#             */
-/*   Updated: 2025/08/27 14:34:18 by mimalek          ###   ########.fr       */
+/*   Updated: 2025/08/28 12:41:04 by mimalek          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ static void	handle_toggles(t_cub3d *cub3d);
 
 void	game_loop(void *param)
 {
+	//Selbst erklarend schatze ich (nur aufrufen anderer Funktionen)
 	t_cub3d	*cub3d;
 
 	cub3d = (t_cub3d *)param;
@@ -27,16 +28,7 @@ void	game_loop(void *param)
 	handle_toggles(cub3d);
 	move_player(cub3d);
 	render_map(cub3d);
-
-	// just for demonstration
-	// draw_player_minimap(cub3d, cub3d->player.px_y, cub3d->player.px_x);
-	// key hook for letting minimap appear 
 }
-
-// 1. bild initalisieren, dann player
-// 2. in game loop 
-// 		player moven, rays schiesen
-//		minimap, und karte neu malen, player ort uebergaben 
 
 void	move_player(t_cub3d *cub3d)
 {
@@ -57,11 +49,6 @@ void	move_player(t_cub3d *cub3d)
 	cub3d->player.time = time_now;
 
 	update_player_pos(cub3d, fps, px_d, py_d);
-
-	
-	// if(cub3d->minimap.map_grid[p_y][p_x] == '1')
-		//dann nicht updaten. 
-
 }
 
 
@@ -72,18 +59,43 @@ void	update_player_pos(t_cub3d *cub3d, double fps, double px_d, double py_d)
 	double	rotation_speed;
 	int		new_grid_x;
 	int		new_grid_y;
+	double	player_rad;
+	double	forward_x;
+	double	forward_y;
+	double	right_x;
+	double	right_y;
 	
 	movement_speed = 50.0;
 	rotation_speed = 90.0;
 	
+	player_rad = cub3d->player.direction * M_PI / 180.0;
+
+	forward_x = cos(player_rad);
+	forward_y = sin(player_rad);
+
+	right_x = cos(player_rad + M_PI / 2.0);
+	right_y = sin(player_rad + M_PI / 2.0);
+
 	if (mlx_is_key_down(cub3d->mlx, MLX_KEY_W))
-		py_d -= movement_speed * fps;
+	{
+		px_d += forward_x * movement_speed * fps;
+		py_d += forward_y * movement_speed * fps;	
+	}
 	if (mlx_is_key_down(cub3d->mlx, MLX_KEY_S))
-		py_d += movement_speed * fps;	
+	{
+		px_d -= forward_x * movement_speed * fps;
+		py_d -= forward_y * movement_speed * fps;	
+	}
 	if (mlx_is_key_down(cub3d->mlx, MLX_KEY_A))
-		px_d -= movement_speed * fps;
+	{
+		px_d -= right_x * movement_speed * fps;
+		py_d -= right_y * movement_speed * fps;		
+	}
 	if (mlx_is_key_down(cub3d->mlx, MLX_KEY_D))
-		px_d += movement_speed * fps;	
+	{
+		px_d += right_x * movement_speed * fps;
+		py_d += right_y * movement_speed * fps;			
+	}
 	if (mlx_is_key_down(cub3d->mlx, MLX_KEY_LEFT))
 		rotate_player(cub3d, -rotation_speed * fps);
 	if (mlx_is_key_down(cub3d->mlx, MLX_KEY_RIGHT))
@@ -103,6 +115,7 @@ void	update_player_pos(t_cub3d *cub3d, double fps, double px_d, double py_d)
 
 static void	rotate_player(t_cub3d *cub3d, double angle_change)
 {
+	//Relativ selbsterklarend, hier wird nur die Player Richtung berechnet wenn man sich dreht
 	cub3d->player.direction += angle_change;
 	if (cub3d->player.direction >= 360.0)
 		cub3d->player.direction -= 360.0;
@@ -112,6 +125,8 @@ static void	rotate_player(t_cub3d *cub3d, double angle_change)
 
 static void	handle_toggles(t_cub3d *cub3d)
 {
+	// Hier geht es nur darum mit 'R' die rays (auf der minimap) unsichtbar/sichtbar zu machen
+	// Und mit 'M' das selbe fur die ganze Minimap (M macht logischerweise gleichzeitig auch Rays unsichtbar)
 	static int	m_key_pressed = 0;
 	static int	r_key_pressed = 0;
 	

@@ -6,12 +6,11 @@
 /*   By: mimalek <mimalek@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 17:13:21 by mimalek           #+#    #+#             */
-/*   Updated: 2025/08/06 10:37:18 by mimalek          ###   ########.fr       */
+/*   Updated: 2025/08/28 10:06:32 by mimalek          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
 
 static int	ft_parse_config_line(t_cub3d *data, char *line);
 static void	ft_parse_color(char *line, int **color);
@@ -19,19 +18,13 @@ static void	ft_parse_map(t_cub3d *cub3d, char *line);
 
 bool	parse_map_file(t_cub3d *cub3d, char *map_path, int fd )
 {
-	if(ft_validate_parse_file(cub3d, fd) == false)
+	if (ft_validate_parse_file(cub3d, fd) == false)
 		return (false);
 	print_array(cub3d->map);
 	if (ft_validate_map(cub3d->map) == false)
 		return (false);
-    // 2D array getrennt bei \n
-	// point fd schon nur noch auf die map?
-	// printf( "before: %s\n", lines[0]);
-    // lines = read_map_file(map_path , fd);
-    // if (!lines)
-    //     return (false);
 	(void)map_path;
-    return (true);
+	return (true);
 }
 
 bool	ft_validate_parse_file(t_cub3d *cub3d, int fd)
@@ -55,11 +48,8 @@ bool	ft_validate_parse_file(t_cub3d *cub3d, int fd)
 		else
 			config_arg += ft_parse_config_line(cub3d, line);
 	}
-	// if(load_texture(cub3d) == false)
-	// 	return (false);
 	return (true);
 }
-
 
 // try t_strnstr(lines[i], "NO ", 3)
 static int	ft_parse_config_line(t_cub3d *data, char *line)
@@ -67,8 +57,8 @@ static int	ft_parse_config_line(t_cub3d *data, char *line)
 	int	i;
 
 	i = 0;
-	while (line[i] == ' ' || line[i] == '\t' || line[i] == '\n' ||
-		line[i] == '\v' || line[i] == '\f' || line[i] == '\r')
+	while (line[i] == ' ' || line[i] == '\t' || line[i] == '\n'
+		|| line[i] == '\v' || line[i] == '\f' || line[i] == '\r')
 		i++;
 	if (line[i] == 'N' && line[i + 1] && line[i + 2] && line[i + 1] == 'O' && line[i + 2] == ' ')
 		return (ft_parse_texture(line + i + 3, &data->graphics->north), 1);
@@ -88,9 +78,6 @@ static int	ft_parse_config_line(t_cub3d *data, char *line)
 		ft_error(CONFIGUARTION_LINE);
 	return (0);
 }
-
-
-
 
 static void	ft_parse_color(char *line, int **color)
 {
@@ -119,8 +106,8 @@ static void	ft_parse_color(char *line, int **color)
 
 static void	ft_parse_map(t_cub3d *cub3d, char *line)
 {
-	static int i = 0;
-	char	*trimmed_line;
+	static int	i = 0;
+	char		*trimmed_line;
 
 	if (i >= MAX_MAP_SIZE)
 		ft_error(ARGUMENT_AMOUNT);
@@ -128,7 +115,7 @@ static void	ft_parse_map(t_cub3d *cub3d, char *line)
 	if (!trimmed_line || trimmed_line[0] == '\0')
 	{
 		free(trimmed_line);
-		return;
+		return ;
 	}
 	cub3d->map[i] = ft_strdup(trimmed_line);
 	free(trimmed_line);
@@ -136,5 +123,3 @@ static void	ft_parse_map(t_cub3d *cub3d, char *line)
 		ft_error(MALLOC_FAIL);
 	i++;
 }
-
-

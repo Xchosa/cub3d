@@ -6,13 +6,11 @@
 /*   By: mimalek <mimalek@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 10:08:58 by poverbec          #+#    #+#             */
-/*   Updated: 2025/08/06 10:40:59 by mimalek          ###   ########.fr       */
+/*   Updated: 2025/08/28 10:08:20 by mimalek          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "cub3d.h"
-#include "parse.h"
 
 char	**read_map_file(char *map_path, int fd)
 {
@@ -40,8 +38,7 @@ char	**read_map_file(char *map_path, int fd)
 	}
 	close(fd);
 	map_array = ft_split(content, '\n');
-	free(content);
-	return (map_array);
+	return (free(content), map_array);
 }
 
 bool	ft_is_map_enclosed(char **map)

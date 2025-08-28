@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: poverbec <poverbec@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: mimalek <mimalek@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 10:09:04 by poverbec          #+#    #+#             */
-/*   Updated: 2025/08/07 13:49:04 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/08/28 10:07:36 by mimalek          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ bool	ft_validate_map(char **map)
 
 bool	ft_has_valid_characters(char **map)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	while (map[i])
@@ -46,7 +46,7 @@ bool	ft_has_valid_characters(char **map)
 		j = 0;
 		while (map[i][j])
 		{
-			if (!ft_strchr("01NSEW ", map[i][j]))// kann auch tabs etc sein
+			if (!ft_strchr("01NSEW ", map[i][j]))
 				return (false);
 			j++;
 		}
@@ -57,9 +57,9 @@ bool	ft_has_valid_characters(char **map)
 
 bool	ft_has_single_player(char **map)
 {
-	int i;
-	int j;
-	int player_count;
+	int	i;
+	int	j;
+	int	player_count;
 
 	i = 0;
 	player_count = 0;
@@ -86,5 +86,3 @@ bool	is_walkable(char c)
 {
 	return (c == '0' || c == 'N' || c == 'S' || c == 'E' || c == 'W');
 }
-
-

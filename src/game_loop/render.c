@@ -6,7 +6,7 @@
 /*   By: mimalek <mimalek@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/27 13:06:12 by mimalek           #+#    #+#             */
-/*   Updated: 2025/08/27 14:03:58 by mimalek          ###   ########.fr       */
+/*   Updated: 2025/08/28 12:51:35 by mimalek          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,19 @@ static void	calculation_projection(t_cub3d *cub3d, t_ray *ray)
 static void	draw_column(t_cub3d *cub3d, t_ray *ray, int x)
 {
 	uint32_t	wall_color;
+	uint32_t	ceiling_color;
+	uint32_t	floor_color;
 	int			y;
+	
+	ceiling_color = (cub3d->graphics->ceiling_colour[0] << 24) |
+					(cub3d->graphics->ceiling_colour[1] << 16) |
+					(cub3d->graphics->ceiling_colour[2] << 8) |
+					0xFF;
+	
+	floor_color = (cub3d->graphics->floor_colour[0] << 24) |
+					(cub3d->graphics->floor_colour[1] << 16) |
+					(cub3d->graphics->floor_colour[2] << 8) |
+					0xFF;
 	
 	if (ray->side == 1)
 		wall_color = 0x808080FF;
@@ -90,7 +102,7 @@ static void	draw_column(t_cub3d *cub3d, t_ray *ray, int x)
 	y = 0;
 	while (y < ray->draw_start)
 	{
-		mlx_put_pixel(cub3d->img, x, y, *(cub3d->graphics->ceiling_colour));
+		mlx_put_pixel(cub3d->img, x, y, ceiling_color);
 		y++;
 	}
 	while (y <= ray->draw_end)
@@ -100,7 +112,7 @@ static void	draw_column(t_cub3d *cub3d, t_ray *ray, int x)
 	}
 	while (y < (int)cub3d->window_height)
 	{
-		mlx_put_pixel(cub3d->img, x, y, *(cub3d->graphics->floor_colour));
+		mlx_put_pixel(cub3d->img, x, y, floor_color);
 		y++;
 	}
 }

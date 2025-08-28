@@ -118,32 +118,32 @@ typedef struct s_cub3d
 typedef struct	s_ray
 {
 	// Ray direction and position
-	double	ray_angle;		// Current ray angle
+	double	ray_angle;		// Aktueller ray angle
 	double	ray_x;			// Ray start X position
 	double	ray_y;			// Ray start Y position
-	double	delta_x;		// Ray direction X component
-	double	delta_y;		// Ray direction Y component
+	double	delta_x;		// Wie viel andert sich der X-Wert bei einem Schritt nach vorne
+	double	delta_y;		// Wie viel andert sich der Y-Wert bei einem Schritt nach vorne
 
 	// DDA algorithm variables
-	int		map_x;			// Current map grid X
-	int		map_y;			// Current map grid Y
-	double	side_dist_x;	// Distance to next X side
-	double	side_dist_y;	// Distance to next Y sid
-	double	delta_dist_x;	// Distance between X sides
-	double	delta_dist_y;	// Distance between Y sides
-	int		step_x;			// Step direction X (-1 or 1)
-	int		step_y;			// Step direction Y (-1 or 1)
+	int		map_x;			//  In Welcher Grid Zelle wir aktuell sind (X-Wert)
+	int		map_y;			// Aktuelle Grid Zelle (Y-Wert)
+	double	side_dist_x;	// Distanz von der Ray position zur nachsten vertikalen Grid Line
+	double	side_dist_y;	// Distanz von der Ray position zu nachsten horizontalen Grid Line
+	double	delta_dist_x;	// Distanz zwischen Grid Lines (vertikal)
+	double	delta_dist_y;	// Distanz zwischen Grid Line (horizontal)
+	int		step_x;			// Step Richtung X (-1 (links) or 1 (rechts))
+	int		step_y;			// Step Richtung Y (-1 (hoch) or 1 (runter))
 
 	// Hit information
-	int		hit;			// Was wall hit?
-	int		side;			// Which side was hit?
-	double	wall_dist;		// Distance to wall
-	char	wall_type;		// Type of wall hit ('1', '0')
+	int		hit;			// Wurde wall gehitted?
+	int		side;			// Welche wall wurd gehitted?
+	double	wall_dist;		// Distanz zur wall
+	char	wall_type;		// Welcher Character wurde gehitted ('1', '0')
 
 	// Projection calculation
-	int		line_height;	// Height of wall line
-	int		draw_start;		// Start Y coordinate of drawing
-	int		draw_end;		// End Y coordinate for drawing
+	int		line_height;	// Hohe der Wall Line
+	int		draw_start;		// Start Y Koordinate fur die Projektion
+	int		draw_end;		// Ende Y Koordinate fur die Projektion
 
 }	t_ray;
 
