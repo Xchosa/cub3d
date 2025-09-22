@@ -155,6 +155,7 @@ bool		init_cub3d(t_cub3d *cub3d, char *map_path, int fd);
 
 bool		init_textures(t_cub3d *cub3d);
 bool		load_texture(t_cub3d *cub3d);
+void		fill_mlx_textures(t_cub3d *cub3d);
 void		set_up_cub3d_defaults(t_cub3d *cub3d);
 
 bool		create_mlx(t_cub3d *cub3d);
