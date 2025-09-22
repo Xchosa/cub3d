@@ -48,6 +48,7 @@ MY_SOURCES = \
 		minimap_helper.c \
 		init_minimap_grid.c \
 		init_player.c \
+		render_walls.c \
 		clean_up.c
 
 

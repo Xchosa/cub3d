@@ -32,7 +32,9 @@ void	render_frame(t_cub3d *cub3d)
 	}
 }
 
-static void	perform_dda(t_cub3d *cub3d, t_ray *ray)
+
+// Digital Differential Analyzer DDA algo to find intersections
+static void	perform_dda(t_cub3d *cub3d, t_ray *ray) 
 {
 	while (ray->hit == 0)
 	{
@@ -40,14 +42,15 @@ static void	perform_dda(t_cub3d *cub3d, t_ray *ray)
 		{
 			ray->side_dist_x += ray->delta_dist_x;
 			ray->map_x += ray->step_x;
-			ray->side = 0;
+			ray->side = 0; // vertical wall hit
 		}
 		else
 		{
 			ray->side_dist_y += ray->delta_dist_y;
 			ray->map_y += ray->step_y;
-			ray->side = 1;
+			ray->side = 1; // horizontal wall hit
 		}
+		// check for wall collision
 		if (ray->map_x < 0 || ray->map_x >= cub3d->minimap.map_width ||
 			ray->map_y < 0 || ray->map_y >= cub3d->minimap.map_height ||
 			cub3d->minimap.map_grid[ray->map_y][ray->map_x] == '1')
@@ -85,6 +88,7 @@ static void	draw_column(t_cub3d *cub3d, t_ray *ray, int x)
 	uint32_t	floor_color;
 	int			y;
 	
+	//ceiling_color = (red << 24) | (green << 16) | (blue << 8) | alpha;
 	ceiling_color = (cub3d->graphics->ceiling_colour[0] << 24) |
 					(cub3d->graphics->ceiling_colour[1] << 16) |
 					(cub3d->graphics->ceiling_colour[2] << 8) |
@@ -96,9 +100,9 @@ static void	draw_column(t_cub3d *cub3d, t_ray *ray, int x)
 					0xFF;
 	
 	if (ray->side == 1)
-		wall_color = 0x808080FF;
+		wall_color = 0x808080FF; // Darker
 	else
-		wall_color = 0xFFFFFFFF;
+		wall_color = 0xFFFFFFFF; // brighter for vertical wall
 	y = 0;
 	while (y < ray->draw_start)
 	{
@@ -116,3 +120,6 @@ static void	draw_column(t_cub3d *cub3d, t_ray *ray, int x)
 		y++;
 	}
 }
+
+
+
