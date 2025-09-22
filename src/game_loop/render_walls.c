@@ -1,15 +1,15 @@
 
 
 #include "cub3d.h"
-// load textures in cub3d->graphics->north
-// load img in cub3d->graphics->north correctly
+// // load textures in cub3d->graphics->north
+// // load img in cub3d->graphics->north correctly
 
 
-// flippling pictures pixesl / mirror it -> coordinate system sees everything backwards
-/*
-Calculate where on the wall the ray hit (0.0 to 1.0)
-Map the wall position to texture coordinates
-*/
+// // flippling pictures pixesl / mirror it -> coordinate system sees everything backwards
+// /*
+// Calculate where on the wall the ray hit (0.0 to 1.0)
+// Map the wall position to texture coordinates
+// */
 
 
 void draw_column( t_cub3d *cub3d, t_ray *ray, int x)
@@ -42,12 +42,12 @@ void draw_column( t_cub3d *cub3d, t_ray *ray, int x)
 
     // texture x cordinate
     text_x = (int)(wall_x *cub3d->graphics->north.texture->width);
-
+    
     // check for horizontall flip 
     // ray looks east  pos x direction && ray points north (neg y direction )
     
-    // if ((ray->side == 0  && ray->delta_x > 0 ) || (ray->side == 1 && ray->delta_y < 0))
-    //     text_x = cub3d->graphics->north.texture->width - text_x -1; // for 64 pixel img, 63 last valid 
+    if ((ray->side == 0  && ray->delta_x > 0 ) || (ray->side == 1 && ray->delta_y < 0))
+        text_x = cub3d->graphics->north.texture->width - text_x -1; // for 64 pixel img, 63 last valid 
     // 
 
     // ceiling

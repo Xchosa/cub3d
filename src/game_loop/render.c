@@ -12,10 +12,6 @@
 
 #include "cub3d.h"
 
-static void	perform_dda(t_cub3d *cub3d, t_ray *ray);
-static void	calculation_projection(t_cub3d *cub3d, t_ray *ray);
-static void	draw_column(t_cub3d *cub3d, t_ray *ray, int x);
-
 void	render_frame(t_cub3d *cub3d)
 {
 	t_ray	ray;
@@ -34,7 +30,7 @@ void	render_frame(t_cub3d *cub3d)
 
 
 // Digital Differential Analyzer DDA algo to find intersections
-static void	perform_dda(t_cub3d *cub3d, t_ray *ray) 
+void	perform_dda(t_cub3d *cub3d, t_ray *ray) 
 {
 	while (ray->hit == 0)
 	{
@@ -65,7 +61,7 @@ static void	perform_dda(t_cub3d *cub3d, t_ray *ray)
 	}
 }
 
-static void	calculation_projection(t_cub3d *cub3d, t_ray *ray)
+void	calculation_projection(t_cub3d *cub3d, t_ray *ray)
 {
 	if (ray->side == 0)
 		ray->wall_dist = (ray->map_x - ray->ray_x + (1 - ray->step_x) / 2) / ray->delta_x;
@@ -81,45 +77,45 @@ static void	calculation_projection(t_cub3d *cub3d, t_ray *ray)
 		ray->draw_end = cub3d->window_height - 1;
 }
 
-static void	draw_column(t_cub3d *cub3d, t_ray *ray, int x)
-{
-	uint32_t	wall_color;
-	uint32_t	ceiling_color;
-	uint32_t	floor_color;
-	int			y;
+// void	draw_column(t_cub3d *cub3d, t_ray *ray, int x)
+// {
+// 	uint32_t	wall_color;
+// 	uint32_t	ceiling_color;
+// 	uint32_t	floor_color;
+// 	int			y;
 	
-	//ceiling_color = (red << 24) | (green << 16) | (blue << 8) | alpha;
-	ceiling_color = (cub3d->graphics->ceiling_colour[0] << 24) |
-					(cub3d->graphics->ceiling_colour[1] << 16) |
-					(cub3d->graphics->ceiling_colour[2] << 8) |
-					0xFF;
+// 	//ceiling_color = (red << 24) | (green << 16) | (blue << 8) | alpha;
+// 	ceiling_color = (cub3d->graphics->ceiling_colour[0] << 24) |
+// 					(cub3d->graphics->ceiling_colour[1] << 16) |
+// 					(cub3d->graphics->ceiling_colour[2] << 8) |
+// 					0xFF;
 	
-	floor_color = (cub3d->graphics->floor_colour[0] << 24) |
-					(cub3d->graphics->floor_colour[1] << 16) |
-					(cub3d->graphics->floor_colour[2] << 8) |
-					0xFF;
+// 	floor_color = (cub3d->graphics->floor_colour[0] << 24) |
+// 					(cub3d->graphics->floor_colour[1] << 16) |
+// 					(cub3d->graphics->floor_colour[2] << 8) |
+// 					0xFF;
 	
-	if (ray->side == 1)
-		wall_color = 0x808080FF; // Darker
-	else
-		wall_color = 0xFFFFFFFF; // brighter for vertical wall
-	y = 0;
-	while (y < ray->draw_start)
-	{
-		mlx_put_pixel(cub3d->img, x, y, ceiling_color);
-		y++;
-	}
-	while (y <= ray->draw_end)
-	{
-		mlx_put_pixel(cub3d->img, x, y, wall_color);
-		y++;
-	}
-	while (y < (int)cub3d->window_height)
-	{
-		mlx_put_pixel(cub3d->img, x, y, floor_color);
-		y++;
-	}
-}
+// 	if (ray->side == 1)
+// 		wall_color = 0x808080FF; // Darker
+// 	else
+// 		wall_color = 0xFFFFFFFF; // brighter for vertical wall
+// 	y = 0;
+// 	while (y < ray->draw_start)
+// 	{
+// 		mlx_put_pixel(cub3d->img, x, y, ceiling_color);
+// 		y++;
+// 	}
+// 	while (y <= ray->draw_end)
+// 	{
+// 		mlx_put_pixel(cub3d->img, x, y, wall_color);
+// 		y++;
+// 	}
+// 	while (y < (int)cub3d->window_height)
+// 	{
+// 		mlx_put_pixel(cub3d->img, x, y, floor_color);
+// 		y++;
+// 	}
+// }
 
 
 

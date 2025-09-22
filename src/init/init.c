@@ -29,7 +29,8 @@ bool	init_cub3d(t_cub3d *cub3d, char *map_path, int fd)
 	// extra function needed
 	if (create_mlx(cub3d) == false)
 		return (false);
-
+	if (fill_mlx_textures(cub3d) == false)
+		return(false);
 	if (init_minimap(cub3d) == false)
 		return (false);
 	render_map(cub3d);
@@ -55,12 +56,6 @@ bool	init_textures(t_cub3d *cub3d)
 	cub3d->graphics->south.used = false;
 	cub3d->graphics->east.used = false;
 	cub3d->graphics->west.used = false;
-	fill_mlx_textures(cub3d);
-	if (!cub3d->graphics->north.img)
-    {
-        ft_error(MLX_IMG_FAIL);
-        return (false);
-    }
 	ft_memset(&cub3d->graphics->floor_colour, 0, sizeof(int));
 	ft_memset(&cub3d->graphics->ceiling_colour, 0, sizeof(int));
 	// *(cub3d->graphics->floor_colour) = YELLOW_COLOR;
@@ -69,11 +64,10 @@ bool	init_textures(t_cub3d *cub3d)
 	return (true);
 }
 
-void	fill_mlx_textures(t_cub3d *cub3d)
+bool	fill_mlx_textures(t_cub3d *cub3d)
 {
 	cub3d->graphics->north.texture = mlx_load_png("textures/numbers_bg.png");
 	cub3d->graphics->north.img = mlx_texture_to_image(cub3d->mlx, cub3d->graphics->north.texture);
-
 	cub3d->graphics->south.texture = cub3d->graphics->north.texture;
 	cub3d->graphics->east.texture = cub3d->graphics->north.texture;
 	cub3d->graphics->west.texture = cub3d->graphics->north.texture;
@@ -81,7 +75,16 @@ void	fill_mlx_textures(t_cub3d *cub3d)
 	cub3d->graphics->east.img = cub3d->graphics->north.img;
 	cub3d->graphics->west.img = cub3d->graphics->north.img;
 	cub3d->graphics->south.img = cub3d->graphics->north.img;
-
+	if (!cub3d->graphics->north.img)
+    {
+        ft_error(MLX_IMG_FAIL);
+        return (false);
+    }
+	cub3d->graphics->north.used = true;
+	cub3d->graphics->south.used = true;
+	cub3d->graphics->east.used = true;
+	cub3d->graphics->west.used = true;
+	return(true);
 }
 
 void	set_up_cub3d_defaults(t_cub3d *cub3d)

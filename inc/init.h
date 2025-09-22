@@ -155,7 +155,7 @@ bool		init_cub3d(t_cub3d *cub3d, char *map_path, int fd);
 
 bool		init_textures(t_cub3d *cub3d);
 bool		load_texture(t_cub3d *cub3d);
-void		fill_mlx_textures(t_cub3d *cub3d);
+bool		fill_mlx_textures(t_cub3d *cub3d);
 void		set_up_cub3d_defaults(t_cub3d *cub3d);
 
 bool		create_mlx(t_cub3d *cub3d);
@@ -209,6 +209,13 @@ void    cast_rays(t_cub3d *cub3d);
 double  get_player_angle(char direction);
 void    render_frame(t_cub3d *cub3d);
 void    init_ray(t_cub3d *cub3d, t_ray *ray, int x);
+
+
+
+
+void	perform_dda(t_cub3d *cub3d, t_ray *ray);
+void	calculation_projection(t_cub3d *cub3d, t_ray *ray);
+void	draw_column(t_cub3d *cub3d, t_ray *ray, int x);
 #endif
 
 // To do
