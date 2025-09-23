@@ -68,10 +68,9 @@ bool	fill_mlx_textures(t_cub3d *cub3d)
 {
 	cub3d->graphics->north.texture = mlx_load_png("textures/numbers_bg.png");
 	cub3d->graphics->north.img = mlx_texture_to_image(cub3d->mlx, cub3d->graphics->north.texture);
-	cub3d->graphics->south.texture = cub3d->graphics->north.texture;
-	cub3d->graphics->east.texture = cub3d->graphics->north.texture;
+	cub3d->graphics->south.texture = mlx_load_png("textures/bluestone.png");
+	cub3d->graphics->east.img = mlx_texture_to_image(cub3d->mlx, cub3d->graphics->east.texture);
 	cub3d->graphics->west.texture = cub3d->graphics->north.texture;
-
 	cub3d->graphics->east.img = cub3d->graphics->north.img;
 	cub3d->graphics->west.img = cub3d->graphics->north.img;
 	cub3d->graphics->south.img = cub3d->graphics->north.img;
