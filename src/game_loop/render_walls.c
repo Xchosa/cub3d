@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 14:52:35 by poverbec          #+#    #+#             */
-/*   Updated: 2025/09/23 15:21:43 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/09/23 15:35:39 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,12 +66,29 @@ void draw_ceiling(int y, t_cub3d *cub3d, t_ray *ray, int x)
 	}
 }
 
+uint32_t r_ceil(t_cub3d *cub3d)
+{
+	uint32_t	ceiling_color;
+	ceiling_color = (cub3d->graphics->ceiling_colour[0] << 24) |
+                    (cub3d->graphics->ceiling_colour[1] << 16) |
+                    (cub3d->graphics->ceiling_colour[2] << 8) |
+                    0xFF;
+	return (ceiling_color);
+}
+
+uint32_t r_floor(t_cub3d *cub3d)
+{
+	uint32_t	floor_color;
+	floor_color = (cub3d->graphics->floor_colour[0] << 24) |
+                    (cub3d->graphics->floor_colour[1] << 16) |
+                    (cub3d->graphics->floor_colour[2] << 8) |
+                    0xFF;
+	return(floor_color);
+}
 
 
 void draw_column( t_cub3d *cub3d, t_ray *ray, int x)
 {
-    uint32_t	ceiling_color;
-    uint32_t	floor_color;
     double      wall_x;
     int         y;
     int         text_x;
@@ -80,46 +97,19 @@ void draw_column( t_cub3d *cub3d, t_ray *ray, int x)
 	double		step;
 	double		texture_position;
 	uint32_t	color;
-    ceiling_color = (cub3d->graphics->ceiling_colour[0] << 24) |
-                    (cub3d->graphics->ceiling_colour[1] << 16) |
-                    (cub3d->graphics->ceiling_colour[2] << 8) |
-                    0xFF;
     
-    floor_color = (cub3d->graphics->floor_colour[0] << 24) |
-                    (cub3d->graphics->floor_colour[1] << 16) |
-                    (cub3d->graphics->floor_colour[2] << 8) |
-                    0xFF;
-
-    // calculate wall position of ray hit (0.0 to 1.0)
-    if (ray->side == 0 )// vertical Wall
+    if (ray->side == 0 )// vertical Wall  // calculate wall position of ray hit (0.0 to 1.0)
         wall_x = ray->ray_y + ray->wall_dist * ray->delta_y;
     else
-    // horizontal
-        wall_x = ray->ray_x + ray->wall_dist * ray->delta_x;
-
-
-
-	
-    wall_x = wall_x - floor(wall_x); // rundet immer ab -1,3 = -2 / 
-    // get decimalstellen/ franction part
-
+        wall_x = ray->ray_x + ray->wall_dist * ray->delta_x;  // horizontal
+    wall_x = wall_x - floor(wall_x); // rundet immer ab -1,3 = -2 /  / get decimalstellen/ franction part
     wall_texture = load_wall_texture(cub3d, ray);
-	// text_x = return_x_cor_texture(wall_x, cub3d, wall_texture);
 	texture_pix = (uint32_t*)wall_texture->pixels;
-	text_x = (int)(wall_x * wall_texture->width);
-
-    // texture x cordinate
-	
-    
-    // check for horizontall flip 
-    // ray looks east  pos x direction && ray points north (neg y direction )
-    if ((ray->side == 0  && ray->delta_x > 0 ) || (ray->side == 1 && ray->delta_y < 0))
-        text_x = cub3d->graphics->north.texture->width - text_x -1; // for 64 pixel img, 63 last valid 
-    // 
+	text_x = (int)(wall_x * wall_texture->width);  //texture x cordinate
 
     // x achse durch ray , x wert 3, 5 an der wand 
     // brechnen wo der ray an y
-	step = (double)wall_texture->height / ray->line_height;
+	step = (double)wall_texture->height / ray->line_height; 
 	texture_position = (ray->draw_start - cub3d->window_height / 2 + ray->line_height / 2) * step;
     // ceiling
     y = 0;
@@ -127,7 +117,7 @@ void draw_column( t_cub3d *cub3d, t_ray *ray, int x)
 	//draw_ceiling(y, cub3d, ray, x);
     while (y < ray->draw_start)
 	{
-		mlx_put_pixel(cub3d->img, x, y, ceiling_color);
+		mlx_put_pixel(cub3d->img, x, y, r_ceil(cub3d));
 		y++;
 	}
     while (y <= ray->draw_end)
@@ -139,10 +129,14 @@ void draw_column( t_cub3d *cub3d, t_ray *ray, int x)
 	}
 	while (y < (int)cub3d->window_height)
 	{
-		mlx_put_pixel(cub3d->img, x, y, floor_color);
+		mlx_put_pixel(cub3d->img, x, y, r_floor(cub3d));
 		y++;
 	}
 }
 
 
-// 
+// check for horizontall flip 
+    // ray looks east  pos x direction && ray points north (neg y direction )
+    //if ((ray->side == 0  && ray->delta_x > 0 ) || (ray->side == 1 && ray->delta_y < 0))
+    //    text_x = cub3d->graphics->north.texture->width - text_x -1; // for 64 pixel img, 63 last valid 
+    // 

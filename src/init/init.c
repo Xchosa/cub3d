@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 10:52:53 by poverbec          #+#    #+#             */
-/*   Updated: 2025/09/23 15:12:30 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/09/23 15:39:48 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,11 +66,11 @@ bool	init_textures(t_cub3d *cub3d)
 
 bool	fill_mlx_textures(t_cub3d *cub3d)
 {
-	cub3d->graphics->north.texture = mlx_load_png("textures/mossy.png");
+	cub3d->graphics->north.texture = mlx_load_png("textures/purplestone.png");
 	cub3d->graphics->north.img = mlx_texture_to_image(cub3d->mlx, cub3d->graphics->north.texture);
 	cub3d->graphics->south.texture = mlx_load_png("textures/bluestone.png");
 	cub3d->graphics->south.img = mlx_texture_to_image(cub3d->mlx, cub3d->graphics->south.texture);
-	cub3d->graphics->west.texture = mlx_load_png("textures/colorstone.png");
+	cub3d->graphics->west.texture = mlx_load_png("textures/wood.png");
 	cub3d->graphics->west.img = mlx_texture_to_image(cub3d->mlx, cub3d->graphics->west.texture);
 	cub3d->graphics->east.texture = mlx_load_png("textures/eagle.png");
 	cub3d->graphics->east.img = mlx_texture_to_image(cub3d->mlx, cub3d->graphics->east.texture);
