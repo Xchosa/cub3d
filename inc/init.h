@@ -13,7 +13,8 @@
 # define PLAYER_COLOR 0x1E90FFFF
 # define YELLOW_COLOR 0xFFFF00FF
 
-
+# define movement_speed 50.0
+# define rotation_speed 90.0
 //MAP
 # define MINIMAP_WIDTH 350
 # define MINIMAP_HEIGHT 210
@@ -152,7 +153,7 @@ typedef struct	s_ray
 
 
 bool		init_cub3d(t_cub3d *cub3d, char *map_path, int fd);
-
+double		x_array_texture(t_ray *ray);
 bool		init_textures(t_cub3d *cub3d);
 bool		load_texture(t_cub3d *cub3d);
 bool		fill_mlx_textures(t_cub3d *cub3d);
@@ -162,6 +163,7 @@ uint32_t	r_ceil(t_cub3d *cub3d);
 bool		create_mlx(t_cub3d *cub3d);
 
 t_graphics	*get_map(t_graphics *graphics, char **argv);
+
 
 
 // hook function for escape and player movement
@@ -191,9 +193,12 @@ void		set_player_view(t_cub3d *cub3d, char player_direction);
 
 bool		parse_map_file(t_cub3d *cub3d, char *map_path, int fd);
 
+// game loop 
 void		game_loop(void *param);
+void		rotate_player(t_cub3d *cub3d, double angle_change);
+void		handle_toggles(t_cub3d *cub3d);
 
-
+void		rotate_player_keys(t_cub3d *cub3d, double fps);
 bool		ft_validate_parse_file(t_cub3d *data, int fd);
 int			argument_check(int argc, char **argv);
 void		ft_parse_texture(char *path, t_img *texture);

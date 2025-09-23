@@ -3,17 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   key_hooks.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mimalek <mimalek@student.42.fr>            +#+  +:+       +#+        */
+/*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 11:32:45 by mimalek           #+#    #+#             */
-/*   Updated: 2025/08/28 12:41:04 by mimalek          ###   ########.fr       */
+/*   Updated: 2025/09/23 16:32:09 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-static void	rotate_player(t_cub3d *cub3d, double angle_change);
-static void	handle_toggles(t_cub3d *cub3d);
 
 void	game_loop(void *param)
 {
@@ -34,29 +31,30 @@ void	move_player(t_cub3d *cub3d)
 {
 	double time_now;
 	double fps;
-
 	double px_d;
 	double py_d;
 
 	px_d = 0.0;
 	py_d = 0.0;
-
-
 	time_now = mlx_get_time();
 	fps = time_now - cub3d->player.time;
 	if (fps > 0.1)
 		fps = 0.1;
 	cub3d->player.time = time_now;
-
 	update_player_pos(cub3d, fps, px_d, py_d);
 }
 
 
-
+void rotate_player_keys(t_cub3d *cub3d, double fps)
+{
+	if (mlx_is_key_down(cub3d->mlx, MLX_KEY_LEFT))
+		rotate_player(cub3d, -rotation_speed * fps);
+	if (mlx_is_key_down(cub3d->mlx, MLX_KEY_RIGHT))
+		rotate_player(cub3d, rotation_speed * fps);
+}
+// movement_speed (50), rotation_speed (90) are defined 
 void	update_player_pos(t_cub3d *cub3d, double fps, double px_d, double py_d)
 {
-	double	movement_speed;
-	double	rotation_speed;
 	int		new_grid_x;
 	int		new_grid_y;
 	double	player_rad;
@@ -65,17 +63,11 @@ void	update_player_pos(t_cub3d *cub3d, double fps, double px_d, double py_d)
 	double	right_x;
 	double	right_y;
 	
-	movement_speed = 50.0;
-	rotation_speed = 90.0;
-	
 	player_rad = cub3d->player.direction * M_PI / 180.0;
-
 	forward_x = cos(player_rad);
 	forward_y = sin(player_rad);
-
 	right_x = cos(player_rad + M_PI / 2.0);
 	right_y = sin(player_rad + M_PI / 2.0);
-
 	if (mlx_is_key_down(cub3d->mlx, MLX_KEY_W))
 	{
 		px_d += forward_x * movement_speed * fps;
@@ -84,7 +76,7 @@ void	update_player_pos(t_cub3d *cub3d, double fps, double px_d, double py_d)
 	if (mlx_is_key_down(cub3d->mlx, MLX_KEY_S))
 	{
 		px_d -= forward_x * movement_speed * fps;
-		py_d -= forward_y * movement_speed * fps;	
+		py_d -= forward_y * movement_speed * fps;
 	}
 	if (mlx_is_key_down(cub3d->mlx, MLX_KEY_A))
 	{
@@ -96,11 +88,7 @@ void	update_player_pos(t_cub3d *cub3d, double fps, double px_d, double py_d)
 		px_d += right_x * movement_speed * fps;
 		py_d += right_y * movement_speed * fps;			
 	}
-	if (mlx_is_key_down(cub3d->mlx, MLX_KEY_LEFT))
-		rotate_player(cub3d, -rotation_speed * fps);
-	if (mlx_is_key_down(cub3d->mlx, MLX_KEY_RIGHT))
-		rotate_player(cub3d, rotation_speed * fps);
-	
+	rotate_player_keys(cub3d, fps);
 	new_grid_x = (int)((cub3d->player.px_x + px_d - 1) / cub3d->minimap.square_size);
 	new_grid_y = (int)((cub3d->player.px_y + py_d - 1) / cub3d->minimap.square_size);
 	
@@ -112,10 +100,9 @@ void	update_player_pos(t_cub3d *cub3d, double fps, double px_d, double py_d)
 		cub3d->player.px_y += py_d;
 	}
 }
-
-static void	rotate_player(t_cub3d *cub3d, double angle_change)
+//Relativ selbsterklarend, hier wird nur die Player Richtung berechnet wenn man sich dreht
+void	rotate_player(t_cub3d *cub3d, double angle_change)
 {
-	//Relativ selbsterklarend, hier wird nur die Player Richtung berechnet wenn man sich dreht
 	cub3d->player.direction += angle_change;
 	if (cub3d->player.direction >= 360.0)
 		cub3d->player.direction -= 360.0;
@@ -123,7 +110,7 @@ static void	rotate_player(t_cub3d *cub3d, double angle_change)
 		cub3d->player.direction += 360.0;
 }
 
-static void	handle_toggles(t_cub3d *cub3d)
+void	handle_toggles(t_cub3d *cub3d)
 {
 	// Hier geht es nur darum mit 'R' die rays (auf der minimap) unsichtbar/sichtbar zu machen
 	// Und mit 'M' das selbe fur die ganze Minimap (M macht logischerweise gleichzeitig auch Rays unsichtbar)

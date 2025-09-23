@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 14:52:35 by poverbec          #+#    #+#             */
-/*   Updated: 2025/09/23 15:35:39 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/09/23 16:12:42 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,6 @@
 #include "cub3d.h"
 // // load textures in cub3d->graphics->north
 // // load img in cub3d->graphics->north correctly
-
-
-// // flippling pictures pixesl / mirror it -> coordinate system sees everything backwards
-// /*
-// Calculate where on the wall the ray hit (0.0 to 1.0)
-// Map the wall position to texture coordinates
-// */
 
 
 mlx_texture_t *load_wall_texture(t_cub3d *cub3d, t_ray *ray)
@@ -85,41 +78,43 @@ uint32_t r_floor(t_cub3d *cub3d)
                     0xFF;
 	return(floor_color);
 }
-
-
-void draw_column( t_cub3d *cub3d, t_ray *ray, int x)
+// exact x cordinate on texture for one singe ray 
+double x_array_texture(t_ray *ray)
 {
-    double      wall_x;
-    int         y;
-    int         text_x;
-    mlx_texture_t	*wall_texture;
-	uint32_t	*texture_pix;
-	double		step;
-	double		texture_position;
-	uint32_t	color;
-    
-    if (ray->side == 0 )// vertical Wall  // calculate wall position of ray hit (0.0 to 1.0)
+	double			wall_x;
+	if (ray->side == 0 )// vertical Wall  // calculate wall position of ray hit (0.0 to 1.0)
         wall_x = ray->ray_y + ray->wall_dist * ray->delta_y;
     else
         wall_x = ray->ray_x + ray->wall_dist * ray->delta_x;  // horizontal
     wall_x = wall_x - floor(wall_x); // rundet immer ab -1,3 = -2 /  / get decimalstellen/ franction part
+	return(wall_x);
+}
+
+
+ //texture x cordinate
+ // every ray gets one out of 4 wall_textures 
+ // finds the exact fractionl x value
+ // finds the texture position, x value given, y = 0 
+ // on this single x coordinate it loops up the y koordinte 
+ // as long as it finds ceiling it draws ceiling, then texture then only floor 
+void draw_column( t_cub3d *cub3d, t_ray *ray, int x)
+{
+    int				y;
+    int				text_x;
+    mlx_texture_t	*wall_texture;
+	uint32_t		*texture_pix;
+	double			step;
+	double			texture_position;
+	uint32_t		color;
+
     wall_texture = load_wall_texture(cub3d, ray);
 	texture_pix = (uint32_t*)wall_texture->pixels;
-	text_x = (int)(wall_x * wall_texture->width);  //texture x cordinate
-
-    // x achse durch ray , x wert 3, 5 an der wand 
-    // brechnen wo der ray an y
-	step = (double)wall_texture->height / ray->line_height; 
+	text_x = (int)(x_array_texture(ray) * wall_texture->width);  //texture x cordinate
+	step = (double)wall_texture->height / ray->line_height; // x achse durch ray , x wert 3, 5 an der wand
 	texture_position = (ray->draw_start - cub3d->window_height / 2 + ray->line_height / 2) * step;
-    // ceiling
     y = 0;
-
-	//draw_ceiling(y, cub3d, ray, x);
     while (y < ray->draw_start)
-	{
-		mlx_put_pixel(cub3d->img, x, y, r_ceil(cub3d));
-		y++;
-	}
+		mlx_put_pixel(cub3d->img, x, y++, r_ceil(cub3d));
     while (y <= ray->draw_end)
 	{
 		color = texture_pix[(int)texture_position * wall_texture->width + text_x];
@@ -128,15 +123,5 @@ void draw_column( t_cub3d *cub3d, t_ray *ray, int x)
 		y++;
 	}
 	while (y < (int)cub3d->window_height)
-	{
-		mlx_put_pixel(cub3d->img, x, y, r_floor(cub3d));
-		y++;
-	}
+		mlx_put_pixel(cub3d->img, x, y++, r_floor(cub3d));
 }
-
-
-// check for horizontall flip 
-    // ray looks east  pos x direction && ray points north (neg y direction )
-    //if ((ray->side == 0  && ray->delta_x > 0 ) || (ray->side == 1 && ray->delta_y < 0))
-    //    text_x = cub3d->graphics->north.texture->width - text_x -1; // for 64 pixel img, 63 last valid 
-    // 
