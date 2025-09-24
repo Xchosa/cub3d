@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 11:32:45 by mimalek           #+#    #+#             */
-/*   Updated: 2025/09/24 10:37:24 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/09/24 11:13:07 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,8 @@ void	move_player(t_cub3d *cub3d)
 // movement_speed (50), rotation_speed (90) are defined 
 void	update_player_pos(t_cub3d *cub3d, double fps, double px_d, double py_d)
 {
-	int		new_grid_x;
-	int		new_grid_y;
+	//int		new_grid_x;
+	//int		new_grid_y;
 	double	player_rad;
 	double	forward_x;
 	double	forward_y;
@@ -82,10 +82,10 @@ void	update_player_pos(t_cub3d *cub3d, double fps, double px_d, double py_d)
 		py_d += right_y * movement_speed * fps;			
 	}
 	rotate_player_keys(cub3d, fps);
-	new_grid_x = (int)((cub3d->player.px_x + px_d - 1) / cub3d->minimap.square_size);
-	new_grid_y = (int)((cub3d->player.px_y + py_d - 1) / cub3d->minimap.square_size);
-
-	if (check_for_wall(new_grid_x, new_grid_y,cub3d) == true)
+	//new_grid_x = (int)((cub3d->player.px_x + px_d - 1) / cub3d->minimap.square_size);
+	//new_grid_y = (int)((cub3d->player.px_y + py_d - 1) / cub3d->minimap.square_size);
+	//if (check_for_wall(new_grid_x, new_grid_y,cub3d) == true)
+	if (check_for_wall(cub3d, px_d, py_d) == true)
 		update_y_and_x(cub3d,px_d,py_d);
 }
 

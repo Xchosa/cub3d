@@ -196,7 +196,8 @@ void		rotate_player(t_cub3d *cub3d, double angle_change);
 void		handle_toggles(t_cub3d *cub3d);
 
 void		update_y_and_x(t_cub3d *cub3d, double px_d, double py_d);
-bool		check_for_wall(int	new_grid_x, int new_grid_y, t_cub3d *cub3d);
+//bool		check_for_wall(t_cub3d *cub3d);
+bool		check_for_wall(t_cub3d *cub3d,  double px_d, double py_d);
 void		rotate_player_keys(t_cub3d *cub3d, double fps);
 bool		ft_validate_parse_file(t_cub3d *data, int fd);
 int			argument_check(int argc, char **argv);
