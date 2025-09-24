@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_minimap_grid.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: poverbec <poverbec@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 14:08:50 by poverbec          #+#    #+#             */
-/*   Updated: 2025/08/11 11:39:51 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/09/24 09:43:15 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ bool	init_minimap(t_cub3d *cub3d)
 
 
 // ueberschreibt nicht 
+//	print_array(cub3d->minimap.map_grid);
 bool	map_to_grid(t_cub3d *cub3d)
 {
 	int	y;
@@ -37,7 +38,6 @@ bool	map_to_grid(t_cub3d *cub3d)
 	y = 0;
 	y_height_map  = get_map_height(cub3d->map);
 
-	print_array(cub3d->minimap.map_grid);
 	while (y < cub3d->minimap.map_height)
 	{
 		x = 0;
@@ -56,8 +56,5 @@ bool	map_to_grid(t_cub3d *cub3d)
 		}
 		y++;
 	}
-	print_array(cub3d->minimap.map_grid);
 	return (true);
 }
-
-

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_map.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mimalek <mimalek@student.42.fr>            +#+  +:+       +#+        */
+/*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/01 11:10:15 by poverbec          #+#    #+#             */
-/*   Updated: 2025/08/27 13:37:48 by mimalek          ###   ########.fr       */
+/*   Updated: 2025/09/24 10:00:37 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,15 +53,11 @@ void	draw_map_background(t_cub3d *cub3d)
 		}
 		y++;
 	}
-	// Draw floor (bottom half)
 	while (y < cub3d->window_height)
 	{
 		x = 0;
 		while (x < cub3d->window_width)
-		{
-			mlx_put_pixel(cub3d->img, x, y, floor_color);
-			x++;
-		}
+			mlx_put_pixel(cub3d->img, x++, y, floor_color);
 		y++;
 	}
 }
@@ -72,11 +68,8 @@ int	get_map_height(char **map)
 
 	height = 0;
 	while (map[height])
-	{
 		height++;
-	}
 	return (height);
-
 }
 
 int	get_map_width(char **map)

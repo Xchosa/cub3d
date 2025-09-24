@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_minimap.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: poverbec <poverbec@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/01 11:14:56 by poverbec          #+#    #+#             */
-/*   Updated: 2025/08/11 15:40:36 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/09/24 09:42:43 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,8 +80,8 @@ void	draw_minimap_cells(t_cub3d *cub3d, int minimap_x, int minimap_y)
 		y++;
 	}
 }
-// start punkt +1 damit background damit kacheln entstehen 
 
+// start punkt +1 damit background damit kacheln entstehen 
 void	draw_square(t_cub3d *cub3d, uint32_t color, int start_x,
 		int start_y)
 {
@@ -108,4 +108,3 @@ void	draw_square(t_cub3d *cub3d, uint32_t color, int start_x,
 		y++;
 	}
 }
-

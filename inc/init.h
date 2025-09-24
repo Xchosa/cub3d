@@ -45,9 +45,6 @@
 # define GRAPHICS_LENGTH 6
 # define MAX_MAP_SIZE 100
 
-// cell_type minimap
-// # define WALL 1
-// # define BACKGROUND 3
 
 typedef	struct s_player
 {

@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   init_player.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/24 09:44:12 by poverbec          #+#    #+#             */
+/*   Updated: 2025/09/24 09:44:40 by poverbec         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "cub3d.h"
 #include "init.h"
@@ -30,21 +41,6 @@ void	init_player(t_cub3d *cub3d)
 	cub3d->player.direction = get_player_angle(cub3d->player.player_view);
 }
 
-// void	player_view_direction(t_cub3d *cub3d, int y, int x)
-// {
-// 	if ((ft_strchr("N", cub3d->map[y][x] ) != 0))
-// 		cub3d->player.direction = // 90 grad im bogenmas
-// 	else if ((ft_strchr("S", cub3d->map[y][x]) != 0))
-// 					// 270
-// 	else if ((ft_strchr("E", cub3d->map[y][x]) != 0))
-// 		cub3d->player.direction = 180;
-// 	else if ((ft_strchr("W", cub3d->map[y][x]) != 0))
-// 		cub3d->player.direction = 0;
-// }
-
-
-
-
 
 void	draw_player_minimap(t_cub3d *cub3d, double p_y, double p_x)
 {
@@ -73,8 +69,8 @@ void	draw_player_minimap(t_cub3d *cub3d, double p_y, double p_x)
 
 }
 
-
 void	set_player_view(t_cub3d *cub3d, char player_direction)
 {
 		cub3d->player.player_view = player_direction;
 }
+

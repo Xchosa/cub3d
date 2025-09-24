@@ -6,27 +6,20 @@
 /*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 10:52:53 by poverbec          #+#    #+#             */
-/*   Updated: 2025/09/23 15:39:48 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/09/24 09:45:38 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "cub3d.h"
 #include "init.h"
 
-
 bool	init_cub3d(t_cub3d *cub3d, char *map_path, int fd)
 {
-	// t_graphics	graphics;
-
-	// alles auf Null setzen und malloc
 	set_up_cub3d_defaults(cub3d);
 	if (init_textures(cub3d) == false)
 		return (false);
 	if (parse_map_file(cub3d, map_path, fd) == false)
 		return (false);
-	// for dynamic resizing of window
-	// extra function needed
 	if (create_mlx(cub3d) == false)
 		return (false);
 	if (fill_mlx_textures(cub3d) == false)
@@ -41,9 +34,7 @@ bool	init_cub3d(t_cub3d *cub3d, char *map_path, int fd)
 	return (true);
 }
 
-
 // only load one img for north/south east west the same 
-
 bool	init_textures(t_cub3d *cub3d)
 {
 	cub3d->graphics = malloc(sizeof(t_graphics));
@@ -58,11 +49,10 @@ bool	init_textures(t_cub3d *cub3d)
 	cub3d->graphics->west.used = false;
 	ft_memset(&cub3d->graphics->floor_colour, 0, sizeof(int));
 	ft_memset(&cub3d->graphics->ceiling_colour, 0, sizeof(int));
-	// *(cub3d->graphics->floor_colour) = YELLOW_COLOR;
-	// *(cub3d->graphics->ceiling_colour) = GREY_COLOR;
-
 	return (true);
 }
+// *(cub3d->graphics->floor_colour) = YELLOW_COLOR;
+// *(cub3d->graphics->ceiling_colour) = GREY_COLOR;
 
 bool	fill_mlx_textures(t_cub3d *cub3d)
 {
@@ -120,29 +110,3 @@ bool	create_mlx(t_cub3d *cub3d)
 	return (true);
 
 }
-
-
-
-// t_graphics	*get_map(t_graphics *graphics, char **argv)
-// {
-// 	ft_memset(graphics, 0, sizeof(graphics));
-// 	graphics->floor_colour = YELLOW_COLOR;
-// 	graphics->ceiling_colour = GREY_COLOR;
-// 	// graphics->north = upload_texture()
-// }
-
-// void	game_loop(void *param)
-// {
-// 	t_cub3d	*cub3d;
-
-// 	cub3d = (t_cub3d* )param;
-// 	if (mlx_is_key_down(cub3d->mlx, MLX_KEY_ESCAPE))
-// 		mlx_close_window(cub3d->mlx);
-// 	// movement of player logic
-
-// }
-
-// // t_img *upload_texture()
-// // {
-
-// // }
