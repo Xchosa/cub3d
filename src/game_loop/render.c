@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/27 13:06:12 by mimalek           #+#    #+#             */
-/*   Updated: 2025/09/23 15:12:37 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/09/24 12:44:55 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ void	perform_dda(t_cub3d *cub3d, t_ray *ray)
 		}
 	}
 }
+
 
 void	calculation_projection(t_cub3d *cub3d, t_ray *ray)
 {
@@ -116,6 +117,3 @@ void	calculation_projection(t_cub3d *cub3d, t_ray *ray)
 // 		y++;
 // 	}
 // }
-
-
-

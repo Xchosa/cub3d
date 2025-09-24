@@ -15,6 +15,7 @@
 
 # define movement_speed 50.0
 # define rotation_speed 90.0
+# define half_circle 1.57079
 //MAP
 # define MINIMAP_WIDTH 350
 # define MINIMAP_HEIGHT 210
@@ -197,7 +198,7 @@ void		handle_toggles(t_cub3d *cub3d);
 
 void		update_y_and_x(t_cub3d *cub3d, double px_d, double py_d);
 //bool		check_for_wall(t_cub3d *cub3d);
-bool		check_for_wall(t_cub3d *cub3d,  double px_d, double py_d);
+bool		check_wall_rotate(t_cub3d *cub3d,  double px_d, double py_d, double fps);
 void		rotate_player_keys(t_cub3d *cub3d, double fps);
 bool		ft_validate_parse_file(t_cub3d *data, int fd);
 int			argument_check(int argc, char **argv);

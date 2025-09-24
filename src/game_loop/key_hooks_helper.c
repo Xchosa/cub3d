@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 10:24:11 by poverbec          #+#    #+#             */
-/*   Updated: 2025/09/24 11:11:35 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/09/24 12:43:04 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,12 @@ void rotate_player_keys(t_cub3d *cub3d, double fps)
 }
 
 //bool check_for_wall(int	new_grid_x, int new_grid_y, t_cub3d *cub3d,  double px_d, double py_d)
-bool check_for_wall(t_cub3d *cub3d,  double px_d, double py_d)
+bool check_wall_rotate(t_cub3d *cub3d,  double px_d, double py_d, double fps)
 {
 	static int		new_grid_x;
 	static int		new_grid_y;
-
+	
+	rotate_player_keys(cub3d, fps);
 	new_grid_x = (int)((cub3d->player.px_x + px_d - 1) / cub3d->minimap.square_size);
 	new_grid_y = (int)((cub3d->player.px_y + py_d - 1) / cub3d->minimap.square_size);
 	
