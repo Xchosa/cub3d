@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minimap_rays.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mimalek <mimalek@student.42.fr>            +#+  +:+       +#+        */
+/*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/26 09:17:19 by mimalek           #+#    #+#             */
-/*   Updated: 2025/08/28 11:25:11 by mimalek          ###   ########.fr       */
+/*   Updated: 2025/09/24 10:43:45 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ void    cast_rays(t_cub3d *cub3d)
         cast_single_ray(cub3d, ray_angle);
         ray_index++;
     }
-    
 }
 
 // Gibt den Winkel vom Spieler wieder

@@ -6,8 +6,13 @@
 /*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 10:30:39 by poverbec          #+#    #+#             */
-/*   Updated: 2025/09/24 10:30:52 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/09/24 10:52:47 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+//move_player_right_for_key_w(t_cub3d *cub3d)
+//{
+	
+//}

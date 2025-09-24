@@ -49,6 +49,8 @@ MY_SOURCES = \
 		init_minimap_grid.c \
 		init_player.c \
 		render_walls.c \
+		key_hooks_helper.c \
+		key_hooks_move_helper.c \
 		clean_up.c
 
 
