@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/27 13:06:12 by mimalek           #+#    #+#             */
-/*   Updated: 2025/09/24 12:44:55 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/09/24 15:47:12 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,13 +62,32 @@ void	perform_dda(t_cub3d *cub3d, t_ray *ray)
 }
 
 
+// 1. degree to radian 270 degree to 4.71
+// atan2 radius angel (-pie , pie]
+// angle diff (difference between ray and Centre ray ) -> centrer rays have angle diff 0; 
+
+// calculate wall height on screen
+// calculate where to start drawing the wall - vertically 
+// cacculate where to stop drawing the wall 
+// if ray->side == 1 ,its a horizontal wall 
+// ensure for positive wall distance
+//
+//multiply wall_dist * coss (angle_diff)  -> as bigger the angle_diff -> smaller cos(angle_diff)
+//
 void	calculation_projection(t_cub3d *cub3d, t_ray *ray)
 {
+	double player_rad = cub3d->player.direction * M_PI / 180.0;
+    double ray_angle = atan2(ray->delta_y, ray->delta_x);
+    double angle_diff = ray_angle - player_rad;
+	
 	if (ray->side == 0)
-		ray->wall_dist = (ray->map_x - ray->ray_x + (1 - ray->step_x) / 2) / ray->delta_x;
+		ray->wall_dist = (ray->map_x - ray->ray_x + (1 - ray->step_x)/ 2) / ray->delta_x;
 	else
-		ray->wall_dist = (ray->map_y - ray->ray_y + (1 - ray->step_y) / 2) / ray->delta_y;
+		ray->wall_dist = (ray->map_y - ray->ray_y + (1 - ray->step_y)/ 2) / ray->delta_y;
 	ray->wall_dist = fabs(ray->wall_dist);
+
+    ray->wall_dist *= cos(angle_diff);
+	
 	ray->line_height = (int)(cub3d->window_height / ray->wall_dist);
 	ray->draw_start = -ray->line_height / 2 + cub3d->window_height / 2;
 	if (ray->draw_start < 0)

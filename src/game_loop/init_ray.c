@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/27 12:47:53 by mimalek           #+#    #+#             */
-/*   Updated: 2025/09/24 10:15:26 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/09/24 14:41:41 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void    init_ray(t_cub3d *cub3d, t_ray *ray, int x)
 
 // camera_x Bildschiirm Position auf Kamera Ebene (-1 bis +1)
 //player_rad Spieler Richtung in Radiant
-//fov_rad  Sichtfeld in Rad fov_rad; 180 grad 
+//fov_rad  Sichtfeld in Rad fov_rad; FOF is 60 degrees 
 //angle_offset  Endgultiger Ray-Winkel in Rad ray_rad;
 // Winkel Offset von Spieler-Richtung angle_offset, werden addiert fuer richtigen ray winkel
 static void calculate_ray_direction(t_cub3d *cub3d, t_ray *ray, int x)
@@ -39,7 +39,8 @@ static void calculate_ray_direction(t_cub3d *cub3d, t_ray *ray, int x)
     camera_x = 2 * x / (double)cub3d->window_width - 1; 
     player_rad = cub3d->player.direction * M_PI / 180.0;
     fov_rad = FOV * M_PI / 180.0;
-	angle_offset = atan(camera_x * tan(fov_rad / 2.0));
+    angle_offset = camera_x * (fov_rad /2);
+	//angle_offset = atan(camera_x * tan(fov_rad / 2.0));
     ray_rad = player_rad + angle_offset;
     ray->delta_x = cos(ray_rad);
     ray->delta_y = sin(ray_rad);
