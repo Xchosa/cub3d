@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 11:32:45 by mimalek           #+#    #+#             */
-/*   Updated: 2025/09/24 10:23:07 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/09/24 10:29:59 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,32 +42,6 @@ void	move_player(t_cub3d *cub3d)
 		fps = 0.1;
 	cub3d->player.time = time_now;
 	update_player_pos(cub3d, fps, px_d, py_d);
-}
-
-
-void rotate_player_keys(t_cub3d *cub3d, double fps)
-{
-	if (mlx_is_key_down(cub3d->mlx, MLX_KEY_LEFT))
-		rotate_player(cub3d, -rotation_speed * fps);
-	if (mlx_is_key_down(cub3d->mlx, MLX_KEY_RIGHT))
-		rotate_player(cub3d, rotation_speed * fps);
-}
-
-bool check_for_wall(int	new_grid_x, int new_grid_y, t_cub3d *cub3d)
-{
-	if (new_grid_x >= 0 && new_grid_x < cub3d->minimap.map_width &&
-		new_grid_y >= 0 && new_grid_y < cub3d->minimap.map_height &&
-		cub3d->minimap.map_grid[new_grid_y][new_grid_x] != '1')
-		return true;
-	else
-		return false;
-}
-
-
-void update_player_pos(t_cub3d *cub3d, double px_d, double py_d)
-{
-	cub3d->player.px_x += px_d;
-	cub3d->player.px_y += py_d;
 }
 
 
@@ -112,26 +86,8 @@ void	update_player_pos(t_cub3d *cub3d, double fps, double px_d, double py_d)
 	new_grid_y = (int)((cub3d->player.px_y + py_d - 1) / cub3d->minimap.square_size);
 
 	if (check_for_wall(new_grid_x, new_grid_y,cub3d) == true)
-		update_player_pos(cub3d,px_d,py_d);
-	
-	//if (new_grid_x >= 0 && new_grid_x < cub3d->minimap.map_width &&
-	//	new_grid_y >= 0 && new_grid_y < cub3d->minimap.map_height &&
-	//	cub3d->minimap.map_grid[new_grid_y][new_grid_x] != '1')
-	//{
-	//	cub3d->player.px_x += px_d;
-	//	cub3d->player.px_y += py_d;
-	//}
+		update_y_and_x(cub3d,px_d,py_d);
 }
-//Relativ selbsterklarend, hier wird nur die Player Richtung berechnet wenn man sich dreht
-void	rotate_player(t_cub3d *cub3d, double angle_change)
-{
-	cub3d->player.direction += angle_change;
-	if (cub3d->player.direction >= 360.0)
-		cub3d->player.direction -= 360.0;
-	if (cub3d->player.direction < 0.0)
-		cub3d->player.direction += 360.0;
-}
-
 
 // Hier geht es nur darum mit 'R' die rays (auf der minimap) unsichtbar/sichtbar zu machen
 // Und mit 'M' das selbe fur die ganze Minimap (M macht logischerweise gleichzeitig auch Rays unsichtbar)

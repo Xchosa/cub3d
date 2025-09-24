@@ -6,9 +6,43 @@
 /*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 10:24:11 by poverbec          #+#    #+#             */
-/*   Updated: 2025/09/24 10:24:22 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/09/24 10:30:03 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
+void rotate_player_keys(t_cub3d *cub3d, double fps)
+{
+	if (mlx_is_key_down(cub3d->mlx, MLX_KEY_LEFT))
+		rotate_player(cub3d, -rotation_speed * fps);
+	if (mlx_is_key_down(cub3d->mlx, MLX_KEY_RIGHT))
+		rotate_player(cub3d, rotation_speed * fps);
+}
+
+bool check_for_wall(int	new_grid_x, int new_grid_y, t_cub3d *cub3d)
+{
+	if (new_grid_x >= 0 && new_grid_x < cub3d->minimap.map_width &&
+		new_grid_y >= 0 && new_grid_y < cub3d->minimap.map_height &&
+		cub3d->minimap.map_grid[new_grid_y][new_grid_x] != '1')
+		return true;
+	else
+		return false;
+}
+
+
+void update_y_and_x(t_cub3d *cub3d, double px_d, double py_d)
+{
+	cub3d->player.px_x += px_d;
+	cub3d->player.px_y += py_d;
+}
+
+//Relativ selbsterklarend, hier wird nur die Player Richtung berechnet wenn man sich dreht
+void	rotate_player(t_cub3d *cub3d, double angle_change)
+{
+	cub3d->player.direction += angle_change;
+	if (cub3d->player.direction >= 360.0)
+		cub3d->player.direction -= 360.0;
+	if (cub3d->player.direction < 0.0)
+		cub3d->player.direction += 360.0;
+}
