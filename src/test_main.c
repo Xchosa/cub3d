@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 14:53:06 by poverbec          #+#    #+#             */
-/*   Updated: 2025/09/23 15:47:01 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/09/25 17:59:05 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,10 @@ int	main(int argc, char **argv)
 		cleanup_cub3d(&cub3d);
 		return (1);
 	}
-	// print_array(cub3d.map);
 	mlx_loop_hook(cub3d.mlx, game_loop, &cub3d);
-	// escape exit, player moving etc
 	mlx_loop(cub3d.mlx);
 	mlx_terminate(cub3d.mlx);
 	cleanup_cub3d(&cub3d);
-	//printf("hello /n");
 	return (0);
 }
 

@@ -38,6 +38,7 @@ MY_SOURCES = \
 		parse.c \
 		parse_map.c \
 		parse_map_helper.c \
+		parse_map_helper_2.c \
 		render_map.c \
 		key_hooks.c \
 		minimap_rays.c \

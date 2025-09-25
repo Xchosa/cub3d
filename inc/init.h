@@ -24,6 +24,7 @@
 # define MINIMAP_CELL_GAP 2
 
 //Rays
+# define step_size 1;
 # define FOV 60.0 // Field of view in degrees
 # define NUM_RAYS 60 // Number of rays to cast
 # define RAY_COLOR 0xFF00FFFF // Magenta color for rays
@@ -195,6 +196,9 @@ bool		parse_map_file(t_cub3d *cub3d, char *map_path, int fd);
 void		game_loop(void *param);
 void		rotate_player(t_cub3d *cub3d, double angle_change);
 void		handle_toggles(t_cub3d *cub3d);
+void    	cast_single_ray(t_cub3d *cub3d, double angle);
+void		draw_single_ray(t_cub3d *cub3d, double ray_x, double ray_y);
+bool		boundary_and_wall_collision_check(t_cub3d *cub3d, int grid_x, int grid_y);
 
 void		update_y_and_x(t_cub3d *cub3d, double px_d, double py_d);
 //bool		check_for_wall(t_cub3d *cub3d);
@@ -211,6 +215,7 @@ char		**pad_map(char **map);
 bool		ft_validate_map(char **map);
 bool		is_walkable(char c);
 
+
 void	print_array(char **array);
 void    cast_rays(t_cub3d *cub3d);
 double  get_player_angle(char direction);
@@ -225,7 +230,3 @@ void	calculation_projection(t_cub3d *cub3d, t_ray *ray);
 void	draw_column(t_cub3d *cub3d, t_ray *ray, int x);
 #endif
 
-// To do
-// minimap anfangen erstllen
-//
-// raycasting

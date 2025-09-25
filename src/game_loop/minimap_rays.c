@@ -6,13 +6,12 @@
 /*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/26 09:17:19 by mimalek           #+#    #+#             */
-/*   Updated: 2025/09/24 10:43:45 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/09/25 18:24:34 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static void    cast_single_ray(t_cub3d *cub3d, double angle);
 
 void    cast_rays(t_cub3d *cub3d)
 {
@@ -46,14 +45,16 @@ double  get_player_angle(char direction)
     return (0.0);
 }
 
-// 
-static void    cast_single_ray(t_cub3d *cub3d, double angle)
+// rad angle, konvertiert gradzahl in dezimal
+// max ray length 200, ray max 200 pixel so lange wird gezeichnet, 
+// 1 pixel pro Schritt(max 200 px)
+void    cast_single_ray(t_cub3d *cub3d, double angle)
 {
-    double  ray_x; // Aktuelle Ray Position (in Pixel) x-Wert
+    double  ray_x; 
     double  ray_y; // Aktuelle Ray Position (in Pixel) y-Wert
     double  dx; // Ray Richtungs Vektor - x-wert
     double  dy; // Ray Richtungs Vektor - y-wert
-    double  step_size; // Wie weit ein Schritt ist
+    //double  step_size; // Wie weit ein Schritt ist
     int     steps; // Step Counter
     int     grid_x; // Aktuelle Grid Position - x-Wert
     int     grid_y; // Aktuelle Grid Position - y-Wert
@@ -64,7 +65,7 @@ static void    cast_single_ray(t_cub3d *cub3d, double angle)
     dy = sin(rad_angle); // Y - Komponente der Richtung
     ray_x = cub3d->player.px_x; // Start bei Player's Pixel X
     ray_y = cub3d->player.px_y; // Start bei Player's Pixel Y
-    step_size = 1.0; // ! Pixel pro Schritt
+    //step_size = 1.0; // ! Pixel pro Schritt
     steps = 0; // Reset den Step Counter
     while (steps < RAY_LENGTH) // Bis die Lange eines Rays erreicht ist
     {
@@ -72,14 +73,36 @@ static void    cast_single_ray(t_cub3d *cub3d, double angle)
         ray_y += dy * step_size; // |->
         grid_x = (int)((ray_x - 1) / cub3d->minimap.square_size); // Konvertierun in die Grid-Cells
         grid_y = (int)((ray_y - 1) / cub3d->minimap.square_size); // |->
-        if (grid_x < 0 || grid_x >= cub3d->minimap.map_width ||
-            grid_y < 0 || grid_y >= cub3d->minimap.map_height) // Boundary Check falls player aus der Map kommt
+        if (boundary_and_wall_collision_check(cub3d,grid_x, grid_y) == false)
             break;
-        if (cub3d->minimap.map_grid[grid_y][grid_x] == '1') // Wall Collision Check
-            break;
-        if (ray_x >= 0 && ray_x < cub3d->window_width &&
-            ray_y >= 0 && ray_y < cub3d->window_height) // Hier wird der Pixel dann gemalt
-            mlx_put_pixel(cub3d->img, (int)ray_x, (int)ray_y, RAY_COLOR);
-        steps++; // Nachster Step
+        //if (grid_x < 0 || grid_x >= cub3d->minimap.map_width ||
+        //    grid_y < 0 || grid_y >= cub3d->minimap.map_height) // Boundary Check falls player aus der Map kommt
+        //    break;
+        //if (cub3d->minimap.map_grid[grid_y][grid_x] == '1') // Wall Collision Check
+        //    break;
+        draw_single_ray(cub3d, ray_x, ray_y);
+        //if (ray_x >= 0 && ray_x < cub3d->window_width &&
+        //    ray_y >= 0 && ray_y < cub3d->window_height)
+        //    mlx_put_pixel(cub3d->img, (int)ray_x, (int)ray_y, RAY_COLOR);
+        steps++;
     }
+}
+
+void draw_single_ray(t_cub3d *cub3d, double ray_x, double ray_y)
+{
+    if (ray_x >= 0 && ray_x < cub3d->window_width &&
+        ray_y >= 0 && ray_y < cub3d->window_height)
+            mlx_put_pixel(cub3d->img, (int)ray_x, (int)ray_y, RAY_COLOR);
+}
+
+// Boundary Check falls player aus der Map kommt
+// Wall Collision Check
+bool boundary_and_wall_collision_check(t_cub3d *cub3d, int grid_x, int grid_y)
+{
+    if (grid_x < 0 || grid_x >= cub3d->minimap.map_width ||
+        grid_y < 0 || grid_y >= cub3d->minimap.map_height)
+            return (false);
+    if (cub3d->minimap.map_grid[grid_y][grid_x] == '1')
+        return (false);
+    return (true);
 }
