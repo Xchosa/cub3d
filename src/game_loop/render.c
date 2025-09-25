@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/27 13:06:12 by mimalek           #+#    #+#             */
-/*   Updated: 2025/09/24 15:47:12 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/09/25 18:36:17 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ void	render_frame(t_cub3d *cub3d)
 		x++;
 	}
 }
-
 
 // Digital Differential Analyzer DDA algo to find intersections
 void	perform_dda(t_cub3d *cub3d, t_ray *ray) 

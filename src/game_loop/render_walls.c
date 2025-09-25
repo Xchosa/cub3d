@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 14:52:35 by poverbec          #+#    #+#             */
-/*   Updated: 2025/09/23 16:12:42 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/09/25 18:36:05 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,18 @@
 // // load textures in cub3d->graphics->north
 // // load img in cub3d->graphics->north correctly
 
-
+// east, west, north, south walls bekommen unterschiedliche graphics 
 mlx_texture_t *load_wall_texture(t_cub3d *cub3d, t_ray *ray)
 {
     mlx_texture_t	*wall_texture;
 
-	if (ray->side == 0 && ray->delta_x > 0) // vertical wall, ray points to positive x direction (east)
+	if (ray->side == 0 && ray->delta_x > 0)
 		wall_texture = cub3d->graphics->east.texture;
-	else if (ray->side == 0 && ray->delta_x < 0) // vertical wall, ray points to negative x direction (west)
+	else if (ray->side == 0 && ray->delta_x < 0)
 		wall_texture = cub3d->graphics->west.texture;
-	else if (ray->side == 1 && ray->delta_y > 0) // horizontal wall, ray points to positive y direction (south)
+	else if (ray->side == 1 && ray->delta_y > 0)
 		wall_texture = cub3d->graphics->south.texture;
-	else // horizontal wall, ray points to negative y direction (north)
+	else
     	wall_texture = cub3d->graphics->north.texture;
 	
     return(wall_texture);
@@ -78,6 +78,7 @@ uint32_t r_floor(t_cub3d *cub3d)
                     0xFF;
 	return(floor_color);
 }
+
 // exact x cordinate on texture for one singe ray 
 double x_array_texture(t_ray *ray)
 {

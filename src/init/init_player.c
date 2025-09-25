@@ -6,14 +6,14 @@
 /*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 09:44:12 by poverbec          #+#    #+#             */
-/*   Updated: 2025/09/24 09:44:40 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/09/25 18:37:08 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 #include "init.h"
 
-
+// setzt player mittig im square von minimap
 void	init_player(t_cub3d *cub3d)
 {
 	int	x;
@@ -28,11 +28,8 @@ void	init_player(t_cub3d *cub3d)
 			if (ft_strchr("NSEW", cub3d->minimap.map_grid[y][x] ) != 0)
 			{
 				set_player_view(cub3d, cub3d->minimap.map_grid[y][x]);
-				cub3d->player.px_x = x * cub3d->minimap.square_size + (cub3d->minimap.square_size/2) + 1; // mitte vom square
+				cub3d->player.px_x = x * cub3d->minimap.square_size + (cub3d->minimap.square_size/2) + 1;
 				cub3d->player.px_y = y * cub3d->minimap.square_size + (cub3d->minimap.square_size /2) + 1;
-				//mlx_put_pixel(cub3d->img, cub3d->player.px_x, cub3d->player.px_y, PLAYER_COLOR);
-				//draw_player_minimap(cub3d, cub3d->player.px_y, cub3d->player.px_x);
-				// player_view_direction(cub3d, y, x);
 			}
 			x++;
 		}
