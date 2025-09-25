@@ -1,0 +1,1900 @@
+==534857== Memcheck, a memory error detector
+==534857== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
+==534857== Using Valgrind-3.22.0-bd4db67b1d-20231031 and LibVEX; rerun with -h for copyright info
+==534857== Command: ./cub3d maps/test.cub
+==534857== Parent PID: 534856
+==534857== 
+--534857-- 
+--534857-- Valgrind options:
+--534857--    --tool=memcheck
+--534857--    --leak-check=full
+--534857--    --show-leak-kinds=all
+--534857--    --track-origins=yes
+--534857--    --verbose
+--534857--    --log-file=valgrind_output.txt
+--534857-- Contents of /proc/version:
+--534857--   Linux version 6.14.0-29-generic (buildd@lcy02-amd64-105) (x86_64-linux-gnu-gcc-13 (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0, GNU ld (GNU Binutils for Ubuntu) 2.42) #29~24.04.1-Ubuntu SMP PREEMPT_DYNAMIC Thu Aug 14 16:52:50 UTC 2
+--534857-- 
+--534857-- Arch and hwcaps: AMD64, LittleEndian, amd64-cx16-lzcnt-rdtscp-sse3-ssse3-avx-avx2-bmi-f16c-rdrand-rdseed
+--534857-- Page sizes: currently 4096, max supported 4096
+--534857-- Valgrind library directory: /usr/libexec/valgrind
+--534857-- Reading syms from /home/poverbec/it_projects/cub3d/cub3d
+--534857-- Reading syms from /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2
+--534857--   Considering /usr/lib/debug/.build-id/52/0e05878220fb2fc6d28ff46b63b3fd5d48e763.debug ..
+--534857--   .. build-id is valid
+--534857-- Reading syms from /usr/libexec/valgrind/memcheck-amd64-linux
+--534857--    object doesn't have a dynamic symbol table
+--534857-- Scheduler: using generic scheduler lock implementation.
+--534857-- Reading suppressions file: /usr/libexec/valgrind/default.supp
+==534857== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-534857-by-poverbec-on-???
+==534857== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-534857-by-poverbec-on-???
+==534857== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-534857-by-poverbec-on-???
+==534857== 
+==534857== TO CONTROL THIS PROCESS USING vgdb (which you probably
+==534857== don't want to do, unless you know exactly what you're doing,
+==534857== or are doing some strange experiment):
+==534857==   /usr/bin/vgdb --pid=534857 ...command...
+==534857== 
+==534857== TO DEBUG THIS PROCESS USING GDB: start GDB like this
+==534857==   /path/to/gdb ./cub3d
+==534857== and then give GDB the following command
+==534857==   target remote | /usr/bin/vgdb --pid=534857
+==534857== --pid is optional if only one valgrind process is running
+==534857== 
+--534857-- REDIR: 0x4028b00 (ld-linux-x86-64.so.2:strlen) redirected to 0x580c2e1a (???)
+--534857-- REDIR: 0x40272b0 (ld-linux-x86-64.so.2:index) redirected to 0x580c2e34 (???)
+--534857-- Reading syms from /usr/libexec/valgrind/vgpreload_core-amd64-linux.so
+--534857-- Reading syms from /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so
+==534857== WARNING: new redirection conflicts with existing -- ignoring it
+--534857--     old: 0x04028b00 (strlen              ) R-> (0000.0) 0x580c2e1a ???
+--534857--     new: 0x04028b00 (strlen              ) R-> (2007.0) 0x0484f340 strlen
+--534857-- REDIR: 0x40274e0 (ld-linux-x86-64.so.2:strcmp) redirected to 0x4850460 (strcmp)
+--534857-- REDIR: 0x4026910 (ld-linux-x86-64.so.2:mempcpy) redirected to 0x4853cd0 (mempcpy)
+--534857-- Reading syms from /usr/lib/x86_64-linux-gnu/libglfw.so.3.3
+--534857-- Reading syms from /usr/lib/x86_64-linux-gnu/libm.so.6
+--534857-- Reading syms from /usr/lib/x86_64-linux-gnu/libc.so.6
+--534857--   Considering /usr/lib/debug/.build-id/27/4eec488d230825a136fa9c4d85370fed7a0a5e.debug ..
+--534857--   .. build-id is valid
+--534857-- Reading syms from /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0
+--534857-- Reading syms from /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0
+--534857-- Reading syms from /usr/lib/x86_64-linux-gnu/libXau.so.6.0.0
+--534857-- Reading syms from /usr/lib/x86_64-linux-gnu/libXdmcp.so.6.0.0
+--534857-- Reading syms from /usr/lib/x86_64-linux-gnu/libbsd.so.0.12.1
+--534857-- Reading syms from /usr/lib/x86_64-linux-gnu/libmd.so.0.1.0
+--534857-- REDIR: 0x4028ca0 (ld-linux-x86-64.so.2:strncmp) redirected to 0x484fc90 (strncmp)
+--534857-- REDIR: 0x4a71050 (libc.so.6:strnlen) redirected to 0x483d1c0 (_vgnU_ifunc_wrapper)
+--534857-- REDIR: 0x4a710e0 (libc.so.6:strpbrk) redirected to 0x483d1c0 (_vgnU_ifunc_wrapper)
+--534857-- REDIR: 0x4a6f1a0 (libc.so.6:strcmp) redirected to 0x483d1c0 (_vgnU_ifunc_wrapper)
+--534857-- REDIR: 0x4a883b0 (libc.so.6:wcsnlen) redirected to 0x483d1c0 (_vgnU_ifunc_wrapper)
+--534857-- REDIR: 0x4a6e290 (libc.so.6:memset) redirected to 0x483d1c0 (_vgnU_ifunc_wrapper)
+--534857-- REDIR: 0x4a87b20 (libc.so.6:wcslen) redirected to 0x483d1c0 (_vgnU_ifunc_wrapper)
+--534857-- REDIR: 0x4af33f0 (libc.so.6:__memcpy_chk) redirected to 0x483d1c0 (_vgnU_ifunc_wrapper)
+--534857-- REDIR: 0x4a6e200 (libc.so.6:memrchr) redirected to 0x483d1c0 (_vgnU_ifunc_wrapper)
+--534857-- REDIR: 0x4a88350 (libc.so.6:wcsncpy) redirected to 0x483d1c0 (_vgnU_ifunc_wrapper)
+--534857-- REDIR: 0x4a6d720 (libc.so.6:memcpy@@GLIBC_2.14) redirected to 0x483d1c0 (_vgnU_ifunc_wrapper)
+--534857-- REDIR: 0x4a868e0 (libc.so.6:wcschr) redirected to 0x483d1c0 (_vgnU_ifunc_wrapper)
+--534857-- REDIR: 0x4a6f090 (libc.so.6:index) redirected to 0x483d1c0 (_vgnU_ifunc_wrapper)
+--534857-- REDIR: 0x4a71110 (libc.so.6:rindex) redirected to 0x483d1c0 (_vgnU_ifunc_wrapper)
+--534857-- REDIR: 0x4a86990 (libc.so.6:wcscmp) redirected to 0x483d1c0 (_vgnU_ifunc_wrapper)
+--534857-- REDIR: 0x4a6e4b0 (libc.so.6:stpncpy) redirected to 0x483d1c0 (_vgnU_ifunc_wrapper)
+--534857-- REDIR: 0x4a94eb0 (libc.so.6:wmemchr) redirected to 0x483d1c0 (_vgnU_ifunc_wrapper)
+--534857-- REDIR: 0x4a70ef0 (libc.so.6:strncmp) redirected to 0x483d1c0 (_vgnU_ifunc_wrapper)
+--534857-- REDIR: 0x4a6e510 (libc.so.6:strcasecmp) redirected to 0x483d1c0 (_vgnU_ifunc_wrapper)
+--534857-- REDIR: 0x4a70310 (libc.so.6:strcspn) redirected to 0x483d1c0 (_vgnU_ifunc_wrapper)
+--534857-- REDIR: 0x4a878f0 (libc.so.6:wcscpy) redirected to 0x483d1c0 (_vgnU_ifunc_wrapper)
+--534857-- REDIR: 0x4a6f020 (libc.so.6:strcat) redirected to 0x483d1c0 (_vgnU_ifunc_wrapper)
+--534857-- REDIR: 0x4a70df0 (libc.so.6:strncasecmp_l) redirected to 0x483d1c0 (_vgnU_ifunc_wrapper)
+--534857-- REDIR: 0x4a6f110 (libc.so.6:strchrnul) redirected to 0x483d1c0 (_vgnU_ifunc_wrapper)
+--534857-- REDIR: 0x4a6d630 (libc.so.6:bcmp) redirected to 0x483d1c0 (_vgnU_ifunc_wrapper)
+--534857-- REDIR: 0x4a702a0 (libc.so.6:strcpy) redirected to 0x483d1c0 (_vgnU_ifunc_wrapper)
+--534857-- REDIR: 0x4a6e5b0 (libc.so.6:strcasecmp_l) redirected to 0x483d1c0 (_vgnU_ifunc_wrapper)
+--534857-- REDIR: 0x4a70cc0 (libc.so.6:strlen) redirected to 0x483d1c0 (_vgnU_ifunc_wrapper)
+--534857-- REDIR: 0x4a70f90 (libc.so.6:strncpy) redirected to 0x483d1c0 (_vgnU_ifunc_wrapper)
+--534857-- REDIR: 0x4a94f30 (libc.so.6:wmemcmp) redirected to 0x483d1c0 (_vgnU_ifunc_wrapper)
+--534857-- REDIR: 0x4af3510 (libc.so.6:__memmove_chk) redirected to 0x483d1c0 (_vgnU_ifunc_wrapper)
+==534857== WARNING: new redirection conflicts with existing -- ignoring it
+--534857--     old: 0x04b44a10 (__memcpy_chk_avx_una) R-> (2030.0) 0x04853dd0 __memcpy_chk
+--534857--     new: 0x04b44a10 (__memcpy_chk_avx_una) R-> (2024.0) 0x04853740 __memmove_chk
+--534857-- REDIR: 0x4a6e440 (libc.so.6:stpcpy) redirected to 0x483d1c0 (_vgnU_ifunc_wrapper)
+--534857-- REDIR: 0x4a6dfc0 (libc.so.6:memmove) redirected to 0x483d1c0 (_vgnU_ifunc_wrapper)
+==534857== Preferring higher priority redirection:
+--534857--     old: 0x04b44a40 (__memcpy_avx_unalign) R-> (2018.0) 0x04851580 __memcpy_avx_unaligned_erms
+--534857--     new: 0x04b44a40 (__memcpy_avx_unalign) R-> (2018.1) 0x04852d60 memmove
+--534857-- REDIR: 0x4a6d5b0 (libc.so.6:memchr) redirected to 0x483d1c0 (_vgnU_ifunc_wrapper)
+--534857-- REDIR: 0x4a712e0 (libc.so.6:strspn) redirected to 0x483d1c0 (_vgnU_ifunc_wrapper)
+--534857-- REDIR: 0x4a6e0e0 (libc.so.6:mempcpy) redirected to 0x483d1c0 (_vgnU_ifunc_wrapper)
+--534857-- REDIR: 0x4a70d50 (libc.so.6:strncasecmp) redirected to 0x483d1c0 (_vgnU_ifunc_wrapper)
+--534857-- REDIR: 0x4a71ba0 (libc.so.6:strstr) redirected to 0x483d1c0 (_vgnU_ifunc_wrapper)
+==534857== WARNING: new redirection conflicts with existing -- ignoring it
+--534857--     old: 0x04b44a10 (__memcpy_chk_avx_una) R-> (2030.0) 0x04853dd0 __memcpy_chk
+--534857--     new: 0x04b44a10 (__memcpy_chk_avx_una) R-> (2024.0) 0x04853740 __memmove_chk
+--534857-- REDIR: 0x4b49630 (libc.so.6:__strrchr_avx2) redirected to 0x484ed20 (rindex)
+--534857-- REDIR: 0x4a69650 (libc.so.6:malloc) redirected to 0x48467b0 (malloc)
+--534857-- REDIR: 0x4a69d30 (libc.so.6:free) redirected to 0x4849820 (free)
+==534857== Conditional jump or move depends on uninitialised value(s)
+==534857==    at 0x10D495: ft_parse_texture (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10B4CE: ft_parse_config_line (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10B367: ft_validate_parse_file (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10B251: parse_map_file (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10AAB5: init_cub3d (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10A962: main (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==  Uninitialised value was created by a heap allocation
+==534857==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==534857==    by 0x10B315: ft_validate_parse_file (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10B251: parse_map_file (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10AAB5: init_cub3d (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10A962: main (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857== 
+==534857== Conditional jump or move depends on uninitialised value(s)
+==534857==    at 0x10D495: ft_parse_texture (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10B618: ft_parse_config_line (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10B367: ft_validate_parse_file (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10B251: parse_map_file (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10AAB5: init_cub3d (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10A962: main (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==  Uninitialised value was created by a heap allocation
+==534857==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==534857==    by 0x10B315: ft_validate_parse_file (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10B251: parse_map_file (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10AAB5: init_cub3d (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10A962: main (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857== 
+==534857== Conditional jump or move depends on uninitialised value(s)
+==534857==    at 0x10D495: ft_parse_texture (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10B6BD: ft_parse_config_line (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10B367: ft_validate_parse_file (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10B251: parse_map_file (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10AAB5: init_cub3d (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10A962: main (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==  Uninitialised value was created by a heap allocation
+==534857==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==534857==    by 0x10B315: ft_validate_parse_file (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10B251: parse_map_file (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10AAB5: init_cub3d (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10A962: main (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857== 
+==534857== Conditional jump or move depends on uninitialised value(s)
+==534857==    at 0x10D495: ft_parse_texture (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10B573: ft_parse_config_line (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10B367: ft_validate_parse_file (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10B251: parse_map_file (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10AAB5: init_cub3d (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10A962: main (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==  Uninitialised value was created by a heap allocation
+==534857==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==534857==    by 0x10B315: ft_validate_parse_file (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10B251: parse_map_file (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10AAB5: init_cub3d (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10A962: main (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857== 
+==534857== Conditional jump or move depends on uninitialised value(s)
+==534857==    at 0x10B7E1: ft_parse_color (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10B77B: ft_parse_config_line (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10B367: ft_validate_parse_file (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10B251: parse_map_file (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10AAB5: init_cub3d (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10A962: main (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==  Uninitialised value was created by a heap allocation
+==534857==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==534857==    by 0x10B315: ft_validate_parse_file (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10B251: parse_map_file (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10AAB5: init_cub3d (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10A962: main (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857== 
+==534857== Conditional jump or move depends on uninitialised value(s)
+==534857==    at 0x10B7E1: ft_parse_color (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10B71C: ft_parse_config_line (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10B367: ft_validate_parse_file (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10B251: parse_map_file (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10AAB5: init_cub3d (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10A962: main (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==  Uninitialised value was created by a heap allocation
+==534857==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==534857==    by 0x10B315: ft_validate_parse_file (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10B251: parse_map_file (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10AAB5: init_cub3d (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10A962: main (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857== 
+--534857-- REDIR: 0x4b45440 (libc.so.6:__memset_avx2_unaligned_erms) redirected to 0x4852c50 (memset)
+--534857-- REDIR: 0x4b46fd0 (libc.so.6:__strcmp_avx2) redirected to 0x4850360 (strcmp)
+--534857-- REDIR: 0x4b47780 (libc.so.6:__strlen_avx2) redirected to 0x484f220 (strlen)
+--534857-- REDIR: 0x4b48860 (libc.so.6:__strncmp_avx2) redirected to 0x484fab0 (strncmp)
+--534857-- REDIR: 0x4a6a0a0 (libc.so.6:realloc) redirected to 0x484db00 (realloc)
+--534857-- REDIR: 0x4b44040 (libc.so.6:__memchr_avx2) redirected to 0x48504e0 (memchr)
+--534857-- REDIR: 0x4b44a00 (libc.so.6:__mempcpy_avx_unaligned_erms) redirected to 0x48538d0 (mempcpy)
+--534857-- REDIR: 0x4b46ba0 (libc.so.6:__strchr_avx2) redirected to 0x484ef00 (index)
+--534857-- REDIR: 0x4b44a40 (libc.so.6:__memcpy_avx_unaligned_erms) redirected to 0x4852d60 (memmove)
+--534857-- REDIR: 0x4b45e90 (libc.so.6:__strcasecmp_l_avx2) redirected to 0x484ff70 (strcasecmp_l)
+--534857-- REDIR: 0x4b44a10 (libc.so.6:__memcpy_chk_avx_unaligned_erms) redirected to 0x4853dd0 (__memcpy_chk)
+--534857-- REDIR: 0x4b456f0 (libc.so.6:__stpcpy_avx2) redirected to 0x48525a0 (stpcpy)
+--534857-- REDIR: 0x4b49360 (libc.so.6:__strnlen_avx2) redirected to 0x484f1c0 (strnlen)
+--534857-- REDIR: 0x4a6a7a0 (libc.so.6:calloc) redirected to 0x484d8a0 (calloc)
+--534857-- REDIR: 0x4b46de0 (libc.so.6:__strchrnul_avx2) redirected to 0x48537b0 (strchrnul)
+--534857-- REDIR: 0x4af3fc0 (libc.so.6:__strcpy_chk) redirected to 0x4853830 (__strcpy_chk)
+--534857-- REDIR: 0x4b442e0 (libc.so.6:__memcmp_avx2_movbe) redirected to 0x4852480 (bcmp)
+--534857-- REDIR: 0x4b48ec0 (libc.so.6:__strncpy_avx2) redirected to 0x484f4f0 (strncpy)
+--534857-- REDIR: 0x4a83e10 (libc.so.6:__strstr_sse2_unaligned) redirected to 0x4853e40 (strstr)
+--534857-- Reading syms from /usr/lib/x86_64-linux-gnu/libXxf86vm.so.1.0.0
+--534857-- Reading syms from /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0
+--534857-- Reading syms from /usr/lib/x86_64-linux-gnu/libXi.so.6.1.0
+--534857-- Reading syms from /usr/lib/x86_64-linux-gnu/libXrandr.so.2.2.0
+--534857-- Reading syms from /usr/lib/x86_64-linux-gnu/libXrender.so.1.3.0
+--534857-- Reading syms from /usr/lib/x86_64-linux-gnu/libXcursor.so.1.0.2
+--534857-- Reading syms from /usr/lib/x86_64-linux-gnu/libXfixes.so.3.1.0
+--534857-- Reading syms from /usr/lib/x86_64-linux-gnu/libXinerama.so.1.0.0
+--534857-- Reading syms from /usr/lib/x86_64-linux-gnu/libX11-xcb.so.1.0.0
+--534857-- REDIR: 0x4b63fb0 (libc.so.6:__strcspn_sse42) redirected to 0x4854010 (strcspn)
+--534857-- REDIR: 0x4b66c50 (libc.so.6:__strspn_sse42) redirected to 0x4854110 (strspn)
+--534857-- Reading syms from /usr/lib/x86_64-linux-gnu/libGLX.so.0.0.0
+--534857-- Reading syms from /usr/lib/x86_64-linux-gnu/libGLdispatch.so.0.0.0
+--534857-- Reading syms from /usr/lib/x86_64-linux-gnu/libGLX_nvidia.so.535.247.01
+--534857-- Reading syms from /usr/lib/x86_64-linux-gnu/libnvidia-glsi.so.535.247.01
+--534857-- Reading syms from /usr/lib/x86_64-linux-gnu/libnvidia-tls.so.535.247.01
+--534857-- Reading syms from /usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.535.247.01
+--534857-- Reading syms from /usr/lib/x86_64-linux-gnu/libdl.so.2
+--534857-- Reading syms from /usr/lib/x86_64-linux-gnu/libpthread.so.0
+--534857--   Considering /usr/lib/debug/.build-id/18/cf3083739f4126e38b1927ae330c745ddb0259.debug ..
+--534857--   .. build-id is valid
+--534857-- Reading syms from /usr/lib/x86_64-linux-gnu/librt.so.1
+==534857== realloc() with size 0
+==534857==    at 0x484DB80: realloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==534857==    by 0x6DBA0FF: ??? (in /usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.535.247.01)
+==534857==    by 0x536D996: ??? (in /usr/lib/x86_64-linux-gnu/libGLX_nvidia.so.535.247.01)
+==534857==    by 0x53C6471: ??? (in /usr/lib/x86_64-linux-gnu/libGLX_nvidia.so.535.247.01)
+==534857==    by 0x536D012: ??? (in /usr/lib/x86_64-linux-gnu/libGLX_nvidia.so.535.247.01)
+==534857==    by 0x4005823: call_init (dl-init.c:120)
+==534857==    by 0x4005823: _dl_init (dl-init.c:121)
+==534857==    by 0x40015B1: _dl_catch_exception (dl-catch.c:211)
+==534857==    by 0x400CD7B: dl_open_worker (dl-open.c:829)
+==534857==    by 0x400CD7B: dl_open_worker (dl-open.c:792)
+==534857==    by 0x400151B: _dl_catch_exception (dl-catch.c:237)
+==534857==    by 0x400D163: _dl_open (dl-open.c:905)
+==534857==    by 0x4A541A3: dlopen_doit (dlopen.c:56)
+==534857==    by 0x400151B: _dl_catch_exception (dl-catch.c:237)
+==534857==  Address 0x4e44860 is 0 bytes after a block of size 0 alloc'd
+==534857==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==534857==    by 0x6DBA0EF: ??? (in /usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.535.247.01)
+==534857==    by 0x536D996: ??? (in /usr/lib/x86_64-linux-gnu/libGLX_nvidia.so.535.247.01)
+==534857==    by 0x53C6471: ??? (in /usr/lib/x86_64-linux-gnu/libGLX_nvidia.so.535.247.01)
+==534857==    by 0x536D012: ??? (in /usr/lib/x86_64-linux-gnu/libGLX_nvidia.so.535.247.01)
+==534857==    by 0x4005823: call_init (dl-init.c:120)
+==534857==    by 0x4005823: _dl_init (dl-init.c:121)
+==534857==    by 0x40015B1: _dl_catch_exception (dl-catch.c:211)
+==534857==    by 0x400CD7B: dl_open_worker (dl-open.c:829)
+==534857==    by 0x400CD7B: dl_open_worker (dl-open.c:792)
+==534857==    by 0x400151B: _dl_catch_exception (dl-catch.c:237)
+==534857==    by 0x400D163: _dl_open (dl-open.c:905)
+==534857==    by 0x4A541A3: dlopen_doit (dlopen.c:56)
+==534857==    by 0x400151B: _dl_catch_exception (dl-catch.c:237)
+==534857== 
+--534857-- REDIR: 0x4a6b430 (libc.so.6:posix_memalign) redirected to 0x484e260 (posix_memalign)
+==534857== posix_memalign() invalid size value: 0
+==534857==    at 0x484E2E8: posix_memalign (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==534857==    by 0x6DBA135: ??? (in /usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.535.247.01)
+==534857==    by 0x536D996: ??? (in /usr/lib/x86_64-linux-gnu/libGLX_nvidia.so.535.247.01)
+==534857==    by 0x53C6471: ??? (in /usr/lib/x86_64-linux-gnu/libGLX_nvidia.so.535.247.01)
+==534857==    by 0x536D012: ??? (in /usr/lib/x86_64-linux-gnu/libGLX_nvidia.so.535.247.01)
+==534857==    by 0x4005823: call_init (dl-init.c:120)
+==534857==    by 0x4005823: _dl_init (dl-init.c:121)
+==534857==    by 0x40015B1: _dl_catch_exception (dl-catch.c:211)
+==534857==    by 0x400CD7B: dl_open_worker (dl-open.c:829)
+==534857==    by 0x400CD7B: dl_open_worker (dl-open.c:792)
+==534857==    by 0x400151B: _dl_catch_exception (dl-catch.c:237)
+==534857==    by 0x400D163: _dl_open (dl-open.c:905)
+==534857==    by 0x4A541A3: dlopen_doit (dlopen.c:56)
+==534857==    by 0x400151B: _dl_catch_exception (dl-catch.c:237)
+==534857== 
+--534857-- REDIR: 0x4b45e80 (libc.so.6:__strcasecmp_avx2) redirected to 0x484fcf0 (strcasecmp)
+--534857-- REDIR: 0x4b47530 (libc.so.6:__strcpy_avx2) redirected to 0x484f370 (strcpy)
+--534857-- REDIR: 0x4a76870 (libc.so.6:memcpy@GLIBC_2.2.5) redirected to 0x4850590 (memcpy@GLIBC_2.2.5)
+--534857-- REDIR: 0x4b46890 (libc.so.6:__strcat_avx2) redirected to 0x484ef30 (strcat)
+--534857-- Reading syms from /usr/lib/x86_64-linux-gnu/libnvidia-glvkspirv.so.535.247.01
+--534857-- Reading syms from /usr/lib/x86_64-linux-gnu/libxcb-glx.so.0.0.0
+--534857-- memcheck GC: 1000 nodes, 94 survivors (9.4%)
+--534857-- Discarding syms at 0x522d040-0x522d11f in /usr/lib/x86_64-linux-gnu/libX11-xcb.so.1.0.0 (have_dinfo 1)
+--534857-- Discarding syms at 0x5215660-0x521a5ec in /usr/lib/x86_64-linux-gnu/libXcursor.so.1.0.2 (have_dinfo 1)
+--534857-- Discarding syms at 0x5221300-0x5223a4a in /usr/lib/x86_64-linux-gnu/libXfixes.so.3.1.0 (have_dinfo 1)
+--534857-- Discarding syms at 0x51fc3a0-0x5202ee9 in /usr/lib/x86_64-linux-gnu/libXrandr.so.2.2.0 (have_dinfo 1)
+--534857-- Discarding syms at 0x52281a0-0x5228b0e in /usr/lib/x86_64-linux-gnu/libXinerama.so.1.0.0 (have_dinfo 1)
+--534857-- Discarding syms at 0x5209440-0x520f787 in /usr/lib/x86_64-linux-gnu/libXrender.so.1.3.0 (have_dinfo 1)
+--534857-- Discarding syms at 0x4862240-0x4864a98 in /usr/lib/x86_64-linux-gnu/libXxf86vm.so.1.0.0 (have_dinfo 1)
+--534857-- Discarding syms at 0x51ea4a0-0x51f5b99 in /usr/lib/x86_64-linux-gnu/libXi.so.6.1.0 (have_dinfo 1)
+--534857-- Discarding syms at 0x5234700-0x524e371 in /usr/lib/x86_64-linux-gnu/libGLX.so.0.0.0 (have_dinfo 1)
+--534857-- Discarding syms at 0x52a52c0-0x52a742f in /usr/lib/x86_64-linux-gnu/libGLdispatch.so.0.0.0 (have_dinfo 1)
+--534857-- Discarding syms at 0x536d6b0-0x53c6491 in /usr/lib/x86_64-linux-gnu/libGLX_nvidia.so.535.247.01 (have_dinfo 1)
+--534857-- Discarding syms at 0x51d7600-0x51e1bce in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0 (have_dinfo 1)
+--534857-- Discarding syms at 0x56107d0-0x566dc02 in /usr/lib/x86_64-linux-gnu/libnvidia-glsi.so.535.247.01 (have_dinfo 1)
+--534857-- Discarding syms at 0x5ba1000-0x7425be1 in /usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.535.247.01 (have_dinfo 1)
+--534857-- Discarding syms at 0x5444050-0x5445bd1 in /usr/lib/x86_64-linux-gnu/libnvidia-tls.so.535.247.01 (have_dinfo 1)
+--534857-- Discarding syms at 0x9f81c60-0xbb502e2 in /usr/lib/x86_64-linux-gnu/libnvidia-glvkspirv.so.535.247.01 (have_dinfo 1)
+--534857-- Discarding syms at 0x544a040-0x544a105 in /usr/lib/x86_64-linux-gnu/libdl.so.2 (have_dinfo 1)
+--534857-- Discarding syms at 0x544f040-0x544f105 in /usr/lib/x86_64-linux-gnu/libpthread.so.0 (have_dinfo 1)
+==534857== 
+==534857== HEAP SUMMARY:
+==534857==     in use at exit: 383,848 bytes in 1,992 blocks
+==534857==   total heap usage: 8,368 allocs, 6,376 frees, 184,389,794 bytes allocated
+==534857== 
+==534857== Searching for pointers to 1,992 not-freed blocks
+==534857== Checked 703,824 bytes
+==534857== 
+==534857== 6 bytes in 1 blocks are still reachable in loss record 1 of 110
+==534857==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==534857==    by 0x4A7035E: strdup (strdup.c:42)
+==534857==    by 0x4C2DDC2: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2C04E: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C28C3D: _XlcCreateLC (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C4AE39: _XlcUtf8Loader (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2D130: _XOpenLC (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2DB76: _XrmInitParseInfo (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C170AF: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C17532: XrmGetStringDatabase (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x48810E7: glfwInit (in /usr/lib/x86_64-linux-gnu/libglfw.so.3.3)
+==534857==    by 0x1115B1: mlx_init (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857== 
+==534857== 8 bytes in 1 blocks are still reachable in loss record 2 of 110
+==534857==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==534857==    by 0x4C3A009: _XimOpenIM (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x488261D: glfwInit (in /usr/lib/x86_64-linux-gnu/libglfw.so.3.3)
+==534857==    by 0x1115B1: mlx_init (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10AE1D: create_mlx (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10AAD2: init_cub3d (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10A962: main (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857== 
+==534857== 9 bytes in 1 blocks are still reachable in loss record 3 of 110
+==534857==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==534857==    by 0x4C28FF5: _XlcDefaultMapModifiers (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2D81A: XSetLocaleModifiers (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x488260B: glfwInit (in /usr/lib/x86_64-linux-gnu/libglfw.so.3.3)
+==534857==    by 0x1115B1: mlx_init (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10AE1D: create_mlx (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10AAD2: init_cub3d (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10A962: main (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857== 
+==534857== 9 bytes in 3 blocks are indirectly lost in loss record 4 of 110
+==534857==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==534857==    by 0x10FF62: ft_calloc (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10FEDA: ft_substr (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10F1ED: str_split (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10F08E: ft_split (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10B7FD: ft_parse_color (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10B71C: ft_parse_config_line (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10B367: ft_validate_parse_file (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10B251: parse_map_file (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10AAB5: init_cub3d (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10A962: main (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857== 
+==534857== 11 bytes in 3 blocks are indirectly lost in loss record 5 of 110
+==534857==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==534857==    by 0x10FF62: ft_calloc (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10FEDA: ft_substr (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10F1ED: str_split (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10F08E: ft_split (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10B7FD: ft_parse_color (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10B77B: ft_parse_config_line (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10B367: ft_validate_parse_file (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10B251: parse_map_file (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10AAB5: init_cub3d (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10A962: main (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857== 
+==534857== 12 bytes in 1 blocks are still reachable in loss record 6 of 110
+==534857==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==534857==    by 0x10B8BD: ft_parse_color (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10B77B: ft_parse_config_line (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10B367: ft_validate_parse_file (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10B251: parse_map_file (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10AAB5: init_cub3d (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10A962: main (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857== 
+==534857== 12 bytes in 1 blocks are still reachable in loss record 7 of 110
+==534857==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==534857==    by 0x10B8BD: ft_parse_color (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10B71C: ft_parse_config_line (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10B367: ft_validate_parse_file (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10B251: parse_map_file (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10AAB5: init_cub3d (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10A962: main (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857== 
+==534857== 12 bytes in 1 blocks are still reachable in loss record 8 of 110
+==534857==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==534857==    by 0x4A7035E: strdup (strdup.c:42)
+==534857==    by 0x4C28C87: _XlcCreateLC (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C4AE39: _XlcUtf8Loader (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2D130: _XOpenLC (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2DB76: _XrmInitParseInfo (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C170AF: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C17532: XrmGetStringDatabase (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x48810E7: glfwInit (in /usr/lib/x86_64-linux-gnu/libglfw.so.3.3)
+==534857==    by 0x1115B1: mlx_init (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10AE1D: create_mlx (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10AAD2: init_cub3d (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857== 
+==534857== 16 bytes in 1 blocks are still reachable in loss record 9 of 110
+==534857==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==534857==    by 0x4C290FF: _XlcAddLoader (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C29175: _XlcInitLoader (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2D108: _XOpenLC (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2DB76: _XrmInitParseInfo (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C170AF: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C17532: XrmGetStringDatabase (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x48810E7: glfwInit (in /usr/lib/x86_64-linux-gnu/libglfw.so.3.3)
+==534857==    by 0x1115B1: mlx_init (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10AE1D: create_mlx (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10AAD2: init_cub3d (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10A962: main (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857== 
+==534857== 16 bytes in 1 blocks are still reachable in loss record 10 of 110
+==534857==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==534857==    by 0x4C290FF: _XlcAddLoader (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C29183: _XlcInitLoader (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2D108: _XOpenLC (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2DB76: _XrmInitParseInfo (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C170AF: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C17532: XrmGetStringDatabase (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x48810E7: glfwInit (in /usr/lib/x86_64-linux-gnu/libglfw.so.3.3)
+==534857==    by 0x1115B1: mlx_init (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10AE1D: create_mlx (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10AAD2: init_cub3d (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10A962: main (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857== 
+==534857== 16 bytes in 1 blocks are still reachable in loss record 11 of 110
+==534857==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==534857==    by 0x4C290FF: _XlcAddLoader (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2D108: _XOpenLC (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2DB76: _XrmInitParseInfo (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C170AF: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C17532: XrmGetStringDatabase (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x48810E7: glfwInit (in /usr/lib/x86_64-linux-gnu/libglfw.so.3.3)
+==534857==    by 0x1115B1: mlx_init (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10AE1D: create_mlx (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10AAD2: init_cub3d (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10A962: main (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857== 
+==534857== 16 bytes in 1 blocks are still reachable in loss record 12 of 110
+==534857==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==534857==    by 0x4C2D142: _XOpenLC (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2DB76: _XrmInitParseInfo (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C170AF: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C17532: XrmGetStringDatabase (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x48810E7: glfwInit (in /usr/lib/x86_64-linux-gnu/libglfw.so.3.3)
+==534857==    by 0x1115B1: mlx_init (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10AE1D: create_mlx (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10AAD2: init_cub3d (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10A962: main (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857== 
+==534857== 16 bytes in 1 blocks are still reachable in loss record 13 of 110
+==534857==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==534857==    by 0x4C2C78A: _XrmDefaultInitParseInfo (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C170AF: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C175A5: XrmGetFileDatabase (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4BF2100: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4BF21F0: XGetErrorDatabaseText (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4BF2355: XGetErrorText (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4880344: glfwCreateWindow (in /usr/lib/x86_64-linux-gnu/libglfw.so.3.3)
+==534857==    by 0x111697: mlx_init (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10AE1D: create_mlx (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10AAD2: init_cub3d (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10A962: main (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857== 
+==534857== 16 bytes in 1 blocks are still reachable in loss record 14 of 110
+==534857==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==534857==    by 0x4C267C1: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C18D43: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C21EF3: _XlcOpenConverter (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2C7AE: _XrmDefaultInitParseInfo (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C170AF: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C175A5: XrmGetFileDatabase (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4BF2100: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4BF21F0: XGetErrorDatabaseText (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4BF2355: XGetErrorText (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4880344: glfwCreateWindow (in /usr/lib/x86_64-linux-gnu/libglfw.so.3.3)
+==534857==    by 0x111697: mlx_init (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857== 
+==534857== 16 bytes in 1 blocks are definitely lost in loss record 15 of 110
+==534857==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==534857==    by 0x10FCD3: ft_strjoin_gnl (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10F9EB: handle_buffer_zero (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10F8A2: read_store (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10F780: get_next_line (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10B37B: ft_validate_parse_file (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10B251: parse_map_file (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10AAB5: init_cub3d (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10A962: main (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857== 
+==534857== 18 bytes in 1 blocks are still reachable in loss record 16 of 110
+==534857==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==534857==    by 0x10FF62: ft_calloc (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10EEA6: ft_strtrim (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10D4E5: ft_parse_texture (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10B6BD: ft_parse_config_line (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10B367: ft_validate_parse_file (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10B251: parse_map_file (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10AAB5: init_cub3d (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10A962: main (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857== 
+==534857== 19 bytes in 1 blocks are still reachable in loss record 17 of 110
+==534857==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==534857==    by 0x10FF62: ft_calloc (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10EEA6: ft_strtrim (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10D4E5: ft_parse_texture (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10B4CE: ft_parse_config_line (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10B367: ft_validate_parse_file (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10B251: parse_map_file (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10AAB5: init_cub3d (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10A962: main (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857== 
+==534857== 19 bytes in 1 blocks are definitely lost in loss record 18 of 110
+==534857==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==534857==    by 0x10EC93: ft_strdup (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10D4D0: ft_parse_texture (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10B6BD: ft_parse_config_line (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10B367: ft_validate_parse_file (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10B251: parse_map_file (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10AAB5: init_cub3d (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10A962: main (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857== 
+==534857== 20 bytes in 1 blocks are definitely lost in loss record 19 of 110
+==534857==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==534857==    by 0x10EC93: ft_strdup (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10D4D0: ft_parse_texture (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10B4CE: ft_parse_config_line (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10B367: ft_validate_parse_file (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10B251: parse_map_file (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10AAB5: init_cub3d (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10A962: main (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857== 
+==534857== 22 bytes in 1 blocks are still reachable in loss record 20 of 110
+==534857==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==534857==    by 0x10FF62: ft_calloc (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10EEA6: ft_strtrim (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10D4E5: ft_parse_texture (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10B573: ft_parse_config_line (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10B367: ft_validate_parse_file (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10B251: parse_map_file (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10AAB5: init_cub3d (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10A962: main (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857== 
+==534857== 23 bytes in 1 blocks are still reachable in loss record 21 of 110
+==534857==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==534857==    by 0x10FF62: ft_calloc (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10EEA6: ft_strtrim (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10D4E5: ft_parse_texture (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10B618: ft_parse_config_line (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10B367: ft_validate_parse_file (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10B251: parse_map_file (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10AAB5: init_cub3d (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10A962: main (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857== 
+==534857== 23 bytes in 1 blocks are definitely lost in loss record 22 of 110
+==534857==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==534857==    by 0x10EC93: ft_strdup (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10D4D0: ft_parse_texture (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10B573: ft_parse_config_line (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10B367: ft_validate_parse_file (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10B251: parse_map_file (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10AAB5: init_cub3d (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10A962: main (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857== 
+==534857== 24 bytes in 1 blocks are still reachable in loss record 23 of 110
+==534857==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==534857==    by 0x4C26F52: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C28C1A: _XlcCreateLC (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C4AE39: _XlcUtf8Loader (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2D130: _XOpenLC (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2DB76: _XrmInitParseInfo (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C170AF: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C17532: XrmGetStringDatabase (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x48810E7: glfwInit (in /usr/lib/x86_64-linux-gnu/libglfw.so.3.3)
+==534857==    by 0x1115B1: mlx_init (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10AE1D: create_mlx (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10AAD2: init_cub3d (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857== 
+==534857== 24 bytes in 1 blocks are still reachable in loss record 24 of 110
+==534857==    at 0x484DB80: realloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==534857==    by 0x4C27FC9: _XlcResolveLocaleName (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2DEF9: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2C04E: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C28C3D: _XlcCreateLC (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C4AE39: _XlcUtf8Loader (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2D130: _XOpenLC (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2DB76: _XrmInitParseInfo (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C170AF: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C17532: XrmGetStringDatabase (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x48810E7: glfwInit (in /usr/lib/x86_64-linux-gnu/libglfw.so.3.3)
+==534857==    by 0x1115B1: mlx_init (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857== 
+==534857== 24 bytes in 1 blocks are definitely lost in loss record 25 of 110
+==534857==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==534857==    by 0x10EC93: ft_strdup (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10D4D0: ft_parse_texture (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10B618: ft_parse_config_line (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10B367: ft_validate_parse_file (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10B251: parse_map_file (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10AAB5: init_cub3d (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10A962: main (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857== 
+==534857== 32 bytes in 1 blocks are still reachable in loss record 26 of 110
+==534857==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==534857==    by 0x4013BDD: malloc (rtld-malloc.h:56)
+==534857==    by 0x4013BDD: allocate_dtv_entry (dl-tls.c:679)
+==534857==    by 0x4013BDD: allocate_and_init (dl-tls.c:704)
+==534857==    by 0x4013BDD: tls_get_addr_tail (dl-tls.c:904)
+==534857==    by 0x401785B: __tls_get_addr (tls_get_addr.S:55)
+==534857==    by 0xB55AE61: ???
+==534857==    by 0xA00E23E: ???
+==534857==    by 0xBB502C5: ???
+==534857==    by 0x9F80EE2: ???
+==534857==    by 0x4005823: call_init (dl-init.c:120)
+==534857==    by 0x4005823: _dl_init (dl-init.c:121)
+==534857==    by 0x40015B1: _dl_catch_exception (dl-catch.c:211)
+==534857==    by 0x400CD7B: dl_open_worker (dl-open.c:829)
+==534857==    by 0x400CD7B: dl_open_worker (dl-open.c:792)
+==534857==    by 0x400151B: _dl_catch_exception (dl-catch.c:237)
+==534857==    by 0x400D163: _dl_open (dl-open.c:905)
+==534857== 
+==534857== 32 bytes in 1 blocks are still reachable in loss record 27 of 110
+==534857==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==534857==    by 0x4C17082: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C175A5: XrmGetFileDatabase (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4BF2100: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4BF21F0: XGetErrorDatabaseText (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4BF2355: XGetErrorText (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4880344: glfwCreateWindow (in /usr/lib/x86_64-linux-gnu/libglfw.so.3.3)
+==534857==    by 0x111697: mlx_init (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10AE1D: create_mlx (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10AAD2: init_cub3d (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10A962: main (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857== 
+==534857== 32 bytes in 1 blocks are definitely lost in loss record 28 of 110
+==534857==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==534857==    by 0x1115C8: mlx_init (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10AE1D: create_mlx (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10AAD2: init_cub3d (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10A962: main (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857== 
+==534857== 33 bytes in 1 blocks are still reachable in loss record 29 of 110
+==534857==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==534857==    by 0x4028ABF: malloc (rtld-malloc.h:56)
+==534857==    by 0x4028ABF: strdup (strdup.c:42)
+==534857==    by 0x4016A95: _dl_load_cache_lookup (dl-cache.c:515)
+==534857==    by 0x40097CA: _dl_map_object (dl-load.c:2135)
+==534857==    by 0x4002A2C: openaux (dl-deps.c:64)
+==534857==    by 0x400151B: _dl_catch_exception (dl-catch.c:237)
+==534857==    by 0x4002E66: _dl_map_object_deps (dl-deps.c:232)
+==534857==    by 0x400D944: dl_open_worker_begin (dl-open.c:638)
+==534857==    by 0x400151B: _dl_catch_exception (dl-catch.c:237)
+==534857==    by 0x400CD1F: dl_open_worker (dl-open.c:803)
+==534857==    by 0x400151B: _dl_catch_exception (dl-catch.c:237)
+==534857==    by 0x400D163: _dl_open (dl-open.c:905)
+==534857== 
+==534857== 33 bytes in 1 blocks are still reachable in loss record 30 of 110
+==534857==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==534857==    by 0x400CA68: malloc (rtld-malloc.h:56)
+==534857==    by 0x400CA68: _dl_new_object (dl-object.c:199)
+==534857==    by 0x4007ABE: _dl_map_object_from_fd (dl-load.c:1053)
+==534857==    by 0x4009528: _dl_map_object (dl-load.c:2268)
+==534857==    by 0x4002A2C: openaux (dl-deps.c:64)
+==534857==    by 0x400151B: _dl_catch_exception (dl-catch.c:237)
+==534857==    by 0x4002E66: _dl_map_object_deps (dl-deps.c:232)
+==534857==    by 0x400D944: dl_open_worker_begin (dl-open.c:638)
+==534857==    by 0x400151B: _dl_catch_exception (dl-catch.c:237)
+==534857==    by 0x400CD1F: dl_open_worker (dl-open.c:803)
+==534857==    by 0x400151B: _dl_catch_exception (dl-catch.c:237)
+==534857==    by 0x400D163: _dl_open (dl-open.c:905)
+==534857== 
+==534857== 38 bytes in 1 blocks are still reachable in loss record 31 of 110
+==534857==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==534857==    by 0x4028ABF: malloc (rtld-malloc.h:56)
+==534857==    by 0x4028ABF: strdup (strdup.c:42)
+==534857==    by 0x4016A95: _dl_load_cache_lookup (dl-cache.c:515)
+==534857==    by 0x40097CA: _dl_map_object (dl-load.c:2135)
+==534857==    by 0x400D8DB: dl_open_worker_begin (dl-open.c:578)
+==534857==    by 0x400151B: _dl_catch_exception (dl-catch.c:237)
+==534857==    by 0x400CD1F: dl_open_worker (dl-open.c:803)
+==534857==    by 0x400151B: _dl_catch_exception (dl-catch.c:237)
+==534857==    by 0x400D163: _dl_open (dl-open.c:905)
+==534857==    by 0x4A541A3: dlopen_doit (dlopen.c:56)
+==534857==    by 0x400151B: _dl_catch_exception (dl-catch.c:237)
+==534857==    by 0x4001668: _dl_catch_error (dl-catch.c:256)
+==534857== 
+==534857== 38 bytes in 1 blocks are still reachable in loss record 32 of 110
+==534857==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==534857==    by 0x400CA68: malloc (rtld-malloc.h:56)
+==534857==    by 0x400CA68: _dl_new_object (dl-object.c:199)
+==534857==    by 0x4007ABE: _dl_map_object_from_fd (dl-load.c:1053)
+==534857==    by 0x4009528: _dl_map_object (dl-load.c:2268)
+==534857==    by 0x400D8DB: dl_open_worker_begin (dl-open.c:578)
+==534857==    by 0x400151B: _dl_catch_exception (dl-catch.c:237)
+==534857==    by 0x400CD1F: dl_open_worker (dl-open.c:803)
+==534857==    by 0x400151B: _dl_catch_exception (dl-catch.c:237)
+==534857==    by 0x400D163: _dl_open (dl-open.c:905)
+==534857==    by 0x4A541A3: dlopen_doit (dlopen.c:56)
+==534857==    by 0x400151B: _dl_catch_exception (dl-catch.c:237)
+==534857==    by 0x4001668: _dl_catch_error (dl-catch.c:256)
+==534857== 
+==534857== 40 bytes in 1 blocks are still reachable in loss record 33 of 110
+==534857==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==534857==    by 0x4C2953C: _XlcCreateLocaleDataBase (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2DD0E: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2C04E: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C28C3D: _XlcCreateLC (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C4AE39: _XlcUtf8Loader (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2D130: _XOpenLC (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2DB76: _XrmInitParseInfo (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C170AF: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C17532: XrmGetStringDatabase (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x48810E7: glfwInit (in /usr/lib/x86_64-linux-gnu/libglfw.so.3.3)
+==534857==    by 0x1115B1: mlx_init (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857== 
+==534857== 40 bytes in 1 blocks are still reachable in loss record 34 of 110
+==534857==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==534857==    by 0x4BF71D9: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C1709F: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C175A5: XrmGetFileDatabase (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4BF2100: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4BF21F0: XGetErrorDatabaseText (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4BF2355: XGetErrorText (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4880344: glfwCreateWindow (in /usr/lib/x86_64-linux-gnu/libglfw.so.3.3)
+==534857==    by 0x111697: mlx_init (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10AE1D: create_mlx (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10AAD2: init_cub3d (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10A962: main (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857== 
+==534857== 41 (32 direct, 9 indirect) bytes in 1 blocks are definitely lost in loss record 35 of 110
+==534857==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==534857==    by 0x10F065: ft_split (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10B7FD: ft_parse_color (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10B71C: ft_parse_config_line (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10B367: ft_validate_parse_file (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10B251: parse_map_file (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10AAB5: init_cub3d (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10A962: main (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857== 
+==534857== 43 (32 direct, 11 indirect) bytes in 1 blocks are definitely lost in loss record 36 of 110
+==534857==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==534857==    by 0x10F065: ft_split (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10B7FD: ft_parse_color (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10B77B: ft_parse_config_line (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10B367: ft_validate_parse_file (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10B251: parse_map_file (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10AAB5: init_cub3d (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10A962: main (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857== 
+==534857== 47 bytes in 5 blocks are still reachable in loss record 37 of 110
+==534857==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==534857==    by 0x4C21A80: _XlcAddCT (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C21E0F: _XlcInitCTInfo (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2DBD5: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2C04E: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C28C3D: _XlcCreateLC (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C4AE39: _XlcUtf8Loader (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2D130: _XOpenLC (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2DB76: _XrmInitParseInfo (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C170AF: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C17532: XrmGetStringDatabase (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x48810E7: glfwInit (in /usr/lib/x86_64-linux-gnu/libglfw.so.3.3)
+==534857== 
+==534857== 62 bytes in 4 blocks are still reachable in loss record 38 of 110
+==534857==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==534857==    by 0x4C218A5: _XlcCreateDefaultCharSet (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2A81E: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2C05A: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C28C3D: _XlcCreateLC (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C4AE39: _XlcUtf8Loader (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2D130: _XOpenLC (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2DB76: _XrmInitParseInfo (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C170AF: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C17532: XrmGetStringDatabase (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x48810E7: glfwInit (in /usr/lib/x86_64-linux-gnu/libglfw.so.3.3)
+==534857==    by 0x1115B1: mlx_init (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857== 
+==534857== 64 bytes in 1 blocks are still reachable in loss record 39 of 110
+==534857==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==534857==    by 0x4C03872: _XrmInternalStringToQuark (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C16FC3: XrmInitialize (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4881085: glfwInit (in /usr/lib/x86_64-linux-gnu/libglfw.so.3.3)
+==534857==    by 0x1115B1: mlx_init (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10AE1D: create_mlx (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10AAD2: init_cub3d (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10A962: main (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857== 
+==534857== 64 bytes in 1 blocks are still reachable in loss record 40 of 110
+==534857==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==534857==    by 0x4C21D3D: _XlcSetConverter (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C21E58: _XlcInitCTInfo (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2DBD5: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2C04E: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C28C3D: _XlcCreateLC (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C4AE39: _XlcUtf8Loader (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2D130: _XOpenLC (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2DB76: _XrmInitParseInfo (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C170AF: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C17532: XrmGetStringDatabase (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x48810E7: glfwInit (in /usr/lib/x86_64-linux-gnu/libglfw.so.3.3)
+==534857== 
+==534857== 64 bytes in 1 blocks are still reachable in loss record 41 of 110
+==534857==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==534857==    by 0x4C21D3D: _XlcSetConverter (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C21E6E: _XlcInitCTInfo (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2DBD5: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2C04E: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C28C3D: _XlcCreateLC (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C4AE39: _XlcUtf8Loader (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2D130: _XOpenLC (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2DB76: _XrmInitParseInfo (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C170AF: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C17532: XrmGetStringDatabase (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x48810E7: glfwInit (in /usr/lib/x86_64-linux-gnu/libglfw.so.3.3)
+==534857== 
+==534857== 64 bytes in 1 blocks are still reachable in loss record 42 of 110
+==534857==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==534857==    by 0x4C21D3D: _XlcSetConverter (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C21E84: _XlcInitCTInfo (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2DBD5: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2C04E: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C28C3D: _XlcCreateLC (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C4AE39: _XlcUtf8Loader (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2D130: _XOpenLC (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2DB76: _XrmInitParseInfo (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C170AF: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C17532: XrmGetStringDatabase (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x48810E7: glfwInit (in /usr/lib/x86_64-linux-gnu/libglfw.so.3.3)
+==534857== 
+==534857== 64 bytes in 1 blocks are still reachable in loss record 43 of 110
+==534857==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==534857==    by 0x4C21D3D: _XlcSetConverter (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C21E9A: _XlcInitCTInfo (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2DBD5: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2C04E: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C28C3D: _XlcCreateLC (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C4AE39: _XlcUtf8Loader (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2D130: _XOpenLC (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2DB76: _XrmInitParseInfo (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C170AF: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C17532: XrmGetStringDatabase (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x48810E7: glfwInit (in /usr/lib/x86_64-linux-gnu/libglfw.so.3.3)
+==534857== 
+==534857== 64 bytes in 1 blocks are still reachable in loss record 44 of 110
+==534857==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==534857==    by 0x4C21D3D: _XlcSetConverter (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2EE68: _XlcAddUtf8LocaleConverters (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C4AE97: _XlcUtf8Loader (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2D130: _XOpenLC (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2DB76: _XrmInitParseInfo (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C170AF: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C17532: XrmGetStringDatabase (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x48810E7: glfwInit (in /usr/lib/x86_64-linux-gnu/libglfw.so.3.3)
+==534857==    by 0x1115B1: mlx_init (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10AE1D: create_mlx (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10AAD2: init_cub3d (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857== 
+==534857== 64 bytes in 1 blocks are still reachable in loss record 45 of 110
+==534857==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==534857==    by 0x4C21D3D: _XlcSetConverter (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2EE80: _XlcAddUtf8LocaleConverters (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C4AE97: _XlcUtf8Loader (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2D130: _XOpenLC (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2DB76: _XrmInitParseInfo (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C170AF: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C17532: XrmGetStringDatabase (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x48810E7: glfwInit (in /usr/lib/x86_64-linux-gnu/libglfw.so.3.3)
+==534857==    by 0x1115B1: mlx_init (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10AE1D: create_mlx (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10AAD2: init_cub3d (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857== 
+==534857== 64 bytes in 1 blocks are still reachable in loss record 46 of 110
+==534857==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==534857==    by 0x4C21D3D: _XlcSetConverter (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2EE98: _XlcAddUtf8LocaleConverters (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C4AE97: _XlcUtf8Loader (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2D130: _XOpenLC (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2DB76: _XrmInitParseInfo (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C170AF: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C17532: XrmGetStringDatabase (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x48810E7: glfwInit (in /usr/lib/x86_64-linux-gnu/libglfw.so.3.3)
+==534857==    by 0x1115B1: mlx_init (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10AE1D: create_mlx (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10AAD2: init_cub3d (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857== 
+==534857== 64 bytes in 1 blocks are still reachable in loss record 47 of 110
+==534857==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==534857==    by 0x4C21D3D: _XlcSetConverter (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2EEB0: _XlcAddUtf8LocaleConverters (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C4AE97: _XlcUtf8Loader (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2D130: _XOpenLC (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2DB76: _XrmInitParseInfo (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C170AF: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C17532: XrmGetStringDatabase (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x48810E7: glfwInit (in /usr/lib/x86_64-linux-gnu/libglfw.so.3.3)
+==534857==    by 0x1115B1: mlx_init (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10AE1D: create_mlx (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10AAD2: init_cub3d (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857== 
+==534857== 64 bytes in 1 blocks are still reachable in loss record 48 of 110
+==534857==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==534857==    by 0x4C21D3D: _XlcSetConverter (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2EEC8: _XlcAddUtf8LocaleConverters (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C4AE97: _XlcUtf8Loader (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2D130: _XOpenLC (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2DB76: _XrmInitParseInfo (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C170AF: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C17532: XrmGetStringDatabase (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x48810E7: glfwInit (in /usr/lib/x86_64-linux-gnu/libglfw.so.3.3)
+==534857==    by 0x1115B1: mlx_init (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10AE1D: create_mlx (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10AAD2: init_cub3d (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857== 
+==534857== 64 bytes in 1 blocks are still reachable in loss record 49 of 110
+==534857==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==534857==    by 0x4C21D3D: _XlcSetConverter (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2EEE0: _XlcAddUtf8LocaleConverters (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C4AE97: _XlcUtf8Loader (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2D130: _XOpenLC (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2DB76: _XrmInitParseInfo (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C170AF: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C17532: XrmGetStringDatabase (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x48810E7: glfwInit (in /usr/lib/x86_64-linux-gnu/libglfw.so.3.3)
+==534857==    by 0x1115B1: mlx_init (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10AE1D: create_mlx (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10AAD2: init_cub3d (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857== 
+==534857== 64 bytes in 1 blocks are still reachable in loss record 50 of 110
+==534857==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==534857==    by 0x4C21D3D: _XlcSetConverter (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2EEFF: _XlcAddUtf8LocaleConverters (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C4AE97: _XlcUtf8Loader (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2D130: _XOpenLC (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2DB76: _XrmInitParseInfo (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C170AF: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C17532: XrmGetStringDatabase (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x48810E7: glfwInit (in /usr/lib/x86_64-linux-gnu/libglfw.so.3.3)
+==534857==    by 0x1115B1: mlx_init (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10AE1D: create_mlx (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10AAD2: init_cub3d (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857== 
+==534857== 64 bytes in 1 blocks are still reachable in loss record 51 of 110
+==534857==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==534857==    by 0x4C21D3D: _XlcSetConverter (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2EF17: _XlcAddUtf8LocaleConverters (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C4AE97: _XlcUtf8Loader (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2D130: _XOpenLC (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2DB76: _XrmInitParseInfo (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C170AF: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C17532: XrmGetStringDatabase (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x48810E7: glfwInit (in /usr/lib/x86_64-linux-gnu/libglfw.so.3.3)
+==534857==    by 0x1115B1: mlx_init (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10AE1D: create_mlx (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10AAD2: init_cub3d (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857== 
+==534857== 64 bytes in 1 blocks are still reachable in loss record 52 of 110
+==534857==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==534857==    by 0x4C21D3D: _XlcSetConverter (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2EF36: _XlcAddUtf8LocaleConverters (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C4AE97: _XlcUtf8Loader (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2D130: _XOpenLC (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2DB76: _XrmInitParseInfo (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C170AF: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C17532: XrmGetStringDatabase (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x48810E7: glfwInit (in /usr/lib/x86_64-linux-gnu/libglfw.so.3.3)
+==534857==    by 0x1115B1: mlx_init (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10AE1D: create_mlx (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10AAD2: init_cub3d (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857== 
+==534857== 64 bytes in 1 blocks are still reachable in loss record 53 of 110
+==534857==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==534857==    by 0x4C21D3D: _XlcSetConverter (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2EF55: _XlcAddUtf8LocaleConverters (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C4AE97: _XlcUtf8Loader (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2D130: _XOpenLC (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2DB76: _XrmInitParseInfo (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C170AF: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C17532: XrmGetStringDatabase (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x48810E7: glfwInit (in /usr/lib/x86_64-linux-gnu/libglfw.so.3.3)
+==534857==    by 0x1115B1: mlx_init (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10AE1D: create_mlx (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10AAD2: init_cub3d (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857== 
+==534857== 64 bytes in 1 blocks are still reachable in loss record 54 of 110
+==534857==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==534857==    by 0x4C21D3D: _XlcSetConverter (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2EF6D: _XlcAddUtf8LocaleConverters (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C4AE97: _XlcUtf8Loader (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2D130: _XOpenLC (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2DB76: _XrmInitParseInfo (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C170AF: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C17532: XrmGetStringDatabase (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x48810E7: glfwInit (in /usr/lib/x86_64-linux-gnu/libglfw.so.3.3)
+==534857==    by 0x1115B1: mlx_init (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10AE1D: create_mlx (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10AAD2: init_cub3d (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857== 
+==534857== 64 bytes in 1 blocks are still reachable in loss record 55 of 110
+==534857==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==534857==    by 0x4C21D3D: _XlcSetConverter (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2EF8C: _XlcAddUtf8LocaleConverters (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C4AE97: _XlcUtf8Loader (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2D130: _XOpenLC (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2DB76: _XrmInitParseInfo (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C170AF: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C17532: XrmGetStringDatabase (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x48810E7: glfwInit (in /usr/lib/x86_64-linux-gnu/libglfw.so.3.3)
+==534857==    by 0x1115B1: mlx_init (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10AE1D: create_mlx (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10AAD2: init_cub3d (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857== 
+==534857== 64 bytes in 1 blocks are still reachable in loss record 56 of 110
+==534857==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==534857==    by 0x4C21D3D: _XlcSetConverter (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2EFA4: _XlcAddUtf8LocaleConverters (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C4AE97: _XlcUtf8Loader (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2D130: _XOpenLC (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2DB76: _XrmInitParseInfo (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C170AF: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C17532: XrmGetStringDatabase (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x48810E7: glfwInit (in /usr/lib/x86_64-linux-gnu/libglfw.so.3.3)
+==534857==    by 0x1115B1: mlx_init (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10AE1D: create_mlx (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10AAD2: init_cub3d (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857== 
+==534857== 64 bytes in 1 blocks are still reachable in loss record 57 of 110
+==534857==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==534857==    by 0x4C21D3D: _XlcSetConverter (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2EFBC: _XlcAddUtf8LocaleConverters (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C4AE97: _XlcUtf8Loader (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2D130: _XOpenLC (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2DB76: _XrmInitParseInfo (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C170AF: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C17532: XrmGetStringDatabase (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x48810E7: glfwInit (in /usr/lib/x86_64-linux-gnu/libglfw.so.3.3)
+==534857==    by 0x1115B1: mlx_init (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10AE1D: create_mlx (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10AAD2: init_cub3d (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857== 
+==534857== 64 bytes in 1 blocks are still reachable in loss record 58 of 110
+==534857==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==534857==    by 0x4C21D3D: _XlcSetConverter (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2EFD4: _XlcAddUtf8LocaleConverters (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C4AE97: _XlcUtf8Loader (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2D130: _XOpenLC (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2DB76: _XrmInitParseInfo (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C170AF: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C17532: XrmGetStringDatabase (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x48810E7: glfwInit (in /usr/lib/x86_64-linux-gnu/libglfw.so.3.3)
+==534857==    by 0x1115B1: mlx_init (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10AE1D: create_mlx (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10AAD2: init_cub3d (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857== 
+==534857== 64 bytes in 1 blocks are still reachable in loss record 59 of 110
+==534857==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==534857==    by 0x4C21D3D: _XlcSetConverter (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2EFEC: _XlcAddUtf8LocaleConverters (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C4AE97: _XlcUtf8Loader (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2D130: _XOpenLC (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2DB76: _XrmInitParseInfo (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C170AF: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C17532: XrmGetStringDatabase (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x48810E7: glfwInit (in /usr/lib/x86_64-linux-gnu/libglfw.so.3.3)
+==534857==    by 0x1115B1: mlx_init (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10AE1D: create_mlx (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10AAD2: init_cub3d (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857== 
+==534857== 64 bytes in 1 blocks are still reachable in loss record 60 of 110
+==534857==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==534857==    by 0x4C21D3D: _XlcSetConverter (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C4AE97: _XlcUtf8Loader (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2D130: _XOpenLC (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2DB76: _XrmInitParseInfo (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C170AF: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C17532: XrmGetStringDatabase (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x48810E7: glfwInit (in /usr/lib/x86_64-linux-gnu/libglfw.so.3.3)
+==534857==    by 0x1115B1: mlx_init (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10AE1D: create_mlx (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10AAD2: init_cub3d (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10A962: main (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857== 
+==534857== 64 bytes in 1 blocks are still reachable in loss record 61 of 110
+==534857==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==534857==    by 0x4C21D3D: _XlcSetConverter (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2ED6B: _XlcAddUtf8Converters (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C4AE84: _XlcUtf8Loader (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2D130: _XOpenLC (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2DB76: _XrmInitParseInfo (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C170AF: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C17532: XrmGetStringDatabase (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x48810E7: glfwInit (in /usr/lib/x86_64-linux-gnu/libglfw.so.3.3)
+==534857==    by 0x1115B1: mlx_init (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10AE1D: create_mlx (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10AAD2: init_cub3d (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857== 
+==534857== 64 bytes in 1 blocks are still reachable in loss record 62 of 110
+==534857==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==534857==    by 0x4C21D3D: _XlcSetConverter (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2ED8A: _XlcAddUtf8Converters (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C4AE84: _XlcUtf8Loader (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2D130: _XOpenLC (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2DB76: _XrmInitParseInfo (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C170AF: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C17532: XrmGetStringDatabase (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x48810E7: glfwInit (in /usr/lib/x86_64-linux-gnu/libglfw.so.3.3)
+==534857==    by 0x1115B1: mlx_init (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10AE1D: create_mlx (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10AAD2: init_cub3d (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857== 
+==534857== 64 bytes in 1 blocks are still reachable in loss record 63 of 110
+==534857==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==534857==    by 0x4C21D3D: _XlcSetConverter (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2EDA2: _XlcAddUtf8Converters (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C4AE84: _XlcUtf8Loader (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2D130: _XOpenLC (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2DB76: _XrmInitParseInfo (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C170AF: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C17532: XrmGetStringDatabase (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x48810E7: glfwInit (in /usr/lib/x86_64-linux-gnu/libglfw.so.3.3)
+==534857==    by 0x1115B1: mlx_init (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10AE1D: create_mlx (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10AAD2: init_cub3d (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857== 
+==534857== 64 bytes in 1 blocks are still reachable in loss record 64 of 110
+==534857==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==534857==    by 0x4C21D3D: _XlcSetConverter (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2EDBA: _XlcAddUtf8Converters (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C4AE84: _XlcUtf8Loader (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2D130: _XOpenLC (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2DB76: _XrmInitParseInfo (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C170AF: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C17532: XrmGetStringDatabase (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x48810E7: glfwInit (in /usr/lib/x86_64-linux-gnu/libglfw.so.3.3)
+==534857==    by 0x1115B1: mlx_init (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10AE1D: create_mlx (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10AAD2: init_cub3d (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857== 
+==534857== 64 bytes in 1 blocks are still reachable in loss record 65 of 110
+==534857==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==534857==    by 0x4C21D3D: _XlcSetConverter (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2EDD2: _XlcAddUtf8Converters (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C4AE84: _XlcUtf8Loader (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2D130: _XOpenLC (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2DB76: _XrmInitParseInfo (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C170AF: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C17532: XrmGetStringDatabase (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x48810E7: glfwInit (in /usr/lib/x86_64-linux-gnu/libglfw.so.3.3)
+==534857==    by 0x1115B1: mlx_init (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10AE1D: create_mlx (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10AAD2: init_cub3d (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857== 
+==534857== 64 bytes in 1 blocks are still reachable in loss record 66 of 110
+==534857==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==534857==    by 0x4C21D3D: _XlcSetConverter (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2EDF1: _XlcAddUtf8Converters (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C4AE84: _XlcUtf8Loader (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2D130: _XOpenLC (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2DB76: _XrmInitParseInfo (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C170AF: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C17532: XrmGetStringDatabase (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x48810E7: glfwInit (in /usr/lib/x86_64-linux-gnu/libglfw.so.3.3)
+==534857==    by 0x1115B1: mlx_init (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10AE1D: create_mlx (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10AAD2: init_cub3d (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857== 
+==534857== 64 bytes in 1 blocks are still reachable in loss record 67 of 110
+==534857==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==534857==    by 0x4C21D3D: _XlcSetConverter (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C4AE84: _XlcUtf8Loader (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2D130: _XOpenLC (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2DB76: _XrmInitParseInfo (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C170AF: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C17532: XrmGetStringDatabase (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x48810E7: glfwInit (in /usr/lib/x86_64-linux-gnu/libglfw.so.3.3)
+==534857==    by 0x1115B1: mlx_init (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10AE1D: create_mlx (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10AAD2: init_cub3d (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10A962: main (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857== 
+==534857== 64 bytes in 4 blocks are still reachable in loss record 68 of 110
+==534857==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==534857==    by 0x4C21751: _XlcAddCharSet (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2A842: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2C05A: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C28C3D: _XlcCreateLC (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C4AE39: _XlcUtf8Loader (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2D130: _XOpenLC (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2DB76: _XrmInitParseInfo (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C170AF: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C17532: XrmGetStringDatabase (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x48810E7: glfwInit (in /usr/lib/x86_64-linux-gnu/libglfw.so.3.3)
+==534857==    by 0x1115B1: mlx_init (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857== 
+==534857== 78 bytes in 4 blocks are still reachable in loss record 69 of 110
+==534857==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==534857==    by 0x4C21830: _XlcCreateDefaultCharSet (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2A81E: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2C05A: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C28C3D: _XlcCreateLC (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C4AE39: _XlcUtf8Loader (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2D130: _XOpenLC (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2DB76: _XrmInitParseInfo (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C170AF: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C17532: XrmGetStringDatabase (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x48810E7: glfwInit (in /usr/lib/x86_64-linux-gnu/libglfw.so.3.3)
+==534857==    by 0x1115B1: mlx_init (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857== 
+==534857== 80 bytes in 1 blocks are still reachable in loss record 70 of 110
+==534857==    at 0x484DB80: realloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==534857==    by 0x4C1CB95: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C12ED7: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C175D3: XrmGetFileDatabase (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4BF2100: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4BF21F0: XGetErrorDatabaseText (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4BF2355: XGetErrorText (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4880344: glfwCreateWindow (in /usr/lib/x86_64-linux-gnu/libglfw.so.3.3)
+==534857==    by 0x111697: mlx_init (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10AE1D: create_mlx (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10AAD2: init_cub3d (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10A962: main (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857== 
+==534857== 80 bytes in 3 blocks are still reachable in loss record 71 of 110
+==534857==    at 0x484DB80: realloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==534857==    by 0x4C2A770: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2C05A: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C28C3D: _XlcCreateLC (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C4AE39: _XlcUtf8Loader (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2D130: _XOpenLC (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2DB76: _XrmInitParseInfo (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C170AF: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C17532: XrmGetStringDatabase (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x48810E7: glfwInit (in /usr/lib/x86_64-linux-gnu/libglfw.so.3.3)
+==534857==    by 0x1115B1: mlx_init (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10AE1D: create_mlx (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857== 
+==534857== 104 bytes in 3 blocks are still reachable in loss record 72 of 110
+==534857==    at 0x484DB80: realloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==534857==    by 0x4C1A49B: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C1BF54: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C1BFC6: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C29427: _XlcCreateLocaleDataBase (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2DD0E: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2C04E: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C28C3D: _XlcCreateLC (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C4AE39: _XlcUtf8Loader (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2D130: _XOpenLC (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2DB76: _XrmInitParseInfo (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C170AF: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857== 
+==534857== 104 bytes in 13 blocks are still reachable in loss record 73 of 110
+==534857==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==534857==    by 0x4C2A859: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2C05A: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C28C3D: _XlcCreateLC (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C4AE39: _XlcUtf8Loader (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2D130: _XOpenLC (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2DB76: _XrmInitParseInfo (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C170AF: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C17532: XrmGetStringDatabase (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x48810E7: glfwInit (in /usr/lib/x86_64-linux-gnu/libglfw.so.3.3)
+==534857==    by 0x1115B1: mlx_init (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10AE1D: create_mlx (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857== 
+==534857== 128 bytes in 1 blocks are still reachable in loss record 74 of 110
+==534857==    at 0x484DB80: realloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==534857==    by 0x4C2724F: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2A2A3: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2C05A: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C28C3D: _XlcCreateLC (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C4AE39: _XlcUtf8Loader (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2D130: _XOpenLC (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2DB76: _XrmInitParseInfo (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C170AF: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C17532: XrmGetStringDatabase (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x48810E7: glfwInit (in /usr/lib/x86_64-linux-gnu/libglfw.so.3.3)
+==534857==    by 0x1115B1: mlx_init (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857== 
+==534857== 168 bytes in 1 blocks are still reachable in loss record 75 of 110
+==534857==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==534857==    by 0x4C26F88: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C28C1A: _XlcCreateLC (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C4AE39: _XlcUtf8Loader (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2D130: _XOpenLC (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2DB76: _XrmInitParseInfo (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C170AF: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C17532: XrmGetStringDatabase (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x48810E7: glfwInit (in /usr/lib/x86_64-linux-gnu/libglfw.so.3.3)
+==534857==    by 0x1115B1: mlx_init (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10AE1D: create_mlx (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10AAD2: init_cub3d (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857== 
+==534857== 176 bytes in 1 blocks are still reachable in loss record 76 of 110
+==534857==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==534857==    by 0x10B315: ft_validate_parse_file (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10B251: parse_map_file (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10AAB5: init_cub3d (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10A962: main (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857== 
+==534857== 176 bytes in 1 blocks are still reachable in loss record 77 of 110
+==534857==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==534857==    by 0x4C26F6D: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C28C1A: _XlcCreateLC (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C4AE39: _XlcUtf8Loader (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2D130: _XOpenLC (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2DB76: _XrmInitParseInfo (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C170AF: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C17532: XrmGetStringDatabase (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x48810E7: glfwInit (in /usr/lib/x86_64-linux-gnu/libglfw.so.3.3)
+==534857==    by 0x1115B1: mlx_init (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10AE1D: create_mlx (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10AAD2: init_cub3d (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857== 
+==534857== 176 bytes in 1 blocks are definitely lost in loss record 78 of 110
+==534857==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==534857==    by 0x10AB7B: init_textures (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10AA8E: init_cub3d (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10A962: main (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857== 
+==534857== 182 bytes in 3 blocks are still reachable in loss record 79 of 110
+==534857==    at 0x484DB80: realloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==534857==    by 0x4C1A4D4: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C1BF54: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C1BFC6: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C29427: _XlcCreateLocaleDataBase (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2DD0E: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2C04E: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C28C3D: _XlcCreateLC (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C4AE39: _XlcUtf8Loader (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2D130: _XOpenLC (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2DB76: _XrmInitParseInfo (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C170AF: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857== 
+==534857== 224 bytes in 14 blocks are still reachable in loss record 80 of 110
+==534857==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==534857==    by 0x10EC93: ft_strdup (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10B995: ft_parse_map (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10B352: ft_validate_parse_file (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10B251: parse_map_file (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10AAB5: init_cub3d (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10A962: main (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857== 
+==534857== 224 bytes in 14 blocks are indirectly lost in loss record 81 of 110
+==534857==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==534857==    by 0x10C001: pad_line (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10C137: pad_map (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10B9FF: ft_validate_map (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10B27F: parse_map_file (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10AAB5: init_cub3d (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10A962: main (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857== 
+==534857== 240 bytes in 4 blocks are still reachable in loss record 82 of 110
+==534857==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==534857==    by 0x4C11E40: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C12ED7: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C175D3: XrmGetFileDatabase (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4BF2100: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4BF21F0: XGetErrorDatabaseText (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4BF2355: XGetErrorText (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4880344: glfwCreateWindow (in /usr/lib/x86_64-linux-gnu/libglfw.so.3.3)
+==534857==    by 0x111697: mlx_init (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10AE1D: create_mlx (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10AAD2: init_cub3d (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10A962: main (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857== 
+==534857== 280 bytes in 35 blocks are still reachable in loss record 83 of 110
+==534857==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==534857==    by 0x4C1CA6D: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C12ED7: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C175D3: XrmGetFileDatabase (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4BF2100: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4BF21F0: XGetErrorDatabaseText (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4BF2355: XGetErrorText (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4880344: glfwCreateWindow (in /usr/lib/x86_64-linux-gnu/libglfw.so.3.3)
+==534857==    by 0x111697: mlx_init (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10AE1D: create_mlx (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10AAD2: init_cub3d (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10A962: main (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857== 
+==534857== 288 bytes in 4 blocks are still reachable in loss record 84 of 110
+==534857==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==534857==    by 0x4C21800: _XlcCreateDefaultCharSet (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2A81E: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2C05A: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C28C3D: _XlcCreateLC (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C4AE39: _XlcUtf8Loader (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2D130: _XOpenLC (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2DB76: _XrmInitParseInfo (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C170AF: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C17532: XrmGetStringDatabase (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x48810E7: glfwInit (in /usr/lib/x86_64-linux-gnu/libglfw.so.3.3)
+==534857==    by 0x1115B1: mlx_init (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857== 
+==534857== 344 (120 direct, 224 indirect) bytes in 1 blocks are definitely lost in loss record 85 of 110
+==534857==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==534857==    by 0x10C0E4: pad_map (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10B9FF: ft_validate_map (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10B27F: parse_map_file (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10AAB5: init_cub3d (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10A962: main (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857== 
+==534857== 360 bytes in 2 blocks are still reachable in loss record 86 of 110
+==534857==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==534857==    by 0x401622F: calloc (rtld-malloc.h:44)
+==534857==    by 0x401622F: _dl_check_map_versions (dl-version.c:280)
+==534857==    by 0x400DC7C: dl_open_worker_begin (dl-open.c:646)
+==534857==    by 0x400151B: _dl_catch_exception (dl-catch.c:237)
+==534857==    by 0x400CD1F: dl_open_worker (dl-open.c:803)
+==534857==    by 0x400151B: _dl_catch_exception (dl-catch.c:237)
+==534857==    by 0x400D163: _dl_open (dl-open.c:905)
+==534857==    by 0x4A541A3: dlopen_doit (dlopen.c:56)
+==534857==    by 0x400151B: _dl_catch_exception (dl-catch.c:237)
+==534857==    by 0x4001668: _dl_catch_error (dl-catch.c:256)
+==534857==    by 0x4A53C82: _dlerror_run (dlerror.c:138)
+==534857==    by 0x4A5425E: dlopen_implementation (dlopen.c:71)
+==534857==    by 0x4A5425E: dlopen@@GLIBC_2.34 (dlopen.c:81)
+==534857== 
+==534857== 365 bytes in 23 blocks are definitely lost in loss record 87 of 110
+==534857==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==534857==    by 0x10FA61: ft_createline (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10F7B4: get_next_line (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10B37B: ft_validate_parse_file (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10B251: parse_map_file (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10AAB5: init_cub3d (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10A962: main (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857== 
+==534857== 633 bytes in 49 blocks are still reachable in loss record 88 of 110
+==534857==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==534857==    by 0x4C218A5: _XlcCreateDefaultCharSet (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C21C62: _XlcAddCT (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C21E0F: _XlcInitCTInfo (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2DBD5: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2C04E: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C28C3D: _XlcCreateLC (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C4AE39: _XlcUtf8Loader (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2D130: _XOpenLC (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2DB76: _XrmInitParseInfo (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C170AF: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C17532: XrmGetStringDatabase (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857== 
+==534857== 787 bytes in 85 blocks are still reachable in loss record 89 of 110
+==534857==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==534857==    by 0x4C1A5B0: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C1BF54: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C1BFC6: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C29427: _XlcCreateLocaleDataBase (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2DD0E: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2C04E: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C28C3D: _XlcCreateLC (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C4AE39: _XlcUtf8Loader (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2D130: _XOpenLC (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2DB76: _XrmInitParseInfo (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C170AF: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857== 
+==534857== 800 bytes in 50 blocks are still reachable in loss record 90 of 110
+==534857==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==534857==    by 0x4C21751: _XlcAddCharSet (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C21C72: _XlcAddCT (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C21E0F: _XlcInitCTInfo (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2DBD5: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2C04E: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C28C3D: _XlcCreateLC (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C4AE39: _XlcUtf8Loader (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2D130: _XOpenLC (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2DB76: _XrmInitParseInfo (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C170AF: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C17532: XrmGetStringDatabase (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857== 
+==534857== 808 bytes in 1 blocks are still reachable in loss record 91 of 110
+==534857==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==534857==    by 0x10B2CF: ft_validate_parse_file (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10B251: parse_map_file (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10AAB5: init_cub3d (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10A962: main (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857== 
+==534857== 1,028 bytes in 50 blocks are still reachable in loss record 92 of 110
+==534857==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==534857==    by 0x4C21830: _XlcCreateDefaultCharSet (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C21C62: _XlcAddCT (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C21E0F: _XlcInitCTInfo (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2DBD5: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2C04E: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C28C3D: _XlcCreateLC (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C4AE39: _XlcUtf8Loader (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2D130: _XOpenLC (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2DB76: _XrmInitParseInfo (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C170AF: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C17532: XrmGetStringDatabase (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857== 
+==534857== 1,056 bytes in 88 blocks are still reachable in loss record 93 of 110
+==534857==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==534857==    by 0x4A7035E: strdup (strdup.c:42)
+==534857==    by 0x4C1BCDA: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C1BFC6: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C29427: _XlcCreateLocaleDataBase (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2DD0E: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2C04E: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C28C3D: _XlcCreateLC (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C4AE39: _XlcUtf8Loader (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2D130: _XOpenLC (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2DB76: _XrmInitParseInfo (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C170AF: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857== 
+==534857== 1,251 bytes in 1 blocks are still reachable in loss record 94 of 110
+==534857==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==534857==    by 0x400C72C: calloc (rtld-malloc.h:44)
+==534857==    by 0x400C72C: _dl_new_object (dl-object.c:92)
+==534857==    by 0x4007ABE: _dl_map_object_from_fd (dl-load.c:1053)
+==534857==    by 0x4009528: _dl_map_object (dl-load.c:2268)
+==534857==    by 0x4002A2C: openaux (dl-deps.c:64)
+==534857==    by 0x400151B: _dl_catch_exception (dl-catch.c:237)
+==534857==    by 0x4002E66: _dl_map_object_deps (dl-deps.c:232)
+==534857==    by 0x400D944: dl_open_worker_begin (dl-open.c:638)
+==534857==    by 0x400151B: _dl_catch_exception (dl-catch.c:237)
+==534857==    by 0x400CD1F: dl_open_worker (dl-open.c:803)
+==534857==    by 0x400151B: _dl_catch_exception (dl-catch.c:237)
+==534857==    by 0x400D163: _dl_open (dl-open.c:905)
+==534857== 
+==534857== 1,256 bytes in 1 blocks are still reachable in loss record 95 of 110
+==534857==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==534857==    by 0x400C72C: calloc (rtld-malloc.h:44)
+==534857==    by 0x400C72C: _dl_new_object (dl-object.c:92)
+==534857==    by 0x4007ABE: _dl_map_object_from_fd (dl-load.c:1053)
+==534857==    by 0x4009528: _dl_map_object (dl-load.c:2268)
+==534857==    by 0x400D8DB: dl_open_worker_begin (dl-open.c:578)
+==534857==    by 0x400151B: _dl_catch_exception (dl-catch.c:237)
+==534857==    by 0x400CD1F: dl_open_worker (dl-open.c:803)
+==534857==    by 0x400151B: _dl_catch_exception (dl-catch.c:237)
+==534857==    by 0x400D163: _dl_open (dl-open.c:905)
+==534857==    by 0x4A541A3: dlopen_doit (dlopen.c:56)
+==534857==    by 0x400151B: _dl_catch_exception (dl-catch.c:237)
+==534857==    by 0x4001668: _dl_catch_error (dl-catch.c:256)
+==534857== 
+==534857== 1,280 bytes in 16 blocks are still reachable in loss record 96 of 110
+==534857==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==534857==    by 0x4C2721E: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2A2A3: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2C05A: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C28C3D: _XlcCreateLC (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C4AE39: _XlcUtf8Loader (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2D130: _XOpenLC (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2DB76: _XrmInitParseInfo (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C170AF: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C17532: XrmGetStringDatabase (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x48810E7: glfwInit (in /usr/lib/x86_64-linux-gnu/libglfw.so.3.3)
+==534857==    by 0x1115B1: mlx_init (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857== 
+==534857== 1,302 bytes in 88 blocks are still reachable in loss record 97 of 110
+==534857==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==534857==    by 0x4A7035E: strdup (strdup.c:42)
+==534857==    by 0x4C1BECD: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C1BFC6: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C29427: _XlcCreateLocaleDataBase (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2DD0E: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2C04E: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C28C3D: _XlcCreateLC (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C4AE39: _XlcUtf8Loader (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2D130: _XOpenLC (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2DB76: _XrmInitParseInfo (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C170AF: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857== 
+==534857== 1,360 bytes in 85 blocks are still reachable in loss record 98 of 110
+==534857==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==534857==    by 0x4C1A58D: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C1BF54: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C1BFC6: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C29427: _XlcCreateLocaleDataBase (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2DD0E: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2C04E: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C28C3D: _XlcCreateLC (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C4AE39: _XlcUtf8Loader (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2D130: _XOpenLC (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2DB76: _XrmInitParseInfo (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C170AF: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857== 
+==534857== 1,872 bytes in 78 blocks are still reachable in loss record 99 of 110
+==534857==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==534857==    by 0x4C1C948: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C12ED7: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C175D3: XrmGetFileDatabase (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4BF2100: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4BF21F0: XGetErrorDatabaseText (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4BF2355: XGetErrorText (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4880344: glfwCreateWindow (in /usr/lib/x86_64-linux-gnu/libglfw.so.3.3)
+==534857==    by 0x111697: mlx_init (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10AE1D: create_mlx (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10AAD2: init_cub3d (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10A962: main (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857== 
+==534857== 2,048 bytes in 1 blocks are still reachable in loss record 100 of 110
+==534857==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==534857==    by 0x4C29622: _XlcCreateLocaleDataBase (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2DD0E: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2C04E: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C28C3D: _XlcCreateLC (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C4AE39: _XlcUtf8Loader (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2D130: _XOpenLC (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2DB76: _XrmInitParseInfo (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C170AF: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C17532: XrmGetStringDatabase (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x48810E7: glfwInit (in /usr/lib/x86_64-linux-gnu/libglfw.so.3.3)
+==534857==    by 0x1115B1: mlx_init (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857== 
+==534857== 2,136 bytes in 1 blocks are still reachable in loss record 101 of 110
+==534857==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==534857==    by 0x4C294C5: _XlcCreateLocaleDataBase (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2DD0E: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2C04E: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C28C3D: _XlcCreateLC (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C4AE39: _XlcUtf8Loader (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2D130: _XOpenLC (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2DB76: _XrmInitParseInfo (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C170AF: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C17532: XrmGetStringDatabase (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x48810E7: glfwInit (in /usr/lib/x86_64-linux-gnu/libglfw.so.3.3)
+==534857==    by 0x1115B1: mlx_init (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857== 
+==534857== 2,384 bytes in 42 blocks are still reachable in loss record 102 of 110
+==534857==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==534857==    by 0x4C11D89: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C12ED7: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C175D3: XrmGetFileDatabase (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4BF2100: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4BF21F0: XGetErrorDatabaseText (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4BF2355: XGetErrorText (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4880344: glfwCreateWindow (in /usr/lib/x86_64-linux-gnu/libglfw.so.3.3)
+==534857==    by 0x111697: mlx_init (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10AE1D: create_mlx (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10AAD2: init_cub3d (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10A962: main (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857== 
+==534857== 2,631 bytes in 50 blocks are still reachable in loss record 103 of 110
+==534857==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==534857==    by 0x4C219C3: _XlcAddCT (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C21E0F: _XlcInitCTInfo (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2DBD5: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2C04E: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C28C3D: _XlcCreateLC (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C4AE39: _XlcUtf8Loader (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2D130: _XOpenLC (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2DB76: _XrmInitParseInfo (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C170AF: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C17532: XrmGetStringDatabase (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x48810E7: glfwInit (in /usr/lib/x86_64-linux-gnu/libglfw.so.3.3)
+==534857== 
+==534857== 3,520 bytes in 88 blocks are still reachable in loss record 104 of 110
+==534857==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==534857==    by 0x4C1BCC2: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C1BFC6: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C29427: _XlcCreateLocaleDataBase (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2DD0E: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2C04E: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C28C3D: _XlcCreateLC (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C4AE39: _XlcUtf8Loader (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2D130: _XOpenLC (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2DB76: _XrmInitParseInfo (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C170AF: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C17532: XrmGetStringDatabase (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857== 
+==534857== 3,600 bytes in 50 blocks are still reachable in loss record 105 of 110
+==534857==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==534857==    by 0x4C21800: _XlcCreateDefaultCharSet (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C21C62: _XlcAddCT (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C21E0F: _XlcInitCTInfo (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2DBD5: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2C04E: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C28C3D: _XlcCreateLC (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C4AE39: _XlcUtf8Loader (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2D130: _XOpenLC (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2DB76: _XrmInitParseInfo (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C170AF: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C17532: XrmGetStringDatabase (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857== 
+==534857== 8,176 bytes in 1 blocks are still reachable in loss record 106 of 110
+==534857==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==534857==    by 0x4C02085: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C03849: _XrmInternalStringToQuark (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C16FC3: XrmInitialize (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4881085: glfwInit (in /usr/lib/x86_64-linux-gnu/libglfw.so.3.3)
+==534857==    by 0x1115B1: mlx_init (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10AE1D: create_mlx (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10AAD2: init_cub3d (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10A962: main (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857== 
+==534857== 8,176 bytes in 1 blocks are still reachable in loss record 107 of 110
+==534857==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==534857==    by 0x4C039F2: _XrmInternalStringToQuark (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2921B: _XlcGetLocaleDataBase (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2A636: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2C05A: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C28C3D: _XlcCreateLC (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C4AE39: _XlcUtf8Loader (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2D130: _XOpenLC (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C2DB76: _XrmInitParseInfo (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C170AF: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C17532: XrmGetStringDatabase (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x48810E7: glfwInit (in /usr/lib/x86_64-linux-gnu/libglfw.so.3.3)
+==534857== 
+==534857== 8,192 bytes in 1 blocks are still reachable in loss record 108 of 110
+==534857==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==534857==    by 0x4C036D0: _XrmInternalStringToQuark (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C12A8E: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C175D3: XrmGetFileDatabase (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4BF2100: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4BF21F0: XGetErrorDatabaseText (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4BF2355: XGetErrorText (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4880344: glfwCreateWindow (in /usr/lib/x86_64-linux-gnu/libglfw.so.3.3)
+==534857==    by 0x111697: mlx_init (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10AE1D: create_mlx (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10AAD2: init_cub3d (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10A962: main (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857== 
+==534857== 34,965 bytes in 953 blocks are still reachable in loss record 109 of 110
+==534857==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==534857==    by 0x4C1CABF: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C12ED7: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4C175D3: XrmGetFileDatabase (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4BF2100: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4BF21F0: XGetErrorDatabaseText (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4BF2355: XGetErrorText (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==534857==    by 0x4880344: glfwCreateWindow (in /usr/lib/x86_64-linux-gnu/libglfw.so.3.3)
+==534857==    by 0x111697: mlx_init (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10AE1D: create_mlx (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10AAD2: init_cub3d (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10A962: main (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857== 
+==534857== 288,216 bytes in 1 blocks are possibly lost in loss record 110 of 110
+==534857==    at 0x484D953: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==534857==    by 0x1115E3: mlx_init (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10AE1D: create_mlx (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10AAD2: init_cub3d (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10A962: main (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857== 
+==534857== LEAK SUMMARY:
+==534857==    definitely lost: 859 bytes in 33 blocks
+==534857==    indirectly lost: 244 bytes in 20 blocks
+==534857==      possibly lost: 288,216 bytes in 1 blocks
+==534857==    still reachable: 94,529 bytes in 1,938 blocks
+==534857==         suppressed: 0 bytes in 0 blocks
+==534857== 
+==534857== ERROR SUMMARY: 20 errors from 20 contexts (suppressed: 0 from 0)
+==534857== 
+==534857== 1 errors in context 1 of 20:
+==534857== posix_memalign() invalid size value: 0
+==534857==    at 0x484E2E8: posix_memalign (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==534857==    by 0x6DBA135: ???
+==534857==    by 0x536D996: ???
+==534857==    by 0x53C6471: ???
+==534857==    by 0x536D012: ???
+==534857==    by 0x4005823: call_init (dl-init.c:120)
+==534857==    by 0x4005823: _dl_init (dl-init.c:121)
+==534857==    by 0x40015B1: _dl_catch_exception (dl-catch.c:211)
+==534857==    by 0x400CD7B: dl_open_worker (dl-open.c:829)
+==534857==    by 0x400CD7B: dl_open_worker (dl-open.c:792)
+==534857==    by 0x400151B: _dl_catch_exception (dl-catch.c:237)
+==534857==    by 0x400D163: _dl_open (dl-open.c:905)
+==534857==    by 0x4A541A3: dlopen_doit (dlopen.c:56)
+==534857==    by 0x400151B: _dl_catch_exception (dl-catch.c:237)
+==534857== 
+==534857== 
+==534857== 1 errors in context 2 of 20:
+==534857== realloc() with size 0
+==534857==    at 0x484DB80: realloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==534857==    by 0x6DBA0FF: ???
+==534857==    by 0x536D996: ???
+==534857==    by 0x53C6471: ???
+==534857==    by 0x536D012: ???
+==534857==    by 0x4005823: call_init (dl-init.c:120)
+==534857==    by 0x4005823: _dl_init (dl-init.c:121)
+==534857==    by 0x40015B1: _dl_catch_exception (dl-catch.c:211)
+==534857==    by 0x400CD7B: dl_open_worker (dl-open.c:829)
+==534857==    by 0x400CD7B: dl_open_worker (dl-open.c:792)
+==534857==    by 0x400151B: _dl_catch_exception (dl-catch.c:237)
+==534857==    by 0x400D163: _dl_open (dl-open.c:905)
+==534857==    by 0x4A541A3: dlopen_doit (dlopen.c:56)
+==534857==    by 0x400151B: _dl_catch_exception (dl-catch.c:237)
+==534857==  Address 0x4e44860 is 0 bytes after a block of size 0 alloc'd
+==534857==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==534857==    by 0x6DBA0EF: ???
+==534857==    by 0x536D996: ???
+==534857==    by 0x53C6471: ???
+==534857==    by 0x536D012: ???
+==534857==    by 0x4005823: call_init (dl-init.c:120)
+==534857==    by 0x4005823: _dl_init (dl-init.c:121)
+==534857==    by 0x40015B1: _dl_catch_exception (dl-catch.c:211)
+==534857==    by 0x400CD7B: dl_open_worker (dl-open.c:829)
+==534857==    by 0x400CD7B: dl_open_worker (dl-open.c:792)
+==534857==    by 0x400151B: _dl_catch_exception (dl-catch.c:237)
+==534857==    by 0x400D163: _dl_open (dl-open.c:905)
+==534857==    by 0x4A541A3: dlopen_doit (dlopen.c:56)
+==534857==    by 0x400151B: _dl_catch_exception (dl-catch.c:237)
+==534857== 
+==534857== 
+==534857== 1 errors in context 3 of 20:
+==534857== Conditional jump or move depends on uninitialised value(s)
+==534857==    at 0x10B7E1: ft_parse_color (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10B71C: ft_parse_config_line (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10B367: ft_validate_parse_file (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10B251: parse_map_file (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10AAB5: init_cub3d (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10A962: main (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==  Uninitialised value was created by a heap allocation
+==534857==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==534857==    by 0x10B315: ft_validate_parse_file (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10B251: parse_map_file (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10AAB5: init_cub3d (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10A962: main (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857== 
+==534857== 
+==534857== 1 errors in context 4 of 20:
+==534857== Conditional jump or move depends on uninitialised value(s)
+==534857==    at 0x10B7E1: ft_parse_color (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10B77B: ft_parse_config_line (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10B367: ft_validate_parse_file (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10B251: parse_map_file (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10AAB5: init_cub3d (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10A962: main (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==  Uninitialised value was created by a heap allocation
+==534857==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==534857==    by 0x10B315: ft_validate_parse_file (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10B251: parse_map_file (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10AAB5: init_cub3d (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10A962: main (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857== 
+==534857== 
+==534857== 1 errors in context 5 of 20:
+==534857== Conditional jump or move depends on uninitialised value(s)
+==534857==    at 0x10D495: ft_parse_texture (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10B573: ft_parse_config_line (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10B367: ft_validate_parse_file (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10B251: parse_map_file (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10AAB5: init_cub3d (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10A962: main (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==  Uninitialised value was created by a heap allocation
+==534857==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==534857==    by 0x10B315: ft_validate_parse_file (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10B251: parse_map_file (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10AAB5: init_cub3d (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10A962: main (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857== 
+==534857== 
+==534857== 1 errors in context 6 of 20:
+==534857== Conditional jump or move depends on uninitialised value(s)
+==534857==    at 0x10D495: ft_parse_texture (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10B6BD: ft_parse_config_line (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10B367: ft_validate_parse_file (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10B251: parse_map_file (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10AAB5: init_cub3d (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10A962: main (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==  Uninitialised value was created by a heap allocation
+==534857==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==534857==    by 0x10B315: ft_validate_parse_file (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10B251: parse_map_file (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10AAB5: init_cub3d (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10A962: main (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857== 
+==534857== 
+==534857== 1 errors in context 7 of 20:
+==534857== Conditional jump or move depends on uninitialised value(s)
+==534857==    at 0x10D495: ft_parse_texture (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10B618: ft_parse_config_line (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10B367: ft_validate_parse_file (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10B251: parse_map_file (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10AAB5: init_cub3d (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10A962: main (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==  Uninitialised value was created by a heap allocation
+==534857==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==534857==    by 0x10B315: ft_validate_parse_file (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10B251: parse_map_file (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10AAB5: init_cub3d (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10A962: main (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857== 
+==534857== 
+==534857== 1 errors in context 8 of 20:
+==534857== Conditional jump or move depends on uninitialised value(s)
+==534857==    at 0x10D495: ft_parse_texture (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10B4CE: ft_parse_config_line (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10B367: ft_validate_parse_file (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10B251: parse_map_file (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10AAB5: init_cub3d (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10A962: main (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==  Uninitialised value was created by a heap allocation
+==534857==    at 0x4846828: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==534857==    by 0x10B315: ft_validate_parse_file (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10B251: parse_map_file (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10AAB5: init_cub3d (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857==    by 0x10A962: main (in /home/poverbec/it_projects/cub3d/cub3d)
+==534857== 
+==534857== ERROR SUMMARY: 20 errors from 20 contexts (suppressed: 0 from 0)
