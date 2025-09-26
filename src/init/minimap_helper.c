@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 16:29:57 by poverbec          #+#    #+#             */
-/*   Updated: 2025/09/24 09:46:31 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/09/26 15:48:31 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	return_square_size(t_cub3d *cub3d, int map_width, int map_height)
 	int	square_size;
 
 	square_size = fmin(cub3d->minimap_img_width / map_width,
-		cub3d->minimap_img_height / map_height);
+			cub3d->minimap_img_height / map_height);
 	if (square_size < 1)
 		square_size = 1;
 	return (square_size);
@@ -49,14 +49,15 @@ bool	malloc_minimap_grid(t_cub3d *cub3d)
 	int	y;
 
 	y = 0;
-	cub3d->minimap.map_grid = malloc((cub3d->minimap.map_height + 1) *  sizeof(char *));
+	cub3d->minimap.map_grid = malloc((cub3d->minimap.map_height + 1)
+			* sizeof(char *));
 	if (!cub3d->minimap.map_grid)
-        return (false);
+		return (false);
 	cub3d->minimap.map_grid[cub3d->minimap.map_height] = NULL;
 	while (y < cub3d->minimap.map_height)
 	{
-
-		cub3d->minimap.map_grid[y] = malloc(cub3d->minimap.map_width + 1 * sizeof(char));
+		cub3d->minimap.map_grid[y] = malloc(cub3d->minimap.map_width + 1
+				* sizeof(char));
 		if (!cub3d->minimap.map_grid[y])
 			return (false);
 		ft_memset(cub3d->minimap.map_grid[y], '2', cub3d->minimap.map_width);

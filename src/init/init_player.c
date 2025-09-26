@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 09:44:12 by poverbec          #+#    #+#             */
-/*   Updated: 2025/09/26 13:14:20 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/09/26 15:47:28 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,6 @@ void	draw_player_minimap(t_cub3d *cub3d, double p_y, double p_x)
 
 void	set_player_view(t_cub3d *cub3d, char player_direction)
 {
-		cub3d->player.player_view = player_direction;
+	cub3d->player.player_view = player_direction;
 }
 

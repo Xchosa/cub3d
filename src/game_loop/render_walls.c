@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 14:52:35 by poverbec          #+#    #+#             */
-/*   Updated: 2025/09/26 13:09:55 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/09/26 16:34:38 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ void	draw_ceiling(int y, t_cub3d *cub3d, t_ray *ray, int x)
 	uint32_t	ceiling_color;
 
 	ceiling_color = (cub3d->graphics->ceiling_colour[0] << 24)
-					| (cub3d->graphics->ceiling_colour[1] << 16)
-					| (cub3d->graphics->ceiling_colour[2] << 8)
-					| 0xFF;
+		| (cub3d->graphics->ceiling_colour[1] << 16)
+		| (cub3d->graphics->ceiling_colour[2] << 8)
+		| 0xFF;
 	while (y < ray->draw_start)
 	{
 		mlx_put_pixel(cub3d->img, x, y, ceiling_color);
@@ -32,9 +32,9 @@ uint32_t	r_ceil(t_cub3d *cub3d)
 	uint32_t	ceiling_color;
 
 	ceiling_color = (cub3d->graphics->ceiling_colour[0] << 24)
-					| (cub3d->graphics->ceiling_colour[1] << 16)
-					| (cub3d->graphics->ceiling_colour[2] << 8)
-					| 0xFF;
+		| (cub3d->graphics->ceiling_colour[1] << 16)
+		| (cub3d->graphics->ceiling_colour[2] << 8)
+		| 0xFF;
 	return (ceiling_color);
 }
 
@@ -43,9 +43,9 @@ uint32_t	r_floor(t_cub3d *cub3d)
 	uint32_t	floor_color;
 
 	floor_color = (cub3d->graphics->floor_colour[0] << 24)
-					| (cub3d->graphics->ceiling_colour[1] << 16)
-					| (cub3d->graphics->ceiling_colour[2] << 8)
-					| 0xFF;
+		| (cub3d->graphics->floor_colour[1] << 16)
+		| (cub3d->graphics->floor_colour[2] << 8)
+		| 0xFF;
 	return (floor_color);
 }
 
@@ -76,12 +76,10 @@ void	draw_column( t_cub3d *cub3d, t_ray *ray, int x)
 {
 	int				y;
 	int				text_x;
-	//uint32_t		*texture_pix;
 	double			step;
 	double			texture_position;
 	uint32_t		color;
 
-	//texture_pix = (uint32_t*)load_wall_texture(cub3d, ray)->pixels;
 	text_x = (int)(x_array_texture(ray) * load_wall_texture(cub3d, ray)->width);
 	step = (double)load_wall_texture(cub3d, ray)->height / ray->line_height;
 	texture_position = (ray->draw_start - cub3d->window_height
@@ -91,11 +89,8 @@ void	draw_column( t_cub3d *cub3d, t_ray *ray, int x)
 		mlx_put_pixel(cub3d->img, x, y++, r_ceil(cub3d));
 	while (y <= ray->draw_end)
 	{
-		//color = (uint32_t*)load_wall_texture(cub3d, ray)->pixels(int)texture_position
-		color = ((uint32_t*)load_wall_texture(cub3d, ray)->pixels)[(int)
+		color = ((uint32_t *)load_wall_texture(cub3d, ray)->pixels)[(int)
 			texture_position * load_wall_texture(cub3d, ray)->width + text_x];
-		//color = texture_pix[(int)texture_position
-		//	* load_wall_texture(cub3d, ray)->width + text_x];
 		mlx_put_pixel(cub3d->img, x, y, color);
 		texture_position += step;
 		y++;
@@ -105,3 +100,6 @@ void	draw_column( t_cub3d *cub3d, t_ray *ray, int x)
 }
 //wall_texture = load_wall_texture(cub3d, ray);
 	//mlx_texture_t	*wall_texture;
+//color = (uint32_t*)load_wall_texture(cub3d, ray)->pixels(int)texture_position
+//color = texture_pix[(int)texture_position
+//	* load_wall_texture(cub3d, ray)->width + text_x];

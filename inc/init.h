@@ -177,6 +177,15 @@ void			draw_minimap_cells(t_cub3d *cub3d, int minimap_x,
 					int minimap_y);
 int				get_cell_color(char cell);
 void			replace_spaces_with_2(char **map);
+int				return_map_height(char **map);
+
+// parsing
+bool			space_map_check(int i, int j, char **map);
+int				ft_parse_config_line(t_cub3d *data, char *line);
+bool			ft_has_valid_characters(char **map);
+bool			ft_has_single_player(char **map);
+bool			ft_no_empty_lines(char **map);
+bool			check_for_player(char **map);
 
 // minimap
 bool			init_minimap(t_cub3d *cub3d);
@@ -206,7 +215,7 @@ bool			boundary_and_wall_collision_check(t_cub3d *cub3d, int grid_x,
 
 void			update_y_and_x(t_cub3d *cub3d, double px_d, double py_d);
 //bool		check_for_wall(t_cub3d *cub3d);
-bool			check_wall_rotate(t_cub3d *cub3d,  double px_d,
+bool			check_wall_rotate(t_cub3d *cub3d, double px_d,
 					double py_d, double fps);
 bool			check_vertical_wall_hit(t_cub3d *cub3d, t_ray *ray);
 void			rotate_player_keys(t_cub3d *cub3d, double fps);
@@ -223,16 +232,16 @@ bool			is_walkable(char c);
 
 
 void			print_array(char **array);
-void    		cast_rays(t_cub3d *cub3d);
-double  		get_player_angle(char direction);
-void   			render_frame(t_cub3d *cub3d);
-void    		init_ray(t_cub3d *cub3d, t_ray *ray, int x);
+void			cast_rays(t_cub3d *cub3d);
+double			get_player_angle(char direction);
+void			render_frame(t_cub3d *cub3d);
+void			init_ray(t_cub3d *cub3d, t_ray *ray, int x);
 
 
 
 
-void	perform_dda(t_cub3d *cub3d, t_ray *ray);
-void	calculation_projection(t_cub3d *cub3d, t_ray *ray);
-void	draw_column(t_cub3d *cub3d, t_ray *ray, int x);
+void			perform_dda(t_cub3d *cub3d, t_ray *ray);
+void			calculation_projection(t_cub3d *cub3d, t_ray *ray);
+void			draw_column(t_cub3d *cub3d, t_ray *ray, int x);
 #endif
 

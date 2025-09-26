@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/27 13:06:12 by mimalek           #+#    #+#             */
-/*   Updated: 2025/09/26 12:23:17 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/09/26 15:44:18 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ void	render_frame(t_cub3d *cub3d)
 bool	check_vertical_wall_hit(t_cub3d *cub3d, t_ray *ray)
 {
 	if (ray->map_x < 0 || ray->map_x >= cub3d->minimap.map_width
-			|| ray->map_y < 0 || ray->map_y >= cub3d->minimap.map_height
-			|| cub3d->minimap.map_grid[ray->map_y][ray->map_x] == '1')
+		|| ray->map_y < 0 || ray->map_y >= cub3d->minimap.map_height
+		|| cub3d->minimap.map_grid[ray->map_y][ray->map_x] == '1')
 		return (true);
 	return (false);
 }

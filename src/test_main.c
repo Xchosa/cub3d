@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 14:53:06 by poverbec          #+#    #+#             */
-/*   Updated: 2025/09/25 17:59:05 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/09/26 16:36:17 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	main(int argc, char **argv)
 
 	ft_memset(&cub3d, 0, sizeof(t_cub3d));
 	fd = argument_check(argc, argv);
-	if (fd <0)
+	if (fd < 0)
 		return (1);
 	if (init_cub3d(&cub3d, argv[1], fd) == false)
 	{
@@ -39,7 +39,7 @@ int	main(int argc, char **argv)
 
 void	print_array(char **array)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (array[i] != 0)

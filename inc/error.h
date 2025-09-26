@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mimalek <mimalek@student.42.fr>            +#+  +:+       +#+        */
+/*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 14:16:33 by mimalek           #+#    #+#             */
-/*   Updated: 2025/08/05 09:32:43 by mimalek          ###   ########.fr       */
+/*   Updated: 2025/09/26 16:51:02 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ typedef	enum	e_error
 	MULTIPLE_PLAYER = 12,
 	INVALID_MAP_CHARACTER = 13,
 	EMPTY_LINE = 14,
-	MAP_NOT_ENCLOSED = 15
+	MAP_NOT_ENCLOSED = 15,
+	NO_PLAYER = 16,
 
 }				t_error;
 

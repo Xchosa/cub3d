@@ -3,16 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mimalek <mimalek@student.42.fr>            +#+  +:+       +#+        */
+/*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 17:13:21 by mimalek           #+#    #+#             */
-/*   Updated: 2025/08/28 10:06:32 by mimalek          ###   ########.fr       */
+/*   Updated: 2025/09/26 16:29:06 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static int	ft_parse_config_line(t_cub3d *data, char *line);
 static void	ft_parse_color(char *line, int **color);
 static void	ft_parse_map(t_cub3d *cub3d, char *line);
 
@@ -51,32 +50,43 @@ bool	ft_validate_parse_file(t_cub3d *cub3d, int fd)
 	return (true);
 }
 
+int	check_for_whitespaces(char *line, int i)
+{
+	while (line[i] == ' ' || line[i] == '\t' || line[i] == '\n'
+		|| line[i] == '\v' || line[i] == '\f' || line[i] == '\r')
+	{
+		i++;
+	}
+	return (i);
+}
+
 // try t_strnstr(lines[i], "NO ", 3)
-static int	ft_parse_config_line(t_cub3d *data, char *line)
+int	ft_parse_config_line(t_cub3d *data, char *line)
 {
 	int	i;
 
 	i = 0;
-	while (line[i] == ' ' || line[i] == '\t' || line[i] == '\n'
-		|| line[i] == '\v' || line[i] == '\f' || line[i] == '\r')
-		i++;
-	if (line[i] == 'N' && line[i + 1] && line[i + 2] && line[i + 1] == 'O' && line[i + 2] == ' ')
+	i = check_for_whitespaces(line, i);
+	if (line[i] == 'N' && line[i + 1] && line[i + 2] && line[i + 1]
+		== 'O' && line[i + 2] == ' ')
 		return (ft_parse_texture(line + i + 3, &data->graphics->north), 1);
-	else if (line[i] == 'S' && line[i + 1] && line[i + 2] && line[i + 1] == 'O' && line[i + 2] == ' ')
+	else if (line[i] == 'S' && line[i + 1] && line[i + 2] && line[i + 1]
+		== 'O' && line[i + 2] == ' ')
 		return (ft_parse_texture(line + i + 3, &data->graphics->south), 1);
-	else if (line[i] == 'W' && line[i + 1] && line[i + 2] && line[i + 1] == 'E' && line[i + 2] == ' ')
+	else if (line[i] == 'W' && line[i + 1] && line[i + 2] && line[i + 1]
+		== 'E' && line[i + 2] == ' ')
 		return (ft_parse_texture(line + i + 3, &data->graphics->west), 1);
-	else if (line[i] == 'E' && line[i + 1] && line[i + 2] && line[i + 1] == 'A' && line[i + 2] == ' ')
+	else if (line[i] == 'E' && line[i + 1] && line[i + 2] && line[i + 1]
+		== 'A' && line[i + 2] == ' ')
 		return (ft_parse_texture(line + i + 3, &data->graphics->east), 1);
 	else if (line[i] == 'F' && line[i + 1] == ' ')
 		return (ft_parse_color(line + i + 2, &data->graphics->floor_colour), 1);
 	else if (line[i] == 'C' && line[i + 1] == ' ')
-		return (ft_parse_color(line + i + 2, &data->graphics->ceiling_colour), 1);
+		return (ft_parse_color(line + i + 2,
+				&data->graphics->ceiling_colour), 1);
 	else if (line[i] == '\0' || line[i] == '\n')
 		return (0);
-	else
-		ft_error(CONFIGUARTION_LINE);
-	return (0);
+	return (ft_error(CONFIGUARTION_LINE), 0);
 }
 
 static void	ft_parse_color(char *line, int **color)

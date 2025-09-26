@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/26 11:49:24 by poverbec          #+#    #+#             */
-/*   Updated: 2025/09/26 12:12:30 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/09/26 15:43:50 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,10 @@ mlx_texture_t	*load_wall_texture(t_cub3d *cub3d, t_ray *ray)
 	else if (ray->side == 1 && ray->delta_y > 0)
 		wall_texture = cub3d->graphics->south.texture;
 	else
+	{
 		wall_texture = cub3d->graphics->north.texture;
-    return (wall_texture);
+	}
+	return (wall_texture);
 }
 
 int	return_x_cor_texture(int wall_x, t_cub3d *cub3d,

@@ -3,19 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mimalek <mimalek@student.42.fr>            +#+  +:+       +#+        */
+/*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 10:09:04 by poverbec          #+#    #+#             */
-/*   Updated: 2025/08/28 10:07:36 by mimalek          ###   ########.fr       */
+/*   Updated: 2025/09/26 16:55:33 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 #include "parse.h"
 
-bool	ft_has_valid_characters(char **map);
-bool	ft_has_single_player(char **map);
-bool	ft_no_empty_lines(char **map);
 
 bool	ft_validate_map(char **map)
 {
@@ -26,6 +23,8 @@ bool	ft_validate_map(char **map)
 		ft_error(MALLOC_FAIL);
 	if (!ft_has_valid_characters(map))
 		ft_error(INVALID_MAP_CHARACTER);
+	if (!check_for_player(map))
+		ft_error(NO_PLAYER);
 	if (!ft_has_single_player(map))
 		ft_error(MULTIPLE_PLAYER);
 	if (!ft_is_map_enclosed(padded_map))
@@ -55,6 +54,36 @@ bool	ft_has_valid_characters(char **map)
 	return (true);
 }
 
+
+
+bool	check_for_player(char **map)
+{
+	int	i;
+	int	j;
+	int	player_count;
+
+	i = 0;
+	player_count = 0;
+	while (map[i])
+	{
+		j = 0;
+		while (map[i][j])
+		{
+			if (ft_strchr("NSEW", map[i][j]))
+			{
+				player_count++;
+				if (player_count > 1)
+					return (false);
+			}
+			j++;
+		}
+		i++;
+	}
+	if (player_count == 0)
+		return (false);
+	return (true);
+}
+
 bool	ft_has_single_player(char **map)
 {
 	int	i;
@@ -78,7 +107,9 @@ bool	ft_has_single_player(char **map)
 		}
 		i++;
 	}
-	return (true);
+	if (player_count == 1)
+		return (true);
+	return (false);
 }
 
 // Only player and floor are walkable

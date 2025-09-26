@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 10:08:58 by poverbec          #+#    #+#             */
-/*   Updated: 2025/09/25 18:04:01 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/09/26 16:19:36 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,25 @@ char	**read_map_file(char *map_path, int fd)
 	return (free(content), map_array);
 }
 
+bool	space_map_check(int i, int j, char **map)
+{
+	if (map[i - 1][j] == ' ' || map[i + 1][j] == ' ' ||
+		map[i][j - 1] == ' ' || map[i][j + 1] == ' ')
+		return (false);
+	return (true);
+}
+
+
+int	return_map_height(char **map)
+{
+	int	height;
+
+	height = 0;
+	while (map[height])
+		height++;
+	return (height);
+}
+
 bool	ft_is_map_enclosed(char **map)
 {
 	int	i;
@@ -48,9 +67,7 @@ bool	ft_is_map_enclosed(char **map)
 	int	height;
 	int	width;
 
-	height = 0;
-	while (map[height])
-		height++;
+	height = return_map_height(map);
 	width = ft_strlen(map[0]);
 	i = 0;
 	while (i < height)
@@ -62,8 +79,7 @@ bool	ft_is_map_enclosed(char **map)
 			{
 				if (i == 0 || j == 0 || i == height - 1 || j == width - 1)
 					return (false);
-				if (map[i - 1][j] == ' ' || map[i + 1][j] == ' ' ||
-					map[i][j - 1] == ' ' || map[i][j + 1] == ' ')
+				if (space_map_check(i, j, map) == false)
 					return (false);
 			}
 			j++;
@@ -73,9 +89,10 @@ bool	ft_is_map_enclosed(char **map)
 	return (true);
 }
 
+
 bool	ft_no_empty_lines(char **map)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (map[i])
@@ -86,3 +103,4 @@ bool	ft_no_empty_lines(char **map)
 	}
 	return (true);
 }
+

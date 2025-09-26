@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mimalek <mimalek@student.42.fr>            +#+  +:+       +#+        */
+/*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 14:35:40 by mimalek           #+#    #+#             */
-/*   Updated: 2025/08/05 09:32:56 by mimalek          ###   ########.fr       */
+/*   Updated: 2025/09/26 16:51:44 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ void	ft_error_2( int error_code )
 		ft_error_msg(error_code, "Empty Line in Map");
 	else if (error_code == 15)
 		ft_error_msg(error_code, "Map Not Enclosed");
+	else if (error_code == 16)
+		ft_error_msg(error_code, "No Player existing in Map");
 	else
 		ft_error_msg(error_code, "Unknown Error");
 }

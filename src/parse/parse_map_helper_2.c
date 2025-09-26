@@ -6,13 +6,13 @@
 /*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/25 18:03:45 by poverbec          #+#    #+#             */
-/*   Updated: 2025/09/25 18:04:07 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/09/26 16:22:31 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int get_max_width(char **map)
+int	get_max_width(char **map)
 {
 	int	max;
 	int	i;
@@ -33,7 +33,7 @@ int get_max_width(char **map)
 char	*pad_line(char *line, int width)
 {
 	char	*new_line;
-	int	i;
+	int		i;
 
 	i = 0;
 	new_line = malloc(sizeof(char) * (width + 1));
@@ -50,18 +50,17 @@ char	*pad_line(char *line, int width)
 	return (new_line);
 }
 
+
 char	**pad_map(char **map)
 {
 	int		height;
 	int		width;
 	char	**new_map;
-	int	i;
+	int		i;
 
-	height = 0;
+	height = return_map_height(map);
 	width = get_max_width(map);
 	i = 0;
-	while (map[height])
-		height++;
 	new_map = malloc(sizeof(char *) * (height + 1));
 	if (!new_map)
 		return (NULL);
@@ -70,11 +69,8 @@ char	**pad_map(char **map)
 		new_map[i] = pad_line(map[i], width);
 		if (!new_map[i])
 		{
-			while (i > 0)
-			{
+			while (i-- > 0)
 				free(new_map[i - 1]);
-				i--;
-			}
 			free(new_map);
 			return (NULL);
 		}
@@ -83,3 +79,4 @@ char	**pad_map(char **map)
 	new_map[height] = NULL;
 	return (new_map);
 }
+

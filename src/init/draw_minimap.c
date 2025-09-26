@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/01 11:14:56 by poverbec          #+#    #+#             */
-/*   Updated: 2025/09/26 13:12:05 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/09/26 15:46:25 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,10 @@ void	draw_minimap(t_cub3d *cub3d)
 {
 	int		minimap_x;
 	int		minimap_y;
+
 	minimap_x = 0;
 	minimap_y = 0;
-	draw_minimap_background(cub3d, minimap_x, minimap_y); 
+	draw_minimap_background(cub3d, minimap_x, minimap_y);
 	draw_minimap_cells(cub3d, minimap_x, minimap_y);
 }
 
@@ -33,15 +34,16 @@ void	draw_minimap_background(t_cub3d *cub3d, int start_x, int start_y)
 
 	bg_color = BLACK_TRANS_COLOR;
 	real_minimap_width = cub3d->minimap.map_width * cub3d->minimap.square_size;
-	real_minimap_height = cub3d->minimap.map_height * cub3d->minimap.square_size;
+	real_minimap_height = cub3d->minimap.map_height
+		* cub3d->minimap.square_size;
 	y = 0;
 	while (y < real_minimap_height)
 	{
 		x = 0;
 		while (x < real_minimap_width)
 		{
-			if (start_x + x < cub3d->window_width &&
-				start_y + y < cub3d->window_height )
+			if (start_x + x < cub3d->window_width
+				&& start_y + y < cub3d->window_height)
 				mlx_put_pixel(cub3d->img, start_x + x, start_y + y,
 					bg_color);
 			x++;

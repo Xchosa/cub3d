@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/27 12:47:53 by mimalek           #+#    #+#             */
-/*   Updated: 2025/09/26 11:05:06 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/09/26 15:41:40 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,22 +31,21 @@ void	init_ray(t_cub3d *cub3d, t_ray *ray, int x)
 // werden
 // addiert fuer richtigen ray winkel
 
-static void calculate_ray_direction(t_cub3d *cub3d, t_ray *ray, int x)
+static void	calculate_ray_direction(t_cub3d *cub3d, t_ray *ray, int x)
 {
-    double  camera_x;
-    double  player_rad;
-    double  fov_rad;
-    double  ray_rad;
+	double	camera_x;
+	double	player_rad;
+	double	fov_rad;
+	double	ray_rad;
 	double	angle_offset;
 
-    camera_x = 2 * x / (double)cub3d->window_width - 1; 
-    player_rad = cub3d->player.direction * M_PI / 180.0;
-    fov_rad = FOV * M_PI / 180.0;
-    angle_offset = camera_x * (fov_rad /2);
-	//angle_offset = atan(camera_x * tan(fov_rad / 2.0));
-    ray_rad = player_rad + angle_offset;
-    ray->delta_x = cos(ray_rad);
-    ray->delta_y = sin(ray_rad);
+	camera_x = 2 * x / (double)cub3d->window_width - 1;
+	player_rad = cub3d->player.direction * M_PI / 180.0;
+	fov_rad = FOV * M_PI / 180.0;
+	angle_offset = camera_x * (fov_rad / 2);
+	ray_rad = player_rad + angle_offset;
+	ray->delta_x = cos(ray_rad);
+	ray->delta_y = sin(ray_rad);
 }
 
 // Spieler y-Position in Grid-Koordinaten
@@ -56,18 +55,18 @@ static void calculate_ray_direction(t_cub3d *cub3d, t_ray *ray, int x)
 //  // Erstmal keine Wand getroffen (standart wert)
 static	void	set_ray_starting_position(t_cub3d *cub3d, t_ray *ray)
 {
-    double  player_map_x;
-    double  player_map_y;
+	double	player_map_x;
+	double	player_map_y;
 
 	player_map_x = (cub3d->player.px_x - 1)
 		/ (double)cub3d->minimap.square_size;
-    player_map_y = (cub3d->player.px_y - 1)
+	player_map_y = (cub3d->player.px_y - 1)
 		/ (double)cub3d->minimap.square_size;
-    ray->ray_x = player_map_x;
-    ray->ray_y = player_map_y;
-    ray->map_x = (int)ray->ray_x;
-    ray->map_y = (int)ray->ray_y;
-    ray->hit = 0;
+	ray->ray_x = player_map_x;
+	ray->ray_y = player_map_y;
+	ray->map_x = (int)ray->ray_x;
+	ray->map_y = (int)ray->ray_y;
+	ray->hit = 0;
 }
 
 //Distanz die ein Ray zurucklegt um eine vertikale Grid-Line zu uberqueren,

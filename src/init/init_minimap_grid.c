@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 14:08:50 by poverbec          #+#    #+#             */
-/*   Updated: 2025/09/26 13:12:56 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/09/26 15:47:18 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ bool	map_to_grid(t_cub3d *cub3d)
 
 	y = 0;
 	y_height_map = get_map_height(cub3d->map);
-
 	while (y < cub3d->minimap.map_height)
 	{
 		x = 0;
