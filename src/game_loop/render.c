@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/27 13:06:12 by mimalek           #+#    #+#             */
-/*   Updated: 2025/09/26 12:19:58 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/09/26 12:23:17 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,9 +58,6 @@ void	perform_dda(t_cub3d *cub3d, t_ray *ray)
 			ray->side = 1;
 		}
 		if (check_vertical_wall_hit(cub3d, ray) == true)
-		//if (ray->map_x < 0 || ray->map_x >= cub3d->minimap.map_width
-		//	|| ray->map_y < 0 || ray->map_y >= cub3d->minimap.map_height
-		//	|| cub3d->minimap.map_grid[ray->map_y][ray->map_x] == '1')
 		{
 			ray->hit = 1;
 			if (ray->map_x >= 0 && ray->map_x < cub3d->minimap.map_width
@@ -72,8 +69,6 @@ void	perform_dda(t_cub3d *cub3d, t_ray *ray)
 		}
 	}
 }
-
-
 
 // 1. degree to radian 270 degree to 4.71
 // atan2 radius angel (-pie , pie]

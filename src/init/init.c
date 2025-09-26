@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 10:52:53 by poverbec          #+#    #+#             */
-/*   Updated: 2025/09/24 09:45:38 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/09/26 12:22:20 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ bool	init_cub3d(t_cub3d *cub3d, char *map_path, int fd)
 	if (create_mlx(cub3d) == false)
 		return (false);
 	if (fill_mlx_textures(cub3d) == false)
-		return(false);
+		return (false);
 	if (init_minimap(cub3d) == false)
 		return (false);
 	render_map(cub3d);
@@ -57,23 +57,27 @@ bool	init_textures(t_cub3d *cub3d)
 bool	fill_mlx_textures(t_cub3d *cub3d)
 {
 	cub3d->graphics->north.texture = mlx_load_png("textures/purplestone.png");
-	cub3d->graphics->north.img = mlx_texture_to_image(cub3d->mlx, cub3d->graphics->north.texture);
+	cub3d->graphics->north.img = mlx_texture_to_image(cub3d->mlx,
+			cub3d->graphics->north.texture);
 	cub3d->graphics->south.texture = mlx_load_png("textures/bluestone.png");
-	cub3d->graphics->south.img = mlx_texture_to_image(cub3d->mlx, cub3d->graphics->south.texture);
+	cub3d->graphics->south.img = mlx_texture_to_image(cub3d->mlx,
+			cub3d->graphics->south.texture);
 	cub3d->graphics->west.texture = mlx_load_png("textures/wood.png");
-	cub3d->graphics->west.img = mlx_texture_to_image(cub3d->mlx, cub3d->graphics->west.texture);
+	cub3d->graphics->west.img = mlx_texture_to_image(cub3d->mlx,
+			cub3d->graphics->west.texture);
 	cub3d->graphics->east.texture = mlx_load_png("textures/eagle.png");
-	cub3d->graphics->east.img = mlx_texture_to_image(cub3d->mlx, cub3d->graphics->east.texture);
+	cub3d->graphics->east.img = mlx_texture_to_image(cub3d->mlx,
+			cub3d->graphics->east.texture);
 	if (!cub3d->graphics->north.img)
-    {
-        ft_error(MLX_IMG_FAIL);
-        return (false);
-    }
+	{
+		ft_error(MLX_IMG_FAIL);
+		return (false);
+	}
 	cub3d->graphics->north.used = true;
 	cub3d->graphics->south.used = true;
 	cub3d->graphics->east.used = true;
 	cub3d->graphics->west.used = true;
-	return(true);
+	return (true);
 }
 
 void	set_up_cub3d_defaults(t_cub3d *cub3d)
@@ -108,5 +112,4 @@ bool	create_mlx(t_cub3d *cub3d)
 		return (false);
 	}
 	return (true);
-
 }

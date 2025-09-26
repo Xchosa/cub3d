@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 14:52:35 by poverbec          #+#    #+#             */
-/*   Updated: 2025/09/26 12:16:49 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/09/26 13:04:20 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,12 +84,14 @@ void	draw_column( t_cub3d *cub3d, t_ray *ray, int x)
 	texture_pix = (uint32_t*)load_wall_texture(cub3d, ray)->pixels;
 	text_x = (int)(x_array_texture(ray) * load_wall_texture(cub3d, ray)->width);
 	step = (double)load_wall_texture(cub3d, ray)->height / ray->line_height;
-	texture_position = (ray->draw_start - cub3d->window_height / 2 + ray->line_height / 2) * step;
-    y = 0;
-    while (y < ray->draw_start)
+	texture_position = (ray->draw_start - cub3d->window_height
+			/ 2 + ray->line_height / 2) * step;
+	y = 0;
+	while (y < ray->draw_start)
 		mlx_put_pixel(cub3d->img, x, y++, r_ceil(cub3d));
 	while (y <= ray->draw_end)
 	{
+		//color = (uint32_t*)load_wall_texture(cub3d, ray)->pixels(int)texture_position
 		color = texture_pix[(int)texture_position
 			* load_wall_texture(cub3d, ray)->width + text_x];
 		mlx_put_pixel(cub3d->img, x, y, color);
