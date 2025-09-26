@@ -6,22 +6,22 @@
 /*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 14:08:50 by poverbec          #+#    #+#             */
-/*   Updated: 2025/09/24 09:43:15 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/09/26 13:12:56 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 #include "init.h"
 
-
+//  // malloc minimap map mit allen max werten 
 bool	init_minimap(t_cub3d *cub3d)
 {
 	cub3d->minimap.map_height = get_map_height(cub3d->map);
 	cub3d->minimap.map_width = get_map_width(cub3d->map);
 	cub3d->minimap.square_size = return_square_size(cub3d,
 			cub3d->minimap.map_width, cub3d->minimap.map_height);
-	if (malloc_minimap_grid(cub3d) == false) // malloc minimap map mit allen max werten 
-	 	return (false);
+	if (malloc_minimap_grid(cub3d) == false)
+		return (false);
 	if (map_to_grid(cub3d) == false)
 		return (false);
 	return (true);
@@ -34,16 +34,17 @@ bool	map_to_grid(t_cub3d *cub3d)
 {
 	int	y;
 	int	x;
-	int y_height_map;
+	int	y_height_map;
+
 	y = 0;
-	y_height_map  = get_map_height(cub3d->map);
+	y_height_map = get_map_height(cub3d->map);
 
 	while (y < cub3d->minimap.map_height)
 	{
 		x = 0;
 		while (x < cub3d->minimap.map_width)
 		{
-			if(y < y_height_map && x < (int)ft_strlen(cub3d->map[y]))
+			if (y < y_height_map && x < (int)ft_strlen(cub3d->map[y]))
 			{
 				if (ft_strchr("01NESW", cub3d->map[y][x]) != NULL)
 					cub3d->minimap.map_grid[y][x] = cub3d->map[y][x];

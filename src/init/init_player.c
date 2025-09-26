@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 09:44:12 by poverbec          #+#    #+#             */
-/*   Updated: 2025/09/25 18:37:08 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/09/26 13:14:20 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,10 @@ void	init_player(t_cub3d *cub3d)
 			if (ft_strchr("NSEW", cub3d->minimap.map_grid[y][x] ) != 0)
 			{
 				set_player_view(cub3d, cub3d->minimap.map_grid[y][x]);
-				cub3d->player.px_x = x * cub3d->minimap.square_size + (cub3d->minimap.square_size/2) + 1;
-				cub3d->player.px_y = y * cub3d->minimap.square_size + (cub3d->minimap.square_size /2) + 1;
+				cub3d->player.px_x = x * cub3d->minimap.square_size
+					+ (cub3d->minimap.square_size / 2) + 1;
+				cub3d->player.px_y = y * cub3d->minimap.square_size
+					+ (cub3d->minimap.square_size / 2) + 1;
 			}
 			x++;
 		}
@@ -55,7 +57,8 @@ void	draw_player_minimap(t_cub3d *cub3d, double p_y, double p_x)
 		{
 			if (x * x + y * y <= radius * radius)
 			{
-				if(p_x + x >= 0 && p_y + y >= 0 && (p_x + x) < cub3d->window_width
+				if (p_x + x >= 0 && p_y + y >= 0
+					&& (p_x + x) < cub3d->window_width
 					&& (p_y + y) < cub3d->window_height)
 					mlx_put_pixel(cub3d->img, p_x + x, p_y + y, PLAYER_COLOR);
 			}

@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/01 11:14:56 by poverbec          #+#    #+#             */
-/*   Updated: 2025/09/24 12:46:07 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/09/26 13:12:05 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,11 +56,11 @@ void	draw_minimap_cells(t_cub3d *cub3d, int minimap_x, int minimap_y)
 	int			x;
 	int			y;
 	uint32_t	cell_color;
-	int 		pixel_x;
-	int 		pixel_y;
+	int			pixel_x;
+	int			pixel_y;
+
 	(void)minimap_x;
 	(void)minimap_y;
-	
 	y = 0;
 	while (y < cub3d->minimap.map_height)
 	{
@@ -70,7 +70,7 @@ void	draw_minimap_cells(t_cub3d *cub3d, int minimap_x, int minimap_y)
 			pixel_x = minimap_x + (x * cub3d->minimap.square_size);
 			pixel_y = minimap_y + (y * cub3d->minimap.square_size);
 			cell_color = get_cell_color(cub3d->minimap.map_grid[y][x]);
-			draw_square(cub3d, cell_color, pixel_x, pixel_y );
+			draw_square(cub3d, cell_color, pixel_x, pixel_y);
 			x++;
 		}
 		y++;
@@ -82,24 +82,26 @@ void	draw_square(t_cub3d *cub3d, uint32_t color, int start_x,
 		int start_y)
 {
 	int	x;
-	int y;
-	int inner_size;
+	int	y;
+	int	inner_size;
 
-	inner_size = cub3d->minimap.square_size- MINIMAP_CELL_GAP;
+	inner_size = cub3d->minimap.square_size - MINIMAP_CELL_GAP;
 	if (inner_size < 1)
-        inner_size = 1;
+		inner_size = 1;
 	y = 0;
 	while (y < inner_size)
 	{
 		x = 0;
 		while (x < inner_size)
 		{
-			if (start_x + x + 1 >= 0 && start_x + x + 1 < (int)cub3d->window_width &&
-					start_y + y + 1 >= 0 && start_y + y + 1 < (int)cub3d->window_height)
+			if (start_x + x + 1 >= 0 && start_x + x + 1
+				< (int)cub3d->window_width && start_y + y + 1 >= 0
+				&& start_y + y + 1 < (int)cub3d->window_height)
 			{
-				mlx_put_pixel(cub3d->img, start_x + x +1 , start_y + y + 1, color);
+				mlx_put_pixel(cub3d->img, start_x + x + 1,
+					start_y + y + 1, color);
 			}
-			x++; 
+			x++;
 		}
 		y++;
 	}
