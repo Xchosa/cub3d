@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 15:46:09 by poverbec          #+#    #+#             */
-/*   Updated: 2025/09/26 17:33:42 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/09/26 20:04:54 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,27 +15,73 @@
 void	cleanup_cub3d(t_cub3d *cub3d)
 {
 	clean_minimap(cub3d);
-	if (cub3d->graphics)
-	{
-		free(cub3d->graphics->floor_colour);
-		free(cub3d->graphics->ceiling_colour);
-		free(cub3d->graphics);
-	}
-	
+	clean_img(cub3d);
+	clean_texture(cub3d);
+	clean_graphics(cub3d);
 }
 
 
 void	clean_minimap(t_cub3d *cub3d)
 {
-	if(cub3d->minimap.map_grid)
-		(void)cub3d;
-		//ft_free_array(cub3d->minimap.map_grid);
-	//free(cub3d->minimap);
+	if (cub3d->minimap.map_grid)
+		ft_free_array(cub3d->minimap.map_grid);
+	cub3d->minimap.map_grid = NULL;
 }
 
+void	clean_texture(t_cub3d *cub3d)
+{
+	if (cub3d->graphics->north.texture)
+		mlx_delete_texture(cub3d->graphics->north.texture);
+	if (cub3d->graphics->south.texture)
+		mlx_delete_texture(cub3d->graphics->south.texture);
+	if (cub3d->graphics->west.texture)
+		mlx_delete_texture(cub3d->graphics->west.texture);
+	if (cub3d->graphics->east.texture)
+		mlx_delete_texture(cub3d->graphics->east.texture);
+}
 
+void	clean_img(t_cub3d *cub3d)
+{
+	if (cub3d->graphics->north.img)
+		mlx_delete_image(cub3d->mlx, cub3d->graphics->north.img);
+	if (cub3d->graphics->south.img)
+		mlx_delete_image(cub3d->mlx, cub3d->graphics->south.img);
+	if (cub3d->graphics->west.img)
+		mlx_delete_image(cub3d->mlx, cub3d->graphics->west.img);
+	if (cub3d->graphics->east.img)
+		mlx_delete_image(cub3d->mlx, cub3d->graphics->east.img);
+	if (cub3d->graphics->north.path)
+		free(cub3d->graphics->north.path);
+	if (cub3d->graphics->south.path)
+		free(cub3d->graphics->south.path);
+	if (cub3d->graphics->west.path)
+		free(cub3d->graphics->west.path);
+	if (cub3d->graphics->east.path)
+		free(cub3d->graphics->east.path);
+}
 
-//void 	ft_free_array(char **arrays)
-//{
-	
-//}
+void	clean_graphics(t_cub3d *cub3d)
+{
+	if (cub3d->graphics->floor_colour)
+		free(cub3d->graphics->floor_colour);
+	if (cub3d->graphics->ceiling_colour)
+		free(cub3d->graphics->ceiling_colour);
+	if (cub3d->graphics)
+		free(cub3d->graphics);
+	cub3d->graphics = NULL;
+}
+
+void	ft_free_array(char **arrays)
+{
+	int	i;
+
+	i = 0;
+	while (arrays[i])
+		i++;
+	while (i >= 0)
+	{
+		free(arrays[i]);
+		i--;
+	}
+	free(arrays);
+}

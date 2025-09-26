@@ -48,7 +48,7 @@
 # define MAX_MAP_SIZE 100
 
 
-typedef	struct s_player
+typedef struct s_player
 {
 	double		px_x;// use double or unit32_t
 	double		px_y;// use double 
@@ -56,8 +56,7 @@ typedef	struct s_player
 	char		player_view;
 	double		time;
 
-
-} t_player ;
+}		t_player;
 
 
 typedef struct s_img
@@ -84,13 +83,12 @@ typedef struct s_graphics
 typedef struct s_minimap
 {
 	char	**map_grid;
-	int     map_height;
-    int     map_width;
-    int     square_size;
+	int		map_height;
+	int		map_width;
+	int		square_size;
 	int		player_pos_x;
-	int		player_pos_y; // start position 
-	// minimap_img_width 
-	
+	int		player_pos_y; // start position
+
 }	t_minimap;
 
 // img struct
@@ -250,6 +248,9 @@ void			draw_column(t_cub3d *cub3d, t_ray *ray, int x);
 //clean up
 void			cleanup_cub3d(t_cub3d *cub3d);
 void 			clean_minimap(t_cub3d *cub3d);
+void			clean_texture(t_cub3d *cub3d);
+void			clean_img(t_cub3d *cub3d);
+void			clean_graphics(t_cub3d *cub3d);
 
 #endif
 
