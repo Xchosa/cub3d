@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 10:09:04 by poverbec          #+#    #+#             */
-/*   Updated: 2025/09/26 16:55:33 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/09/26 17:23:12 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,17 +20,17 @@ bool	ft_validate_map(char **map)
 
 	padded_map = pad_map(map);
 	if (!padded_map)
-		ft_error(MALLOC_FAIL);
+		return (ft_error(MALLOC_FAIL), false);
 	if (!ft_has_valid_characters(map))
-		ft_error(INVALID_MAP_CHARACTER);
-	if (!check_for_player(map))
-		ft_error(NO_PLAYER);
+		return (ft_error(INVALID_MAP_CHARACTER), false);
 	if (!ft_has_single_player(map))
-		ft_error(MULTIPLE_PLAYER);
+		return (ft_error(MULTIPLE_PLAYER), false);
+	if (!check_for_player(map))
+		return (ft_error(NO_PLAYER), false);
 	if (!ft_is_map_enclosed(padded_map))
-		ft_error(MAP_NOT_ENCLOSED);
+		return (ft_error(MAP_NOT_ENCLOSED), false);
 	if (!ft_no_empty_lines(map))
-		ft_error(EMPTY_LINE);
+		return (ft_error(EMPTY_LINE), false);
 	return (true);
 }
 
@@ -107,9 +107,7 @@ bool	ft_has_single_player(char **map)
 		}
 		i++;
 	}
-	if (player_count == 1)
-		return (true);
-	return (false);
+	return (true);
 }
 
 // Only player and floor are walkable

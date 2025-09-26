@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 14:35:40 by mimalek           #+#    #+#             */
-/*   Updated: 2025/09/26 16:51:44 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/09/26 17:07:50 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,5 +64,5 @@ void	ft_error_msg( int error_code, char *msg )
 	ft_printf("Error: %d\n", error_code);
 	ft_printf("%s\n", msg);
 	ft_printf("-------------------------\n");
-	ft_exit(error_code);
+	//return (error_code);
 }

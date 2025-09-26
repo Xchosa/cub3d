@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mimalek <mimalek@student.42.fr>            +#+  +:+       +#+        */
+/*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 15:19:59 by mimalek           #+#    #+#             */
-/*   Updated: 2025/07/16 15:21:28 by mimalek          ###   ########.fr       */
+/*   Updated: 2025/09/26 17:17:41 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	ft_exit( int error_code )
-{
-	exit(error_code);
-}
+//void	ft_exit( int error_code )
+//{
+//	exit(error_code);
+//}
 

@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 14:53:06 by poverbec          #+#    #+#             */
-/*   Updated: 2025/09/26 16:36:17 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/09/26 17:15:43 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ int	main(int argc, char **argv)
 		return (1);
 	if (init_cub3d(&cub3d, argv[1], fd) == false)
 	{
+		printf("error case works, it can be cleaned \n");
 		close(fd);
 		cleanup_cub3d(&cub3d);
 		return (1);

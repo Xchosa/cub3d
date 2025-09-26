@@ -6,25 +6,12 @@
 /*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 17:13:21 by mimalek           #+#    #+#             */
-/*   Updated: 2025/09/26 16:29:06 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/09/26 17:10:48 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static void	ft_parse_color(char *line, int **color);
-static void	ft_parse_map(t_cub3d *cub3d, char *line);
-
-bool	parse_map_file(t_cub3d *cub3d, char *map_path, int fd )
-{
-	if (ft_validate_parse_file(cub3d, fd) == false)
-		return (false);
-	print_array(cub3d->map);
-	if (ft_validate_map(cub3d->map) == false)
-		return (false);
-	(void)map_path;
-	return (true);
-}
 
 bool	ft_validate_parse_file(t_cub3d *cub3d, int fd)
 {
@@ -89,7 +76,7 @@ int	ft_parse_config_line(t_cub3d *data, char *line)
 	return (ft_error(CONFIGUARTION_LINE), 0);
 }
 
-static void	ft_parse_color(char *line, int **color)
+void	ft_parse_color(char *line, int **color)
 {
 	char	**rgb;
 	int		r;
@@ -114,7 +101,7 @@ static void	ft_parse_color(char *line, int **color)
 	(*color)[2] = b;
 }
 
-static void	ft_parse_map(t_cub3d *cub3d, char *line)
+void	ft_parse_map(t_cub3d *cub3d, char *line)
 {
 	static int	i = 0;
 	char		*trimmed_line;

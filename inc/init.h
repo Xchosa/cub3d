@@ -180,6 +180,8 @@ void			replace_spaces_with_2(char **map);
 int				return_map_height(char **map);
 
 // parsing
+void			ft_parse_map(t_cub3d *cub3d, char *line);
+void			ft_parse_color(char *line, int **color);
 bool			space_map_check(int i, int j, char **map);
 int				ft_parse_config_line(t_cub3d *data, char *line);
 bool			ft_has_valid_characters(char **map);
@@ -243,5 +245,11 @@ void			init_ray(t_cub3d *cub3d, t_ray *ray, int x);
 void			perform_dda(t_cub3d *cub3d, t_ray *ray);
 void			calculation_projection(t_cub3d *cub3d, t_ray *ray);
 void			draw_column(t_cub3d *cub3d, t_ray *ray, int x);
+
+
+//clean up
+void			cleanup_cub3d(t_cub3d *cub3d);
+void 			clean_minimap(t_cub3d *cub3d);
+
 #endif
 

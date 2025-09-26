@@ -3,16 +3,28 @@
 /*                                                        :::      ::::::::   */
 /*   argument_check.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: poverbec <poverbec@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 10:09:17 by poverbec          #+#    #+#             */
-/*   Updated: 2025/07/31 10:09:20 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/09/26 17:10:57 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include "cub3d.h"
 #include "parse.h"
+
+
+bool	parse_map_file(t_cub3d *cub3d, char *map_path, int fd )
+{
+	if (ft_validate_parse_file(cub3d, fd) == false)
+		return (false);
+	print_array(cub3d->map);
+	if (ft_validate_map(cub3d->map) == false)
+		return (false);
+	(void)map_path;
+	return (true);
+}
 
 
 int	argument_check(int argc, char **argv)

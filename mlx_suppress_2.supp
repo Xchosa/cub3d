@@ -1,0 +1,23 @@
+{
+   MLX_leak_1
+   Memcheck:Leak
+   match-leak-kinds: all
+   fun:*
+   obj:*/libmlx42.a
+}
+
+{
+   MLX_leak_2
+   Memcheck:Leak
+   match-leak-kinds: all
+   fun:*
+   obj:*/libglfw*
+}
+
+{
+   GLFW_leak
+   Memcheck:Leak
+   match-leak-kinds: all
+   fun:*
+   fun:glfwInit
+}

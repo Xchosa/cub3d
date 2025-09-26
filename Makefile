@@ -97,8 +97,11 @@ re-mlx: clean-mlx $(MLX_LIB)
 
 debug: ./cub3d maps/test.cub
 
-valgrind $(Name):
+#valgrind $(Name):
 	valgrind --tool=memcheck --leak-check=full --show-leak-kinds=all --track-origins=yes --verbose --log-file=valgrind_output.txt ./cub3d maps/test.cub
+
+#valgrind_2 $(NAME):
+	valgrind --tool=memcheck --leak-check=full --show-leak-kinds=all --track-origins=yes --verbose --suppressions=mlx_suppressions.supp ./cub3d maps/fail.cub
 clean:
 	@rm -rf $(OBJ_DIR)
 	@if [ -d "./libft" ]; then make -C libft clean; fi
