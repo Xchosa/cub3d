@@ -6,20 +6,14 @@
 /*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 15:46:09 by poverbec          #+#    #+#             */
-/*   Updated: 2025/09/23 15:47:23 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/09/25 18:54:42 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-
 void	cleanup_cub3d(t_cub3d *cub3d)
 {
-	//if (cub3d->mlx)
-	//{
-	//	mlx_terminate(cub3d->mlx);
-	//	cub3d->mlx = NULL;
-	//}
 	if (cub3d->graphics)
 	{
 		free(cub3d->graphics->floor_colour);

@@ -151,76 +151,82 @@ typedef struct	s_ray
 
 
 
-bool		init_cub3d(t_cub3d *cub3d, char *map_path, int fd);
-double		x_array_texture(t_ray *ray);
-bool		init_textures(t_cub3d *cub3d);
-bool		load_texture(t_cub3d *cub3d);
-bool		fill_mlx_textures(t_cub3d *cub3d);
-void		set_up_cub3d_defaults(t_cub3d *cub3d);
-uint32_t	r_ceil(t_cub3d *cub3d);
+bool			init_cub3d(t_cub3d *cub3d, char *map_path, int fd);
+double			x_array_texture(t_ray *ray);
+bool			init_textures(t_cub3d *cub3d);
+bool			load_texture(t_cub3d *cub3d);
+mlx_texture_t	*load_wall_texture(t_cub3d *cub3d, t_ray *ray);
+bool			fill_mlx_textures(t_cub3d *cub3d);
+void			set_up_cub3d_defaults(t_cub3d *cub3d);
+uint32_t		r_ceil(t_cub3d *cub3d);
 
-bool		create_mlx(t_cub3d *cub3d);
+bool			create_mlx(t_cub3d *cub3d);
 
-t_graphics	*get_map(t_graphics *graphics, char **argv);
+t_graphics		*get_map(t_graphics *graphics, char **argv);
 
 
 
 // hook function for escape and player movement
-void		game_loop(void *param);
-void		draw_map_background(t_cub3d *cub3d);
-void		render_map(t_cub3d *cub3d);
-void		draw_map_background(t_cub3d *cub3d);
-void		draw_minimap_background(t_cub3d *cub3d, int start_x, int start_y);
-void		draw_minimap_cells(t_cub3d *cub3d, int minimap_x, int minimap_y);
-int			get_cell_color(char cell);
-void		replace_spaces_with_2(char **map);
+void			game_loop(void *param);
+void			draw_map_background(t_cub3d *cub3d);
+void			render_map(t_cub3d *cub3d);
+void			draw_map_background(t_cub3d *cub3d);
+void			draw_minimap_background(t_cub3d *cub3d, int start_x,
+					int start_y);
+void			draw_minimap_cells(t_cub3d *cub3d, int minimap_x,
+					int minimap_y);
+int				get_cell_color(char cell);
+void			replace_spaces_with_2(char **map);
 
 // minimap
-bool		init_minimap(t_cub3d *cub3d);
-bool		map_to_grid(t_cub3d *cub3d);
-bool		malloc_minimap_grid(t_cub3d *cub3d);
-int			return_square_size(t_cub3d *cub3d, int map_width, int map_height);
-void		draw_minimap(t_cub3d *cub3d);
-int			get_map_height(char **map);
-int			get_map_width(char **map);
-void		draw_square(t_cub3d *cub3d, uint32_t color, int start_x,
-				int start_y);
-void		init_player(t_cub3d *cub3d);
-void		player_view_direction(t_cub3d *cub3d, double y, double x);
-void		draw_player_minimap(t_cub3d *cub3d, double y, double x);
-void		set_player_view(t_cub3d *cub3d, char player_direction);
-
-bool		parse_map_file(t_cub3d *cub3d, char *map_path, int fd);
+bool			init_minimap(t_cub3d *cub3d);
+bool			map_to_grid(t_cub3d *cub3d);
+bool			malloc_minimap_grid(t_cub3d *cub3d);
+int				return_square_size(t_cub3d *cub3d, int map_width,
+					int map_height);
+void			draw_minimap(t_cub3d *cub3d);
+int				get_map_height(char **map);
+int				get_map_width(char **map);
+void			draw_square(t_cub3d *cub3d, uint32_t color, int start_x,
+					int start_y);
+void			init_player(t_cub3d *cub3d);
+void			player_view_direction(t_cub3d *cub3d, double y, double x);
+void			draw_player_minimap(t_cub3d *cub3d, double y, double x);
+void			set_player_view(t_cub3d *cub3d, char player_direction);
+bool			parse_map_file(t_cub3d *cub3d, char *map_path, int fd);
 
 // game loop 
-void		game_loop(void *param);
-void		rotate_player(t_cub3d *cub3d, double angle_change);
-void		handle_toggles(t_cub3d *cub3d);
-void    	cast_single_ray(t_cub3d *cub3d, double angle);
-void		draw_single_ray(t_cub3d *cub3d, double ray_x, double ray_y);
-bool		boundary_and_wall_collision_check(t_cub3d *cub3d, int grid_x, int grid_y);
+void			game_loop(void *param);
+void			rotate_player(t_cub3d *cub3d, double angle_change);
+void			handle_toggles(t_cub3d *cub3d);
+void			cast_single_ray(t_cub3d *cub3d, double angle);
+void			draw_single_ray(t_cub3d *cub3d, double ray_x, double ray_y);
+bool			boundary_and_wall_collision_check(t_cub3d *cub3d, int grid_x,
+					int grid_y);
 
-void		update_y_and_x(t_cub3d *cub3d, double px_d, double py_d);
+void			update_y_and_x(t_cub3d *cub3d, double px_d, double py_d);
 //bool		check_for_wall(t_cub3d *cub3d);
-bool		check_wall_rotate(t_cub3d *cub3d,  double px_d, double py_d, double fps);
-void		rotate_player_keys(t_cub3d *cub3d, double fps);
-bool		ft_validate_parse_file(t_cub3d *data, int fd);
-int			argument_check(int argc, char **argv);
-void		ft_parse_texture(char *path, t_img *texture);
-char		**read_map_file(char *map_path, int fd);
-bool		ft_is_map_enclosed(char **map);
-int			get_max_width(char **map);
-char		*pad_line(char *line, int width);
-char		**pad_map(char **map);
-bool		ft_validate_map(char **map);
-bool		is_walkable(char c);
+bool			check_wall_rotate(t_cub3d *cub3d,  double px_d,
+					double py_d, double fps);
+bool			check_vertical_wall_hit(t_cub3d *cub3d, t_ray *ray);
+void			rotate_player_keys(t_cub3d *cub3d, double fps);
+bool			ft_validate_parse_file(t_cub3d *data, int fd);
+int				argument_check(int argc, char **argv);
+void			ft_parse_texture(char *path, t_img *texture);
+char			**read_map_file(char *map_path, int fd);
+bool			ft_is_map_enclosed(char **map);
+int				get_max_width(char **map);
+char			*pad_line(char *line, int width);
+char			**pad_map(char **map);
+bool			ft_validate_map(char **map);
+bool			is_walkable(char c);
 
 
-void	print_array(char **array);
-void    cast_rays(t_cub3d *cub3d);
-double  get_player_angle(char direction);
-void    render_frame(t_cub3d *cub3d);
-void    init_ray(t_cub3d *cub3d, t_ray *ray, int x);
+void			print_array(char **array);
+void    		cast_rays(t_cub3d *cub3d);
+double  		get_player_angle(char direction);
+void   			render_frame(t_cub3d *cub3d);
+void    		init_ray(t_cub3d *cub3d, t_ray *ray, int x);
 
 
 

@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/27 13:06:12 by mimalek           #+#    #+#             */
-/*   Updated: 2025/09/25 18:36:17 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/09/26 12:19:58 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,20 @@ void	render_frame(t_cub3d *cub3d)
 	}
 }
 
+bool	check_vertical_wall_hit(t_cub3d *cub3d, t_ray *ray)
+{
+	if (ray->map_x < 0 || ray->map_x >= cub3d->minimap.map_width
+			|| ray->map_y < 0 || ray->map_y >= cub3d->minimap.map_height
+			|| cub3d->minimap.map_grid[ray->map_y][ray->map_x] == '1')
+		return (true);
+	return (false);
+}
+
 // Digital Differential Analyzer DDA algo to find intersections
-void	perform_dda(t_cub3d *cub3d, t_ray *ray) 
+// check for wall collision
+// check fpr vertical wall hit
+// check for horizontal wall hit
+void	perform_dda(t_cub3d *cub3d, t_ray *ray)
 {
 	while (ray->hit == 0)
 	{
@@ -37,23 +49,24 @@ void	perform_dda(t_cub3d *cub3d, t_ray *ray)
 		{
 			ray->side_dist_x += ray->delta_dist_x;
 			ray->map_x += ray->step_x;
-			ray->side = 0; // vertical wall hit
+			ray->side = 0;
 		}
 		else
 		{
 			ray->side_dist_y += ray->delta_dist_y;
 			ray->map_y += ray->step_y;
-			ray->side = 1; // horizontal wall hit
+			ray->side = 1;
 		}
-		// check for wall collision
-		if (ray->map_x < 0 || ray->map_x >= cub3d->minimap.map_width ||
-			ray->map_y < 0 || ray->map_y >= cub3d->minimap.map_height ||
-			cub3d->minimap.map_grid[ray->map_y][ray->map_x] == '1')
+		if (check_vertical_wall_hit(cub3d, ray) == true)
+		//if (ray->map_x < 0 || ray->map_x >= cub3d->minimap.map_width
+		//	|| ray->map_y < 0 || ray->map_y >= cub3d->minimap.map_height
+		//	|| cub3d->minimap.map_grid[ray->map_y][ray->map_x] == '1')
 		{
 			ray->hit = 1;
-			if (ray->map_x >= 0 && ray->map_x < cub3d->minimap.map_width &&
-				ray->map_y >= 0 && ray->map_y < cub3d->minimap.map_height)
-				ray->wall_type = cub3d->minimap.map_grid[ray->map_y][ray->map_x];
+			if (ray->map_x >= 0 && ray->map_x < cub3d->minimap.map_width
+				&& ray->map_y >= 0 && ray->map_y < cub3d->minimap.map_height)
+				ray->wall_type = cub3d->minimap.map_grid[ray->map_y]
+				[ray->map_x];
 			else
 				ray->wall_type = '1';
 		}
@@ -61,9 +74,11 @@ void	perform_dda(t_cub3d *cub3d, t_ray *ray)
 }
 
 
+
 // 1. degree to radian 270 degree to 4.71
 // atan2 radius angel (-pie , pie]
-// angle diff (difference between ray and Centre ray ) -> centrer rays have angle diff 0; 
+// angle diff (difference between ray and Centre ray ) 
+// -> centrer rays have angle diff 0; 
 
 // calculate wall height on screen
 // calculate where to start drawing the wall - vertically 
@@ -71,22 +86,26 @@ void	perform_dda(t_cub3d *cub3d, t_ray *ray)
 // if ray->side == 1 ,its a horizontal wall 
 // ensure for positive wall distance
 //
-//multiply wall_dist * coss (angle_diff)  -> as bigger the angle_diff -> smaller cos(angle_diff)
+//multiply wall_dist * coss (angle_diff)  
+//  as bigger the angle_diff -> smaller cos(angle_diff)
 //
 void	calculation_projection(t_cub3d *cub3d, t_ray *ray)
 {
-	double player_rad = cub3d->player.direction * M_PI / 180.0;
-    double ray_angle = atan2(ray->delta_y, ray->delta_x);
-    double angle_diff = ray_angle - player_rad;
-	
-	if (ray->side == 0)
-		ray->wall_dist = (ray->map_x - ray->ray_x + (1 - ray->step_x)/ 2) / ray->delta_x;
-	else
-		ray->wall_dist = (ray->map_y - ray->ray_y + (1 - ray->step_y)/ 2) / ray->delta_y;
-	ray->wall_dist = fabs(ray->wall_dist);
+	double	player_rad;
+	double	ray_angle;
+	double	angle_diff;
 
-    ray->wall_dist *= cos(angle_diff);
-	
+	player_rad = cub3d->player.direction * M_PI / 180.0;
+	ray_angle = atan2(ray->delta_y, ray->delta_x);
+	angle_diff = ray_angle - player_rad;
+	if (ray->side == 0)
+		ray->wall_dist = (ray->map_x - ray->ray_x + (1 - ray->step_x) / 2)
+			/ ray->delta_x;
+	else
+		ray->wall_dist = (ray->map_y - ray->ray_y + (1 - ray->step_y) / 2)
+			/ ray->delta_y;
+	ray->wall_dist = fabs(ray->wall_dist);
+	ray->wall_dist *= cos(angle_diff);
 	ray->line_height = (int)(cub3d->window_height / ray->wall_dist);
 	ray->draw_start = -ray->line_height / 2 + cub3d->window_height / 2;
 	if (ray->draw_start < 0)
@@ -102,18 +121,18 @@ void	calculation_projection(t_cub3d *cub3d, t_ray *ray)
 // 	uint32_t	ceiling_color;
 // 	uint32_t	floor_color;
 // 	int			y;
-	
+
 // 	//ceiling_color = (red << 24) | (green << 16) | (blue << 8) | alpha;
 // 	ceiling_color = (cub3d->graphics->ceiling_colour[0] << 24) |
 // 					(cub3d->graphics->ceiling_colour[1] << 16) |
 // 					(cub3d->graphics->ceiling_colour[2] << 8) |
 // 					0xFF;
-	
+
 // 	floor_color = (cub3d->graphics->floor_colour[0] << 24) |
 // 					(cub3d->graphics->floor_colour[1] << 16) |
 // 					(cub3d->graphics->floor_colour[2] << 8) |
 // 					0xFF;
-	
+
 // 	if (ray->side == 1)
 // 		wall_color = 0x808080FF; // Darker
 // 	else
