@@ -152,6 +152,7 @@ typedef struct	s_ray
 bool			init_cub3d(t_cub3d *cub3d, char *map_path, int fd);
 double			x_array_texture(t_ray *ray);
 bool			init_textures(t_cub3d *cub3d);
+bool			load_texture_2(t_cub3d *cub3d);
 bool			load_texture(t_cub3d *cub3d);
 mlx_texture_t	*load_wall_texture(t_cub3d *cub3d, t_ray *ray);
 bool			fill_mlx_textures(t_cub3d *cub3d);

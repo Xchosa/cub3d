@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 10:52:53 by poverbec          #+#    #+#             */
-/*   Updated: 2025/09/26 12:22:20 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/09/27 10:31:47 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ bool	init_cub3d(t_cub3d *cub3d, char *map_path, int fd)
 bool	init_textures(t_cub3d *cub3d)
 {
 	cub3d->graphics = malloc(sizeof(t_graphics));
+	ft_memset(cub3d->graphics, 0, sizeof(t_graphics));
 	if (!cub3d->graphics)
 	{
 		ft_error(MALLOC_FAIL);

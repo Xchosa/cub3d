@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   load_texture.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mimalek <mimalek@student.42.fr>            +#+  +:+       +#+        */
+/*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 10:09:24 by poverbec          #+#    #+#             */
-/*   Updated: 2025/08/04 11:36:37 by mimalek          ###   ########.fr       */
+/*   Updated: 2025/09/27 11:07:28 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 void	ft_parse_texture(char *path, t_img *texture)
 {
 	//int	fd;
+	char *tmp_path;
 
 	if (!path || !*path)
 		ft_error(CONFIGUARTION_LINE);
@@ -29,11 +30,14 @@ void	ft_parse_texture(char *path, t_img *texture)
 	}
 	while (path && (*path == ' ' || *path == '\t'))
 		path++;
+	tmp_path = ft_strdup(path);
 	// fd = open(path, O_RDONLY);
 	// if (fd < 0)
 	// 	ft_error(IMAGE_OPEN_FAILED);
 	// close(fd);
-	texture->path = ft_strtrim(ft_strdup(path), "\t\n\v\f\r ");
+	texture->path = ft_strtrim(tmp_path, "\t\n\v\f\r ");
+	free(tmp_path); // freed helper path duped
+	// pointed e.g. an 3 stelle von gemaloced path 
 	texture->used = true;
 	if (!texture->path)
 		ft_error(MALLOC_FAIL);
@@ -48,28 +52,38 @@ bool	load_texture(t_cub3d *cub3d)
 	cub3d->graphics->north.texture = mlx_load_png(cub3d->graphics->north.path);
 	if (!cub3d->graphics->north.texture)
 		return (false);
-	cub3d->graphics->north.img = mlx_texture_to_image(cub3d->mlx, cub3d->graphics->north.texture);
+	cub3d->graphics->north.img = mlx_texture_to_image(cub3d->mlx,
+			cub3d->graphics->north.texture);
 	if (!cub3d->graphics->north.img)
 		return (false);
 	cub3d->graphics->south.texture = mlx_load_png(cub3d->graphics->south.path);
 	if (!cub3d->graphics->south.texture)
 		return (false);
-	cub3d->graphics->south.img = mlx_texture_to_image(cub3d->mlx, cub3d->graphics->south.texture);
+	cub3d->graphics->south.img = mlx_texture_to_image(cub3d->mlx,
+			cub3d->graphics->south.texture);
 	if (!cub3d->graphics->south.img)
 		return (false);
 	cub3d->graphics->west.texture = mlx_load_png(cub3d->graphics->west.path);
 	if (!cub3d->graphics->west.texture)
 		return (false);
-	cub3d->graphics->west.img = mlx_texture_to_image(cub3d->mlx, cub3d->graphics->west.texture);
-	if (!cub3d->graphics->west.img)
-		return (false);
-	cub3d->graphics->east.texture = mlx_load_png(cub3d->graphics->east.path);
-	if (!cub3d->graphics->east.texture)
-		return (false);
-	cub3d->graphics->east.img = mlx_texture_to_image(cub3d->mlx, cub3d->graphics->east.texture);
-	if (!cub3d->graphics->east.img)
+	if (load_texture_2(cub3d) == false)
 		return (false);
 	return (true);
 }
 
 
+bool	load_texture_2(t_cub3d *cub3d)
+{
+	cub3d->graphics->west.img = mlx_texture_to_image(cub3d->mlx,
+			cub3d->graphics->west.texture);
+	if (!cub3d->graphics->west.img)
+		return (false);
+	cub3d->graphics->east.texture = mlx_load_png(cub3d->graphics->east.path);
+	if (!cub3d->graphics->east.texture)
+		return (false);
+	cub3d->graphics->east.img = mlx_texture_to_image(cub3d->mlx,
+			cub3d->graphics->east.texture);
+	if (!cub3d->graphics->east.img)
+		return (false);
+	return (true);
+}

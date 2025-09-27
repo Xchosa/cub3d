@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 17:13:21 by mimalek           #+#    #+#             */
-/*   Updated: 2025/09/26 17:10:48 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/09/27 10:48:28 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,10 @@ bool	ft_validate_parse_file(t_cub3d *cub3d, int fd)
 	if (!cub3d->map)
 		ft_error(MALLOC_FAIL);
 	ft_memset(cub3d->map, 0, sizeof(char *) * (MAX_MAP_SIZE + 1));
-	cub3d->graphics = malloc(sizeof(t_graphics));
-	if (!cub3d->graphics)
-		ft_error(MALLOC_FAIL);
+	//cub3d->graphics = malloc(sizeof(t_graphics));
+	//if (!cub3d->graphics)
+	//	ft_error(MALLOC_FAIL);
+	//ft_memset(cub3d->graphics, 0, sizeof(t_graphics));
 	while (get_next_line(fd, &line) != NULL)
 	{
 		if (config_arg == 6)
@@ -91,6 +92,7 @@ void	ft_parse_color(char *line, int **color)
 	r = ft_atoi(rgb[0]);
 	g = ft_atoi(rgb[1]);
 	b = ft_atoi(rgb[2]);
+	ft_free_array(rgb);// free rgb helper
 	if (r < 0 || r > 255 || g < 0 || g > 255 || b < 0 || b > 255)
 		ft_error(WRONG_COLOR_VALUE);
 	*color = malloc(sizeof(int) * 3);

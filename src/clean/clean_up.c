@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 15:46:09 by poverbec          #+#    #+#             */
-/*   Updated: 2025/09/26 20:04:54 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/09/27 10:41:39 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,9 @@ void	clean_minimap(t_cub3d *cub3d)
 	if (cub3d->minimap.map_grid)
 		ft_free_array(cub3d->minimap.map_grid);
 	cub3d->minimap.map_grid = NULL;
+	if (cub3d->map)
+		ft_free_array(cub3d->map);
+	cub3d->map = NULL;
 }
 
 void	clean_texture(t_cub3d *cub3d)
