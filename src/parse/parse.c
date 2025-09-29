@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 17:13:21 by mimalek           #+#    #+#             */
-/*   Updated: 2025/09/29 11:51:17 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/09/29 17:22:06 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,11 @@ bool	ft_validate_parse_file(t_cub3d *cub3d, int fd)
 {
 	char	*line;
 	int		config_arg;
+	int		error; // added 
 
 	line = NULL;
 	config_arg = 0;
+
 	cub3d->map = malloc(sizeof(char *) * (MAX_MAP_SIZE + 1));
 	if (!cub3d->map)
 		ft_error(MALLOC_FAIL);
@@ -31,7 +33,12 @@ bool	ft_validate_parse_file(t_cub3d *cub3d, int fd)
 		if (config_arg == 6)
 			ft_parse_map(cub3d, line);
 		else
-			config_arg += ft_parse_config_line(cub3d, line);
+		{
+			error = ft_parse_config_line(cub3d, line); // added
+			if (error == -1)
+				return (free(line), false); // if error for NO or WE
+			config_arg += error;
+		}
 		if (line != NULL || !line)
 			free(line);
 		line = NULL;
@@ -75,7 +82,7 @@ int	ft_parse_config_line(t_cub3d *data, char *line)
 				&data->graphics->ceiling_colour), 1);
 	else if (line[i] == '\0' || line[i] == '\n')
 		return (0);
-	return (ft_error(CONFIGUARTION_LINE), 0);
+	return (ft_error(CONFIGUARTION_LINE), -1);
 }
 
 void	ft_parse_color(char *line, int **color)

@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 14:53:06 by poverbec          #+#    #+#             */
-/*   Updated: 2025/09/29 12:30:37 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/09/29 17:25:16 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,10 +55,22 @@ void	print_array(char **array)
 
 // issues 
 /*
-The buffer overflow  in draw_column
+fur valid map some not freed stuff from gnl 
+-> ur update of my gnl broke it slightly... 
 
-Ray calculations producing invalid texture coordinates
-Window resize events not being handled properly
-Array indexing without proper bounds checking in draw_column
+// test fur valide map , exit mit close window
+try valgrind --tool=memcheck --leak-check=full --suppressions=mlx_suppress_2.supp ./cub3d maps/test.cub
+too see gnl errors...
+
+die wurde jetzt complicated / try to understand
+bool	ft_validate_parse_file(t_cub3d *cub3d, int fd)
+-> und dann erst an ft_validate_parse_file(t_cub3d *cub3d, int fd) rumdoctorn 
+
+leaks for invalid map etc is clean
+check
+valgrind --tool=memcheck --leak-check=full --suppressions=mlx_suppress_2.supp ./cub3d maps/fail.cub
+valgrind --tool=memcheck --leak-check=full --suppressions=mlx_suppress_2.supp ./cub3d maps/fail_2.cub
+
+
 
 */

@@ -6,14 +6,14 @@
 /*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 14:16:33 by mimalek           #+#    #+#             */
-/*   Updated: 2025/09/26 16:51:02 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/09/29 17:28:00 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ERROR_H
 # define ERROR_H
 
-typedef	enum	e_error
+typedef	enum e_error
 {
 	ARGUMENT_AMOUNT = 1,
 	WRONG_FILE_TYPE = 2,

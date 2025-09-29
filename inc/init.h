@@ -113,20 +113,20 @@ typedef struct s_cub3d
 
 }	t_cub3d;
 
-typedef struct	s_ray
+typedef struct s_ray
 {
 	// Ray direction and position
 	double	ray_angle;		// Aktueller ray angle
 	double	ray_x;			// Ray start X position
 	double	ray_y;			// Ray start Y position
-	double	delta_x;		// Wie viel andert sich der X-Wert bei einem Schritt nach vorne
-	double	delta_y;		// Wie viel andert sich der Y-Wert bei einem Schritt nach vorne
+	double	delta_x;		// delta X-Wert bei einem Schritt nach vorne
+	double	delta_y;		// delta  Y-Wert bei einem Schritt nach vorne
 
 	// DDA algorithm variables
 	int		map_x;			//  In Welcher Grid Zelle wir aktuell sind (X-Wert)
 	int		map_y;			// Aktuelle Grid Zelle (Y-Wert)
-	double	side_dist_x;	// Distanz von der Ray position zur nachsten vertikalen Grid Line
-	double	side_dist_y;	// Distanz von der Ray position zu nachsten horizontalen Grid Line
+	double	side_dist_x;	// delta von Ray pos zur nachsten vertik Grid Line
+	double	side_dist_y;	// delta von Ray pos zu nachsten horiz Grid Line
 	double	delta_dist_x;	// Distanz zwischen Grid Lines (vertikal)
 	double	delta_dist_y;	// Distanz zwischen Grid Line (horizontal)
 	int		step_x;			// Step Richtung X (-1 (links) or 1 (rechts))
@@ -157,13 +157,20 @@ bool			load_texture(t_cub3d *cub3d);
 mlx_texture_t	*load_wall_texture(t_cub3d *cub3d, t_ray *ray);
 bool			fill_mlx_textures(t_cub3d *cub3d);
 void			set_up_cub3d_defaults(t_cub3d *cub3d);
-uint32_t		r_ceil(t_cub3d *cub3d);
 
 bool			create_mlx(t_cub3d *cub3d);
 
 t_graphics		*get_map(t_graphics *graphics, char **argv);
 
-
+// draw texture
+void			draw_ceiling(t_cub3d *cub3d, t_ray *ray, int x);
+void			draw_floor_pixel(t_cub3d *cub3d, int x, int start_y);
+uint32_t		r_ceil(t_cub3d *cub3d);
+uint32_t		r_floor(t_cub3d *cub3d);
+uint32_t		get_texture_pixel(mlx_texture_t *texture, int tex_y,
+					int text_x);
+void			draw_wall_pixels(t_cub3d *cub3d, t_ray *ray,
+					int x, mlx_texture_t *texture);
 
 // hook function for escape and player movement
 void			game_loop(void *param);
@@ -250,7 +257,7 @@ void			draw_column(t_cub3d *cub3d, t_ray *ray, int x);
 
 //clean up
 void			cleanup_cub3d(t_cub3d *cub3d);
-void 			clean_minimap(t_cub3d *cub3d);
+void			clean_minimap(t_cub3d *cub3d);
 void			clean_texture(t_cub3d *cub3d);
 void			clean_img(t_cub3d *cub3d);
 void			clean_graphics(t_cub3d *cub3d);

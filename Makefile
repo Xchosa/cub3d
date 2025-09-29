@@ -51,6 +51,7 @@ MY_SOURCES = \
 		init_player.c \
 		render_walls_helper.c \
 		render_walls.c \
+		render_texture.c \
 		key_hooks_helper.c \
 		key_hooks_move_helper.c \
 		clean_up.c \
