@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 15:46:09 by poverbec          #+#    #+#             */
-/*   Updated: 2025/09/27 10:41:39 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/09/29 12:18:27 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,19 +72,4 @@ void	clean_graphics(t_cub3d *cub3d)
 	if (cub3d->graphics)
 		free(cub3d->graphics);
 	cub3d->graphics = NULL;
-}
-
-void	ft_free_array(char **arrays)
-{
-	int	i;
-
-	i = 0;
-	while (arrays[i])
-		i++;
-	while (i >= 0)
-	{
-		free(arrays[i]);
-		i--;
-	}
-	free(arrays);
 }

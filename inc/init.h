@@ -207,6 +207,7 @@ bool			parse_map_file(t_cub3d *cub3d, char *map_path, int fd);
 
 // game loop 
 void			game_loop(void *param);
+void			close_window(void *param);
 void			rotate_player(t_cub3d *cub3d, double angle_change);
 void			handle_toggles(t_cub3d *cub3d);
 void			cast_single_ray(t_cub3d *cub3d, double angle);
@@ -228,7 +229,8 @@ bool			ft_is_map_enclosed(char **map);
 int				get_max_width(char **map);
 char			*pad_line(char *line, int width);
 char			**pad_map(char **map);
-bool			ft_validate_map(char **map);
+//bool			ft_validate_map(char **map);
+bool			ft_validate_map(char **map, char *map_path);
 bool			is_walkable(char c);
 
 

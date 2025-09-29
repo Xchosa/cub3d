@@ -53,7 +53,8 @@ MY_SOURCES = \
 		render_walls.c \
 		key_hooks_helper.c \
 		key_hooks_move_helper.c \
-		clean_up.c
+		clean_up.c \
+		close_and_clean.c
 
 
 HEADERS = \

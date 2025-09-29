@@ -6,19 +6,22 @@
 /*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/01 11:10:15 by poverbec          #+#    #+#             */
-/*   Updated: 2025/09/24 10:00:37 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/09/29 12:15:12 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 #include "init.h"
 
+// prevent invalid read check for cub3d->img->pixel 
 void	render_map(t_cub3d *cub3d)
 {
 	uint32_t	i;
 
+	if (!cub3d || !cub3d->img | !cub3d->img->pixels)
+		return ;
 	i = 0;
-	while (i < cub3d->window_width* cub3d->window_height)
+	while (i < cub3d->window_width * cub3d->window_height)
 	{
 		cub3d->img->pixels[i] = 0;
 		i++;

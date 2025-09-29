@@ -1,0 +1,36 @@
+
+
+{
+   MLX_leak_1
+   Memcheck:Leak
+   match-leak-kinds: all
+   fun:*
+   obj:*/libmlx42.a
+}
+
+
+X11 libraries (libX11.so)
+OpenGL/graphics drivers (libnvidia-glcore.so, libGLX_nvidia.so)
+GLFW initialization (glfwInit)
+MLX42 library functions
+
+
+{
+   MLX_leak_2
+   Memcheck:Leak
+   match-leak-kinds: all
+   fun:*
+   obj:*/libglfw*
+}
+
+Suppresses leaks from any GLFW library files (libglfw.so, libglfw.a, etc.)
+
+
+{
+   GLFW_leak
+   Memcheck:Leak
+   match-leak-kinds: all
+   fun:*
+   fun:glfwInit
+}
+Suppresses leaks that originate from the glfwInit function call

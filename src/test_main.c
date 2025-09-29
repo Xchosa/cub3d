@@ -6,11 +6,11 @@
 /*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 14:53:06 by poverbec          #+#    #+#             */
-/*   Updated: 2025/09/26 20:06:42 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/09/29 12:30:37 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "cub3d.h"
+#include "cub3d.h"
 
 int	main(int argc, char **argv)
 {
@@ -31,6 +31,7 @@ int	main(int argc, char **argv)
 		cleanup_cub3d(&cub3d);
 		return (1);
 	}
+	mlx_close_hook(cub3d.mlx, &close_window, &cub3d);
 	mlx_loop_hook(cub3d.mlx, game_loop, &cub3d);
 	mlx_loop(cub3d.mlx);
 	cleanup_cub3d(&cub3d);
@@ -52,3 +53,12 @@ void	print_array(char **array)
 
 
 
+// issues 
+/*
+The buffer overflow  in draw_column
+
+Ray calculations producing invalid texture coordinates
+Window resize events not being handled properly
+Array indexing without proper bounds checking in draw_column
+
+*/

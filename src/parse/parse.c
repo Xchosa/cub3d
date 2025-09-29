@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 17:13:21 by mimalek           #+#    #+#             */
-/*   Updated: 2025/09/27 10:48:28 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/09/29 11:51:17 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,16 +24,17 @@ bool	ft_validate_parse_file(t_cub3d *cub3d, int fd)
 	if (!cub3d->map)
 		ft_error(MALLOC_FAIL);
 	ft_memset(cub3d->map, 0, sizeof(char *) * (MAX_MAP_SIZE + 1));
-	//cub3d->graphics = malloc(sizeof(t_graphics));
-	//if (!cub3d->graphics)
-	//	ft_error(MALLOC_FAIL);
-	//ft_memset(cub3d->graphics, 0, sizeof(t_graphics));
 	while (get_next_line(fd, &line) != NULL)
 	{
+		if (line == NULL)
+			break ;
 		if (config_arg == 6)
 			ft_parse_map(cub3d, line);
 		else
 			config_arg += ft_parse_config_line(cub3d, line);
+		if (line != NULL || !line)
+			free(line);
+		line = NULL;
 	}
 	return (true);
 }
@@ -110,6 +111,8 @@ void	ft_parse_map(t_cub3d *cub3d, char *line)
 
 	if (i >= MAX_MAP_SIZE)
 		ft_error(ARGUMENT_AMOUNT);
+	//if (line == NULL || !line)
+	//	return ;
 	trimmed_line = ft_strtrim(line, "\t\n\v\f\r ");
 	if (!trimmed_line || trimmed_line[0] == '\0')
 	{
