@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 14:53:06 by poverbec          #+#    #+#             */
-/*   Updated: 2025/09/29 17:25:16 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/10/01 14:21:19 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,15 +56,13 @@ void	print_array(char **array)
 // issues 
 /*
 fur valid map some not freed stuff from gnl 
--> ur update of my gnl broke it slightly... 
+-> ur update of my gnl broke it slightly...  --> gefixed 
 
 // test fur valide map , exit mit close window
 try valgrind --tool=memcheck --leak-check=full --suppressions=mlx_suppress_2.supp ./cub3d maps/test.cub
-too see gnl errors...
+too see gnl errors... --> gefixed 
 
-die wurde jetzt complicated / try to understand
-bool	ft_validate_parse_file(t_cub3d *cub3d, int fd)
--> und dann erst an ft_validate_parse_file(t_cub3d *cub3d, int fd) rumdoctorn 
+
 
 leaks for invalid map etc is clean
 check
@@ -72,5 +70,11 @@ valgrind --tool=memcheck --leak-check=full --suppressions=mlx_suppress_2.supp ./
 valgrind --tool=memcheck --leak-check=full --suppressions=mlx_suppress_2.supp ./cub3d maps/fail_2.cub
 
 
+error:
+anstelle .png jpg 
+schmeisst keinen error 
+ist noch gehard coded
+-> auch fuer errors in farben 
 
+bool	ft_parse_config_line 
 */

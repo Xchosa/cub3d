@@ -1,12 +1,14 @@
 
+C 20,10,78
+
+
 NO      textures/mossy.png
 WE      textures/greystone.png
 EA 		textures/wood.png
 SO 		textures/redbrick.png
 
 
-C 20,10,150
-F 15,6,40
+F 15,6,45
 
 111111111111111
 111111100011111

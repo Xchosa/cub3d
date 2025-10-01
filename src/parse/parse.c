@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 17:13:21 by mimalek           #+#    #+#             */
-/*   Updated: 2025/10/01 13:22:05 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/10/01 14:56:51 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,10 @@ bool	ft_validate_parse_file(t_cub3d *cub3d, int fd)
 {
 	char	*line;
 	int		config_arg;
-	int		error; // added 
+	int		error;
 
-	line = NULL;
 	config_arg = 0;
-
-	cub3d->map = malloc(sizeof(char *) * (MAX_MAP_SIZE + 1));
-	if (!cub3d->map)
-		ft_error(MALLOC_FAIL);
-	ft_memset(cub3d->map, 0, sizeof(char *) * (MAX_MAP_SIZE + 1));
+	allocate_cub3d_map(cub3d);
 	while (1)
 	{
 		line = get_next_line(fd);
@@ -35,17 +30,30 @@ bool	ft_validate_parse_file(t_cub3d *cub3d, int fd)
 			ft_parse_map(cub3d, line);
 		else
 		{
-			error = ft_parse_config_line(cub3d, line); // added
+			error = ft_parse_config_line(cub3d, line);
 			if (error == -1)
-				return (free(line), false); // if error for NO or WE
+				return (free(line), false);
 			config_arg += error;
 		}
-		if (line != NULL || !line)
-			free(line);
-		line = NULL;
+		handle_line(line);
 	}
-	
 	return (true);
+}
+
+bool	allocate_cub3d_map(t_cub3d *cub3d)
+{
+	cub3d->map = malloc(sizeof(char *) * (MAX_MAP_SIZE + 1));
+	if (!cub3d->map)
+		return(ft_error(MALLOC_FAIL), false);
+	ft_memset(cub3d->map, 0, sizeof(char *) * (MAX_MAP_SIZE + 1));
+	return (true);
+}
+
+void handle_line(char *line)
+{
+	if (line != NULL || !line)
+			free(line);
+	line = NULL;
 }
 
 int	check_for_whitespaces(char *line, int i)
@@ -59,35 +67,44 @@ int	check_for_whitespaces(char *line, int i)
 }
 
 // try t_strnstr(lines[i], "NO ", 3)
-int	ft_parse_config_line(t_cub3d *data, char *line)
+// parse texture returned kein true or false 
+// parse color retured kein true or false 
+int	ft_parse_config_line(t_cub3d *cub3d, char *line)
 {
 	int	i;
-
+	int error_code;
+	
 	i = 0;
 	i = check_for_whitespaces(line, i);
-	if (line[i] == 'N' && line[i + 1] && line[i + 2] && line[i + 1]
-		== 'O' && line[i + 2] == ' ')
-		return (ft_parse_texture(line + i + 3, &data->graphics->north), 1);
-	else if (line[i] == 'S' && line[i + 1] && line[i + 2] && line[i + 1]
-		== 'O' && line[i + 2] == ' ')
-		return (ft_parse_texture(line + i + 3, &data->graphics->south), 1);
-	else if (line[i] == 'W' && line[i + 1] && line[i + 2] && line[i + 1]
-		== 'E' && line[i + 2] == ' ')
-		return (ft_parse_texture(line + i + 3, &data->graphics->west), 1);
+
+	error_code = parse_texture_helper(cub3d, line, i);
+	if(error_code != 0)
+		return (error_code);
 	else if (line[i] == 'E' && line[i + 1] && line[i + 2] && line[i + 1]
 		== 'A' && line[i + 2] == ' ')
-		return (ft_parse_texture(line + i + 3, &data->graphics->east), 1);
+	{
+		if(ft_parse_texture(line + i + 3, &cub3d->graphics->east) == false)
+			return (-1);
+		return (1);
+	}
 	else if (line[i] == 'F' && line[i + 1] == ' ')
-		return (ft_parse_color(line + i + 2, &data->graphics->floor_colour), 1);
+	{
+		if (ft_parse_color(line + i + 2, &cub3d->graphics->floor_colour) == false)
+			return (-1);
+		return (1);
+	}
 	else if (line[i] == 'C' && line[i + 1] == ' ')
-		return (ft_parse_color(line + i + 2,
-				&data->graphics->ceiling_colour), 1);
+	{
+		if (ft_parse_color(line + i + 2, &cub3d->graphics->ceiling_colour) == false)
+			return (-1);
+		return (1);
+	}
 	else if (line[i] == '\0' || line[i] == '\n')
 		return (0);
 	return (ft_error(CONFIGUARTION_LINE), -1);
 }
 
-void	ft_parse_color(char *line, int **color)
+bool	ft_parse_color(char *line, int **color)
 {
 	char	**rgb;
 	int		r;
@@ -95,7 +112,7 @@ void	ft_parse_color(char *line, int **color)
 	int		b;
 
 	if ((void *)color[0] != 0)
-		ft_error(CONFIG_DUPLICATE);
+		return(ft_error(CONFIG_DUPLICATE), false);
 	rgb = ft_split(line, ',');
 	if (!rgb || !rgb[0] || !rgb[1] || !rgb[2])
 		ft_error(CONFIGUARTION_LINE);
@@ -104,15 +121,17 @@ void	ft_parse_color(char *line, int **color)
 	b = ft_atoi(rgb[2]);
 	ft_free_array(rgb);// free rgb helper
 	if (r < 0 || r > 255 || g < 0 || g > 255 || b < 0 || b > 255)
-		ft_error(WRONG_COLOR_VALUE);
+		return(ft_error(WRONG_COLOR_VALUE), false);
 	*color = malloc(sizeof(int) * 3);
 	if (!*color)
-		ft_error(MALLOC_FAIL);
+		return(ft_error(MALLOC_FAIL), false);
 	(*color)[0] = r;
 	(*color)[1] = g;
 	(*color)[2] = b;
+	return (true);
 }
-
+// return reinbauen  fuer error 
+// zu bool umbauen 
 void	ft_parse_map(t_cub3d *cub3d, char *line)
 {
 	static int	i = 0;

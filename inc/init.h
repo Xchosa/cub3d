@@ -187,13 +187,17 @@ int				return_map_height(char **map);
 
 // parsing
 void			ft_parse_map(t_cub3d *cub3d, char *line);
-void			ft_parse_color(char *line, int **color);
+bool			ft_parse_color(char *line, int **color);
+void 			handle_line(char *line);
+bool			allocate_cub3d_map(t_cub3d *cub3d);
 bool			space_map_check(int i, int j, char **map);
 int				ft_parse_config_line(t_cub3d *data, char *line);
 bool			ft_has_valid_characters(char **map);
 bool			ft_has_single_player(char **map);
 bool			ft_no_empty_lines(char **map);
 bool			check_for_player(char **map);
+bool			ft_parse_texture(char *path, t_img *texture);
+int				parse_texture_helper(t_cub3d *cub3d, char *line, int i);
 
 // minimap
 bool			init_minimap(t_cub3d *cub3d);
@@ -230,7 +234,6 @@ bool			check_vertical_wall_hit(t_cub3d *cub3d, t_ray *ray);
 void			rotate_player_keys(t_cub3d *cub3d, double fps);
 bool			ft_validate_parse_file(t_cub3d *data, int fd);
 int				argument_check(int argc, char **argv);
-void			ft_parse_texture(char *path, t_img *texture);
 char			**read_map_file(char *map_path, int fd);
 bool			ft_is_map_enclosed(char **map);
 int				get_max_width(char **map);
