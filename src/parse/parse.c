@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 17:13:21 by mimalek           #+#    #+#             */
-/*   Updated: 2025/09/29 17:22:06 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/10/01 13:22:05 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,9 @@ bool	ft_validate_parse_file(t_cub3d *cub3d, int fd)
 	if (!cub3d->map)
 		ft_error(MALLOC_FAIL);
 	ft_memset(cub3d->map, 0, sizeof(char *) * (MAX_MAP_SIZE + 1));
-	while (get_next_line(fd, &line) != NULL)
+	while (1)
 	{
+		line = get_next_line(fd);
 		if (line == NULL)
 			break ;
 		if (config_arg == 6)
@@ -43,6 +44,7 @@ bool	ft_validate_parse_file(t_cub3d *cub3d, int fd)
 			free(line);
 		line = NULL;
 	}
+	
 	return (true);
 }
 

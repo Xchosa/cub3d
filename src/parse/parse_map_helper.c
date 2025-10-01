@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 10:08:58 by poverbec          #+#    #+#             */
-/*   Updated: 2025/09/29 11:29:21 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/10/01 13:19:34 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ char	**read_map_file(char *map_path, int fd)
 	line = NULL;
 	while (1)
 	{
-		line = get_next_line(fd, &line);
+		line = get_next_line(fd);
 		if (!line)
 			break ;
 		tmp = content;

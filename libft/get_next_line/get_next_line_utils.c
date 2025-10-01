@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: poverbec <poverbec@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 12:16:55 by poverbec          #+#    #+#             */
-/*   Updated: 2025/03/13 13:17:29 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/10/01 11:40:11 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+#include "../libft.h"
 
 size_t	ft_strlen_gnl(const char *s)
 {
@@ -66,6 +67,8 @@ void	*ft_memmove_gnl(void *dst, const void *src, size_t len)
 	return (dst);
 }
 
+	//if(s2== NULL)
+	//	return(ft_strdup(s1));
 char	*ft_strjoin_gnl(char const *s1, char const *s2)
 {
 	char	*newstr;

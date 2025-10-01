@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 09:15:48 by poverbec          #+#    #+#             */
-/*   Updated: 2025/09/29 11:15:27 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/10/01 13:18:45 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,11 @@ static void	move_buffer_forward(char *buffer);
 static int	handle_buffer_zero(char **buffer, int bytes_read,
 				char **tmp_buffer, char **line);
 
-char	*get_next_line(int fd, char **tmp_buffer)
+char	*get_next_line(int fd)
 {
 	static char	buffer[BUFFER_SIZE + 1];
 	char		*line;
+	char		*tmp_buffer;
 	int			flag;
 
 	flag = 0;
@@ -37,12 +38,12 @@ char	*get_next_line(int fd, char **tmp_buffer)
 		return (line);
 	if (flag == 2)
 		return (NULL);
-	*tmp_buffer = ft_createline(line);
-	if (!*tmp_buffer)
+	tmp_buffer = ft_createline(line);
+	if (!tmp_buffer)
 		return (NULL);
 	free(line);
 	move_buffer_forward(buffer);
-	return (*tmp_buffer);
+	return (tmp_buffer);
 }
 
 static int	read_store(char *buffer, char **line, int fd, int *flag)
