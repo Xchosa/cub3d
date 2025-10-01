@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 17:13:21 by mimalek           #+#    #+#             */
-/*   Updated: 2025/10/01 14:56:51 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/10/01 20:19:41 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,9 @@ bool	ft_validate_parse_file(t_cub3d *cub3d, int fd)
 	int		error;
 
 	config_arg = 0;
-	allocate_cub3d_map(cub3d);
+	if (allocate_cub3d_map(cub3d) == false)
+		return (false);
+	printf("hello\n");
 	while (1)
 	{
 		line = get_next_line(fd);

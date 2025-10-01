@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 10:09:24 by poverbec          #+#    #+#             */
-/*   Updated: 2025/10/01 15:34:45 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/10/01 20:14:48 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,8 @@ bool	ft_parse_texture(char *path, t_img *texture)
 	//int	fd;
 	char *tmp_path;
 	//char *sky_direction;
-
+	char *copy_path;
+	printf("hello\n");
 	if (!path || !*path)
 		return(ft_error(CONFIGUARTION_LINE), false);
 	if (texture->used == true)
@@ -65,15 +66,18 @@ bool	ft_parse_texture(char *path, t_img *texture)
 	// if (fd < 0)
 	// 	ft_error(IMAGE_OPEN_FAILED);
 	// close(fd);
-	texture->path = ft_strtrim(tmp_path, "\t\n\v\f\r ");
+	copy_path = ft_strtrim(tmp_path, "\t\n\v\f\r ");
+	texture->path = ft_strdup(copy_path);
 	//printf("path texture png:   %s", texture->path);
 	//fill_correct_mlx_textures(cub3d, sky_direction, path);
+	
 	free(tmp_path); // freed helper path duped
 	// pointed e.g. an 3 stelle von gemaloced path 
 	texture->used = true;
 	if (!texture->path)
 		return(ft_error(MALLOC_FAIL), false);
 	texture->img = NULL;
+	printf("path:   %s \n", texture->path);
 	return (true);
 }
 

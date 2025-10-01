@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 10:52:53 by poverbec          #+#    #+#             */
-/*   Updated: 2025/10/01 15:31:22 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/10/01 20:19:00 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ bool	init_cub3d(t_cub3d *cub3d, char *map_path, int fd)
 		return (false);
 	if (parse_map_file(cub3d, map_path, fd) == false)
 		return (false);
-	if (create_mlx(cub3d) == false)
-		return (false);
 	if (load_texture(cub3d) == false) // instead of fill_mlx_textures
+		return (false);
+	if (create_mlx(cub3d) == false)
 		return (false);
 	if (init_minimap(cub3d) == false)
 		return (false);
