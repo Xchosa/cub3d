@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   load_texture.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
+/*   By: mimalek <mimalek@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 10:09:24 by poverbec          #+#    #+#             */
-/*   Updated: 2025/10/01 20:14:48 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/10/06 11:59:33 by mimalek          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,6 @@ bool	ft_parse_texture(char *path, t_img *texture)
 	char *tmp_path;
 	//char *sky_direction;
 	char *copy_path;
-	printf("hello\n");
 	if (!path || !*path)
 		return(ft_error(CONFIGUARTION_LINE), false);
 	if (texture->used == true)
@@ -67,7 +66,9 @@ bool	ft_parse_texture(char *path, t_img *texture)
 	// 	ft_error(IMAGE_OPEN_FAILED);
 	// close(fd);
 	copy_path = ft_strtrim(tmp_path, "\t\n\v\f\r ");
-	texture->path = ft_strdup(copy_path);
+	// texture->path = ft_strdup(copy_path);
+	texture->path = copy_path;
+	
 	//printf("path texture png:   %s", texture->path);
 	//fill_correct_mlx_textures(cub3d, sky_direction, path);
 	
@@ -77,7 +78,7 @@ bool	ft_parse_texture(char *path, t_img *texture)
 	if (!texture->path)
 		return(ft_error(MALLOC_FAIL), false);
 	texture->img = NULL;
-	printf("path:   %s \n", texture->path);
+	printf("path:'%s' \n", texture->path);
 	return (true);
 }
 
@@ -89,17 +90,20 @@ bool	load_texture(t_cub3d *cub3d)
 	cub3d->graphics->north.texture = mlx_load_png(cub3d->graphics->north.path);
 	if (!cub3d->graphics->north.texture)
 		return (false);
+	printf("load path 0");
 
 	cub3d->graphics->south.texture = mlx_load_png(cub3d->graphics->south.path);
 	if (!cub3d->graphics->south.texture)
 		return (false);
-	cub3d->graphics->east.img = mlx_texture_to_image(cub3d->mlx,
-			cub3d->graphics->east.texture);
-	if (!cub3d->graphics->east.img)
+	printf("load path 1");
+	cub3d->graphics->east.texture = mlx_load_png(cub3d->graphics->east.path);
+	if (!cub3d->graphics->east.texture)
 		return (false);
+	printf("load path 2");
 	cub3d->graphics->west.texture = mlx_load_png(cub3d->graphics->west.path);
 	if (!cub3d->graphics->west.texture)
 		return (false);
+	printf("load path 3");
 	if (load_texture_2(cub3d) == false)
 		return (false);
 	//if (!cub3d->graphics->north.img)
@@ -107,7 +111,7 @@ bool	load_texture(t_cub3d *cub3d)
 	//	ft_error(MLX_IMG_FAIL);
 	//	return (false);
 	//}
-	
+	printf("load path");
 	// check if all graphics are set 
 	cub3d->graphics->north.used = true;
 	cub3d->graphics->south.used = true;
@@ -119,16 +123,22 @@ bool	load_texture(t_cub3d *cub3d)
 
 bool	load_texture_2(t_cub3d *cub3d)
 {
+	cub3d->graphics->north.img = mlx_texture_to_image(cub3d->mlx,
+			cub3d->graphics->north.texture);
+	if (!cub3d->graphics->north.img)
+		return (false);
 	cub3d->graphics->west.img = mlx_texture_to_image(cub3d->mlx,
 			cub3d->graphics->west.texture);
 	if (!cub3d->graphics->west.img)
 		return (false);
-	cub3d->graphics->east.texture = mlx_load_png(cub3d->graphics->east.path);
-	if (!cub3d->graphics->east.texture)
+	cub3d->graphics->south.img = mlx_texture_to_image(cub3d->mlx,
+			cub3d->graphics->south.texture);
+	if (!cub3d->graphics->south.img)
 		return (false);
 	cub3d->graphics->east.img = mlx_texture_to_image(cub3d->mlx,
 			cub3d->graphics->east.texture);
 	if (!cub3d->graphics->east.img)
 		return (false);
+	printf("load path 1");
 	return (true);
 }

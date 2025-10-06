@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   clean_up.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
+/*   By: mimalek <mimalek@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 15:46:09 by poverbec          #+#    #+#             */
-/*   Updated: 2025/09/29 12:18:27 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/10/06 11:52:17 by mimalek          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ void	clean_minimap(t_cub3d *cub3d)
 
 void	clean_texture(t_cub3d *cub3d)
 {
+	if(cub3d->graphics->north.path)
+		free(cub3d->graphics->north.path); /// fier east west etc 
 	if (cub3d->graphics->north.texture)
 		mlx_delete_texture(cub3d->graphics->north.texture);
 	if (cub3d->graphics->south.texture)
