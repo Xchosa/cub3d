@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/06 14:20:59 by poverbec          #+#    #+#             */
-/*   Updated: 2025/10/06 14:22:47 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/10/06 14:30:15 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 takes a 2D array and returns a 2D array
 */
 
-char**	ft_cpy_array_str(char	**arrays)
+char	**ft_cpy_array_str(char	**arrays)
 {
 	char	**new_array;
 	int		i;
@@ -26,7 +26,7 @@ char**	ft_cpy_array_str(char	**arrays)
 		return (NULL);
 	while (arrays[i] != NULL)
 		i++;
-	new_array = (char**)malloc((i + 1) * sizeof(char*));
+	new_array = (char **)malloc((i + 1) * sizeof(char *));
 	if (!new_array)
 		return (NULL);
 	i = 0;
