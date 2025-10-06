@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 15:46:09 by poverbec          #+#    #+#             */
-/*   Updated: 2025/10/06 13:55:34 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/10/06 14:12:07 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ void	cleanup_cub3d(t_cub3d *cub3d)
 	clean_texture(cub3d);
 	clean_graphics(cub3d);
 }
-
 
 void	clean_minimap(t_cub3d *cub3d)
 {

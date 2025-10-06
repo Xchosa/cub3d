@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/27 12:47:53 by mimalek           #+#    #+#             */
-/*   Updated: 2025/09/26 15:41:40 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/10/06 14:12:53 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ static void	setup_dda_variables(t_ray *ray);
 
 void	init_ray(t_cub3d *cub3d, t_ray *ray, int x)
 {
-    calculate_ray_direction(cub3d, ray, x);
-    set_ray_starting_position(cub3d, ray);
-    setup_dda_variables(ray);   
+	calculate_ray_direction(cub3d, ray, x);
+	set_ray_starting_position(cub3d, ray);
+	setup_dda_variables(ray);
 }
 
 // camera_x Bildschiirm Position auf Kamera Ebene (-1 bis +1)

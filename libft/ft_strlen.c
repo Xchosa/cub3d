@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: poverbec <poverbec@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 09:19:42 by poverbec          #+#    #+#             */
-/*   Updated: 2025/06/06 13:32:05 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/10/06 14:09:34 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ size_t	ft_strlen(const char *s)
 
 	i = 0;
 	if (*s == '\0')
-		return('\0');
+		return ('\0');
 	while (s[i] != '\0')
 	{
 		i++;

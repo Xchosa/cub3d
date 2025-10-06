@@ -6,10 +6,9 @@
 /*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 13:00:52 by poverbec          #+#    #+#             */
-/*   Updated: 2025/09/29 17:25:58 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/10/06 14:14:29 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "cub3d.h"
 
@@ -24,7 +23,6 @@ void	draw_wall_pixels(t_cub3d *cub3d, t_ray *ray, int x,
 	text_x = (int)(x_array_texture(ray) * texture->width);
 	if (text_x < 0)
 		text_x = 0;
-
 	if (text_x >= (int)texture->width)
 		text_x = texture->width - 1;
 	step = (double)texture->height / ray->line_height;

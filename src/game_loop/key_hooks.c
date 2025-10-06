@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 11:32:45 by mimalek           #+#    #+#             */
-/*   Updated: 2025/09/26 11:07:38 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/10/06 14:13:09 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,8 @@ void	game_loop(void *param)
 	t_cub3d	*cub3d;
 
 	cub3d = (t_cub3d *)param;
-
 	if (mlx_is_key_down(cub3d->mlx, MLX_KEY_ESCAPE))
 		mlx_close_window(cub3d->mlx);
-
 	handle_toggles(cub3d);
 	move_player(cub3d);
 	render_map(cub3d);
@@ -43,7 +41,6 @@ void	move_player(t_cub3d *cub3d)
 	cub3d->player.time = time_now;
 	update_player_pos(cub3d, fps, px_d, py_d);
 }
-
 
 // movement_speed (50), rotation_speed (90) are defined 
 void	update_player_pos(t_cub3d *cub3d, double fps, double px_d, double py_d)

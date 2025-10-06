@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 17:13:21 by mimalek           #+#    #+#             */
-/*   Updated: 2025/10/01 20:19:41 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/10/06 14:00:48 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ bool	ft_validate_parse_file(t_cub3d *cub3d, int fd)
 	config_arg = 0;
 	if (allocate_cub3d_map(cub3d) == false)
 		return (false);
-	printf("hello\n");
 	while (1)
 	{
 		line = get_next_line(fd);
@@ -121,7 +120,7 @@ bool	ft_parse_color(char *line, int **color)
 	r = ft_atoi(rgb[0]);
 	g = ft_atoi(rgb[1]);
 	b = ft_atoi(rgb[2]);
-	ft_free_array(rgb);// free rgb helper
+	ft_free_array(rgb);
 	if (r < 0 || r > 255 || g < 0 || g > 255 || b < 0 || b > 255)
 		return(ft_error(WRONG_COLOR_VALUE), false);
 	*color = malloc(sizeof(int) * 3);

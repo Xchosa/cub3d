@@ -6,12 +6,11 @@
 /*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/26 09:17:19 by mimalek           #+#    #+#             */
-/*   Updated: 2025/09/26 11:17:41 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/10/06 14:13:21 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
 
 // Sichtfeld von 60 grad und 60 geschossenen rays. alle in 
 // einem anderen windel geschossen

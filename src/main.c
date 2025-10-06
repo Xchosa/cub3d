@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mimalek <mimalek@student.42.fr>            +#+  +:+       +#+        */
+/*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 14:14:43 by mimalek           #+#    #+#             */
-/*   Updated: 2025/08/04 10:35:58 by mimalek          ###   ########.fr       */
+/*   Updated: 2025/10/06 14:10:28 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,10 @@
 // 	ft_printf("Floor Colour: %d\n", *(data->graphics->floor_colour));
 // 	ft_printf("Ceiling Colour: %d\n", *(data->graphics->ceiling_colour));
 
-
-// 	mlx_loop_hook(data.mlx, game_loop, &cub3d); // escape exit, player moving etc
+// 	mlx_loop_hook(data.mlx, game_loop, &cub3d); 
+// escape exit, player moving etc
 // 	mlx_loop(cub3d.mlx);
 // 	mlx_terminate(cub3d.mlx);
 
 // 	return (close(fd), 0);
 // }
-

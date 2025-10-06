@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mimalek <mimalek@student.42.fr>            +#+  +:+       +#+        */
+/*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 10:27:49 by poverbec          #+#    #+#             */
-/*   Updated: 2025/07/24 11:00:35 by mimalek          ###   ########.fr       */
+/*   Updated: 2025/10/06 14:09:58 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <limits.h>
 # include <stdarg.h>
 # include <fcntl.h>
-#include <stdbool.h>
+# include <stdbool.h>
 # include "get_next_line/get_next_line.h"
 # include "printf/ft_printf.h"
 
@@ -84,11 +84,9 @@ void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
 
 // char *get_next_line(int fd);
-
-
 // usefull add ons
 bool	ft_strcmp(const char *s1, const char *s2);
 char	**ft_cpy_array_str(char **arrays);
-void 	ft_free_array(char **arrays);
+void	ft_free_array(char **arrays);
 
 #endif

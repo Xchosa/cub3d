@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   test_main.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mimalek <mimalek@student.42.fr>            +#+  +:+       +#+        */
+/*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 14:53:06 by poverbec          #+#    #+#             */
-/*   Updated: 2025/10/06 11:40:59 by mimalek          ###   ########.fr       */
+/*   Updated: 2025/10/06 14:11:29 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,6 @@ int	main(int argc, char **argv)
 {
 	t_cub3d	cub3d;
 	int		fd;
-
-	(void)argc;
-	(void)argv;
 
 	ft_memset(&cub3d, 0, sizeof(t_cub3d));
 	fd = argument_check(argc, argv);
