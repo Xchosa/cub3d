@@ -61,8 +61,7 @@ MY_SOURCES = \
 HEADERS = \
 		$(INC_DIR)/cub3d.h \
 		$(INC_DIR)/error.h \
-        $(INC_DIR)/init.h \
-        $(INC_DIR)/parse.h
+        $(INC_DIR)/init.h
 
 OBJ 	= $(addprefix $(OBJ_DIR)/, $(MY_SOURCES:.c=.o))
 

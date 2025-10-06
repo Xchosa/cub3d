@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_hooks.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
+/*   By: mimalek <mimalek@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 11:32:45 by mimalek           #+#    #+#             */
-/*   Updated: 2025/10/06 14:13:09 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/10/06 14:47:01 by mimalek          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,23 +50,23 @@ void	update_player_pos(t_cub3d *cub3d, double fps, double px_d, double py_d)
 	player_rad = cub3d->player.direction * M_PI / 180.0;
 	if (mlx_is_key_down(cub3d->mlx, MLX_KEY_W))
 	{
-		px_d += cos(player_rad) * movement_speed * fps;
-		py_d += sin(player_rad) * movement_speed * fps;
+		px_d += cos(player_rad) * MOVEMENT_SPEED * fps;
+		py_d += sin(player_rad) * MOVEMENT_SPEED * fps;
 	}
 	if (mlx_is_key_down(cub3d->mlx, MLX_KEY_S))
 	{
-		px_d -= cos(player_rad) * movement_speed * fps;
-		py_d -= sin(player_rad) * movement_speed * fps;
+		px_d -= cos(player_rad) * MOVEMENT_SPEED * fps;
+		py_d -= sin(player_rad) * MOVEMENT_SPEED * fps;
 	}
 	if (mlx_is_key_down(cub3d->mlx, MLX_KEY_A))
 	{
-		px_d -= cos(player_rad + half_circle) * movement_speed * fps;
-		py_d -= sin(player_rad + half_circle) * movement_speed * fps;
+		px_d -= cos(player_rad + HALF_CIRCLE) * MOVEMENT_SPEED * fps;
+		py_d -= sin(player_rad + HALF_CIRCLE) * MOVEMENT_SPEED * fps;
 	}
 	if (mlx_is_key_down(cub3d->mlx, MLX_KEY_D))
 	{
-		px_d += cos(player_rad + half_circle) * movement_speed * fps;
-		py_d += sin(player_rad + half_circle) * movement_speed * fps;
+		px_d += cos(player_rad + HALF_CIRCLE) * MOVEMENT_SPEED * fps;
+		py_d += sin(player_rad + HALF_CIRCLE) * MOVEMENT_SPEED * fps;
 	}
 	if (check_wall_rotate(cub3d, px_d, py_d, fps) == true)
 		update_y_and_x(cub3d, px_d, py_d);

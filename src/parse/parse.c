@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
+/*   By: mimalek <mimalek@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 17:13:21 by mimalek           #+#    #+#             */
-/*   Updated: 2025/10/06 14:26:27 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/10/06 14:52:35 by mimalek          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,19 +82,19 @@ int	ft_parse_config_line(t_cub3d *cub3d, char *line)
 	else if (line[i] == 'E' && line[i + 1] && line[i + 2] && line[i + 1]
 		== 'A' && line[i + 2] == ' ')
 	{
-		if(ft_parse_texture(line + i + 3, &cub3d->graphics->east) == false)
+		if (!ft_parse_texture(line + i + 3, &cub3d->graphics->east))
 			return (-1);
 		return (1);
 	}
 	else if (line[i] == 'F' && line[i + 1] == ' ')
 	{
-		if (ft_parse_color(line + i + 2, &cub3d->graphics->floor_colour) == false)
+		if (!ft_parse_color(line + i + 2, &cub3d->graphics->floor_colour))
 			return (-1);
 		return (1);
 	}
 	else if (line[i] == 'C' && line[i + 1] == ' ')
 	{
-		if (ft_parse_color(line + i + 2, &cub3d->graphics->ceiling_colour) == false)
+		if (!ft_parse_color(line + i + 2, &cub3d->graphics->ceiling_colour))
 			return (-1);
 		return (1);
 	}

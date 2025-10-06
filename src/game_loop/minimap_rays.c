@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minimap_rays.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
+/*   By: mimalek <mimalek@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/26 09:17:19 by mimalek           #+#    #+#             */
-/*   Updated: 2025/10/06 14:13:21 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/10/06 14:47:19 by mimalek          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,8 +87,8 @@ void	cast_single_ray(t_cub3d *cub3d, double angle)
 	steps = 0;
 	while (steps < RAY_LENGTH)
 	{
-		ray_x += cos(angle * M_PI / 180.0) * step_size;
-		ray_y += sin(angle * M_PI / 180.0) * step_size;
+		ray_x += cos(angle * M_PI / 180.0) * STEP_SIZE;
+		ray_y += sin(angle * M_PI / 180.0) * STEP_SIZE;
 		grid_x = (int)((ray_x - 1) / cub3d->minimap.square_size);
 		grid_y = (int)((ray_y - 1) / cub3d->minimap.square_size);
 		if (boundary_and_wall_collision_check(cub3d, grid_x, grid_y) == false)

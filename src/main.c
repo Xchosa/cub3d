@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
+/*   By: mimalek <mimalek@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 14:14:43 by mimalek           #+#    #+#             */
-/*   Updated: 2025/10/06 14:10:28 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/10/06 14:55:15 by mimalek          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 //#include "cub3d.h"
-#include "parse.h"
 
 // int	main(int argc, char **argv)
 // {

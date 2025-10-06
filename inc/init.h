@@ -1,39 +1,41 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   init.h                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mimalek <mimalek@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/10/06 14:37:52 by mimalek           #+#    #+#             */
+/*   Updated: 2025/10/06 14:44:02 by mimalek          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #ifndef INIT_H
 # define INIT_H
 
 # include "MLX42.h"
 
-//minimap
-//COLORS
 # define WHITE_COLOR 0xFFFFFFFF
 # define GREY_COLOR 0x555555FF
 # define BLACK_COLOR 0x000000FF
 # define BLACK_TRANS_COLOR 0x00000080
 # define PLAYER_COLOR 0x1E90FFFF
 # define YELLOW_COLOR 0xFFFF00FF
-
-# define movement_speed 50.0
-# define rotation_speed 90.0
-# define half_circle 1.57079
-//MAP
+# define MOVEMENT_SPEED 50.0
+# define ROTATION_SPEED 90.0
+# define HALF_CIRCLE 1.57079
 # define MINIMAP_WIDTH 350
 # define MINIMAP_HEIGHT 210
 # define MINIMAP_VIEW_SIZE 3
-# define CUBE_SIZE 32 // eine kachel 32 lange 32 breite
+# define CUBE_SIZE 32
 # define MINIMAP_CELL_GAP 2
-
-//Rays
-# define step_size 1;
-# define FOV 60.0 // Field of view in degrees
-# define NUM_RAYS 60 // Number of rays to cast
-# define RAY_COLOR 0xFF00FFFF // Magenta color for rays
-# define RAY_LENGTH 200 // Maximum ray length in pixels
-
-//PLAYER
+# define STEP_SIZE 1;
+# define FOV 60.0
+# define NUM_RAYS 60 
+# define RAY_COLOR 0xFF00FFFF
+# define RAY_LENGTH 200
 # define PLAYER_SIZE 10
 # define PLAYER_SPEED 150.0
-// halbes Pi in einer sekunde 90 grad
 # define PLAYER_ROT_SPEED 1.57079632679
 # define DIR_LINE_COLOR 0x0000FF
 
@@ -47,21 +49,19 @@
 # define GRAPHICS_LENGTH 6
 # define MAX_MAP_SIZE 100
 
-
 typedef struct s_player
 {
-	double		px_x;// use double or unit32_t
-	double		px_y;// use double 
-	double		direction; // Richtiung in die der Player schaut;
+	double		px_x;
+	double		px_y;
+	double		direction;
 	char		player_view;
 	double		time;
 
 }		t_player;
 
-
 typedef struct s_img
 {
-	int				type; // player , walll etc
+	int				type;
 	mlx_texture_t	*texture;
 	mlx_image_t		*img;
 	char			*path;
@@ -79,7 +79,6 @@ typedef struct s_graphics
 	int				*ceiling_colour;
 }					t_graphics;
 
-
 typedef struct s_minimap
 {
 	char	**map_grid;
@@ -87,12 +86,9 @@ typedef struct s_minimap
 	int		map_width;
 	int		square_size;
 	int		player_pos_x;
-	int		player_pos_y; // start position
+	int		player_pos_y;
 
 }	t_minimap;
-
-// img struct
-// 
 
 typedef struct s_cub3d
 {
@@ -100,7 +96,7 @@ typedef struct s_cub3d
 	int			fd;
 	mlx_image_t	*img;
 	t_graphics	*graphics;
-	char		**map; // raus nur in minimap;
+	char		**map;
 	uint32_t	window_width;
 	uint32_t	window_height;
 	uint32_t	minimap_img_width;
@@ -110,44 +106,32 @@ typedef struct s_cub3d
 	int			show_minimap;
 	int			show_rays;
 
-
 }	t_cub3d;
 
 typedef struct s_ray
 {
-	// Ray direction and position
-	double	ray_angle;		// Aktueller ray angle
-	double	ray_x;			// Ray start X position
-	double	ray_y;			// Ray start Y position
-	double	delta_x;		// delta X-Wert bei einem Schritt nach vorne
-	double	delta_y;		// delta  Y-Wert bei einem Schritt nach vorne
-
-	// DDA algorithm variables
-	int		map_x;			//  In Welcher Grid Zelle wir aktuell sind (X-Wert)
-	int		map_y;			// Aktuelle Grid Zelle (Y-Wert)
-	double	side_dist_x;	// delta von Ray pos zur nachsten vertik Grid Line
-	double	side_dist_y;	// delta von Ray pos zu nachsten horiz Grid Line
-	double	delta_dist_x;	// Distanz zwischen Grid Lines (vertikal)
-	double	delta_dist_y;	// Distanz zwischen Grid Line (horizontal)
-	int		step_x;			// Step Richtung X (-1 (links) or 1 (rechts))
-	int		step_y;			// Step Richtung Y (-1 (hoch) or 1 (runter))
-
-	// Hit information
-	int		hit;			// Wurde wall gehitted?
-	int		side;			// Welche wall wurd gehitted?
-	double	wall_dist;		// Distanz zur wall
-	char	wall_type;		// Welcher Character wurde gehitted ('1', '0')
-
-	// Projection calculation
-	int		line_height;	// Hohe der Wall Line
-	int		draw_start;		// Start Y Koordinate fur die Projektion
-	int		draw_end;		// Ende Y Koordinate fur die Projektion
+	double	ray_angle;
+	double	ray_x;
+	double	ray_y;
+	double	delta_x;
+	double	delta_y;
+	int		map_x;
+	int		map_y;
+	double	side_dist_x;
+	double	side_dist_y;
+	double	delta_dist_x;
+	double	delta_dist_y;
+	int		step_x;
+	int		step_y;
+	int		hit;
+	int		side;
+	double	wall_dist;
+	char	wall_type;
+	int		line_height;
+	int		draw_start;
+	int		draw_end;
 
 }	t_ray;
-
-
-
-
 
 bool			init_cub3d(t_cub3d *cub3d, char *map_path, int fd);
 double			x_array_texture(t_ray *ray);
@@ -157,12 +141,8 @@ bool			load_texture(t_cub3d *cub3d);
 mlx_texture_t	*load_wall_texture(t_cub3d *cub3d, t_ray *ray);
 bool			fill_mlx_textures(t_cub3d *cub3d);
 void			set_up_cub3d_defaults(t_cub3d *cub3d);
-
 bool			create_mlx(t_cub3d *cub3d);
-
 t_graphics		*get_map(t_graphics *graphics, char **argv);
-
-// draw texture
 void			draw_ceiling(t_cub3d *cub3d, t_ray *ray, int x);
 void			draw_floor_pixel(t_cub3d *cub3d, int x, int start_y);
 uint32_t		r_ceil(t_cub3d *cub3d);
@@ -171,8 +151,6 @@ uint32_t		get_texture_pixel(mlx_texture_t *texture, int tex_y,
 					int text_x);
 void			draw_wall_pixels(t_cub3d *cub3d, t_ray *ray,
 					int x, mlx_texture_t *texture);
-
-// hook function for escape and player movement
 void			game_loop(void *param);
 void			draw_map_background(t_cub3d *cub3d);
 void			render_map(t_cub3d *cub3d);
@@ -184,11 +162,9 @@ void			draw_minimap_cells(t_cub3d *cub3d, int minimap_x,
 int				get_cell_color(char cell);
 void			replace_spaces_with_2(char **map);
 int				return_map_height(char **map);
-
-// parsing
 void			ft_parse_map(t_cub3d *cub3d, char *line);
 bool			ft_parse_color(char *line, int **color);
-void 			handle_line(char *line);
+void			handle_line(char *line);
 bool			allocate_cub3d_map(t_cub3d *cub3d);
 bool			space_map_check(int i, int j, char **map);
 int				ft_parse_config_line(t_cub3d *data, char *line);
@@ -198,8 +174,6 @@ bool			ft_no_empty_lines(char **map);
 bool			check_for_player(char **map);
 bool			ft_parse_texture(char *path, t_img *texture);
 int				parse_texture_helper(t_cub3d *cub3d, char *line, int i);
-
-// minimap
 bool			init_minimap(t_cub3d *cub3d);
 bool			map_to_grid(t_cub3d *cub3d);
 bool			malloc_minimap_grid(t_cub3d *cub3d);
@@ -215,8 +189,6 @@ void			player_view_direction(t_cub3d *cub3d, double y, double x);
 void			draw_player_minimap(t_cub3d *cub3d, double y, double x);
 void			set_player_view(t_cub3d *cub3d, char player_direction);
 bool			parse_map_file(t_cub3d *cub3d, char *map_path, int fd);
-
-// game loop 
 void			game_loop(void *param);
 void			close_window(void *param);
 void			rotate_player(t_cub3d *cub3d, double angle_change);
@@ -225,9 +197,7 @@ void			cast_single_ray(t_cub3d *cub3d, double angle);
 void			draw_single_ray(t_cub3d *cub3d, double ray_x, double ray_y);
 bool			boundary_and_wall_collision_check(t_cub3d *cub3d, int grid_x,
 					int grid_y);
-
 void			update_y_and_x(t_cub3d *cub3d, double px_d, double py_d);
-//bool		check_for_wall(t_cub3d *cub3d);
 bool			check_wall_rotate(t_cub3d *cub3d, double px_d,
 					double py_d, double fps);
 bool			check_vertical_wall_hit(t_cub3d *cub3d, t_ray *ray);
@@ -239,26 +209,16 @@ bool			ft_is_map_enclosed(char **map);
 int				get_max_width(char **map);
 char			*pad_line(char *line, int width);
 char			**pad_map(char **map);
-//bool			ft_validate_map(char **map);
 bool			ft_validate_map(char **map, char *map_path);
 bool			is_walkable(char c);
-
-
 void			print_array(char **array);
 void			cast_rays(t_cub3d *cub3d);
 double			get_player_angle(char direction);
 void			render_frame(t_cub3d *cub3d);
 void			init_ray(t_cub3d *cub3d, t_ray *ray, int x);
-
-
-
-
 void			perform_dda(t_cub3d *cub3d, t_ray *ray);
 void			calculation_projection(t_cub3d *cub3d, t_ray *ray);
 void			draw_column(t_cub3d *cub3d, t_ray *ray, int x);
-
-
-//clean up
 void			cleanup_cub3d(t_cub3d *cub3d);
 void			clean_minimap(t_cub3d *cub3d);
 void			clean_texture(t_cub3d *cub3d);
@@ -266,4 +226,3 @@ void			clean_img(t_cub3d *cub3d);
 void			clean_graphics(t_cub3d *cub3d);
 
 #endif
-

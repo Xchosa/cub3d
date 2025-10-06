@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_hooks_helper.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
+/*   By: mimalek <mimalek@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 10:24:11 by poverbec          #+#    #+#             */
-/*   Updated: 2025/10/06 14:17:28 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/10/06 14:50:09 by mimalek          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 void	rotate_player_keys(t_cub3d *cub3d, double fps)
 {
 	if (mlx_is_key_down(cub3d->mlx, MLX_KEY_LEFT))
-		rotate_player(cub3d, -rotation_speed * fps);
+		rotate_player(cub3d, -ROTATION_SPEED * fps);
 	if (mlx_is_key_down(cub3d->mlx, MLX_KEY_RIGHT))
-		rotate_player(cub3d, rotation_speed * fps);
+		rotate_player(cub3d, ROTATION_SPEED * fps);
 }
 
 bool	check_wall_rotate(t_cub3d *cub3d, double px_d,

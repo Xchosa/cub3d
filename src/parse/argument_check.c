@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   argument_check.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
+/*   By: mimalek <mimalek@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 10:09:17 by poverbec          #+#    #+#             */
-/*   Updated: 2025/10/06 14:19:09 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/10/06 14:55:25 by mimalek          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-#include "parse.h"
 
 // print map 
 bool	parse_map_file(t_cub3d *cub3d, char *map_path, int fd )
