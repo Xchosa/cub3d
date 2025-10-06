@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   load_texture.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mimalek <mimalek@student.42.fr>            +#+  +:+       +#+        */
+/*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 10:09:24 by poverbec          #+#    #+#             */
-/*   Updated: 2025/10/06 11:59:33 by mimalek          ###   ########.fr       */
+/*   Updated: 2025/10/06 13:53:52 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,28 +90,26 @@ bool	load_texture(t_cub3d *cub3d)
 	cub3d->graphics->north.texture = mlx_load_png(cub3d->graphics->north.path);
 	if (!cub3d->graphics->north.texture)
 		return (false);
-	printf("load path 0");
+	
 
 	cub3d->graphics->south.texture = mlx_load_png(cub3d->graphics->south.path);
 	if (!cub3d->graphics->south.texture)
 		return (false);
-	printf("load path 1");
+	
 	cub3d->graphics->east.texture = mlx_load_png(cub3d->graphics->east.path);
 	if (!cub3d->graphics->east.texture)
 		return (false);
-	printf("load path 2");
+	
 	cub3d->graphics->west.texture = mlx_load_png(cub3d->graphics->west.path);
 	if (!cub3d->graphics->west.texture)
 		return (false);
-	printf("load path 3");
 	if (load_texture_2(cub3d) == false)
 		return (false);
 	//if (!cub3d->graphics->north.img)
 	//{
 	//	ft_error(MLX_IMG_FAIL);
 	//	return (false);
-	//}
-	printf("load path");
+	//
 	// check if all graphics are set 
 	cub3d->graphics->north.used = true;
 	cub3d->graphics->south.used = true;
@@ -139,6 +137,5 @@ bool	load_texture_2(t_cub3d *cub3d)
 			cub3d->graphics->east.texture);
 	if (!cub3d->graphics->east.img)
 		return (false);
-	printf("load path 1");
 	return (true);
 }
