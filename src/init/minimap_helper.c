@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 16:29:57 by poverbec          #+#    #+#             */
-/*   Updated: 2025/09/26 15:48:31 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/10/06 14:15:53 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	get_cell_color(char cell)
 	}
 	else if (cell == ' ')
 		return (BLACK_TRANS_COLOR);
-	else if (ft_strchr("NSEW", cell ) != 0)
+	else if (ft_strchr("NSEW", cell) != 0)
 		return (WHITE_COLOR);
 	else
 		return (BLACK_TRANS_COLOR);
@@ -42,7 +42,6 @@ int	return_square_size(t_cub3d *cub3d, int map_width, int map_height)
 		square_size = 1;
 	return (square_size);
 }
-
 
 bool	malloc_minimap_grid(t_cub3d *cub3d)
 {

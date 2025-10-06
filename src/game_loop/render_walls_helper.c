@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/26 11:49:24 by poverbec          #+#    #+#             */
-/*   Updated: 2025/09/29 17:16:39 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/10/06 14:17:48 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,4 +45,3 @@ int	return_x_cor_texture(int wall_x, t_cub3d *cub3d,
 	else
 		return ((int)(wall_x * cub3d->graphics->south.texture->width));
 }
-

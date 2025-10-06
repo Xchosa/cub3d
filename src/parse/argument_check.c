@@ -6,10 +6,9 @@
 /*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 10:09:17 by poverbec          #+#    #+#             */
-/*   Updated: 2025/09/29 11:59:01 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/10/06 14:19:09 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "cub3d.h"
 #include "parse.h"
@@ -24,7 +23,6 @@ bool	parse_map_file(t_cub3d *cub3d, char *map_path, int fd )
 		return (false);
 	return (true);
 }
-
 
 int	argument_check(int argc, char **argv)
 {

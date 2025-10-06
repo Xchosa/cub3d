@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/01 11:10:15 by poverbec          #+#    #+#             */
-/*   Updated: 2025/09/29 12:15:12 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/10/06 14:15:37 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,3 @@ int	get_map_width(char **map)
 	}
 	return (max_width);
 }
-
-
-

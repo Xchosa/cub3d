@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/01 11:14:56 by poverbec          #+#    #+#             */
-/*   Updated: 2025/09/26 15:46:25 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/10/06 14:17:56 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,6 @@ void	draw_minimap_background(t_cub3d *cub3d, int start_x, int start_y)
 		y++;
 	}
 }
-
 
 void	draw_minimap_cells(t_cub3d *cub3d, int minimap_x, int minimap_y)
 {

@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 09:44:12 by poverbec          #+#    #+#             */
-/*   Updated: 2025/09/26 15:47:28 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/10/06 14:23:34 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	init_player(t_cub3d *cub3d)
 		x = 0;
 		while (x < cub3d->minimap.map_width)
 		{
-			if (ft_strchr("NSEW", cub3d->minimap.map_grid[y][x] ) != 0)
+			if (ft_strchr("NSEW", cub3d->minimap.map_grid[y][x]) != 0)
 			{
 				set_player_view(cub3d, cub3d->minimap.map_grid[y][x]);
 				cub3d->player.px_x = x * cub3d->minimap.square_size
@@ -40,7 +40,6 @@ void	init_player(t_cub3d *cub3d)
 	cub3d->player.direction = get_player_angle(cub3d->player.player_view);
 }
 
-
 void	draw_player_minimap(t_cub3d *cub3d, double p_y, double p_x)
 {
 	int	radius;
@@ -49,7 +48,6 @@ void	draw_player_minimap(t_cub3d *cub3d, double p_y, double p_x)
 
 	radius = cub3d->minimap.square_size / 3.5;
 	y = radius * (-1);
-
 	while (y <= radius)
 	{
 		x = radius * (-1);
@@ -66,11 +64,9 @@ void	draw_player_minimap(t_cub3d *cub3d, double p_y, double p_x)
 		}
 		y++;
 	}
-
 }
 
 void	set_player_view(t_cub3d *cub3d, char player_direction)
 {
 	cub3d->player.player_view = player_direction;
 }
-

@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 13:00:52 by poverbec          #+#    #+#             */
-/*   Updated: 2025/10/06 14:14:29 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/10/06 14:16:38 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	draw_wall_pixels(t_cub3d *cub3d, t_ray *ray, int x,
 	if (text_x >= (int)texture->width)
 		text_x = texture->width - 1;
 	step = (double)texture->height / ray->line_height;
-	texture_position = (ray->draw_start - cub3d->window_height / 2 
+	texture_position = (ray->draw_start - cub3d->window_height / 2
 			+ ray->line_height / 2) * step;
 	y = ray->draw_start;
 	while (y <= ray->draw_end)

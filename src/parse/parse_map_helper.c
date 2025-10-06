@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 10:08:58 by poverbec          #+#    #+#             */
-/*   Updated: 2025/10/01 13:19:34 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/10/06 14:19:55 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ bool	space_map_check(int i, int j, char **map)
 	return (true);
 }
 
-
 int	return_map_height(char **map)
 {
 	int	height;
@@ -89,7 +88,6 @@ bool	ft_is_map_enclosed(char **map)
 	return (true);
 }
 
-
 bool	ft_no_empty_lines(char **map)
 {
 	int	i;
@@ -103,4 +101,3 @@ bool	ft_no_empty_lines(char **map)
 	}
 	return (true);
 }
-

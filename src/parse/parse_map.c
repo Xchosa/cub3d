@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 10:09:04 by poverbec          #+#    #+#             */
-/*   Updated: 2025/09/29 11:33:47 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/10/06 14:19:39 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,6 @@ bool	ft_has_valid_characters(char **map)
 	}
 	return (true);
 }
-
-
 
 bool	check_for_player(char **map)
 {

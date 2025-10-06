@@ -6,12 +6,11 @@
 /*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 14:52:35 by poverbec          #+#    #+#             */
-/*   Updated: 2025/09/29 17:15:48 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/10/06 14:23:10 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
 
 // rewritten
 void	draw_column( t_cub3d *cub3d, t_ray *ray, int x)
@@ -23,7 +22,6 @@ void	draw_column( t_cub3d *cub3d, t_ray *ray, int x)
 	draw_wall_pixels(cub3d, ray, x, texture);
 	draw_floor_pixel(cub3d, x, ray->draw_end +1);
 }
-
 
 void	draw_ceiling(t_cub3d *cub3d, t_ray *ray, int x)
 {
@@ -68,7 +66,6 @@ uint32_t	r_floor(t_cub3d *cub3d)
 	return (floor_color);
 }
 
-
 //texture x cordinate
 // every ray gets one out of 4 wall_textures 
 // finds the exact fractionl x value
@@ -111,5 +108,3 @@ uint32_t	r_floor(t_cub3d *cub3d)
 //color = (uint32_t*)load_wall_texture(cub3d, ray)->pixels(int)texture_position
 //color = texture_pix[(int)texture_position
 //	* load_wall_texture(cub3d, ray)->width + text_x];
-
-

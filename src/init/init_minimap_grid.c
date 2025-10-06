@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 14:08:50 by poverbec          #+#    #+#             */
-/*   Updated: 2025/09/26 15:47:18 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/10/06 14:18:02 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ bool	init_minimap(t_cub3d *cub3d)
 		return (false);
 	return (true);
 }
-
 
 // ueberschreibt nicht 
 //	print_array(cub3d->minimap.map_grid);

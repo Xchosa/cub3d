@@ -6,42 +6,39 @@
 /*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 10:09:24 by poverbec          #+#    #+#             */
-/*   Updated: 2025/10/06 14:11:04 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/10/06 14:20:37 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "cub3d.h"
 #include "parse.h"
 #include "init.h"
 
-
-int parse_texture_helper(t_cub3d *cub3d, char *line, int i)
+int	parse_texture_helper(t_cub3d *cub3d, char *line, int i)
 {
 	if (line[i] == 'N' && line[i + 1] && line[i + 2] && line[i + 1]
 		== 'O' && line[i + 2] == ' ')
 	{
-		if(ft_parse_texture(line + i + 3, &cub3d->graphics->north) == false)
+		if (ft_parse_texture(line + i + 3, &cub3d->graphics->north) == false)
 			return (-1);
 		return (1);
 	}
 	else if (line[i] == 'S' && line[i + 1] && line[i + 2] && line[i + 1]
 		== 'O' && line[i + 2] == ' ')
 	{
-		if(ft_parse_texture(line + i + 3, &cub3d->graphics->south) == false)
+		if (ft_parse_texture(line + i + 3, &cub3d->graphics->south) == false)
 			return (-1);
 		return (1);
 	}
 	else if (line[i] == 'W' && line[i + 1] && line[i + 2] && line[i + 1]
 		== 'E' && line[i + 2] == ' ')
 	{
-		if(ft_parse_texture(line + i + 3, &cub3d->graphics->west) == false)
+		if (ft_parse_texture(line + i + 3, &cub3d->graphics->west) == false)
 			return (-1);
 		return (1);
 	}
 	return (0);
 }
-
 
 // path ist schon e.g. cub3d->graphics->east
 bool	ft_parse_texture(char *path, t_img *texture)

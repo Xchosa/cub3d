@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/25 18:03:45 by poverbec          #+#    #+#             */
-/*   Updated: 2025/09/26 16:22:31 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/10/06 14:23:55 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ char	*pad_line(char *line, int width)
 	new_line[i] = '\0';
 	return (new_line);
 }
-
 
 char	**pad_map(char **map)
 {

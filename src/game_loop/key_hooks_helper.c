@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 10:24:11 by poverbec          #+#    #+#             */
-/*   Updated: 2025/09/26 15:43:12 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/10/06 14:17:28 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ bool	check_wall_rotate(t_cub3d *cub3d, double px_d,
 	else
 		return (false);
 }
-
 
 void	update_y_and_x(t_cub3d *cub3d, double px_d, double py_d)
 {
