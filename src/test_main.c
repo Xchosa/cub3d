@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   test_main.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mimalek <mimalek@student.42.fr>            +#+  +:+       +#+        */
+/*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 14:53:06 by poverbec          #+#    #+#             */
-/*   Updated: 2025/10/06 15:00:54 by mimalek          ###   ########.fr       */
+/*   Updated: 2025/10/07 10:59:21 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,4 +72,11 @@ ist noch gehard coded
 -> auch fuer errors in farben 
 
 bool	ft_parse_config_line 
+
+
+nur keine map 
+file onhne inhalt e.g. new line 
+
+und riesige map 
+
 */

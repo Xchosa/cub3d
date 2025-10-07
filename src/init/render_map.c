@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/01 11:10:15 by poverbec          #+#    #+#             */
-/*   Updated: 2025/10/06 14:15:37 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/10/07 10:58:09 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,19 @@
 #include "init.h"
 
 // prevent invalid read check for cub3d->img->pixel 
-void	render_map(t_cub3d *cub3d)
+bool	render_map(t_cub3d *cub3d)
 {
 	uint32_t	i;
 
-	if (!cub3d || !cub3d->img | !cub3d->img->pixels)
-		return ;
+	if (!cub3d || !cub3d->img || !cub3d->img->pixels)
+		return (false);
 	i = 0;
 	while (i < cub3d->window_width * cub3d->window_height)
 	{
 		cub3d->img->pixels[i] = 0;
 		i++;
 	}
+	printf("error before render frame \n" );
 	render_frame(cub3d);
 	if (cub3d->show_minimap)
 	{
@@ -34,6 +35,7 @@ void	render_map(t_cub3d *cub3d)
 	}
 	if (cub3d->show_rays && cub3d->show_minimap)
 		cast_rays(cub3d);
+	return (true);
 }
 
 void	draw_map_background(t_cub3d *cub3d)

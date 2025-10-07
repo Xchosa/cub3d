@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   argument_check.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mimalek <mimalek@student.42.fr>            +#+  +:+       +#+        */
+/*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 10:09:17 by poverbec          #+#    #+#             */
-/*   Updated: 2025/10/06 14:55:25 by mimalek          ###   ########.fr       */
+/*   Updated: 2025/10/07 10:42:52 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ bool	parse_map_file(t_cub3d *cub3d, char *map_path, int fd )
 {
 	if (ft_validate_parse_file(cub3d, fd) == false)
 		return (false);
-	print_array(cub3d->map);
+	//print_array(cub3d->map);
 	if (ft_validate_map(cub3d->map, map_path) == false)
 		return (false);
 	return (true);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mimalek <mimalek@student.42.fr>            +#+  +:+       +#+        */
+/*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/06 14:37:52 by mimalek           #+#    #+#             */
-/*   Updated: 2025/10/07 10:13:36 by mimalek          ###   ########.fr       */
+/*   Updated: 2025/10/07 11:16:43 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,11 +149,12 @@ uint32_t		r_ceil(t_cub3d *cub3d);
 uint32_t		r_floor(t_cub3d *cub3d);
 uint32_t		get_texture_pixel(mlx_texture_t *texture, int tex_y,
 					int text_x);
+
 void			draw_wall_pixels(t_cub3d *cub3d, t_ray *ray,
 					int x, mlx_texture_t *texture);
 void			game_loop(void *param);
 void			draw_map_background(t_cub3d *cub3d);
-void			render_map(t_cub3d *cub3d);
+bool			render_map(t_cub3d *cub3d);
 void			draw_map_background(t_cub3d *cub3d);
 void			draw_minimap_background(t_cub3d *cub3d, int start_x,
 					int start_y);
@@ -162,7 +163,8 @@ void			draw_minimap_cells(t_cub3d *cub3d, int minimap_x,
 int				get_cell_color(char cell);
 void			replace_spaces_with_2(char **map);
 int				return_map_height(char **map);
-void			ft_parse_map(t_cub3d *cub3d, char *line);
+bool			ft_parse_map(t_cub3d *cub3d, char *line);
+char			**malloc_min_map( int height, int width);
 bool			ft_parse_color(char *line, int **color);
 void			handle_line(char *line);
 bool			allocate_cub3d_map(t_cub3d *cub3d);

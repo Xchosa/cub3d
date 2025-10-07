@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map_helper_2.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mimalek <mimalek@student.42.fr>            +#+  +:+       +#+        */
+/*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/25 18:03:45 by poverbec          #+#    #+#             */
-/*   Updated: 2025/10/06 14:50:29 by mimalek          ###   ########.fr       */
+/*   Updated: 2025/10/07 11:17:26 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,7 @@ char	**pad_map(char **map)
 
 	height = return_map_height(map);
 	width = get_max_width(map);
-	i = 0;
-	new_map = malloc(sizeof(char *) * (height + 1));
+	new_map = malloc_min_map(height, width);
 	if (!new_map)
 		return (NULL);
 	while (i < height)
@@ -78,3 +77,19 @@ char	**pad_map(char **map)
 	new_map[height] = NULL;
 	return (new_map);
 }
+
+
+char	**malloc_min_map( int height, int width)
+{
+	char	**new_map;
+
+	if ((height < 3) || (width < 3))
+		return (NULL);
+
+
+	new_map = malloc(sizeof(char *) * (height + 1));
+	if (!new_map)
+		return (NULL);
+	return (new_map);
+}
+
