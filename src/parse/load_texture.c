@@ -6,7 +6,7 @@
 /*   By: mimalek <mimalek@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 10:09:24 by poverbec          #+#    #+#             */
-/*   Updated: 2025/10/06 15:00:20 by mimalek          ###   ########.fr       */
+/*   Updated: 2025/10/06 15:41:27 by mimalek          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,11 +55,11 @@ bool	ft_parse_texture(char *path, t_img *texture)
 	while (path && (*path == ' ' || *path == '\t'))
 		path++;
 	tmp_path = ft_strdup(path);
-	fd = open(path, O_RDONLY);
+	copy_path = ft_strtrim(tmp_path, "\t\n\v\f\r ");
+	fd = open(copy_path, O_RDONLY);
 	if (fd < 0)
 		return (ft_error(IMAGE_OPEN_FAILED), false);
 	close(fd);
-	copy_path = ft_strtrim(tmp_path, "\t\n\v\f\r ");
 	texture->path = copy_path;
 	free(tmp_path);
 	texture->used = true;
