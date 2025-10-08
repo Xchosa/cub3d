@@ -3,40 +3,56 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mimalek <mimalek@student.42.fr>            +#+  +:+       +#+        */
+/*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/16 14:14:43 by mimalek           #+#    #+#             */
-/*   Updated: 2025/10/06 14:55:15 by mimalek          ###   ########.fr       */
+/*   Created: 2025/09/23 14:53:06 by poverbec          #+#    #+#             */
+/*   Updated: 2025/10/08 11:58:59 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include "cub3d.h"
+#include "cub3d.h"
 
-// int	main(int argc, char **argv)
-// {
-// 	int		fd;
-// 	t_cub3d	*data;
+int	main(int argc, char **argv)
+{
+	t_cub3d	cub3d;
+	int		fd;
 
-// 	ft_memset(data, 0, sizeof(t_cub3d)); // sonst is garbage im pointer
-// 	//data = malloc(sizeof(t_cub3d));
-// 	if (!data)
-// 		return (ft_error(MALLOC_FAIL), MALLOC_FAIL);
-// 	data->graphics = malloc(sizeof(t_graphics));
-// 	if (!data->graphics)
-// 		return (ft_error(MALLOC_FAIL), free(data), MALLOC_FAIL);
-// 	fd = argument_check(argc, argv);
-// 	ft_validate_parse_file(data, fd);
-// 	ft_printf("North: %s\n", data->graphics->north.path);
-// 	ft_printf("South: %s\n", data->graphics->south.path);
-// 	ft_printf("West: %s\n", data->graphics->west.path);
-// 	ft_printf("East: %s\n", data->graphics->east.path);
-// 	ft_printf("Floor Colour: %d\n", *(data->graphics->floor_colour));
-// 	ft_printf("Ceiling Colour: %d\n", *(data->graphics->ceiling_colour));
+	ft_memset(&cub3d, 0, sizeof(t_cub3d));
+	fd = argument_check(argc, argv);
+	if (fd < 0)
+		return (1);
+	if (init_cub3d(&cub3d, argv[1], fd) == false)
+	{
+		close(fd);
+		cleanup_cub3d(&cub3d);
+		return (1);
+	}
+	mlx_close_hook(cub3d.mlx, &close_window, &cub3d);
+	mlx_loop_hook(cub3d.mlx, game_loop, &cub3d);
+	mlx_loop(cub3d.mlx);
+	cleanup_cub3d(&cub3d);
+	mlx_terminate(cub3d.mlx);
+	return (0);
+}
 
-// 	mlx_loop_hook(data.mlx, game_loop, &cub3d); 
-// escape exit, player moving etc
-// 	mlx_loop(cub3d.mlx);
-// 	mlx_terminate(cub3d.mlx);
+void	print_array(char **array)
+{
+	int	i;
 
-// 	return (close(fd), 0);
-// }
+	i = 0;
+	while (array[i] != 0)
+	{
+		ft_printf("%s\n", array[i]);
+		i++;
+	}
+}
+
+/*
+
+
+// test fur valide map , exit mit close window
+valgrind --tool=memcheck --leak-check=full --suppressions=mlx_suppress_2.supp
+./cub3d maps/test.cub
+too see gnl errors... --> gefixed 
+
+*/

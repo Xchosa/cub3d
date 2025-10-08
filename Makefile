@@ -29,7 +29,6 @@ VPATH = $(SOURCE_DIR):$(INIT_DIR):$(PARSE_DIR):$(CLEAN_DIR):$(GAME_LOOP_DIR)
 
 # ---------- Subjects ---------- #
 MY_SOURCES = \
-		test_main.c \
 		main.c \
 		init.c \
 		error.c \

@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/06 14:37:52 by mimalek           #+#    #+#             */
-/*   Updated: 2025/10/08 11:43:31 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/10/08 11:58:14 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # define BLACK_TRANS_COLOR 0x00000080
 # define PLAYER_COLOR 0x1E90FFFF
 # define YELLOW_COLOR 0xFFFF00FF
-# define MOVEMENT_SPEED 50.0
+# define MOVEMENT_SPEED 20.0
 # define ROTATION_SPEED 90.0
 # define HALF_CIRCLE 1.57079
 # define MINIMAP_WIDTH 350
