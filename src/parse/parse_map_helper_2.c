@@ -6,7 +6,7 @@
 /*   By: mimalek <mimalek@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/25 18:03:45 by poverbec          #+#    #+#             */
-/*   Updated: 2025/10/08 10:47:20 by mimalek          ###   ########.fr       */
+/*   Updated: 2025/10/08 11:15:06 by mimalek          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ bool check_map_size(int height, int width)
 {
 	if (height < 3 || width < 3)
 		return(false);
-	if (height > 101 || width >164)
+	if (height > 120 || width >165)
 		return(false);
 	return true;
 }

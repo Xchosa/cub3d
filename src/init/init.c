@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
+/*   By: mimalek <mimalek@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 10:52:53 by poverbec          #+#    #+#             */
-/*   Updated: 2025/10/06 14:18:59 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/10/08 11:00:34 by mimalek          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,13 @@ bool	init_cub3d(t_cub3d *cub3d, char *map_path, int fd)
 	set_up_cub3d_defaults(cub3d);
 	if (init_textures(cub3d) == false)
 		return (false);
+	printf("1\n");
 	if (parse_map_file(cub3d, map_path, fd) == false)
 		return (false);
+	printf("2\n");
 	if (create_mlx(cub3d) == false)
 		return (false);
+	printf("3\n");
 	if (load_texture(cub3d) == false)
 		return (false);
 	if (init_minimap(cub3d) == false)

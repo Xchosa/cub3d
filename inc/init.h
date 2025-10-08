@@ -6,7 +6,7 @@
 /*   By: mimalek <mimalek@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/06 14:37:52 by mimalek           #+#    #+#             */
-/*   Updated: 2025/10/07 10:13:36 by mimalek          ###   ########.fr       */
+/*   Updated: 2025/10/08 11:12:55 by mimalek          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,7 @@
 # define MAX_WINDOW_HEIGHT -1
 # define WINDOW_WIDTH 1280
 # define WINDOW_HEIGHT 720
-# define GRAPHICS_LENGTH 6
-# define MAX_MAP_SIZE 100
+# define MAX_MAP_SIZE 200
 
 typedef struct s_player
 {
@@ -162,7 +161,7 @@ void			draw_minimap_cells(t_cub3d *cub3d, int minimap_x,
 int				get_cell_color(char cell);
 void			replace_spaces_with_2(char **map);
 int				return_map_height(char **map);
-void			ft_parse_map(t_cub3d *cub3d, char *line);
+bool			ft_parse_map(t_cub3d *cub3d, char *line);
 bool			ft_parse_color(char *line, int **color);
 void			handle_line(char *line);
 bool			allocate_cub3d_map(t_cub3d *cub3d);

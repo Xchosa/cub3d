@@ -6,7 +6,7 @@
 /*   By: mimalek <mimalek@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 10:15:56 by mimalek           #+#    #+#             */
-/*   Updated: 2025/10/07 10:16:19 by mimalek          ###   ########.fr       */
+/*   Updated: 2025/10/08 11:08:57 by mimalek          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,14 @@ bool	ft_validate_parse_file(t_cub3d *cub3d, int fd)
 		if (line == NULL)
 			break ;
 		if (config_arg == 6)
-			ft_parse_map(cub3d, line);
+		{
+			if(ft_parse_map(cub3d, line) == false)
+			{
+				printf("wrong exit");
+				return(false);
+			}
+		
+		}
 		else
 		{
 			error = ft_parse_config_line(cub3d, line);
