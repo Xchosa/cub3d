@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
+/*   By: mimalek <mimalek@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 17:13:21 by mimalek           #+#    #+#             */
-/*   Updated: 2025/10/07 11:22:04 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/10/07 10:16:10 by mimalek          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,29 +90,24 @@ bool	ft_parse_color(char *line, int **color)
 
 //if (line == NULL || !line)
 //		return ;
-bool	ft_parse_map(t_cub3d *cub3d, char *line)
+void	ft_parse_map(t_cub3d *cub3d, char *line)
 {
 	static int	i = 0;
 	char		*trimmed_line;
 
 	if (i >= MAX_MAP_SIZE)
-		return (ft_error(ARGUMENT_AMOUNT), false);
+		ft_error(ARGUMENT_AMOUNT);
 	if (line == NULL || !line)
-		return (false);
+		return ;
 	trimmed_line = ft_strtrim(line, "\t\n\v\f\r ");
 	if (!trimmed_line || trimmed_line[0] == '\0')
 	{
 		free(trimmed_line);
-		return (false);
+		return ;
 	}
 	cub3d->map[i] = ft_strdup(trimmed_line);
 	free(trimmed_line);
 	if (!cub3d->map[i])
-		return (ft_error(MALLOC_FAIL), false);
-	if (i >= 99)
-		return (ft_error(ARGUMENT_AMOUNT), false);
+		ft_error(MALLOC_FAIL);
 	i++;
-	return (true);
 }
-
-

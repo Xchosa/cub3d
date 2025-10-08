@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 10:52:53 by poverbec          #+#    #+#             */
-/*   Updated: 2025/10/07 11:10:15 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/10/06 14:18:59 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,17 +24,10 @@ bool	init_cub3d(t_cub3d *cub3d, char *map_path, int fd)
 		return (false);
 	if (load_texture(cub3d) == false)
 		return (false);
-
 	if (init_minimap(cub3d) == false)
 		return (false);
-
-	//print_array(cub3d->map);
-	//printf("error after minimpap \n" );
-	if (render_map(cub3d) == false)
-		return (false);
-	printf("error bevor minimpap \n" );
+	render_map(cub3d);
 	init_player(cub3d);
-	printf("error after minimpap \n" );
 	cub3d->player.time = mlx_get_time();
 	cub3d->show_minimap = 1;
 	cub3d->show_rays = 1;

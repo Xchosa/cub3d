@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/27 13:06:12 by mimalek           #+#    #+#             */
-/*   Updated: 2025/10/07 11:23:55 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/09/29 12:35:06 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,14 +35,6 @@ bool	check_vertical_wall_hit(t_cub3d *cub3d, t_ray *ray)
 		|| cub3d->minimap.map_grid[ray->map_y][ray->map_x] == '1')
 		return (true);
 	return (false);
-}
-
-bool	check_map_bounds(t_cub3d *cub3d, int x, int y)
-{
-	if (x < 0 || x >= cub3d->minimap.map_width || y < 0
-		|| y >= cub3d->minimap.map_height)
-		return (false);
-	return (true);
 }
 
 // Digital Differential Analyzer DDA algo to find intersections
