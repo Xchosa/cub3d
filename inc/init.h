@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mimalek <mimalek@student.42.fr>            +#+  +:+       +#+        */
+/*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/06 14:37:52 by mimalek           #+#    #+#             */
-/*   Updated: 2025/10/08 11:35:49 by mimalek          ###   ########.fr       */
+/*   Updated: 2025/10/08 11:43:31 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@
 # define MINIMAP_VIEW_SIZE 3
 # define CUBE_SIZE 32
 # define MINIMAP_CELL_GAP 2
-# define STEP_SIZE 1;
+# define STEP_SIZE 1
 # define FOV 60.0
 # define NUM_RAYS 60 
 # define RAY_COLOR 0xFF00FFFF

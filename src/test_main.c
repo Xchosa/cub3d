@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   test_main.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mimalek <mimalek@student.42.fr>            +#+  +:+       +#+        */
+/*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 14:53:06 by poverbec          #+#    #+#             */
-/*   Updated: 2025/10/06 15:00:54 by mimalek          ###   ########.fr       */
+/*   Updated: 2025/10/08 11:43:08 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,28 +48,12 @@ void	print_array(char **array)
 	}
 }
 
-// issues 
 /*
-fur valid map some not freed stuff from gnl 
--> ur update of my gnl broke it slightly...  --> gefixed 
+
 
 // test fur valide map , exit mit close window
-try valgrind --tool=memcheck --leak-check=full --suppressions=mlx_suppress_2.supp ./cub3d maps/test.cub
+valgrind --tool=memcheck --leak-check=full --suppressions=mlx_suppress_2.supp
+./cub3d maps/test.cub
 too see gnl errors... --> gefixed 
 
-
-
-leaks for invalid map etc is clean
-check
-valgrind --tool=memcheck --leak-check=full --suppressions=mlx_suppress_2.supp ./cub3d maps/fail.cub
-valgrind --tool=memcheck --leak-check=full --suppressions=mlx_suppress_2.supp ./cub3d maps/fail_2.cub
-
-
-error:
-anstelle .png jpg 
-schmeisst keinen error 
-ist noch gehard coded
--> auch fuer errors in farben 
-
-bool	ft_parse_config_line 
 */
