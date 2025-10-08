@@ -6,7 +6,7 @@
 /*   By: mimalek <mimalek@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 10:09:17 by poverbec          #+#    #+#             */
-/*   Updated: 2025/10/08 11:11:58 by mimalek          ###   ########.fr       */
+/*   Updated: 2025/10/08 11:46:10 by mimalek          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ bool	parse_map_file(t_cub3d *cub3d, char *map_path, int fd )
 {
 	if (ft_validate_parse_file(cub3d, fd) == false)
 		return (false);
-	print_array(cub3d->map);
 	if (ft_validate_map(cub3d->map, map_path) == false)
 		return (false);
 	return (true);
