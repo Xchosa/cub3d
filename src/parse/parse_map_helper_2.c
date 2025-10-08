@@ -6,7 +6,7 @@
 /*   By: mimalek <mimalek@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/25 18:03:45 by poverbec          #+#    #+#             */
-/*   Updated: 2025/10/08 10:13:43 by mimalek          ###   ########.fr       */
+/*   Updated: 2025/10/08 10:47:20 by mimalek          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,18 +50,27 @@ char	*pad_line(char *line, int width)
 	return (new_line);
 }
 
+bool check_map_size(int height, int width)
+{
+	if (height < 3 || width < 3)
+		return(false);
+	if (height > 101 || width >164)
+		return(false);
+	return true;
+}
+
 char	**pad_map(char **map)
 {
 	int		height;
 	int		width;
 	char	**new_map;
 	int		i;
-
+	
+	i = 0;
 	height = return_map_height(map);
 	width = get_max_width(map);
-	if (height < 3 || width < 3)
-		return(NULL);
-	i = 0;
+	if (check_map_size(height, width)== false)
+		return (NULL);
 	new_map = malloc(sizeof(char *) * (height + 1));
 	if (!new_map)
 		return (NULL);
@@ -80,3 +89,4 @@ char	**pad_map(char **map)
 	new_map[height] = NULL;
 	return (new_map);
 }
+
