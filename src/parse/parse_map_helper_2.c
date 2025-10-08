@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map_helper_2.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mimalek <mimalek@student.42.fr>            +#+  +:+       +#+        */
+/*   By: poverbec <poverbec@student.42heilbronn>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/25 18:03:45 by poverbec          #+#    #+#             */
-/*   Updated: 2025/10/08 11:15:06 by mimalek          ###   ########.fr       */
+/*   Updated: 2025/10/08 11:31:57 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,15 @@ int	get_max_width(char **map)
 	return (max);
 }
 
+bool	check_map_size(int height, int width)
+{
+	if (height < 3 || width < 3)
+		return (false);
+	if (height > 120 || width > 165)
+		return (false);
+	return (true);
+}
+
 char	*pad_line(char *line, int width)
 {
 	char	*new_line;
@@ -50,13 +59,12 @@ char	*pad_line(char *line, int width)
 	return (new_line);
 }
 
-bool check_map_size(int height, int width)
+void	free_new_map(char **new_map, int i)
 {
-	if (height < 3 || width < 3)
-		return(false);
-	if (height > 120 || width >165)
-		return(false);
-	return true;
+	while (i-- > 0)
+		free(new_map[i - 1]);
+	free(new_map);
+	return ;
 }
 
 char	**pad_map(char **map)
@@ -65,11 +73,11 @@ char	**pad_map(char **map)
 	int		width;
 	char	**new_map;
 	int		i;
-	
+
 	i = 0;
 	height = return_map_height(map);
 	width = get_max_width(map);
-	if (check_map_size(height, width)== false)
+	if (check_map_size(height, width) == false)
 		return (NULL);
 	new_map = malloc(sizeof(char *) * (height + 1));
 	if (!new_map)
@@ -79,14 +87,10 @@ char	**pad_map(char **map)
 		new_map[i] = pad_line(map[i], width);
 		if (!new_map[i])
 		{
-			while (i-- > 0)
-				free(new_map[i - 1]);
-			free(new_map);
-			return (NULL);
+			return (free_new_map(new_map, i), NULL);
 		}
 		i++;
 	}
 	new_map[height] = NULL;
 	return (new_map);
 }
-
