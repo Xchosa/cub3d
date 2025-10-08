@@ -6,7 +6,7 @@
 /*   By: mimalek <mimalek@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 17:13:21 by mimalek           #+#    #+#             */
-/*   Updated: 2025/10/08 11:12:41 by mimalek          ###   ########.fr       */
+/*   Updated: 2025/10/08 11:37:03 by mimalek          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,12 @@ int	ft_parse_config_line(t_cub3d *cub3d, char *line)
 	error_code = parse_texture_helper(cub3d, line, i);
 	if (error_code != 0)
 		return (error_code);
-	else if (line[i] == 'E' && line[i + 1] && line[i + 2] && line[i + 1]
+	return (parse_remainig_config(cub3d, line, i));
+}
+
+int	parse_remainig_config(t_cub3d *cub3d, char *line, int i)
+{
+	if (line[i] == 'E' && line[i + 1] && line[i + 2] && line[i + 1]
 		== 'A' && line[i + 2] == ' ')
 	{
 		if (!ft_parse_texture(line + i + 3, &cub3d->graphics->east))
@@ -96,19 +101,19 @@ bool	ft_parse_map(t_cub3d *cub3d, char *line)
 	char		*trimmed_line;
 
 	if (i >= MAX_MAP_SIZE)
-		return(ft_error(ARGUMENT_AMOUNT), false);
+		return (ft_error(ARGUMENT_AMOUNT), false);
 	if (line == NULL || !line)
 		return (true);
 	trimmed_line = ft_strtrim(line, "\t\n\v\f\r ");
 	if (!trimmed_line || trimmed_line[0] == '\0')
 	{
 		free(trimmed_line);
-		return(true);
+		return (true);
 	}
 	cub3d->map[i] = ft_strdup(trimmed_line);
 	free(trimmed_line);
 	if (!cub3d->map[i])
-		return(ft_error(MALLOC_FAIL), false);
+		return (ft_error(MALLOC_FAIL), false);
 	i++;
 	return (true);
 }

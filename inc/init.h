@@ -6,7 +6,7 @@
 /*   By: mimalek <mimalek@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/06 14:37:52 by mimalek           #+#    #+#             */
-/*   Updated: 2025/10/08 11:25:28 by mimalek          ###   ########.fr       */
+/*   Updated: 2025/10/08 11:35:49 by mimalek          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -163,6 +163,7 @@ void			replace_spaces_with_2(char **map);
 int				return_map_height(char **map);
 bool			ft_parse_map(t_cub3d *cub3d, char *line);
 bool			process_file_line(t_cub3d *cub3d, char *line, int *config_arg);
+int				parse_remainig_config(t_cub3d *cub3d, char *line, int i);
 bool			ft_parse_color(char *line, int **color);
 void			handle_line(char *line);
 bool			allocate_cub3d_map(t_cub3d *cub3d);
